@@ -1,0 +1,119 @@
+---
+title: College Majors 2019 update
+author: Ben Schmidt
+date: '2020-08-25'
+slug: college-majors-2019-update
+categories:
+  - Majors
+  - Higher Education
+  - Degrees
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2020-08-25T13:54:06-04:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+Every year, I run the numbers to see how college degrees are changing. The Department of Education released
+this summer the figures for 2019; these and next year's are probably the least important that we'll ever see, since they capture the weird period as the 2008 recession's shakeout was wrapping up but before COVID-19 upended everything once again. But for completism it's worth seeing how things changed.
+
+```{r}
+
+
+
+library(IPEDSdata)
+library(tidyverse)
+data = return_data()
+cips = return_cips()
+
+plottable = data %>% filter(MAJORNUM==1, AWLEVEL==5) %>% 
+  into_major_nums %>% 
+  left_join(cips,by=c("CIPCODE"="CIPCode"))
+
+plottable %>% ungroup %>% count(Type)
+
+this_plot = plottable %>% filter(year >= 1997) %>%
+    group_by(year,General,Type) %>%
+    filter(General %in% c("Humanities")) %>% 
+   # filter(Type %in% c("English","History","Languages and Literature","Philosophy", "Classical Studies","Religion", "Area Studies", "Cultural, Ethnic, and Gender Studies", "Humanities/Humanistic Studies")) %>%
+    summarize(degrees = sum(degrees), percent = sum(degrees)/year_total[1]) %>% filter(!(Type=="Area Studies" && year < 1997)) %>%
+    group_by(Type) %>%
+    mutate(relative=percent/max(percent)) %>% mutate(relative = relative - 1) # change in percent
+
+this_plot %>% ggplot(aes(x=year,y=relative,fill=Type,lty=Type,label=Type,color=Type)) +
+    geom_line() + 
+    scale_y_continuous("Share relative to peak", labels=scales::percent) + 
+#    facet_wrap(~Type,scales="free_y") + 
+   theme(legend.position="none") + 
+    labs(title="The big humanities majors\nhave dropped rapidly in the last decade to decline",subtitle="As percentage of all BAs; all US institutions",
+         caption = "IPEDS data (preliminary for 2019)\nChart by Ben Schmidt, 2020") + 
+  geom_point(data = this_plot %>% filter(relative==1)) + 
+  geom_text(data=this_plot %>% filter(year==2019), adj=0, nudge_x = .1) + theme_bw() + theme(legend.position = "none") + expand_limits(x=2026)
+```
+
+```{r}
+plottable = data %>% filter(AWLEVEL==5) %>% group_by(MAJORNUM) %>%
+  into_major_nums %>% acadjoin
+
+y1 = 2009
+y2 = 2019
+
+changes = plottable %>% filter(year %in% c(y1, y2)) %>% ungroup %>% mutate(year = ifelse(year==y1, "y1", "y2")) %>% group_by(year, MAJORNUM, Discipline) %>% summarize(degrees = sum(degrees)) %>% spread(year, degrees, fill = 1)
+
+c2 = changes %>% filter(!is.na(Discipline), MAJORNUM == 1) %>% group_by(MAJORNUM) %>% mutate(y1t = sum(y1), y2t = sum(y2)) %>% mutate(cutoff = ifelse(MAJORNUM == 1, .05, .1)/100) %>% ungroup %>% arrange(MAJORNUM)  %>% mutate(change = y2/y1)
+
+p1 = c2 %>% filter(y1/y1t > cutoff, y2/y2t > cutoff, Discipline != "Personal Services")  %>% 
+  ggplot() + aes(pch = factor(MAJORNUM), y = change, x = reorder(Discipline, change, function(x) {x[1]})) + 
+  geom_point() + labs(title=paste0("Fig. 1: Change in degrees, ", y1, "-", y2), y = paste0("Change in number awarded ", y1, "-", y2), x = "Major", color = "Primary or secondary major", pch = "Primary or secondary major", caption = "Sources: NCES IPEDS data; taxonomy adapted from American Academy of Arts and Sciences.") + 
+  coord_flip() + scale_y_log10(breaks = c(.5, .66, .8, 1, 1.25, 1.5, 2, 3), labels=scales::percent(c(.5, .66, .8, 1, 1.25, 1.5, 2, 3) - 1)) + theme_bw() + scale_x_discrete("Major") + theme(legend.position = "none") + scale_color_brewer(type='qual')
+
+p1
+
+```
+
+
+```{r}
+Stemonomy = read_csv("STEM_onomy.csv") %>% mutate(STEM=TRUE)
+
+ciptotals = data %>% filter(AWLEVEL==5) %>% group_by(year, CIPCODE) %>% sumdegrees
+
+ciptotals %>%
+  left_join(amadjusted()) %>% left_join(Stemonomy) %>% 
+  mutate(cat= case_when(
+    Bachelors=="Humanities" ~ "Humanities",
+    Discipline %>% str_detect("Computer Science|Electrical Eng") ~ "CS", 
+    whichSTEM %>% str_detect("Science") ~ "Science",
+    TRUE ~ "Other")) %>%
+  group_by(year, Discipline, Bachelors) %>% sumdegrees -> t3
+
+
+
+t3 %>% filter(Bachelors == "Humanities") %>% ggplot() + geom_line(aes(x = year, color = Discipline, y = degrees))
+
+```
+
+```{r}
+
+
+totals = data %>% filter(AWLEVEL==5) %>% count(year, wt=degrees)
+
+data %>% filter(AWLEVEL==5)  %>% left_join(amadjusted()) %>% left_join(Stemonomy) %>% 
+  filter(Discipline != "Communication") %>%
+  mutate(cat= case_when(
+    Bachelors=="Humanities" ~ "Humanities",
+    Discipline %>% str_detect("Computer Science|Electrical Eng") ~ "CS", 
+    whichSTEM %>% str_detect("Science") ~ "Science",
+    TRUE ~ "Other")) %>%
+  group_by(year, cat) %>% sumdegrees -> t3
+
+t3 %>% inner_join(totals) %>% filter(cat != "Other") %>% ggplot() + geom_line(aes(x=year, y= degrees, color = cat)) + labs(title="CS on the verge of surpassing science and humanities... again")
+
+# ggsave("~/Dropbox/Talks/slides/images/STEM/last.png", width = 8, height = 6)
+
+
+```

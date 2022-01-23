@@ -1,0 +1,19 @@
+header:
+  title: "Ben Schmidt"
+  links:
+    -
+      text: Blog
+      url: /post
+    -
+      text: Research
+      url: /research-portfolio
+    - 
+      text: "Visualizations"
+      url: /gallery
+    - 
+      text: CV
+      url: /CV
+    -
+      text: "&c"
+      url: /etc
+    
