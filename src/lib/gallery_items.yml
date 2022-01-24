@@ -68,7 +68,7 @@
   title: "Corrected Subway Maps"
   src: "//benschmidt.org/wp/wp-content/uploads/2014/02/metroScreenshot.png"
   description: "This is a set of transit maps deformed to fit onto the Internet map-tile view of the cities ([Boston](http://benschmidt.org/mbta), [New York](http://benschmidt.org/mta), [Washington](http://benschmidt.org/dcmetro)) they depict; it explores the tension between two different ways of representing the same urban spaces. Made using QGIS, Leaflet, and some command-line GDAL tools with maps and data from the transit authorities and tiles from Open Street Map."
-  link: "/benschmidt.org/mta/"
+  link: "//benschmidt.org/mta/"
 - 
   title: "Conceptual Street Map"
   src: "/img/streets.png"

@@ -10,11 +10,10 @@
   <title>Visualizations Gallery</title>
 </svelte:head>
 
-<div class="m-30 mt-20">
-  <h3> Gallery </h3>
-  I make a lot of visualizations and abstracted maps.
+<div class="mr-30 ml-30 mt-20">
+  <h1> Map and Data Visualization Gallery</h1>  
 </div>
-<div class="absolute left-0 container px-5 py-24 mx-auto" max-width="300px">
+<div class="absolute left-0 container px-5 mx-auto" max-width="300px">
   <div class="flex flex-wrap m-2">
     {#each items as item}
       <GalleryItem {...item} ></GalleryItem>

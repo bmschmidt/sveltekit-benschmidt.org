@@ -16,19 +16,19 @@
 
 <div id="reset" class="absolute left-0 top-0 w-full">
 <div class="flex">
-<div class="basis-1/4">
-<div class="sticky top-20">
-  <h2>Tags</h2>
-  <ul>
-  {#each taglist as {tag, count}}
-  <li>
-    <a href="/post/tag/{tag}">{tag}</a> ({count})
-    </li>
-  {/each}
-  </ul>
-</div>
-</div>
-<div class="basis-1/2">
+  <div class="basis-1/4">
+    <div class="sticky top-20">
+      <h2>Tags</h2>
+      <ul>
+      {#each taglist as {tag, count}}
+      <li>
+        <a href="/post/tag/{tag}">{tag}</a> ({count})
+        </li>
+      {/each}
+      </ul>
+    </div>
+  </div>
+  <div class="basis-1/2">
 <h2 class="text-xl mb-10">Posts</h2>
 <Postgroup posts={post_index} />
 </div>

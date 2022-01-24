@@ -20,7 +20,7 @@
   </div>
   <div class="flex flex-row relative mt-36 md:mt-36 ml-5">
     <div class="basis-1/6 md:basis-1/4"></div>
-    <div class="basis-2/3 md:basis-1/2">
+    <div class="w-full md:w-1/2">
       <slot></slot>
     </div>
     <div class="basis-1/6 md:basis-1/4"></div>
