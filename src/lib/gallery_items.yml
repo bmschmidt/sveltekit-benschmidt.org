@@ -16,7 +16,7 @@
     new way to look at the digital library: a visual bibliography as a
     15-million book zoomable scatterplot, displaying a variety of metadata
     and allowing you to click through to the Hathi Trust.
-  src: 'img/hathi_zoom.jpg'
+  src: '/img/hathi_zoom.jpg'
 -
   title: "Gendered Language in Teaching Evaluations"
   description: |
@@ -25,7 +25,7 @@
     the writeups in [The New York Times](https://www.nytimes.com/2015/02/07/upshot/is-the-professor-bossy-or-brilliant-much-depends-on-gender.html)
     and [The Chronicle of Higher Education](http://chronicle.com/blogs/ticker/how-reviews-on-rate-my-professors-describe-men-and-women-differently/93687)
     using the D3 interface to Bookworm.
-  link: "//benschmidt.org/profGender"
+  link: "//benschmidt.org/profGender/"
   src: "//benschmidt.org/wp/wp-content/uploads/2014/02/GenderedLanguage.png"
 - 
   title: "All of US"

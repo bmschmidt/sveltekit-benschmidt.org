@@ -4,6 +4,7 @@
 	"scripts": {
 		"dev": "svelte-kit dev -p 3003",
 		"build": "svelte-kit build",
+		"publish": "svelte-kit build && rsync -ravz build/ root@benschmidt.org:html/",
 		"package": "svelte-kit package",
 		"preview": "svelte-kit preview",
 		"check": "svelte-check --tsconfig ./tsconfig.json",

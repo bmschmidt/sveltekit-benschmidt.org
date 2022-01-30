@@ -11,7 +11,6 @@
   }
   const taglist = Object.entries(tags).map(([tag, count]) => {return{tag, count}})
   taglist.sort((a, b) => b.count - a.count)
-//  console.log(urls['/src/content/research-portfolio.md'])
 </script>
 
 <div id="reset" class="absolute left-0 top-0 w-full">

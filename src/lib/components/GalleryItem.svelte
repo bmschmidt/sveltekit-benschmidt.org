@@ -22,7 +22,7 @@
       </div>      
     <div class="-mt-40 md:mt-0 transition w-full bg-white/0 hover:bg-white/70 hover:backdrop-blur-sm">
       <div class="flex flex-row transition px-8 py-10 relative z-10 w-full bg-white/70 opacity-100 group-hover:bg-white/0">
-          <a href={link}>
+          <a rel="external" href={link}>
             <h1 class="tracking-widest text-lg title-font font-medium text-violet-500 mb-1">
             <div class="invisible group-hover:visible">
               <Launch32  /> </div>
