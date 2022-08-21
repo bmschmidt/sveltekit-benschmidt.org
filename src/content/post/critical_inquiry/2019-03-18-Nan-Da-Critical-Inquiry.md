@@ -270,8 +270,6 @@ Kiriloff use the 310 most common words, there's no need to worry about
 multiple comparisons outside this range.]
 The result: 81% of the words Jockers and Kiriloff look at are statistically significant.
 
-![]()
-
 After spending a paragraph and a half throwing out statistical claims that 
 
 My intellectual disagreement, here, is with the 

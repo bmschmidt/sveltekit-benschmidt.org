@@ -12,6 +12,5 @@ export async function get({url, params}) {
       'Content-type': "image/png"
     },
     body: new Uint8Array(file)
-    
   }
 }

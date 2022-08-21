@@ -65,11 +65,17 @@ education:
 
 publication:
   -
-    title: ""
+    title: "Uncontrolled corpus composition drives an apparent surge in cognitive distortions. Benjamin Schmidt, Steven T. Piantadosi, Kyle Mahowald. Proceedings of the National Academy of Sciences Nov 2021, 118 (45) e2115010118; DOI: 10.1073/pnas.2115010118."
     journal: "Proceedings of the National Academy of Sciences"
-    date: 2021-11-07
-    twopage: false
+    date: 2021-11
+    twopage: true
     academic: true
+  - 
+    author: "Organisciak, P., Schmidt, B. M., & Downie, J. S."
+    title: "Giving shape to large digital libraries through exploratory data analysis."
+    journal: "Journal of the Association for Information Science and Technology, 73( 2), 317– 332."
+    doi: "https://doi.org/10.1002/asi.24547"
+    date: 2021-09
   -
     title: "Creating Data: The Origins of Digitization in the American State, 1840-1940"
     date: "Digital Monograph, in progress"
@@ -81,6 +87,7 @@ publication:
     date: 2019-06-02
     journal: 2019 ACM/IEEE Joint Conference on Digital Libraries (JCDL)
     academic: true
+    twopage: true
   -
     title: "Are College Students Killing Townies?"
     author: "Benjamin Schmidt"

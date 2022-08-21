@@ -1,8 +1,16 @@
-const urls = import.meta.globEager("/src/content/**/*.md")
+import { promises as fs } from 'fs';
+import {promisify} from 'util'
+import { exec as raw_exec} from 'child_process'
+import yaml from 'js-yaml';
+const exec = promisify(raw_exec)
+const fulltext = import.meta.globEager("/src/content/**/*.md?raw", { as: 'raw' })
 
 export const pages = [];
-for (let [k, v] of Object.entries(urls)) {
-  let filepath = k;
+
+for (const [k, v] of Object.entries(fulltext)) {
+  console.log({v})
+  const attributes = yaml.load(v.split('---')[1])
+  const filepath = k;
   let dir = filepath.split("/")
   dir.pop()
   dir = dir.join("/")
@@ -15,8 +23,8 @@ for (let [k, v] of Object.entries(urls)) {
   } else {
     slug = path.split("/").pop().replace(".md", "")
   }
-  path = path.replace(/\/index.md$/, "").replace(/\.md$/, "")
-  v.attributes.date = new Date(v.attributes.date || 0)
+  path = path.replace(/\/\/?index.md$/, "").replace(/\.md$/, "")
+  attributes.date = new Date(attributes.date || 0)
  
   const type = path.startsWith("post/") ? "post" : "page"
   if (path.match(/svelte/)) {
@@ -28,7 +36,7 @@ for (let [k, v] of Object.entries(urls)) {
     continue
     url = `https://benschmidt.org/` + v.attributes.url.replace(".html", "/")
   }
-  pages.push({url, path, slug, filepath, type, dir, ...v});
+  pages.push({url, path, slug, filepath, type, dir, attributes});
 }
 
 pages.sort((a, b) => b.attributes.date - a.attributes.date)
@@ -45,9 +53,13 @@ export const post_index = posts.map(
     if (isNaN(page.attributes.date)) {
       throw new Error(`Invalid date for ${page.filepath}`)
     }
-    page.preview = page.html.split("<p>")[1].split("</p>")[0] + ` <a class="text-violet-700" href="/${page.path}/">[Read complete post...]</a>`
+    page.preview = page.html.split("<p>")[1].split("</p>")[0] + ` <a class="text-violet-700" href="/${page.path}">[Read complete post...]</a>`
     page.html = undefined;
     page.attributes.tags = page.attributes.tags || []
+    if (typeof(page.attributes.tags) === "string") {
+      page.attributes.tags = page.attributes.tags.split(",")
+    }
+    page.attributes.tags = page.attributes.tags.map(d => d.trim()).filter(d => d.length > 0)
     if (page.attributes.categories) {
       page.attributes.tags = [...new Set([...page.attributes.tags, ...page.attributes.categories])]
     }

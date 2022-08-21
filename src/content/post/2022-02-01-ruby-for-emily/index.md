@@ -2,7 +2,7 @@
 title: A Rose for Ruby
 featured: false
 draft: false
-date: 2022-01-27
+date: 2022-02-28
 tags: 
   - Ruby
   - Jekyll
@@ -11,17 +11,18 @@ tags:
 ---
 
 ![Ruby Logo](https://www.ruby-lang.org/images/header-ruby-logo.png) There are programming languages that people use for money, and
-programming languages people use for love.
-
-There are Weekend at Bernie's/Jeremy Bentham corpses that you prop up for the cash, and there
+programming languages people use for love. There are Weekend at Bernie's/Jeremy Bentham corpses that you prop up for the cash, and there
 are "Rose for Emily" corpses you sleep with every night for decades
 because it's too painful to admit that the best version of your life you
 ever glimpsed is not going to happen.
 
 It's time we had a hard talk about Ruby.
 
-I was at a cafe in Ann Arbor in 2014 talking about coding with Matt
-Burton; he had just discovered Docker, and was rhapsodically describing
+*This is part three of a series on Web Archives for the 2020s.*
+
+I was at a cafe in Ann Arbor in 2014 talking about coding with [Matt
+Burton;](https://www.sci.pitt.edu/people/matthew-burton)
+he had just discovered Docker, and was rhapsodically describing
 how magically it transformed his workflow. At some point he mentioned
 something about Ruby and how he was shifting away using it, and a
 doleful looking man came over to commiserate over how the Ruby dream was
@@ -62,12 +63,23 @@ time. I've switched over to Pyarrow and polars to get faster
 underpinnings; I can often do some operations on a thousand books a
 second. Ruby, generating a piddling few dozen pages, can take a minute
 or two. I wrote an entire Svelte-kit based wax clone just in the breaks
-while waiting for my wax pages to render.
+while waiting for my Wax pages to render. There's a truism out there 
+that developer time is far more valuable than compiler time, and that all
+modern languages are fast *enough*. I've always thought that was basically
+true. But that relies on a rough baseline of performance, on someone
+periodically going through and pulling out the low-hanging fruit by
+optimizing the slowest parts of a language. Jekyll's slowness is of a different
+order.
 
-I've never learned Ruby; I doubt I ever will. Based on the love people
-show for it, I wish I had to. It should have been bigger. From
+I've never learned Ruby. Based on the love people
+show for it, I wish I had to. But I doubt ever will. It should have been bigger. From
 everything I've seen, it was better designed than Python. We'd all be in
 a better place if the numpy/scipy/tensorflow stack had grown on top of
 Ruby rather than Python one. But they didn't. You don't move to a city
-for a language; you move there for the jobs, the infrastructure, the
+for the language they speak; you move there for the jobs, the infrastructure, the
 culture, the people. You take care of what's left there.
+
+There are people left who still love Ruby, who will tell you that Jekyll is a simple,
+classic, effective way to build web sites.
+
+They are lost souls.

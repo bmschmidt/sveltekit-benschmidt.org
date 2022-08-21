@@ -1,6 +1,6 @@
 import adapter from '@sveltejs/adapter-static';
 import preprocess from 'svelte-preprocess';
-import md from 'vite-plugin-markdown'
+//import md from 'vite-plugin-markdown'
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -10,13 +10,15 @@ const config = {
 
 	kit: {
 		adapter: adapter(),
-		trailingSlash: 'ignore', // ugh, but seems maybe necessary?
+		prerender: {
+			default: true
+		},
+		trailingSlash: 'always', // ugh, but seems maybe necessary?
 		vite: {
-			 plugins: [ md.plugin({mode: 'html'}) ],			
+//			 plugins: [ md.plugin({mode: 'html'}) ],			
 			 allow: ['..'] //
 			},
 		// hydrate the <div id="svelte"> element in src/app.html
-		target: '#svelte'
 	}
 };
 

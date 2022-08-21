@@ -1,8 +1,5 @@
 <script>
-  import MarkdownIt from 'markdown-it'
-  import Launch32 from 'carbon-icons-svelte/lib/Launch24'
-  const md = new MarkdownIt();
-
+  import Launch32 from 'carbon-icons-svelte/lib/Launch.svelte'
   export let src;
   export let title = "TITLE";
   export let link;
@@ -30,7 +27,7 @@
           </a>
       </div>
       <div class="transition px-8 py-10 md-relative z-10 w-full md-opacity-0 group-hover:opacity-100">
-        <p class="leading-relaxed">{@html md.render(description)}</p>
+        <p class="leading-relaxed">{@html description}</p>
       </div>
     </div>
   </div>

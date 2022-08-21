@@ -4,11 +4,12 @@ title: 'Bleg 1: String Distance'
 date: 2014-03-27T21:44:24+00:00
 author: ben
 layout: post
-guid: http://benschmidt.org/?p=275
-url: /2014/03/27/bleg-1-string-distance/
+guid: "http://benschmidt.org/?p=275"
+url: "/2014/03/27/bleg-1-string-distance/"
 categories:
   - Data Munging
 ---
+
 String distance measurements are useful for cleaning up the sort of messy data from multiple sources.
   
 There are a bunch of string distance algorithms, which usually rely on some form of calculations about the similarities of characters. But in real life, characters are rarely the relevant units: you want a distance measure that penalized changes to the most information-laden parts of the text more heavily than to the parts that are filler.

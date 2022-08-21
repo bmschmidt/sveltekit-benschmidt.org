@@ -2,7 +2,7 @@
 title: Online Archives for the 2020s, Part I
 tags: Modern Web Galleries
 date: 2022-01-27
-
+draft: true
 ...
 
 I've been thinking a lot lately 
