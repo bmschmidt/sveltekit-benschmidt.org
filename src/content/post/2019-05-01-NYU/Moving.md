@@ -1,15 +1,13 @@
 ---
-title: "Moving (or rather, staying in place)"
+title: 'Moving (or rather, staying in place)'
 date: 2019-05-03T15:18:12-04:00
 draft: false
 
 # Tags and categories
 # For example, use `tags: []` for no tags, or the form `tags: ["A Tag", "Another Tag"]` for one or more tags.
-tags: ["News"]
-
+tags: ['News']
 # Featured image
-# To use, add an image named `featured.jpg/png` to your page's folder. 
-
+# To use, add an image named `featured.jpg/png` to your page's folder.
 ---
 
 Some news: in September, I'll be starting a new job as Director of
@@ -20,7 +18,7 @@ of programs that might be called "Digital Humanities" at another
 university, as well as an exciting new center for Data Science. I'll
 be helping the humanities better use all the advantages offered in
 this landscape. I'll also be teaching as a clinical associate
-professor in the history department. 
+professor in the history department.
 
 If you're at NYU or somewhere nearby and want to chat, please do reach
 out; I'll be around through the end of July. There should be more to
@@ -55,7 +53,7 @@ semester, and didn't hit a single major delay.
 
 But any commute is hard, especially when you have small children.
 (Which is, demographically, a set that academic commutes fall most
-heavily on.)  I remember, shortly before starting my job at
+heavily on.) I remember, shortly before starting my job at
 Northeastern, reading Mark Sample write about how the commute is a
 "[grueling, brain-frying, wallet-emptying, time-wasting, body-breaking, soul-draining way to live](http://blog.commarts.wisc.edu/2011/10/25/dual-academic-couples-and-long-distance-living/)."
 Amen. I can't help but think that the widespread acceptance of

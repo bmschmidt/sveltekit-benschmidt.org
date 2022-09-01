@@ -3,9 +3,9 @@ title: Online Archives for the 2020s, Part I
 tags: Modern Web Galleries
 date: 2022-01-27
 draft: true
-...
+---
 
-I've been thinking a lot lately 
+I've been thinking a lot lately
 
 **What is minimalism?**
 
@@ -80,7 +80,6 @@ league 20-year-olds. That demographic seems like one that's already
 pretty well represented, though. Better to build something for my friend
 Jay up in Maine instead.
 
-
 **What about Omeka?**
 
 It's not worth talking about Wax without mentioning the incredibly
@@ -123,7 +122,7 @@ window of a Wax site, which I think is potentially quite useful).
 
 But since the turn from MySQL-based content management systems in the
 late 2000s, it's been clear that the Digital Humanities are not going to
-be the one field *not* to switch over to a static CMS model. Omeka S
+be the one field _not_ to switch over to a static CMS model. Omeka S
 represents the high-end institutional approach; the low end has just
 been sitting there, and Wax is making a play for it.
 
@@ -169,6 +168,7 @@ It's a choice, is all I'm saying.
 **What are the big problems for this as a project?**
 
 1.  Is it too late already? If LAMP-stack CMS were the movement of the
+
     > 2000s, static site generators\--especially Jekyll ones\--are
     > extremely Obama administration. In our brave new world, javascript
     > has eaten almost all of the old LAMP (Linux, Apache, Mysql,
@@ -180,6 +180,7 @@ It's a choice, is all I'm saying.
     > appears to "just work," and it might corner a lot of this market.
 
 2.  Ruby. This is me being a management consultant, but it's going to be
+
     > a recurring theme in this document. Ruby is a problem. Maybe not
     > an unsolvable one, and maybe it's worth keeping. But only a crazy
     > person would say that Ruby is the future of anything right now.

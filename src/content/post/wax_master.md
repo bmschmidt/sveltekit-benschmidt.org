@@ -2,7 +2,6 @@
 title: Extra Wax Content to Farm out
 date: 2023-01-01
 draft: true
-
 ---
 
 **Speed is an issue**
@@ -28,6 +27,7 @@ the major thing propping Jekyll up nowadays, Github pages, seems to be
 weakening. There are a couple alternatives I can think of.
 
 1.  **Hugo.** This seems like the obvious choice. It's basically the
+
     > same as Jekyll, but since it's a precompiled binary it will be a
     > lot easier for most non-power-users to install. The templating
     > language is different, but while I'm fully on board with the Wax
@@ -80,7 +80,7 @@ weakening. There are a couple alternatives I can think of.
     > approach to the same sort of problems of building discrete
     > components that Ruby set in motion fifteen years ago. And while
     > svelte very much **is** a framework, '.svelte' files force people
-    > to reckon with css, html, and javascript in quite a useful way for 
+    > to reckon with css, html, and javascript in quite a useful way for
     > teaching basic skills.
     > The progressive-enhancement strategy of svelte-kit would also be
     > in certain cases more minimal than Jekyll because it can hydrate
@@ -101,7 +101,6 @@ build out of three things:
 3.  Some markdown files of exhibits.
 
 And it materializes into a web site that looks like Omeka.
-
 
 **Separation of roles is** **an issue**
 

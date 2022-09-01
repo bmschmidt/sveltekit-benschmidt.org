@@ -9,6 +9,7 @@ url: /2015/06/12/buying-a-computer-for-digital-humanities-work/
 categories:
   - Digital Humanities
 ---
+
 I&#8217;ve gotten a couple e-mails this week from people asking advice about what sort of computers they should buy for digital humanities research. That makes me think there aren&#8217;t enough resources online for this, so I&#8217;m posting my general advice here. (For some solid other perspectives, see here). For keyword optimization I&#8217;m calling this post &#8220;digital humanities.&#8221; But, obviously, I really mean the subset that is humanities computing, what I tend to call humanities data analysis. [Edit: To be clear, ] Moreover, the guidelines here are specifically tailored for text analysis; if you are working with images, you&#8217;ll have somewhat different needs (in particular, you may need a better graphics card). If you do GIS, god help you. I don&#8217;t do any serious social network analysis, but I think the guidelines below should work relatively with Gephi.
 
 <!--more-->
@@ -36,8 +37,8 @@ _Expensive_: Mac OS X. Apple Hardware is pretty and, thanks to their market domi
 You <del>absolutely</del> probably (see below) should not plan on running Microsoft Windows as your primary OS for humanities computing. With one exception: ESRI&#8217;s GIS software is only available for Windows. If you primarily do GIS, you&#8217;ll either need to sit in the lab, buy a Windows (or dual-boot) machine, or use QGIS, which is getting better. Since ArcGIS licenses are expensive, I usually recommend that grad students use QGIS so they don&#8217;t lose their ability to finish their dissertation with their library card. I personally use QGIS for some tasks, and the spatial libraries for R for more intensive spatial work, with D3 to render maps beautifully.
 
 _Edit on Windows: Some people on Twitter think this is too harsh, so I&#8217;m changing it to &#8220;probably.&#8221; Windows will generally be fine if you&#8217;re doing number crunching only; python and RStudio will run fine. But use of Unix (the family of operating systems to which Linux and OS X belong) is far more common in DH than Windows, which means that you&#8217;ll have an easier time running other code, and you&#8217;ll have a harder time running DH software that is oriented to the web, such as Omeka, which requires a so-called [LAMP stack](https://en.wikipedia.org/wiki/LAMP_%28software_bundle%29).
-  
-_ 
+
+\_
 
 _My setup_: An old version of OS X on the laptop to keep my homebrew settings intact, and Ubuntu 14.04 on the desktop tower.
 

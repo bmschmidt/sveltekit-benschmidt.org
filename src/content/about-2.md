@@ -6,4 +6,5 @@ author: ben
 layout: page
 guid: http://benschmidt.org/?page_id=178
 ---
+
 See my [CV](/curriculum-vitae/), or [a third-person biography](http://benschmidt.org/curriculum-vitae/short-bio-and-photo/).

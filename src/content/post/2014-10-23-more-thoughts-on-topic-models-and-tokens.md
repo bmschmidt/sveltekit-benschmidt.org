@@ -9,6 +9,7 @@ url: /2014/10/23/more-thoughts-on-topic-models-and-tokens/
 categories:
   - Uncategorized
 ---
+
 I&#8217;ve been thinking a little more about how to work with the [topic modeling extension](https://github.com/bmschmidt/Bookworm-Mallet) I recently built for bookworm. (I&#8217;m curious if any of those running installations want to try it on their own corpus.) With the movie corpus, it is most interesting split across _genre;_ but there are definite temporal dimensions as well. [As I&#8217;ve said before](http://journalofdigitalhumanities.org/2-1/words-alone-by-benjamin-m-schmidt/), I have issues with the widespread practice of just plotting trends over time; and indeed, for the movie model I ran, nothing particularly interesting pops out. (I invite you, of course, to tell me how it _is_ interesting.)
 
 So here I&#8217;m going to give two different ways of thinking about the relationship between topic labels and the actual assigned topics that underlie them.

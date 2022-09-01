@@ -1,25 +1,24 @@
 ---
-title: "Teach Ontogeny Not Phylogeny: (stop teaching base plot!)"
+title: 'Teach Ontogeny Not Phylogeny: (stop teaching base plot!)'
 date: 2020-01-30T10:03:29-05:00
 draft: true
-tags: 
-   - Teaching
-   - Programming
-
+tags:
+  - Teaching
+  - Programming
 ---
 
 (I've delivered this rant a few times recently in person,
 which makes me think it should be a blog post.)
 
 When you teach programming skills to people with the goal that they'll
-be able to *use* them, the most important obligation is not to waste
+be able to _use_ them, the most important obligation is not to waste
 their time or make things seem more complicated than they are. This
-should be obvious.  But when I'm helping humanists decide what
+should be obvious. But when I'm helping humanists decide what
 workshops to take, reviewing introductory materials for classes, or
 browsing tutorials to adapt for teaching, I see the same violation of
 the principle again and again. Introductory tutorials waste enormous
 amounts of time vainly covering ways of accomplishing tasks that have
-*absolutely no use* for beginners, and which fundamentally will
+_absolutely no use_ for beginners, and which fundamentally will
 confuse learners.
 
 The mistake is: workshop leaders or teachers feel the need to walk through
@@ -31,7 +30,6 @@ In R, for me this fundamentally means: **commit to the tidyverse**.
 1. Only ever teach `ggplot2`; do **not** teach the base plotting functions.
    But above all, never teach both.
 
-
 In Python
 
 1. Never give the slightest acknowledgement to python 2.7.
@@ -39,8 +37,7 @@ In Python
 
 This seems obvious, but it makes me mad to see it. The reason why is not just that
 it's a waste of student's time, but that it makes me fear the instructor is either
-underqualified (perhaps they don't know how to make a histogram in ggplot). 
-
+underqualified (perhaps they don't know how to make a histogram in ggplot).
 
 Are there exceptions? Yes. Or at least, maybe. One is when the
 intellectual concept is so much larger than a particular application
@@ -63,8 +60,9 @@ point of this will be that the conceptual strategy is the same; and as
 a way to talk a bit about language design. (Is a good thing that "AS"
 is optional in SQL?)
 
-[^spread]: The first time I got the deprecation on `spread` and
-  `gather`, I admit my heart sank--now I have to update every example!
-  But switching to the new, more explicit, format will certainly be
-  just slightly easier for students, I am convinced; and of course I
-  won't spend time describing the old way of doing things.
+[^spread]:
+    The first time I got the deprecation on `spread` and
+    `gather`, I admit my heart sank--now I have to update every example!
+    But switching to the new, more explicit, format will certainly be
+    just slightly easier for students, I am convinced; and of course I
+    won't spend time describing the old way of doing things.

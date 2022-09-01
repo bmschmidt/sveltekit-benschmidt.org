@@ -9,21 +9,22 @@ url: /2014/09/05/markdown-historical-writing-and-killer-apps/
 categories:
   - Publishing
 ---
+
 Like many technically inclined historians (for instance, [Caleb McDaniel](http://wcm1.web.rice.edu/hacks.html), [Jason Heppler](http://jasonheppler.org/2012/11/20/using-markdown-like-an-academic/), and [Lincoln Mullen](http://chronicle.com/blogs/profhacker/markdown-the-syntax-you-probably-already-know/35295)) I find that I&#8217;ve increasingly been using the plain-text format Markdown for almost all of my writing.
 
 The core idea of Markdown is that rather than use Microsoft Word, Scrivener, or any of the other pretty-looking tools out there, you type in &#8220;plain text&#8221; using formatting conventions that should be familiar to anyone who&#8217;s ever written or read an e-mail. (Click on Mullen&#8217;s or Heppler&#8217;s name for a better introduction than this, or see the [Chronicle&#8217;s wrapup of approaches](http://chronicle.com/blogs/profhacker/markdown/47813)).
 
 The benefits are many, but they&#8217;re mostly subtle:
 
-  * A simple format like Markdown creates documents you&#8217;ll have not trouble reading in twenty years. I&#8217;ve been teaching a survey course this semester and had a hell of a time reading my old notes from generals which I took using EndNote; with Markdown, any web browser, text editor, or Microsoft Word descendant will have no trouble opening it.
-  * It&#8217;s very easy to produce content that will look good in multiple media: I can make a course syllabus or personal CV with that formats nicely on a website and produces a clean looking PDF _at the same time_.
-  * It becomes much easier to do things to a bunch of notes at the same time: bundle them into PDFs, search through all of your notes simulataneously, and so forth.
+- A simple format like Markdown creates documents you&#8217;ll have not trouble reading in twenty years. I&#8217;ve been teaching a survey course this semester and had a hell of a time reading my old notes from generals which I took using EndNote; with Markdown, any web browser, text editor, or Microsoft Word descendant will have no trouble opening it.
+- It&#8217;s very easy to produce content that will look good in multiple media: I can make a course syllabus or personal CV with that formats nicely on a website and produces a clean looking PDF _at the same time_.
+- It becomes much easier to do things to a bunch of notes at the same time: bundle them into PDFs, search through all of your notes simulataneously, and so forth.
 
 None of these, though, are a particularly strong sell for those who use a computer instrumentally: in reality, your Microsoft Words documents aren&#8217;t about to disappear, either. And there are disadvantages to giving up Word.
 
-  * Things like footnotes with a citation manager are not very easy, even for the technically competent. [<sup>1</sup>](#fn1){#fnref1.footnoteRef} Even footnotes without a citation manager are fairly clumsy.
-  * The best tool for making your Markdown documents into attractive web pages , [Pandoc](http://johnmacfarlane.net/pandoc/), is not especially easy to install or configure if you don&#8217;t use the command line on a regular basis.
-  * The core definition of Markdown is a little unclear: particularly in the last week, there have been some conflicts over the definition that will be confusing to newcomers. (Although the proposal that sparked them, &#8220;Common Markdown,&#8221; is likely to be a good thing in the long run)
+- Things like footnotes with a citation manager are not very easy, even for the technically competent. [<sup>1</sup>](#fn1){#fnref1.footnoteRef} Even footnotes without a citation manager are fairly clumsy.
+- The best tool for making your Markdown documents into attractive web pages , [Pandoc](http://johnmacfarlane.net/pandoc/), is not especially easy to install or configure if you don&#8217;t use the command line on a regular basis.
+- The core definition of Markdown is a little unclear: particularly in the last week, there have been some conflicts over the definition that will be confusing to newcomers. (Although the proposal that sparked them, &#8220;Common Markdown,&#8221; is likely to be a good thing in the long run)
 
 The heart of Markdown&#8217;s appeal is its flexibility: to drive any adoption outside the hard core of people, you need a killer app built off of it that solves a problem. In the technology sector, that has been Markdown&#8217;s ability to easily handle links and snippets of computer code for those writing on two widely used sites, [GitHub](http://github.com) and [Stack Overflow](http://stackoverflow.com)
 
@@ -49,19 +50,18 @@ If there&#8217;s any reason for historians to use markdown, it&#8217;s in these 
 First lectures. With Markdown, I&#8217;m able to write my own notes and create a slide deck _at the same time_. An example will help. Here&#8217;s a snippet from my lecture notes on the memory of the Civil War:
 
     # Abolitionist memory of the war.
-    
+
     *Image: http://upload.wikimedia.org/wikipedia/commons/1/19/William-Tecumseh-Sherman.jpg* Caption: William Tecumseh Sherman
-    
-    There's another set of people who aren't content to see it go: those who remembered the war as the period of national renewal, rebirth, and freedom. We remember World War II today as the "Good War," because we fought the Nazis and won. 
-    
+
+    There's another set of people who aren't content to see it go: those who remembered the war as the period of national renewal, rebirth, and freedom. We remember World War II today as the "Good War," because we fought the Nazis and won.
+
     But unlike WWII, Civil War actually changed the country for the better. It abolished slavery. It instituted amendments that guaranteed citizenship to every American. It promised equal protection under the law.
-    
+
     Memory that's particularly strong among African Americans.
-    
+
     They remember Sherman differently.
     Sherman not as maurauder but as unfifilled promise.
     Sheman, you might remember, when he finally made it to the sea issued his famous **Field Order 15**
-    
 
 With some ancillary code I wrote, that does two things at once: builds a slide showing the wikimedia copy of [Sherman&#8217;s grizzled mug](http://upload.wikimedia.org/wikipedia/commons/1/19/William-Tecumseh-Sherman.jpg), and creates a set of notes for me under the header &#8220;Abolitionist memory of the war&#8221; to go on the paper notes I&#8217;ll read from.
 
@@ -71,9 +71,9 @@ This is **writing documents for multiple uses,** and it can be incredibly useful
 
 Something like this could provide a really useful way to integrate and share resources, and free up some of the tedium with prepping lectures. But:
 
-  * That syntax for including an image as a slide is my own, not standard Markdown. I&#8217;ve defined scripts for dropping in YouTube videos, images, captions, and some other predefined formats: but it would take a lot of work to define a set of them that make sense for anyone but me.
-  * There are a lot of standards out there for working with HTML slides. None is winning, in part because none is anywhere as good as Keynote or Powerpoint for the average user. My code works with deck.js, one of the only HTML formats _not_ supported by Pandoc; but there&#8217;s no obvious other standard to switch to.
-  * Constructing slides that are more complicated than a single image with a title, or a numbered list, requires some serious HTML/CSS expertise. My scripts support that, but not in a pretty way.
+- That syntax for including an image as a slide is my own, not standard Markdown. I&#8217;ve defined scripts for dropping in YouTube videos, images, captions, and some other predefined formats: but it would take a lot of work to define a set of them that make sense for anyone but me.
+- There are a lot of standards out there for working with HTML slides. None is winning, in part because none is anywhere as good as Keynote or Powerpoint for the average user. My code works with deck.js, one of the only HTML formats _not_ supported by Pandoc; but there&#8217;s no obvious other standard to switch to.
+- Constructing slides that are more complicated than a single image with a title, or a numbered list, requires some serious HTML/CSS expertise. My scripts support that, but not in a pretty way.
 
 Modern HTML allows some beautiful things: I can easily imagine a GUI for one of the standards that would make it easy to create slides for re-use in one of the competing platforms. But I think the standards are still evolving too rapidly in this sphere to make the way forward obvious.
 

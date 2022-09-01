@@ -1,9 +1,9 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
-title: "EOIR Database adventures, part I: encoding"
-subtitle: ""
-summary: ""
+title: 'EOIR Database adventures, part I: encoding'
+subtitle: ''
+summary: ''
 authors: [Ben Schmidt]
 tags: [EOIR, TRAC]
 date: 2020-08-25T22:49:16-04:00
@@ -15,8 +15,8 @@ draft: false
 # To use, add an image named `featured.jpg/png` to your page's folder.
 # Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
 image:
-  caption: ""
-  focal_point: ""
+  caption: ''
+  focal_point: ''
   preview_only: false
 
 # Projects (optional).
@@ -49,7 +49,6 @@ some Windows version of Latin-1.
 ```sh
 iconv -l | perl -pe 's/ .*//' | head -49 | xargs -n 1 -I{} iconv -f {} invalid
 ```
-
 
 Once these problems are dealt with, the CSVs can be loaded into R straightforwardly.
 

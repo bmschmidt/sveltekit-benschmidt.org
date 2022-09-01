@@ -12,7 +12,7 @@ Digital Humanities at New York University.
 
 Benjamin Schmidt is a Clinical Associate Professor in the department
 of History and Director of Digital Humanities at New York University. His
-current historical project, *Creating Data*, explores data collected by the
+current historical project, _Creating Data_, explores data collected by the
 19th century American state through archival research, data visualization,
 and interactive publication. He also writes on higher education, the crisis
 of the humanities, and digital humanities. He has previously taught at
@@ -27,7 +27,7 @@ cultural history of the United States in the 19th and 20th centuries.
 His digital humanities research focuses on large-scale text analysis,
 humanities data visualization, and the challenges and opportunities of
 reading data itself as a historical source. His current project,
-*Creating Data*, explores practices of data collection in the 19th
+_Creating Data_, explores practices of data collection in the 19th
 century American state through archival research, visualization,
 and re-analysis of historical data. He also contributes to popular
 conversations on topics including higher education in the United States,

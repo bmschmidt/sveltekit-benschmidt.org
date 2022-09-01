@@ -11,15 +11,15 @@ Anecdotally, the strain on the peer review system is bringing it to the breaking
 :::
 
 :::
+
 1. Blind peer review is extremely vulnerable to adversarial stylometry. The pool of potential reviewers for any given article is pretty small; and
-most potential reviewers will have other written documents accessible on Arxiv, sci-hub, JStor, etc. 
-:::
+   most potential reviewers will have other written documents accessible on Arxiv, sci-hub, JStor, etc.
+   :::
 
 :::
 So let's build the website where you paste in the text of the review you received, some keywords about the field, and it spits out a list of the most likely authors based on stylistic traits. This will further discourage anonymous peer review.
 :::
 
-:::
-2. Editorial review is older, saner, and in all ways better than peer review. But the nominal editors of a journal
+::: 2. Editorial review is older, saner, and in all ways better than peer review. But the nominal editors of a journal
 
 :::

@@ -7,4 +7,3 @@ abstract = ""
 selected = "false"
 publication = "*The New York Times*"
 +++
-

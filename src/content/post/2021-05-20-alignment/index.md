@@ -1,12 +1,12 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
-title: "Guide to Digital Publishing"
-subtitle: "A definitive, not-at-all-idiosyncratic, and final account of the landscapes of scholarly publishing, communication, and access."
-summary: ""
-authors: ["Ben Schmidt"]
+title: 'Guide to Digital Publishing'
+subtitle: 'A definitive, not-at-all-idiosyncratic, and final account of the landscapes of scholarly publishing, communication, and access.'
+summary: ''
+authors: ['Ben Schmidt']
 tags: []
-categories: ["Digitization"]
+categories: ['Digitization']
 date: 2021-05-20T11:26:37-04:00
 lastmod: 2021-05-20T11:26:37-04:00
 featured: false
@@ -16,8 +16,8 @@ draft: false
 # To use, add an image named `featured.jpg/png` to your page's folder.
 # Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
 image:
-  caption: "Here it is!"
-  focal_point: ""
+  caption: 'Here it is!'
+  focal_point: ''
   preview_only: false
 
 # Projects (optional).
@@ -76,9 +76,7 @@ The common objections are:
    ANYTHING OTHER THAN JUST A WORSE VERSION OF BLOGSPOT.COM
 6. **Google's on it twice.** Font choice.
 
-
 Credits for suggestions to Alex Humphreys, Ted Underwood, Scott Weingart,
 Melissa Teras, Rachel Midura, Will Hanley, Ethan Gruber.
-
 
 ![Permalink](/img/alignment.png)

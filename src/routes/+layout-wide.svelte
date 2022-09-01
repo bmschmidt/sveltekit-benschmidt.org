@@ -1,14 +1,14 @@
 <script lang="ts">
-  import '/src/app.css';
+	import '/src/app.css';
 
-  import Header from '$lib/components/Header.svelte';
+	import Header from '$lib/components/Header.svelte';
 </script>
 
 <main>
-  <div class="mb-20">
-    <Header> </Header>
-  </div>
-  <div>
-      <slot></slot>
-  </div>
+	<div class="mb-20">
+		<Header />
+	</div>
+	<div>
+		<slot />
+	</div>
 </main>

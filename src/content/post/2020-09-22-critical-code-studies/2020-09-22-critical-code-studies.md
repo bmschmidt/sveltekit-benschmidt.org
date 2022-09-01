@@ -1,11 +1,11 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
-title: "2020 09 22 Critical Code Studies"
-subtitle: ""
-summary: ""
+title: '2020 09 22 Critical Code Studies'
+subtitle: ''
+summary: ''
 authors: []
-tags: ["Programming"]
+tags: ['Programming']
 date: 2020-09-22T09:22:31-04:00
 lastmod: 2020-09-22T09:22:31-04:00
 featured: false
@@ -15,8 +15,8 @@ draft: true
 # To use, add an image named `featured.jpg/png` to your page's folder.
 # Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
 image:
-  caption: ""
-  focal_point: ""
+  caption: ''
+  focal_point: ''
   preview_only: false
 
 # Projects (optional).
@@ -28,12 +28,12 @@ projects: []
 ---
 
 For my [Introduction to Programming Class](http://benschmidt.org/code20) this
-semester, we read the introduction to Mark Marino's 2020 *Critical Code Studies*.
+semester, we read the introduction to Mark Marino's 2020 _Critical Code Studies_.
 It's an interesting thing to teach in the context of a programming class. Last
 week we read Paul Ford's Bloomberg essay
 [What is Code](https://www.bloomberg.com/graphics/2015-paul-ford-what-is-code/),
-which--among many, many other things its 30,000 words--works to demystify code 
-for the Bloomberg audience by unpacking some of the ways coders signify by 
+which--among many, many other things its 30,000 words--works to demystify code
+for the Bloomberg audience by unpacking some of the ways coders signify by
 choosing a language,
 attending conferences, etc. Marino does something very similar for the
 English-literature audience, although more focused on individual coders and less

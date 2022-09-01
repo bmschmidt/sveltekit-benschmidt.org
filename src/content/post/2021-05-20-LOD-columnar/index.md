@@ -1,11 +1,11 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
-title: "Columnar Linked Open Data"
-subtitle: ""
-summary: ""
+title: 'Columnar Linked Open Data'
+subtitle: ''
+summary: ''
 authors: []
-tags: ["Metadata", "Arrow"]
+tags: ['Metadata', 'Arrow']
 categories: []
 date: 2021-05-08T10:47:56-04:00
 lastmod: 2021-05-08T10:47:56-04:00
@@ -16,8 +16,8 @@ draft: true
 # To use, add an image named `featured.jpg/png` to your page's folder.
 # Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
 image:
-  caption: ""
-  focal_point: ""
+  caption: ''
+  focal_point: ''
   preview_only: false
 
 # Projects (optional).
@@ -25,23 +25,23 @@ image:
 #   Simply enter your project's folder or file name without extension.
 #   E.g. `projects = ["internal-project"]` references `content/project/deep-learning/index.md`.
 #   Otherwise, set `projects = []`.
-projects: ["Bookworm", "Nonconsumptive"]
+projects: ['Bookworm', 'Nonconsumptive']
 ---
 
 The files distributed by collections as data initiatives are torn between
-two competing goals. One is to provide *fully described* data according to the
+two competing goals. One is to provide _fully described_ data according to the
 up-to-standards. Linked open data (LOD) is a powerful set of tools for integrating
 free-standing resources like web pages with an extensible, standardized vocabulary.
-When applied to the release of a full dataset, LOD allows the precise naming of 
+When applied to the release of a full dataset, LOD allows the precise naming of
 each attribute of an item, with persistent URIs.
 
-But LOD is also a major commitment to an ecosystem that has not been fully 
-adopted by non-technical users. 
+But LOD is also a major commitment to an ecosystem that has not been fully
+adopted by non-technical users.
 The [w3 guide to LOD](https://www.w3.org/2011/gld/wiki/Linked_Data_Cookbook#Step_5_Convert_Data_to_RDF)
-requires that data be serialized into an RDF serialization; although JSON-LD 
-has seen some uptake, these generally remain difficult to read and slow to 
+requires that data be serialized into an RDF serialization; although JSON-LD
+has seen some uptake, these generally remain difficult to read and slow to
 parse and difficult to create. Organizations exporting collections frequently
-gravitate toward a pole of *simplicity* and *accessibility* that leads in 
+gravitate toward a pole of _simplicity_ and _accessibility_ that leads in
 many cases to the venerable CSV format. CSV provides an open format that is
 easily ingested by almost any system, can be edited and shared by non-experts,
 and meets basic standards of reproducibility. Carnegie Museum of Art. [https://github.com/cmoa/collection]
@@ -49,7 +49,7 @@ and meets basic standards of reproducibility. Carnegie Museum of Art. [https://g
 Spreadsheets provide some guarantees about a data set as a whole. You can see, for
 example, the full list of data types by scanning the column heads, and there
 is some guarantee that results will exist for all objects in a dataset. But they
-do *not* present the linked data representation of a JSON-LD schema; there is no
+do _not_ present the linked data representation of a JSON-LD schema; there is no
 conventional way to designate that the "publicationDate" field in a spreadsheet
 represents the `schema.org` "publicationDate" representation, and certainly
 no way to capture that a listing of countries uses some particular controlled
@@ -66,48 +66,48 @@ It looks like this:
 ```
 
 Looking at these three entries, you can see that they each use similar values, but
-not the precise connections. Loading them into a CSV, one could image placing a 
-variety of elaborate column names, but repeating that source organizations 
+not the precise connections. Loading them into a CSV, one could image placing a
+variety of elaborate column names, but repeating that source organizations
 use the `http://id.loc.gov/ontologies/bibframe/Organization` schema would quickly
-get tiresome. Although this set doesn't set `http://id.loc.gov/ontologies/bibframe/` 
+get tiresome. Although this set doesn't set `http://id.loc.gov/ontologies/bibframe/`
 as part of a context for any individual item, it clearly would be useful for the set
 as a whole.
 And certain features of the implementation are type-inconsistent
-within this set: 'genre' is a single string for for the third item here, but a list 
+within this set: 'genre' is a single string for for the third item here, but a list
 for the first two.
 
-Columnar Linked Open Data is a refinement of the strategies for JSON-LD to work 
-in environments where contexts, identifiers, and types are more likely to be 
-shared across columns for *multiple* records than within a single dataset.
-Like JSON-LD, it does not define a *new* way of representing data, but instead
+Columnar Linked Open Data is a refinement of the strategies for JSON-LD to work
+in environments where contexts, identifiers, and types are more likely to be
+shared across columns for _multiple_ records than within a single dataset.
+Like JSON-LD, it does not define a _new_ way of representing data, but instead
 provides a way for describing RDF triples in a format that will be immediately
-appealing to researchers. While JSON-LD targets web users, CLOD targets data 
+appealing to researchers. While JSON-LD targets web users, CLOD targets data
 analysts using tabular data analysis software such as traditional relational
-databases and the Hadoop ecosystem, pandas in Python, 
+databases and the Hadoop ecosystem, pandas in Python,
 dataframes and the 'tidyverse' in R, and developing engines like Apache Arrow
 and the Arquero Javascript library.
 
-Unlike JSON, it is also not definitively tied to a particular data storage 
+Unlike JSON, it is also not definitively tied to a particular data storage
 format. The new generation of open-source columnar storage formats--
 [ORC](https://orc.apache.org/specification/ORCv1/),
 [Arrow](https://arrow.apache.org), and [Parquet](https://parquet.apache.org/)--
-each have the ability to store standardized column level metadata, so the 
-strategies laid out here will work for each. Because data manipulation in 
+each have the ability to store standardized column level metadata, so the
+strategies laid out here will work for each. Because data manipulation in
 Apache Arrow is the most advanced, I focus on that particular format here.
 We also suggest a way of expressing CLOD using the traditional CSV.
 
 # Three levels of context
 
-The core strategy for working with columnar linked open data is to 
+The core strategy for working with columnar linked open data is to
 disentangle three different levels of representation which may have linked
 open data representations.
 
-1. The *table* or *dataset*. (E.g., "catalog")
-2. The individual *column*. (E.g., "creator")
-3. The individual *field*. (E.g., "Dickens, Charles, 1812-1870.")  
+1. The _table_ or _dataset_. (E.g., "catalog")
+2. The individual _column_. (E.g., "creator")
+3. The individual _field_. (E.g., "Dickens, Charles, 1812-1870.")
 
-While JSON-LD allows the creation of contexts and definitions at the *entry* level,
-CLOD instead makes the *column* be the default level of contextualization. So
+While JSON-LD allows the creation of contexts and definitions at the _entry_ level,
+CLOD instead makes the _column_ be the default level of contextualization. So
 in a dataset of authors, for example,
 
 ```
@@ -115,11 +115,11 @@ in a dataset of authors, for example,
 "@type": "https://schema.org/creator"
 ```
 
-|author       | author@id |
---------------------------|
-|Chas. Dickens| 88666393  |
-|Dickens      | 88666393  | 
-|George Eliot | 89000553  |
+| author        | author@id |
+| ------------- | --------- |
+| Chas. Dickens | 88666393  |
+| Dickens       | 88666393  |
+| George Eliot  | 89000553  |
 
 A few notes here.
 

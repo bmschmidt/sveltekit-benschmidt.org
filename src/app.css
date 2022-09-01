@@ -5,13 +5,16 @@
 @tailwind utilities;
 
 @layer base {
-  h1, h2, h3, h4 {
-    @apply font-bold;
-  }
+	h1,
+	h2,
+	h3,
+	h4 {
+		@apply font-bold;
+	}
 }
 
 @layer base {
-  a {
-    @apply text-violet-900;
-  }
+	a {
+		@apply text-violet-900;
+	}
 }

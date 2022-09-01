@@ -9,6 +9,7 @@ url: /2014/08/29/the-simpsons-bookworm/
 categories:
   - Bookworm
 ---
+
 I thought it would be worth documenting the difficulty (or lack of) in building a Bookworm on a small corpus: I&#8217;ve been reading too much lately about the Simpsons thanks to the FX marathon, so figured I&#8217;d spend a couple hours making it possible to check for changing language in the longest running TV show of all time.
 
 For some thoughts on how to build a bookworm, read &#8220;prep&#8221;: otherwise, skip to analysis. [Or just head over the browser](http://benschmidt.org/Simpsons/).
@@ -38,25 +39,25 @@ Next step is to parse into bookworm format. Since these are in SRT format, it&#8
 Next is actually parsing the text, and adding some new information to it about the position of each line. This is usually the hardest part, but SRT parsing is pretty easy as these things go. Plus, nailing down the format leads me to an insight&#8211;rather than use line number, I can take the embedded time information in the SRT files and index by the minute and second in the episode that a subtitle flashes on the screen. Each subtitle block will correspond to a file, and we&#8217;ll know the exact moment it appeared. Turns out there are about 200,000 of those in the series, which is a reasonable number of texts to include in a Bookworm. (Though if I were hypothetically to do this for a whole bunch of TV series (more than a couple hundred) at the same time, that might push the system&#8217;s limits.) Parsing out the SRT time information works well. We&#8217;re left with some straggling sound effects, which I&#8217;m just leaving in for the time being. Occasionally characters names appear at the front of texts: again, that&#8217;s something I&#8217;d correct if this were a weekend project rather than a weeknight one.
 
 That means the final scheme will give us, for each subtitle block:
-  
+
 1. Season Number
-  
+
 2. Episode number in the season
-  
+
 3. Episode number in the series (will make some plots easier).
-  
+
 4. Minute in the episode
-  
+
 5. Second in the episode
-  
+
 6. The actual text of the block.
 
 From that information, if we were true Simpsons scholars, we could easily add:
 
 1. Act (roughly: call minutes 0-7 act 1, minutes 8-14 act 2, and minutes 15 to the end act 3)
-  
+
 2. Air date, episode director, and other information easily linkable from IMDB.
-  
+
 3. Whether it&#8217;s a finale or what.
 
 Once the text is parsed, the file-creation is pretty easy, we&#8217;re ready to ingest. The [input.txt](http://bmschmidt.github.io/Presidio/input.txt.html) file is just the text and an id number constructed from the moment the block appears on screen: the jsoncatalog.txt is just a dump of an object that&#8217;s useful for processing, anyway.
@@ -66,7 +67,7 @@ I&#8217;ve already written a specialized makefile for my Federalist papers bookw
 And then we&#8217;ve got it! I didn&#8217;t designate any fields as &#8220;time,&#8221; so a first inspection will be easier using the D3 browser.
 
 The first test is to find out about those pesky missing episodes. So I&#8217;ll plot a heatmap of the number of words for each episode (x axis) and season (y axis):
-  
+
 ![](/wp-content/uploads/2014/08/Screen-Shot-2014-08-29-at-11.35.28-AM.png)
 
 This shows that we&#8217;ve got about 25 episodes for season, but: we&#8217;ve got a season 0 and no season 1 (that one set of srts that didn&#8217;t give a season, no doubt); we&#8217;ve got no seasons 16 and 17; and, curiously, most season 6 episodes are twice as long as they should be. Probably season 16 was mislabeled season 6, and we&#8217;re actually missing season 17. We&#8217;re also missing the first 9 episodes of season 21, and the first two of season 22. Oh well. Something to catch on a next run.

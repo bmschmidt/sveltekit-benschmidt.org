@@ -9,4 +9,3 @@ publication = "*2015 IEEE International Conference on Big Data (Big Data)*"
 tags = ["Animals", "Data analysis", "Document Structure", "Market research", "Motion pictures", "Plot", "Television", "topic modeling", "Trajectory", "TV", "Vocabulary"]
 doi = "10.1109/BigData.2015.7363937"
 +++
-

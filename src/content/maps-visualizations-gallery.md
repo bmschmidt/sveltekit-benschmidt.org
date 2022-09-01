@@ -17,13 +17,12 @@ Probably the most widely-circulated image I&#8217;ve made is this chart that sho
 
 ## [The Hathi Trust Library](http://creatingdata.us/datasets/hathi-features/)
 
-This portion of [*Creating Data*](http://creatingdata.us) presents a
+This portion of [_Creating Data_](http://creatingdata.us) presents a
 new way to look at the digital library: a visual bibliography as a
 15-million book zoomable scatterplot, displaying a variety of metadata
 and allowing you to click through to the Hathi Trust.
 
 [![image](/img/hathi_zoom.jpg)](http://creatingdata.us/datasets/hathi-features/)
-
 
 ## Gendered Language in Teaching Evaluations
 
@@ -35,15 +34,12 @@ using the D3 interface to Bookworm.
 
 [<img class="alignnone wp-image-422 size-full" src="http://benschmidt.org/wp/wp-content/uploads/2014/02/GenderedLanguage.png" alt="GenderedLanguage" width="960" height="589" srcset="http://benschmidt.org/wp/wp-content/uploads/2014/02/GenderedLanguage-300x184.png 300w, http://benschmidt.org/wp/wp-content/uploads/2014/02/GenderedLanguage-624x383.png 624w, http://benschmidt.org/wp/wp-content/uploads/2014/02/GenderedLanguage.png 960w" sizes="(max-width: 960px) 100vw, 960px" />](http://benschmidt.org/profGender)
 
-
 ## Data Driven Projections: Darwin's World
 
 The hard part of this is really Philippe Riviere's work, not mine: but I noticed that his new Voronoi Projection enables what I call 'Data Driven Projections,' map representations of the world
 customized for any set of points. The one below shows the voyage of the Beagle in the 1830s, with Darwin; you can change the observable notebook at [this link](https://beta.observablehq.com/@bmschmidt/data-driven-projections-darwins-world) for any dataset you like.
 
-
 ![Darwin](/img/darwin.png)
-
 
 ## Archetypal Plot Structures
 
@@ -81,14 +77,11 @@ A practical visualization of department of education data about what college stu
 
 Using the shipping maps dataset, I also made a set of movies showing ocean sailing in motion using ggplot2 and ffmpeg. Here&#8217;s one of them; the rest are available on [my YouTube channel](https://www.youtube.com/user/BGMSMA/videos), and I wrote quite a bit about them [on my blog](http://sappingattention.blogspot.com/2012/11/reading-digital-sources-case-study-in.html).
 
-
-
 ## [Migrations in 1880](http://benschmidt.org/migration2)
 
 An experimental interactive map (experimental here meaning &#8220;too long a load time&#8221; to show interstate migrations in the 1880 census.) This can be used to explore some interesting stories about regional connections in the period after the end of slavery (for example, by looking at the relative sources of migration in different western counties to see which eastern states their residents came from.) Graphically, I found it interesting to have two maps (one of counties and one of states), which switch roles as legend or content depending on what direction of migration you want to look at.
 
 [<img class="alignnone size-full wp-image-261" src="http://benschmidt.org/wp/wp-content/uploads/2014/02/Migrations-Screenshot.png" alt="Migrations Screenshot" width="820" height="346" srcset="http://benschmidt.org/wp/wp-content/uploads/2014/02/Migrations-Screenshot-300x126.png 300w, http://benschmidt.org/wp/wp-content/uploads/2014/02/Migrations-Screenshot-624x263.png 624w, http://benschmidt.org/wp/wp-content/uploads/2014/02/Migrations-Screenshot.png 820w" sizes="(max-width: 820px) 100vw, 820px" />](http://benschmidt.org/wp/wp-content/uploads/2014/02/Migrations-Screenshot.png)
-
 
 ## Visualizing the State of the Unions
 

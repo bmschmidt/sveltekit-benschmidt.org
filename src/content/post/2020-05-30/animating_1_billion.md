@@ -1,9 +1,9 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
-title: "Animating One Billion Points with Arrow and WebGL"
-subtitle: ""
-summary: ""
+title: 'Animating One Billion Points with Arrow and WebGL'
+subtitle: ''
+summary: ''
 authors: []
 tags: []
 categories: []
@@ -16,8 +16,8 @@ draft: true
 # To use, add an image named `featured.jpg/png` to your page's folder.
 # Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
 image:
-  caption: ""
-  focal_point: ""
+  caption: ''
+  focal_point: ''
   preview_only: false
 
 # Projects (optional).
@@ -27,7 +27,6 @@ image:
 #   Otherwise, set `projects = []`.
 projects: []
 ---
-
 
 > One million points isn't cool. You know what's cool? A billion points.
 
@@ -49,7 +48,7 @@ dataset to the user at the beginning of the session.
 
 That set--and some others like it--are the primary reason that I wanted to
 expand out. But they are more complicated in some other ways, so I'm starting
-with a *simple* billion point dataset.
+with a _simple_ billion point dataset.
 
 ## Billion point datasets
 
@@ -69,19 +68,15 @@ This is a nice stress test. If you can visualize 1.7 billion points, there
 probably aren't huge issues with scaling to bigger. The points have straightforward
 x and y coordinates; the location of each star in the celestial plane.
 (3d would
-  be interesting, but Gaia only has 3d positions for a paltry million stars. If they
-  can't calculate the parallax from the earth's two positions, it's hard to tell
-  just how far away a star is.)
+be interesting, but Gaia only has 3d positions for a paltry million stars. If they
+can't calculate the parallax from the earth's two positions, it's hard to tell
+just how far away a star is.)
 And there are other things to visualize for each point, so it's not just
 serving static image tiles; for many stars, Gaia has collected the color,
 distance, and radius of many of the stars.
 
 In other ways, though, it's not ideal. I had sort of thought that maybe a large
 number of stars would have names; but
-
-
-
-
 
 ## Building tiles.
 
@@ -95,19 +90,18 @@ Enter Apache Arrow.
 
 ##
 
-|Technology|What's good about it|Rough Point Limit|Why|
-|:----------:|:----------------:|:-----------:|:------------------------------|
-|SVG|Clear, HTML-like way of describing points and transitions; easy to style with D3|500|Each SVG point is a DOM item; past this the browser gets sluggish|
-|Canvas|Faster than SVG. You just draw shapes in a for-loop.|20,000|Each points needs to be drawn in a synchronous loop; especially with aesthetics (point colors, etc.) renderers start to stutter.|
-|WebGL|Crazy fast.|1,000,000|Display issues (that's one pixel per point); even just (x, y) cooordinates for 1,000,000 points takes at least 8 megabytes, which is a lot to transfer over the web.|
+| Technology |                               What's good about it                               | Rough Point Limit | Why                                                                                                                                                                  |
+| :--------: | :------------------------------------------------------------------------------: | :---------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|    SVG     | Clear, HTML-like way of describing points and transitions; easy to style with D3 |        500        | Each SVG point is a DOM item; past this the browser gets sluggish                                                                                                    |
+|   Canvas   |               Faster than SVG. You just draw shapes in a for-loop.               |      20,000       | Each points needs to be drawn in a synchronous loop; especially with aesthetics (point colors, etc.) renderers start to stutter.                                     |
+|   WebGL    |                                   Crazy fast.                                    |     1,000,000     | Display issues (that's one pixel per point); even just (x, y) cooordinates for 1,000,000 points takes at least 8 megabytes, which is a lot to transfer over the web. |
 
-Your browser has <span id="pixelcount">maybe 1,000,000</span> total *pixels*. So
+Your browser has <span id="pixelcount">maybe 1,000,000</span> total _pixels_. So
 what's the point in displaying more?
 
 The answer is, basically, zoom. You can go deeper into any dataset;
 with 2d scatterplots, you can borrow all the interface metaphors from online
 maps. And it can be really interesting to dive deep into one area of a scatterplots
-
 
 <script>
 document.getElementById("pixelcount")
@@ -119,7 +113,6 @@ WebGL is established. It's even getting a little old--[Doug Duhaime](https://dou
 tells me security vulnerabilities persist. At some point it will
 be replaced by [WebGPU](https://en.wikipedia.org/wiki/WebGPU),
 at which point existing WebGL sites may face their own version of the Flashpocalypse.
-
 
 # Apache Arrow
 

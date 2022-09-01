@@ -3,24 +3,18 @@ title: 'Back to Basics'
 date: 2010-11-08T10:26:00.002-05:00
 draft: false
 url: /2010/11/back-to-basics.html
-tags: 
-- Featured
-- Building a Corpus
+tags:
+  - Featured
+  - Building a Corpus
 ---
 
-I've rushed straight into applications here without taking much time to look at the data I'm working with. So let me take a minute to describe the set and how I'm trimming it.  
-  
-  
-  
-The Internet Archive has copies of some unspecified percentage of the public domain books for which google books has released pdfs. They have done OCR (their own, I think, not google's) for most of them. The metadata isn't great, but it's usable--the same for the OCR. In total, they have 900,000 books from the Google collection--Dan Cohen claims to have 1.2 million from English publishers alone, so we're looking at some sort of a sample. The physical books are from major research libraries--Harvard, Michigan, etc.  
-  
-900,000 books is too many for me to process at home. Since I'm interested in American history, I made a list of the largest American publishers by doing some preliminary analysis of their catalog, and reading about the publishers online. Publisher names are irregular, so I've searched for a single keyword to represent a publishing house; eg, "Scribner" to catch "Charles Scribner", "Chas. Scribner's sons", "Scribner's", etc.).I keep adding files (which creates more work for me as I retool the database), but the current list is, from largest to smallest: Harper, Appleton, Houghton, Scribner, Putnam, Little, Carey, Ticknor, Riverside. If anyone has any suggestions for what to add, I'm open to it. The only big publisher I've consciously excluded is the Government Printing Office--it's one of the largest, and probably could be subjected to a fascinating analysis in its own right, but clearly has a different intended audience than the literary publishers.  
+I've rushed straight into applications here without taking much time to look at the data I'm working with. So let me take a minute to describe the set and how I'm trimming it.
 
-  
+The Internet Archive has copies of some unspecified percentage of the public domain books for which google books has released pdfs. They have done OCR (their own, I think, not google's) for most of them. The metadata isn't great, but it's usable--the same for the OCR. In total, they have 900,000 books from the Google collection--Dan Cohen claims to have 1.2 million from English publishers alone, so we're looking at some sort of a sample. The physical books are from major research libraries--Harvard, Michigan, etc.
+
+900,000 books is too many for me to process at home. Since I'm interested in American history, I made a list of the largest American publishers by doing some preliminary analysis of their catalog, and reading about the publishers online. Publisher names are irregular, so I've searched for a single keyword to represent a publishing house; eg, "Scribner" to catch "Charles Scribner", "Chas. Scribner's sons", "Scribner's", etc.).I keep adding files (which creates more work for me as I retool the database), but the current list is, from largest to smallest: Harper, Appleton, Houghton, Scribner, Putnam, Little, Carey, Ticknor, Riverside. If anyone has any suggestions for what to add, I'm open to it. The only big publisher I've consciously excluded is the Government Printing Office--it's one of the largest, and probably could be subjected to a fascinating analysis in its own right, but clearly has a different intended audience than the literary publishers.
 
 A lot of the files are duplicates--I remove books that have the same author, title, and year from being counted twice, but I'm sure many books are still creeping in through the cracks. Just to give an idea of what sort of books we're catching, here's a randomly selected set of twenty books' titles.
-
-  
 
 \> sample(full.catalog\[,5\],20)
 
@@ -64,11 +58,7 @@ A lot of the files are duplicates--I remove books that have the same author, tit
 
 \[20\] Alexander the Great
 
-  
-
 Those sound reasonable as a sample of American books from the period. Can you guess the years the books are from? Of course, the sample is overweighted towards the 80s and 90s, when we have the most books--if we weight the sample so we're equally likely to end up with books from any period, we end up with something slightly different:
-
-  
 
 \> full.catalog\[sample(1:nrow(full.catalog),20,prob=prob^2),c(5,7)\]
 
@@ -112,26 +102,18 @@ The Atlantic Islands as Resorts of Health and Pleasure 1878
 
 Chronicle of the Coach: Charing Cross to Ilfracombe ... 1886
 
-  
-
 Novels, monographs, republications--there's a mix, that probably varies over time--but that variation itself is interesting.
 
-  
-
 So how many books does that leave? About 33,000. Here's a quick plot of the years they come from: over 100 books a year from the 1830s, over 200 from the mid 40s. The sample is best for the GAPE, so analyses will be more reliable from then.  
-[![](http://2.bp.blogspot.com/_Pge31alC_E8/TNggkpS1ygI/AAAAAAAACDY/9jhH8lBMjgA/s400/Webplot.jpg)](http://2.bp.blogspot.com/_Pge31alC_E8/TNggkpS1ygI/AAAAAAAACDY/9jhH8lBMjgA/s1600/Webplot.jpg)Now, 100 books a year is not very much, when you think about it--but 1000 books a decade from the 1830s on seems sufficient. We could do decade counts, but that's just one way--and not the best--of smoothing data. For now, I'm using loess normalization, which is a least squares based method--if the data was perfect a moving average would be more appropriate, but given the possibility of outliers (multiple copies of a single book under different authors, say, skewing the numbers for one year) I think loess is an acceptable compromise.  
-  
-A disclaimer that may not be obvious is that publication date is not the same as date written. For example, about half a percent of the books are by Shakespeare:  
-  
-[![](http://4.bp.blogspot.com/_Pge31alC_E8/TNgg9AJd7hI/AAAAAAAACDg/O_HczCsjvd8/s400/Webplot.jpg)](http://4.bp.blogspot.com/_Pge31alC_E8/TNgg9AJd7hI/AAAAAAAACDg/O_HczCsjvd8/s1600/Webplot.jpg)  
-  
-For some uses, this is a feature, not a bug. Actually finding the year a book was written is nearly impossible. (Even nowadays--look at an academic monograph, and try to figure how man of the sentences were first written for seminar papers a decade earlier). And in most cases we _want_ to pick up on the currency of what's being printed--all those Victorian editions of Shakespeare show us, in part, what people were actually reading.  
+[![](http://2.bp.blogspot.com/_Pge31alC_E8/TNggkpS1ygI/AAAAAAAACDY/9jhH8lBMjgA/s400/Webplot.jpg)](http://2.bp.blogspot.com/_Pge31alC_E8/TNggkpS1ygI/AAAAAAAACDY/9jhH8lBMjgA/s1600/Webplot.jpg)Now, 100 books a year is not very much, when you think about it--but 1000 books a decade from the 1830s on seems sufficient. We could do decade counts, but that's just one way--and not the best--of smoothing data. For now, I'm using loess normalization, which is a least squares based method--if the data was perfect a moving average would be more appropriate, but given the possibility of outliers (multiple copies of a single book under different authors, say, skewing the numbers for one year) I think loess is an acceptable compromise.
 
-  
+A disclaimer that may not be obvious is that publication date is not the same as date written. For example, about half a percent of the books are by Shakespeare:
+
+[![](http://4.bp.blogspot.com/_Pge31alC_E8/TNgg9AJd7hI/AAAAAAAACDg/O_HczCsjvd8/s400/Webplot.jpg)](http://4.bp.blogspot.com/_Pge31alC_E8/TNgg9AJd7hI/AAAAAAAACDg/O_HczCsjvd8/s1600/Webplot.jpg)
+
+For some uses, this is a feature, not a bug. Actually finding the year a book was written is nearly impossible. (Even nowadays--look at an academic monograph, and try to figure how man of the sentences were first written for seminar papers a decade earlier). And in most cases we _want_ to pick up on the currency of what's being printed--all those Victorian editions of Shakespeare show us, in part, what people were actually reading.
 
 There's one category I'm worried about, though: collected works editions. Browsing the titles, it's clear there are a lot of these--1645, to be precise, or about 4% of the total. Here's a random sample to give an idea:
-
-  
 
 \[1\] The writings of Charles Dickens, with critical and bibliographical introductions and notes by Edwin Percy Whipple and others;
 
@@ -173,22 +155,22 @@ There's one category I'm worried about, though: collected works editions. Browsi
 
 \[20\] The Writings of Mark Twain
 
-  
-
 There are a lot of problems with these editions--the metadata makes it harder to eliminate duplicates (because the creator field can be any combination of the author and editor), they tend to be long and generally not selected for contemporary relevance, and we know that they dilute the currency of the vast majority of terms in them. On the other hand, I'd really hate to miss out on the data contained in no. 9 above in a study of evolutionary language, and the road of truly cleaning up a sample is one that goes a long way. I'm inclined to keep them in for now.
 
-  
+## (I should note now that the numbers above are all a little off, because I was double-counting entries from Appleton by accident--it doesn't change the larger point).
 
-(I should note now that the numbers above are all a little off, because I was double-counting entries from Appleton by accident--it doesn't change the larger point).
----
 ### Comments:
+
 #### One note to myself--there seem to be about 180 boo...
-[Ben](https://www.blogger.com/profile/04856020368342677253 "noreply@blogger.com") - <time datetime="2010-11-08T13:06:30.404-05:00">Nov 1, 2010</time>
+
+[Ben](https://www.blogger.com/profile/04856020368342677253 'noreply@blogger.com') - <time datetime="2010-11-08T13:06:30.404-05:00">Nov 1, 2010</time>
 
 One note to myself--there seem to be about 180 books being counted twice at the moment, 170 of which are published by Houghton. I could just remove them, but better to figure out why that's happening to see if it can help delete other duplicates.
+
 <hr />
 #### FTR, it's because a lot books list both Hought...
 [Ben](https://www.blogger.com/profile/04856020368342677253 "noreply@blogger.com") - <time datetime="2010-11-28T13:00:12.101-05:00">Nov 0, 2010</time>
 
 FTR, it's because a lot books list both Houghton and Riverside in the publisher field, particular later in the period.
+
 <hr />

@@ -8,4 +8,3 @@ selected = "false"
 publication = "*The New York Times*"
 tags = ["College", "Education", "Humanities"]
 +++
-

@@ -1,14 +1,15 @@
 ---
-id: 382 
-title: The Bookworm-Mallet extension 
-date: 2014-12-12T04:15:07+00:00 
-author: ben 
-layout: post 
-guid: http://benschmidt.org/?p=382 
+id: 382
+title: The Bookworm-Mallet extension
+date: 2014-12-12T04:15:07+00:00
+author: ben
+layout: post
+guid: http://benschmidt.org/?p=382
 url: /2014/12/12/the-bookworm-mallet-extension/
-categories: 
-  - Bookworm 
+categories:
+  - Bookworm
 ---
+
 I promised Matt Jockers I&#8217;d put together a slightly longer explanation of the weird constraints I&#8217;ve imposed on myself for topic models in the Bookworm system, like t[hose I used to look at the breakdown of typical TV show episode structures.](http://sappingattention.blogspot.ca/2014/12/typical-tv-episodes-visualizing-topics.html) So here they are.
 
 The basic strategy of Bookworm at the moment is to have a core suite of tools for combining metadata with full text for any textual corpus. In the case of the movies, the texts are each three-minute chunks of movies or TV shows; a topic model will capture the size of each individual movie. A variety of extensions allow you to port in various other algorithms into the system; so for instance, you can use the geolocation plugin to put in a latitude and longitude for a corpus which has publication places listed in it.

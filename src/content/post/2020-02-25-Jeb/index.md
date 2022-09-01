@@ -1,11 +1,11 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
-title: "Jeb! the quitter. Digital traces of private devotions."
-subtitle: ""
-summary: ""
+title: 'Jeb! the quitter. Digital traces of private devotions.'
+subtitle: ''
+summary: ''
 authors: []
-tags: ["Bookworm", "Data Visualization"]
+tags: ['Bookworm', 'Data Visualization']
 date: 2020-02-26T09:49:26-05:00
 lastmod: 2020-02-26T09:49:26-05:00
 featured: false
@@ -15,8 +15,8 @@ draft: false
 # To use, add an image named `featured.jpg/png` to your page's folder.
 # Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
 image:
-  caption: ""
-  focal_point: ""
+  caption: ''
+  focal_point: ''
   preview_only: false
 
 # Projects (optional).
@@ -44,7 +44,7 @@ It did not make Jeb! president. Anyhow, back then I downloaded Jeb!'s
 e-mails--and Hillary's--to think about what sort of stuff historians
 will do with these records in the future.
 
-One thing I looked at was simply the *time of day* that Jeb sent
+One thing I looked at was simply the _time of day_ that Jeb sent
 letters. Looking at it on a yearly basis, it was clear that there were
 some odd seasonal patterns in the way that Jeb! sent his
 e-mails. Knowing that Jeb! was Catholic, I had a brainstorm that maybe
@@ -59,7 +59,7 @@ remember how I aligned dates to the liturgical calendar.)
 Breaking it out, I think it's far more likely than not that in the
 year 2005, Jeb! made some private devotion to get up early and answer
 his e-mails before 7AM. The only thing arguing against this is that he
-*does* get up a little early on Mardi Gras and the Monday before as
+_does_ get up a little early on Mardi Gras and the Monday before as
 well; but starting on Ash Wednesday, Jeb! is regularly sending over
 50% of his e-mails for the day before he gets to the office.
 

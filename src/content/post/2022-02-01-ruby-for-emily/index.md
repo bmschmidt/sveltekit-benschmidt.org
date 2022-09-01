@@ -3,7 +3,7 @@ title: A Rose for Ruby
 featured: false
 draft: false
 date: 2022-02-28
-tags: 
+tags:
   - Ruby
   - Jekyll
   - Programming Languages
@@ -18,7 +18,7 @@ ever glimpsed is not going to happen.
 
 It's time we had a hard talk about Ruby.
 
-*This is part three of a series on Web Archives for the 2020s.*
+_This is part three of a series on Web Archives for the 2020s._
 
 I was at a cafe in Ann Arbor in 2014 talking about coding with [Matt
 Burton;](https://www.sci.pitt.edu/people/matthew-burton)
@@ -63,9 +63,9 @@ time. I've switched over to Pyarrow and polars to get faster
 underpinnings; I can often do some operations on a thousand books a
 second. Ruby, generating a piddling few dozen pages, can take a minute
 or two. I wrote an entire Svelte-kit based wax clone just in the breaks
-while waiting for my Wax pages to render. There's a truism out there 
+while waiting for my Wax pages to render. There's a truism out there
 that developer time is far more valuable than compiler time, and that all
-modern languages are fast *enough*. I've always thought that was basically
+modern languages are fast _enough_. I've always thought that was basically
 true. But that relies on a rough baseline of performance, on someone
 periodically going through and pulling out the low-hanging fruit by
 optimizing the slowest parts of a language. Jekyll's slowness is of a different

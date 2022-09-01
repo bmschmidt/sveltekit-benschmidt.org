@@ -118,13 +118,13 @@ I suspect there are ways of optimizing the Hilbert curve, or some similar fracta
 
 So on this particular set, the best results seem to come from, in descending order,
 
-1) Reordered hierarchical clustering
+1. Reordered hierarchical clustering
 
-2) Traveling Salesperson solutions
+2. Traveling Salesperson solutions
 
-3) Fractal Curves
+3. Fractal Curves
 
-4) Quasi-linear dimensionality reduction (east-to-west, multi-dimensional scaling, etc).
+4. Quasi-linear dimensionality reduction (east-to-west, multi-dimensional scaling, etc).
 
 <span style="line-height: 1.714285714; font-size: 1rem;">For the general problem (European countries, say, or counties in a state) I&#8217;d probably start with reordered hierarchical clustering or TSP solutions, at least until I learn how better to fit a fractal curve to an arbitary space.</span>
 

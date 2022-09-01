@@ -1,11 +1,11 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
-title: "Circle Packing"
-subtitle: ""
-summary: ""
+title: 'Circle Packing'
+subtitle: ''
+summary: ''
 authors: []
-tags: ["Data Visualization"]
+tags: ['Data Visualization']
 categories: []
 date: 2020-09-01T16:49:49-04:00
 lastmod: 2020-09-01T16:49:49-04:00
@@ -16,8 +16,8 @@ draft: false
 # To use, add an image named `featured.jpg/png` to your page's folder.
 # Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
 image:
-  caption: ""
-  focal_point: ""
+  caption: ''
+  focal_point: ''
   preview_only: false
 
 # Projects (optional).
@@ -28,8 +28,7 @@ image:
 projects: []
 ---
 
-
-I've been doing a lot of my data exploration lately on Observable Notebooks, 
+I've been doing a lot of my data exploration lately on Observable Notebooks,
 which is--sort of--a Javascript version of Jupyter notebooks that automatically
 runs all the code inline. Married with Vega-Lite or D3, it provides a way
 to make data exploration editable and shareable in a way that R and python

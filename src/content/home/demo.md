@@ -67,9 +67,9 @@ For inspiration, check out [the Markdown files](https://sourcethemes.com/academi
   - [Wear the T-shirt](https://academic.threadless.com/)
 
 {{% alert note %}}
-This homepage section is an example of adding [elements](https://sourcethemes.com/academic/docs/writing-markdown-latex/) to the [*Blank* widget](https://sourcethemes.com/academic/docs/widgets/).
+This homepage section is an example of adding [elements](https://sourcethemes.com/academic/docs/writing-markdown-latex/) to the [_Blank_ widget](https://sourcethemes.com/academic/docs/widgets/).
 
-Backgrounds can be applied to any section. Here, the *background* option is set give a *color gradient*.
+Backgrounds can be applied to any section. Here, the _background_ option is set give a _color gradient_.
 
 **To remove this section, delete `content/home/demo.md`.**
 {{% /alert %}}

@@ -16,7 +16,7 @@ I've never done the "Day of DH" tradition where people explain what, exactly, it
 :::
 
 :::tweet
-We'll start it at the beginning--1:30 or so AM, finally sent out an e-mail I'd been procrastinating on to the college grants administrator for a public humanities project about immigrant histories I'm running with @ellennoonan and Sibylle Fischer. 
+We'll start it at the beginning--1:30 or so AM, finally sent out an e-mail I'd been procrastinating on to the college grants administrator for a public humanities project about immigrant histories I'm running with @ellennoonan and Sibylle Fischer.
 :::
 
 :::tweet
@@ -32,19 +32,18 @@ But that will take some real institutional support, because the stuff we've obta
 :::
 
 :::
-OK, skipping to about 9:50 AM. (Late start b/c the first-grader had a school event and my wife teaches Thursday  AM). Today's first teaching, for my class https://benschmidt.org/WWD22 will be focused on 19C directories from the NYPL.
+OK, skipping to about 9:50 AM. (Late start b/c the first-grader had a school event and my wife teaches Thursday AM). Today's first teaching, for my class https://benschmidt.org/WWD22 will be focused on 19C directories from the NYPL.
 :::
 
 :::
-Nick Wolf and @bertspaan digitized these years ago, but there's more to do with them. A couple weeks ago @SWrightKennedy shared a preview of Columbia's 
-great new geolocation data about 19C New York... 
+Nick Wolf and @bertspaan digitized these years ago, but there's more to do with them. A couple weeks ago @SWrightKennedy shared a preview of Columbia's
+great new geolocation data about 19C New York...
 https://mappinghny.com/about/
 :::
 
 :::
 And yesterday I finally pushed a full pipeline bringing the last two weeks of student work together for doing geo-matching and cleaning of these to the github repo. https://github.com/HumanitiesDataAnalysis/Directories . This should allow some amazing analysis of economic geography, name types, etc.
 :::
-
 
 :::
 And yesterday I finally pushed a full pipeline bringing the last two weeks of student work together for doing geo-matching and cleaning of these to the github repo. https://github.com/HumanitiesDataAnalysis/Directories . This should allow some amazing analysis of economic geography, name types, etc.
@@ -54,16 +53,13 @@ And yesterday I finally pushed a full pipeline bringing the last two weeks of st
 So now we've got 8.3m individual people for every year from 1850-1889 queued up and ready for a variety of analyses. I want to send the students a map to show how all their R code is paying off, but the deepscatter module is breaking--only one of the filters is working here.
 :::
 
-
 :::
 I spend 40 minutes poking in the web code there to try to refactor the code to get the interface working right, but this isn't really relevant for the class right now--more something for the summer, I guess. So I give up and decide to do this DH tweeting instead.
 :::
 
-
 :::
 Because of the whole "Twitter is almost over" thing, but some lingering guilt about not blogging enough, I decide that a "Day of DH" post should really be a blog first--so let's finally structure some markdown for a twitter thread that can go on benschmidt.org.
 :::
-
 
 :::
 It takes a surprising amount of mucking around with the svelte-kit settings to get things publishing correctly, and I have to remember my own markdown naming conventions. But after a few minutes, we've got full recursion. https://benschmidt.org/post/2022-03-28-day-of-dh/day-of-dh-22/

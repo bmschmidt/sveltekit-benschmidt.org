@@ -1,6 +1,6 @@
 export async function get() {
-  return {
-    headers: { Location: '/gallery' },
-    status: 301
-  }
+	return {
+		headers: { Location: '/gallery' },
+		status: 301
+	};
 }

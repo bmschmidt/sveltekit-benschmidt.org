@@ -26,12 +26,11 @@ their post-2015 level.
 
 ![Figure 1](../fig-1.png)
 
-Next, the decade-horizon rate of change for all majors. Again, the humanities are at the bottom 
+Next, the decade-horizon rate of change for all majors. Again, the humanities are at the bottom
 of the list; the most remarkable feature here is that computer science, already large,
 has been growing at a huge rate in the last few years.
 
 ![Figure 2](../fig-2.png)
-
 
 Next, what I think is the most important full overview you can get: a four-type
 division of US college majors since 1990. This makes clear that the basic

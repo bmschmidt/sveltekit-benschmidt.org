@@ -9,6 +9,7 @@ url: /2014/09/23/building-topic-models-into-bookworm-searches/
 categories:
   - Bookworm
 ---
+
 I&#8217;ve been seeing how deeply we could integrate topic models into the underlying Bookworm architecture a bit lately.
 
 My own chief interest in this, because [I tend to be a little wary of topic models in general](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=4&cad=rja&uact=8&ved=0CDYQFjAD&url=http%3A%2F%2Fjournalofdigitalhumanities.org%2F2-1%2Fwords-alone-by-benjamin-m-schmidt%2F&ei=e-khVJPVEoGlyATn2YDACw&usg=AFQjCNEZ-HbfeSjBnBMmQSSYmwe0ZihLRg&sig2=-QyPN0kuTZlexRtnPVZzdw), is in the possibility for Bookworm to act as a diagnostic tool internally for topic models. I don&#8217;t think simply plotting description absent any analysis of the underlying token composition of topics is all that responsible; Bookworm offers a platform for actually accessing those counts and testing them against metadata.

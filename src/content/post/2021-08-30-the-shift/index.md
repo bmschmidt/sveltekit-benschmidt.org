@@ -1,9 +1,9 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
-title: "What is Data Science?"
-subtitle: "A guide for IR majors"
-summary: ""
+title: 'What is Data Science?'
+subtitle: 'A guide for IR majors'
+summary: ''
 authors: []
 tags: []
 categories: []
@@ -16,8 +16,8 @@ draft: true
 # To use, add an image named `featured.jpg/png` to your page's folder.
 # Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
 image:
-  caption: ""
-  focal_point: ""
+  caption: ''
+  focal_point: ''
   preview_only: false
 
 # Projects (optional).
@@ -28,4 +28,4 @@ image:
 projects: []
 ---
 
-The question for academic employment and careers for humanities PhDs 
+The question for academic employment and careers for humanities PhDs

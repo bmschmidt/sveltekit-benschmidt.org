@@ -9,6 +9,7 @@ url: /2014/11/07/building-outlines-for-markdown-documents-with-pandoc/
 categories:
   - Publishing
 ---
+
 Just a quick follow-up to my [post from last month on using Markdown for writing lectures](http://benschmidt.org/2014/09/05/markdown-historical-writing-and-killer-apps/). The [github repository for implementing this strategy is now online](https://github.com/bmschmidt/MarkdownLectures).
 
 The goal there was to have one master file for each lecture in a course, and then to have scripts automatically create several things, including a slidedeck and an outline of the lecture (inferred from the headers in the text) to print out for students to follow along in class.

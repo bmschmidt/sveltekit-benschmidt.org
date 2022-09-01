@@ -7,4 +7,3 @@ abstract = ""
 selected = "false"
 publication = "*Journal of Digital Humanities*"
 +++
-

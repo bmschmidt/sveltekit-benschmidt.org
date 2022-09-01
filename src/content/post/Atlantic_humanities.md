@@ -1,8 +1,8 @@
 ---
-title: "New article in the Atlantic"
+title: 'New article in the Atlantic'
 date: 2018-08-31T13:37:26-04:00
 draft: false
-tags: ["Humanities"]
+tags: ['Humanities']
 categories: []
 ---
 

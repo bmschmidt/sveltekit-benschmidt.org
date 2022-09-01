@@ -8,4 +8,3 @@ selected = "false"
 publication = "*Journal of Digital Humanities*"
 tags = ["Applications and Critiques", "Vol. 2; No. 1 Winter 2012"]
 +++
-

@@ -1,19 +1,13 @@
 header:
-  title: "Ben Schmidt"
+  title: 'Ben Schmidt'
   links:
-    -
-      text: Blog
+    - text: Blog
       url: /post
-    -
-      text: Research
+    - text: Research
       url: /research-portfolio
-    - 
-      text: "Visualizations"
+    - text: 'Visualizations'
       url: /gallery
-    - 
-      text: CV
+    - text: CV
       url: /CV
-    -
-      text: "&c"
+    - text: '&c'
       url: /etc
-    
