@@ -1,7 +1,7 @@
 <script>
 	import Bookworm from 'bookworm-vega';
 	import { onMount } from 'svelte';
-	import { dev } from '$app/env';
+	import { dev } from '$app/environment';
 
 	let word = 'funny';
 
@@ -27,7 +27,6 @@
 
 	let bookworm = undefined;
 	onMount(async () => {
-		console.log({ query });
 		const vegaEmbed = await import('vega-embed');
 		Bookworm.prototype.getVegaEmbed = function () {
 			console.log(vegaEmbed);

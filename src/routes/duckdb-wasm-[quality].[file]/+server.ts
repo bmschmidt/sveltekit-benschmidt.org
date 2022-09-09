@@ -1,3 +1,5 @@
+export const prerender = true
+
 import { promises as fs } from 'fs';
 
 export async function get({ params: { quality, file } }) {

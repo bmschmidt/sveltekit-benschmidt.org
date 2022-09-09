@@ -192,5 +192,4 @@ It's a choice, is all I'm saying.
     > greatest car of all time, the red 1992 Honda Civic with an
     > automatic transmission. Those things ran forever, they got better
     > gas mileage than a Prius without a hybrid engine, and they
-    > required no maintenance. This is my motto.\
-    > ![](media/image1.png){width="2.875in" height="1.90625in"}
+    > required no maintenance. This is my motto.

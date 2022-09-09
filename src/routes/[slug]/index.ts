@@ -6,7 +6,6 @@ export async function GET({ params }) {
   ).filter( d => d.type !== 'post')
   if (matches.length) {
     const this_post = matches[0]
-    console.log({this_post})
     return {
       status: 200,
       body: {...this_post}

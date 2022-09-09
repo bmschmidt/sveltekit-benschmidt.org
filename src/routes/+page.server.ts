@@ -1,12 +1,12 @@
-import { full_catalog } from '$lib/markdown/markdown';
-import { run_pandoc } from '$lib/markdown/pandoc';
+export const prerender = true
 
+import { full_catalog } from '$lib/markdown/markdown';
 export async function load() {
-	const text = await run_pandoc('index');
   const catalog = await full_catalog();
+	const document = catalog.pages.filter(d => d.slug == '')[0]
 	return {
-		document: text,
-		recent_posts: catalog.posts,
+		document : document.document,
+		recent_posts: catalog.post.slice(0, 10),
     pages: catalog.pages
 	};
 }

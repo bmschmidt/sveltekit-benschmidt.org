@@ -5,6 +5,11 @@ import yaml from 'js-yaml';
 
 const exec = promisify(raw_exec);
 
+/**
+ * 
+ * @param array A list of pandoc elements.
+ * @returns 
+ */
 function fold_spaces(array) {
   const r = array.reduceRight((accumulator, one_before) => {
     const [first, ...rest] = accumulator;
@@ -24,6 +29,7 @@ function fold_spaces(array) {
   }, [])
   return r.filter(d => d !== undefined)
 }
+
 function collapse_spaces(ast) {
   if (Array.isArray(ast)) {
     return fold_spaces(ast)
@@ -69,11 +75,22 @@ async function yaml_metadata(path) : Promise<Record<string, any>> {
 	return attributes || {};
 }
 
-export async function json_with_meta(path) {
-	const pandocced = parse_path(path);
+export async function json_with_meta(path, cache_loc = './cache') {
+  const cache_path = `${cache_loc}/${path.replaceAll("/", "--")}.json`;
+  let mtime = new Date(0);
+  await fs.stat(cache_path).then(d => mtime = d.mtime).catch(() => ({}));
+
+  const doctime = await fs.stat(path).then(d => d.mtime);
+  if (mtime > doctime) {
+    const f = await fs.readFile(cache_path, 'utf-8');
+    return JSON.parse(f);
+  }
+  const pandocced = parse_path(path);
 	const metadata = await yaml_metadata(path);
-	return Promise.all([pandocced, metadata]).then(([document, metadata]) => ({
+	const value = await Promise.all([pandocced, metadata]).then(([document, metadata]) => ({
 		metadata,
 		document
 	}));
+  await fs.writeFile(cache_path, JSON.stringify(value, undefined, 2));
+  return value;
 }

@@ -59,7 +59,7 @@
   <div id="blog" class="md:visible m-20 ">
     <h2 class="mb-10"><a class="text-xl" href="/post">Recent Blog Posts</a></h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-      <Postgroup posts={recent_posts} />
+      <Postgroup posts={recent_posts} blog="post"/>
     </div>
   </div>
 </div>

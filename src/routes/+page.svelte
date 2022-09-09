@@ -1,7 +1,5 @@
 <script>
 	export let data;
-	$: document = data.document;
-	$: recent_posts = data.recent_posts;
 	import Document from 'pandoc-svelte-components/Document.svelte';
 	import LogoGithub24 from 'carbon-icons-svelte/lib/LogoGithub.svelte';
 	import LogoTwitter24 from 'carbon-icons-svelte/lib/LogoTwitter.svelte';
@@ -39,7 +37,6 @@
 	];
 </script>
 
-<div id="reset" class="items-center absolute left-0 top-0">
 	<div id="photo-and-desc" class="flex-col flex sm:flex-row items-center">
 		<div
 			id="img-and-links"
@@ -61,14 +58,13 @@
 		</div>
 		<div class="w-2/3 mx-24 prose prose-stone prose-l">
 			<h1 class="font-size-32">Ben Schmidt</h1>
-			<Document ast={document} />
+			<Document ast={data.document} />
 		</div>
 	</div>
 
 	<div id="blog" class="md:visible m-20 ">
 		<h2 class="mb-10"><a class="text-xl" href="/post">Recent Blog Posts</a></h2>
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-			<Postgroup posts={recent_posts} />
+			<Postgroup posts={data['recent_posts']} blog="post"/>
 		</div>
 	</div>
-</div>

@@ -1,24 +1,8 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import adapter from '@sveltejs/adapter-static';
 import preprocess from 'svelte-preprocess';
-import { json_with_meta } from './src/lib/markdown/pandoc.ts';
-
+import pandoc_plugin from './rollup-plugins/pandoc.js'
 /* Custom rollup plugin loader for pandoc */
-const fileRegex = /\.md$/
-function pandoc_plugin() {
-  return {
-    name: 'pandoc',
-    async transform(src, id) {
-      if (fileRegex.test(id)) {
-        const data = await json_with_meta(id)
-        return {
-          code: `export default ${JSON.stringify(data)};`,
-          map: { mappings: '' }
-        }
-      }
-    }
-  }
-}
 
 /** @type {import('vite').UserConfig} */
 const config = {

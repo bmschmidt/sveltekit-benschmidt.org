@@ -3,7 +3,6 @@
 	export let src;
 	export let title = 'TITLE';
 	export let link;
-	export let source;
 	export let alt;
 	export let description = '';
 </script>
