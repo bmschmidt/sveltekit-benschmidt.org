@@ -1,4 +1,4 @@
-<script lang='ts'>
+<script lang="ts">
 	import { dev } from '$app/environment';
 	import PostPreview from './PostPreview.svelte';
 	export let posts;
@@ -10,7 +10,9 @@
 
 {#each posts as post}
 	{#if post && post.document && (dev || !post.metadata.draft)}
-		<div class="hover:border-black transition border-white article mb-10 prose prose-slate border p-2">
+		<div
+			class="hover:border-black transition border-white article mb-10 prose prose-slate border p-2"
+		>
 			<div>
 				<a
 					class="hover:underline no-underline {post.metadata.draft

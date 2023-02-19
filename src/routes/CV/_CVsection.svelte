@@ -4,13 +4,13 @@
 	import Entry from './_CVitem.svelte';
 </script>
 
-<div class="col-span-1 text-right">
+<div class="col-span-2 text-right">
 	<div>
 		{name}
 	</div>
 </div>
 
-<div class="col-span-7 flex-col">
+<div class="col-span-6 flex-col border">
 	<ul>
 		{#each values as item}
 			<li>

@@ -28,25 +28,25 @@ And a random thought: I’d add that Hitchcock’s comparative praise for the hy
 
 #### I don't like this new font.
 
-[Jamie](#) - <time datetime="2011-07-17T09:31:30.019-04:00">Jul 0, 2011</time>
+[Jamie]("noreply@blogger.com") - <time datetime="2011-07-17T09:31:30.019-04:00">Jul 0, 2011</time>
 
 I don't like this new font.
 
 <hr />
 #### Now so nice!
-[Jamie]() - <time datetime="2011-07-17T17:22:21.010-04:00">Jul 0, 2011</time>
+[Jamie]( "noreply@blogger.com") - <time datetime="2011-07-17T17:22:21.010-04:00">Jul 0, 2011</time>
 
 Now so nice!
 
 <hr />
 #### I wrote the post in Google Docs for some reason—I ...
-[Ben](https://www.blogger.com/profile/04856020368342677253) - <time datetime="2011-07-17T22:46:39.018-04:00">Jul 0, 2011</time>
+[Ben](https://www.blogger.com/profile/04856020368342677253 "noreply@blogger.com") - <time datetime="2011-07-17T22:46:39.018-04:00">Jul 0, 2011</time>
 
 I wrote the post in Google Docs for some reason—I actually don't even know what my blogger font is off the top of my head—I just check 'Default' on whatever template I'm using.
 
 <hr />
 #### Hey Ben: I'm late to the party, but congrats: ...
-[Dan](https://www.blogger.com/profile/05217832960135325575) - <time datetime="2011-07-26T10:17:37.412-04:00">Jul 2, 2011</time>
+[Dan](https://www.blogger.com/profile/05217832960135325575 "noreply@blogger.com") - <time datetime="2011-07-26T10:17:37.412-04:00">Jul 2, 2011</time>
 
 Hey Ben: I'm late to the party, but congrats: that sounds like a great gig for all the reasons you list. I love the mix of folk at the Cultural Observatory. Plus, I just love the name.
 

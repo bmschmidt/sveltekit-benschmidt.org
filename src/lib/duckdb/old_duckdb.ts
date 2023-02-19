@@ -19,19 +19,23 @@ const DUCKDB_BUNDLES: duckdb.DuckDBBundles = {
 };
 
 let db = null;
-export const initDB = async (path: string, fname: string) => {
+export const initDB = async (path: string, fname: string | undefined) => {
 	if (db) {
 		return db;
 	}
-	if (fname == undefined) {
-		fname = path.split('/').pop();
-	}
-	//	const bundle = await duckdb.selectBundle(DUCKDB_BUNDLES);
 	const logger = new duckdb.ConsoleLogger();
 	const worker = new duckdb_worker();
 	db = new duckdb.AsyncDuckDB(logger, worker);
 	await db.instantiate(duckdb_wasm);
-	const parquet = await fetch(path).then((d) => d.arrayBuffer());
-	await db.registerFileBuffer(fname, new Uint8Array(parquet));
+	await add_table(path, fname);
+	console.log({ conn: await db.connect() });
 	return db;
 };
+
+export async function add_table(path: string, fname: string | undefined) {
+	if (fname == undefined) {
+		fname = path.split('/').pop();
+	}
+	const parquet = await fetch(path).then((d) => d.arrayBuffer());
+	return db.registerFileBuffer(fname, new Uint8Array(parquet));
+}

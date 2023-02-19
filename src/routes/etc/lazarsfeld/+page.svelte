@@ -49,13 +49,13 @@
 			id="fnref1"
 			role="doc-noteref"><sup>1</sup></a
 		>
-		is only an extreme example of the disregard most writers have for the flourishing field of
-		communications in the late 1930s and 1940s. As a result, both sides in the major division in the
-		history of the field—between advocates of a “received history” advocating a linear narrative of
-		scientific progress, and critics of the “dominant paradigm” who seek to integrate voices from
-		the past outside the academic discipline who anticipated a more critical perspective towards
-		society and the media (generally, a perspective shared by the writers themselves)—ignore the
-		prewar research that did not directly feed into later lines of research in communications.
+		is only an extreme example of the disregard most writers have for the flourishing field of communications
+		in the late 1930s and 1940s. As a result, both sides in the major division in the history of the
+		field—between advocates of a “received history” advocating a linear narrative of scientific progress,
+		and critics of the “dominant paradigm” who seek to integrate voices from the past outside the academic
+		discipline who anticipated a more critical perspective towards society and the media (generally,
+		a perspective shared by the writers themselves)—ignore the prewar research that did not directly
+		feed into later lines of research in communications.
 		<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>
 	</p>
 	<p>
@@ -175,21 +175,21 @@
 		advertising in various media, through a series of tests testing how well people remembered key
 		phrases and brand names from advertising copy that they either saw printed on the page or heard
 		read aloud.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>
-		For his doctoral dissertation, however, he turned to the problem of audience research.
-		Unconvinced of the accuracy of existing survey techniques in measuring the radio audience, he
-		built a number of toaster-sized devices that registered if a radio was turned on or off. After
-		installing them in a number of homes, he compared the self-reported listening habits of the
-		subjects gathered through traditional survey techniques with the data logged by the machines.<a
+		For his doctoral dissertation, however, he turned to the problem of audience research. Unconvinced
+		of the accuracy of existing survey techniques in measuring the radio audience, he built a number
+		of toaster-sized devices that registered if a radio was turned on or off. After installing them in
+		a number of homes, he compared the self-reported listening habits of the subjects gathered through
+		traditional survey techniques with the data logged by the machines.<a
 			href="#fn7"
 			class="footnote-ref"
 			id="fnref7"
 			role="doc-noteref"><sup>7</sup></a
 		>
 		By Stanton’s account, the ideology underlying the device was his “Ohio State behaviorism”: since
-		radio listening, not memory of listening, was the relevant variable, he set out to design a
-		device which would measure the physical fact of the receiver’s activity and nothing else.
-		Fittingly enough, the immediate technical inspiration for his test of listener honesty was the
-		stylus-paper arrangement that records physiological reactions in a polygraph machine.<a
+		radio listening, not memory of listening, was the relevant variable, he set out to design a device
+		which would measure the physical fact of the receiver’s activity and nothing else. Fittingly enough,
+		the immediate technical inspiration for his test of listener honesty was the stylus-paper arrangement
+		that records physiological reactions in a polygraph machine.<a
 			href="#fn8"
 			class="footnote-ref"
 			id="fnref8"
@@ -257,14 +257,13 @@
 			id="fnref10"
 			role="doc-noteref"><sup>10</sup></a
 		>
-		They laid out an ambitious plan not just to conduct studies of the social impact of radio, but
-		also, through the development of new methods, to determine “what constitutes the field of radio
-		research” at all.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"
-			><sup>11</sup></a
-		> As the occupations of its directors suggested, it would build on existing research in both the
-		academy and the industry; but in trying to describe the “social significance of radio,” they would
-		move far beyond either the individual-oriented psychological studies or the raw commercial statistics
-		collated by the networks.
+		They laid out an ambitious plan not just to conduct studies of the social impact of radio, but also,
+		through the development of new methods, to determine “what constitutes the field of radio research”
+		at all.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a> As
+		the occupations of its directors suggested, it would build on existing research in both the academy
+		and the industry; but in trying to describe the “social significance of radio,” they would move far
+		beyond either the individual-oriented psychological studies or the raw commercial statistics collated
+		by the networks.
 	</p>
 	<p>
 		No sooner had Marshall authorized a substantial Rockefeller grant in support of the
@@ -293,13 +292,10 @@
 		factors influencing consumption of tea. The center was, a contemporary later recalled, “a
 		midpoint between an institute for market research… and a university institute for social
 		research.”<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a>
-		Among these myriad research was one of particular note to the Princeton directors: the first
-		quantitative study ever made of radio listening habits from a social-psychological perspective,
-		which Lazarsfeld completed in 1932.<a
-			href="#fn13"
-			class="footnote-ref"
-			id="fnref13"
-			role="doc-noteref"><sup>13</sup></a
+		Among these myriad research was one of particular note to the Princeton directors: the first quantitative
+		study ever made of radio listening habits from a social-psychological perspective, which Lazarsfeld
+		completed in 1932.<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"
+			><sup>13</sup></a
 		>
 	</p>
 	<p>
@@ -333,15 +329,14 @@
 			id="fnref15"
 			role="doc-noteref"><sup>15</sup></a
 		>
-		Thus, even the Office of Radio Research itself was often engaged in studies only tangentially,
-		at best, related to the radio. For example, in his eagerness to sharpen his office’s facility
-		testing and administering questionnaires, Lazarsfeld helped develop an early version of the
-		Cosmopolitan magazine quiz: the ORR produced a report for the magazine testing the reliability
-		of a survey to be administered by a friend on the topic “Are you an overspender?” But the
-		immensity of the corporate operations also presented tremendous opportunity for Lazarsfeld to
-		obtain new data sets to work with, and to fund new investigations: as he put it, “This field of
-		radio research presents three important opportunities to psychologists: challenging problems,
-		unusual data, and more jobs.”<a
+		Thus, even the Office of Radio Research itself was often engaged in studies only tangentially, at
+		best, related to the radio. For example, in his eagerness to sharpen his office’s facility testing
+		and administering questionnaires, Lazarsfeld helped develop an early version of the Cosmopolitan
+		magazine quiz: the ORR produced a report for the magazine testing the reliability of a survey to
+		be administered by a friend on the topic “Are you an overspender?” But the immensity of the corporate
+		operations also presented tremendous opportunity for Lazarsfeld to obtain new data sets to work with,
+		and to fund new investigations: as he put it, “This field of radio research presents three important
+		opportunities to psychologists: challenging problems, unusual data, and more jobs.”<a
 			href="#fn16"
 			class="footnote-ref"
 			id="fnref16"
@@ -393,16 +388,18 @@
 			id="fnref19"
 			role="doc-noteref"><sup>19</sup></a
 		>
-		Like much communications research, this corporate tool also found itself swept up in the war
-		effort—specifically, in work done as part of Samuel Stouffer’s massive project to study the
-		attitudes of the American military. Stouffer (himself an alumnus of the radio project) assigned
-		Yale psychologist Carl Hovland to help test the efficacy of Frank Capra’s propaganda films “Why
-		We Fight.” Hovland contracted Lazarsfeld’s ORR to run assessments of Capra’s film, and one of
-		the most recent additions to Columbia’s faculty, Robert K. Merton, directed the study. The
-		accuracy of the device allowed Merton to confront the filmmakers decisions: “Even though Frank
-		Capra thought he was reaching hoi polloi, these kids didn’t know what he was talking about,”
-		Merton later recalled.<a href="#fn20" class="footnote-ref" id="fnref20" role="doc-noteref"
-			><sup>20</sup></a
+		Like much communications research, this corporate tool also found itself swept up in the war effort—specifically,
+		in work done as part of Samuel Stouffer’s massive project to study the attitudes of the American
+		military. Stouffer (himself an alumnus of the radio project) assigned Yale psychologist Carl Hovland
+		to help test the efficacy of Frank Capra’s propaganda films “Why We Fight.” Hovland contracted Lazarsfeld’s
+		ORR to run assessments of Capra’s film, and one of the most recent additions to Columbia’s faculty,
+		Robert K. Merton, directed the study. The accuracy of the device allowed Merton to confront the filmmakers
+		decisions: “Even though Frank Capra thought he was reaching hoi polloi, these kids didn’t know what
+		he was talking about,” Merton later recalled.<a
+			href="#fn20"
+			class="footnote-ref"
+			id="fnref20"
+			role="doc-noteref"><sup>20</sup></a
 		> More recently, the usefulness of the device in helping to shape popular entertainment and propaganda
 		has helped win it a position as an essential element in the arsenal of the modern campaign manager
 		and pollster.
@@ -414,22 +411,20 @@
 		respondents,<a href="#fn21" class="footnote-ref" id="fnref21" role="doc-noteref"
 			><sup>21</sup></a
 		>
-		both the surveyors and the networks used the rating data only to create raw listenership
-		numbers. The project’s directors contracted NBC research director H.M. Beville to investigate
-		the possible further applications of this data, with the stated aim “to acquaint a larger
-		public, presumably one interested in educational broadcasting, with the vast fund of material
-		which commercial agencies have been collecting for years and which is quite astounding as to
-		amount and regularity of canvass.”<a
+		both the surveyors and the networks used the rating data only to create raw listenership numbers.
+		The project’s directors contracted NBC research director H.M. Beville to investigate the possible
+		further applications of this data, with the stated aim “to acquaint a larger public, presumably one
+		interested in educational broadcasting, with the vast fund of material which commercial agencies
+		have been collecting for years and which is quite astounding as to amount and regularity of canvass.”<a
 			href="#fn22"
 			class="footnote-ref"
 			id="fnref22"
 			role="doc-noteref"><sup>22</sup></a
 		>
-		Lazarsfeld’s Austrian experience clearly imprinted itself on the study’s conception. Above all,
-		the devoted attention to social class reflects the lingering political ambition in Lazarsfeld’s
-		early work to show the distinctive features of the “proletarian buying public.” (Indeed, some
-		have found this attention to class the only noticeable income of his early leftism on
-		Lazarsfeld’s later research.)<a
+		Lazarsfeld’s Austrian experience clearly imprinted itself on the study’s conception. Above all, the
+		devoted attention to social class reflects the lingering political ambition in Lazarsfeld’s early
+		work to show the distinctive features of the “proletarian buying public.” (Indeed, some have found
+		this attention to class the only noticeable income of his early leftism on Lazarsfeld’s later research.)<a
 			href="#fn23"
 			class="footnote-ref"
 			id="fnref23"
@@ -456,11 +451,12 @@
 			id="fnref24"
 			role="doc-noteref"><sup>24</sup></a
 		>
-		Advertisers, too, stood to gain from such research. When the time came to market the second
-		collection of project essays, the circular promoting the book read “Every advertiser, every
-		agencyman knows the names Paul F. Lazarsfled and Frank Stanton. Lazarsfeld is Director, Office
-		of Radio Research, Columbia University and Stanton is v. p., CBS. Together they have compiled a
-		book which will be of <span class="underline">great value to advertisers.</span> The book is:
+		Advertisers, too, stood to gain from such research. When the time came to market the second collection
+		of project essays, the circular promoting the book read “Every advertiser, every agencyman knows
+		the names Paul F. Lazarsfled and Frank Stanton. Lazarsfeld is Director, Office of Radio Research,
+		Columbia University and Stanton is v. p., CBS. Together they have compiled a book which will be of
+		<span class="underline">great value to advertisers.</span>
+		The book is:
 		<em>Radio Research 1942–43.</em>”<a
 			href="#fn25"
 			class="footnote-ref"
@@ -487,23 +483,20 @@
 		field’s relationship with the Columbia sociologist Robert Lynd. Lynd’s immensely popular study <em
 			>Middletown,</em
 		>
-		co-written with his wife Helen, served as a dominant model for the sort of work early
-		communications researchers hoped to undertake. They hoped to expand on his exploration of the
-		ways changing American values, particularly increasing capitalist acquisitiveness, had disrupted
-		traditional patterns of American life. Likewise, they wanted to be able to look at the impact of
-		new communications technologies on typical American communities, not just individuals, and to be
-		able to offer holistic sociological descriptions of those communities in the same way that Lynd
-		had transformed Muncie, Indiana into an archetypal “Middletown.” Moreover, <em>Middletown</em>
-		itself presented a model investigation of modern mass society in a way few other studies could.
-		The Lynds did not fully explore the role of media and communications in Muncie’s civic life; but
-		it was easy for communications researchers to present their work as adding that new dimension to
-		complete the picture of mass society that Lynd had begun. Accordingly, Leo Rosten introduced his
-		Motion Picture Research Project to the readers of the <em>Public Opinion Quarterly</em> as “A
-		‘Middletown’ Study of Hollywood,”<a
-			href="#fn26"
-			class="footnote-ref"
-			id="fnref26"
-			role="doc-noteref"><sup>26</sup></a
+		co-written with his wife Helen, served as a dominant model for the sort of work early communications
+		researchers hoped to undertake. They hoped to expand on his exploration of the ways changing American
+		values, particularly increasing capitalist acquisitiveness, had disrupted traditional patterns of
+		American life. Likewise, they wanted to be able to look at the impact of new communications technologies
+		on typical American communities, not just individuals, and to be able to offer holistic sociological
+		descriptions of those communities in the same way that Lynd had transformed Muncie, Indiana into
+		an archetypal “Middletown.” Moreover, <em>Middletown</em>
+		itself presented a model investigation of modern mass society in a way few other studies could. The
+		Lynds did not fully explore the role of media and communications in Muncie’s civic life; but it was
+		easy for communications researchers to present their work as adding that new dimension to complete
+		the picture of mass society that Lynd had begun. Accordingly, Leo Rosten introduced his Motion Picture
+		Research Project to the readers of the <em>Public Opinion Quarterly</em> as “A ‘Middletown’
+		Study of Hollywood,”<a href="#fn26" class="footnote-ref" id="fnref26" role="doc-noteref"
+			><sup>26</sup></a
 		>
 		and Paul Lazarsfeld’s study of voting patterns in Sandusky, Ohio seems to have evolved out of an
 		initial plan to select “a kind of radio ‘Middletown’ to which we can refer whenever needed.”<a
@@ -517,19 +510,16 @@
 		Moreover, although Lynd did not himself direct any studies of mass communications, his post-<em
 			>Middletown</em
 		>
-		renown as a professor at Columbia, allowed him to serve as a senior statesman lending
-		credibility and guidance to the nascent field. Lynd initially sponsored Lazarsfeld’s first trips
-		to the United States under a Rockefeller grant, suggested Lazarsfeld as a likely head of the
-		Princeton Radio Research Project, and later saw that his Office of Radio Research found a home
-		at Columbia; Lynd sat on the advisory board to Rosten’s study of Hollywood and joined John
-		Marshall’s seminar on Communications at the Rockefeller Foundation. Even so, he remained
-		something of an outsider—as he wrote John Marshall at the Rockefeller Foundation, “I am
-		interested in the field of communication and regard it as very important. But the doggone thing
-		just isn’t something in which I have either central interest or special competence.”<a
-			href="#fn28"
-			class="footnote-ref"
-			id="fnref28"
-			role="doc-noteref"><sup>28</sup></a
+		renown as a professor at Columbia, allowed him to serve as a senior statesman lending credibility
+		and guidance to the nascent field. Lynd initially sponsored Lazarsfeld’s first trips to the United
+		States under a Rockefeller grant, suggested Lazarsfeld as a likely head of the Princeton Radio Research
+		Project, and later saw that his Office of Radio Research found a home at Columbia; Lynd sat on the
+		advisory board to Rosten’s study of Hollywood and joined John Marshall’s seminar on Communications
+		at the Rockefeller Foundation. Even so, he remained something of an outsider—as he wrote John Marshall
+		at the Rockefeller Foundation, “I am interested in the field of communication and regard it as very
+		important. But the doggone thing just isn’t something in which I have either central interest or
+		special competence.”<a href="#fn28" class="footnote-ref" id="fnref28" role="doc-noteref"
+			><sup>28</sup></a
 		>
 	</p>
 	<p>
@@ -613,19 +603,19 @@
 			id="fnref30"
 			role="doc-noteref"><sup>30</sup></a
 		>
-		But although few of works found immediate publication, primarily because John Marshall cut
-		Rockefeller funding to his projects before they could be completed, Lazarsfeld’s relationship
-		with Adorno and with the other members of the <em>Institut fur Sozialforschung</em> in exile in
-		New York was actually quite productive. Lazarsfeld himself, despite an occasionally strained
-		personal relationship, was a passionate advocate of the value of Adorno’s work to the
-		Rockefeller Foundation and others, going so far as to invite a number of guests from the
-		foundation and from the networks to attend Adorno’s staff presentation of his work at the Office
-		of Radio Research, an unprecedented move. The eventual removal of Adorno from the Office’s
-		payroll came only over his repeated objection. Moreover, he continued to work closely with other
-		members of the Frankfurt School: Leo Lowenthal drew on a few of the lessons of content analysis
-		for an article on biographies in popular magazines in the 1942-43 issue of radio research, and
-		the official organ of the Institute, <em>Studies in Philosophy and Social Science</em>, handed
-		its reins to Lazarsfeld for an entire issue devoted to the social criticism of radio research.
+		But although few of works found immediate publication, primarily because John Marshall cut Rockefeller
+		funding to his projects before they could be completed, Lazarsfeld’s relationship with Adorno and
+		with the other members of the <em>Institut fur Sozialforschung</em> in exile in New York was
+		actually quite productive. Lazarsfeld himself, despite an occasionally strained personal
+		relationship, was a passionate advocate of the value of Adorno’s work to the Rockefeller
+		Foundation and others, going so far as to invite a number of guests from the foundation and from
+		the networks to attend Adorno’s staff presentation of his work at the Office of Radio Research,
+		an unprecedented move. The eventual removal of Adorno from the Office’s payroll came only over
+		his repeated objection. Moreover, he continued to work closely with other members of the
+		Frankfurt School: Leo Lowenthal drew on a few of the lessons of content analysis for an article
+		on biographies in popular magazines in the 1942-43 issue of radio research, and the official
+		organ of the Institute, <em>Studies in Philosophy and Social Science</em>, handed its reins to
+		Lazarsfeld for an entire issue devoted to the social criticism of radio research.
 	</p>
 	<p>
 		In many respects, Lazarsfeld’s program was not really so far from that of the Frankfurt School.
@@ -675,15 +665,17 @@
 			id="fnref32"
 			role="doc-noteref"><sup>32</sup></a
 		>
-		But it was not conservative resistance that ultimately drove the critical theorists from the
-		field; rather, it was the ameliorative goals of those who thought radio research should help
-		purge the worst excesses from corporate radio. Thus, in Adorno’s case, the final act took the
-		form of a classic struggle between revolutionaries and reformers. In a memorandum explaining why
-		he had cut funding for Adorno over Lazarsfeld’s objections, John Marshall wrote that Adorno
-		“seems psychologically engaged at the moment by his ability to recognize deficiencies in the
-		broadcasting of music to an extent that makes questionable his own drive to find ways of
-		remedying them.”<a href="#fn33" class="footnote-ref" id="fnref33" role="doc-noteref"
-			><sup>33</sup></a
+		But it was not conservative resistance that ultimately drove the critical theorists from the field;
+		rather, it was the ameliorative goals of those who thought radio research should help purge the worst
+		excesses from corporate radio. Thus, in Adorno’s case, the final act took the form of a classic struggle
+		between revolutionaries and reformers. In a memorandum explaining why he had cut funding for Adorno
+		over Lazarsfeld’s objections, John Marshall wrote that Adorno “seems psychologically engaged at the
+		moment by his ability to recognize deficiencies in the broadcasting of music to an extent that makes
+		questionable his own drive to find ways of remedying them.”<a
+			href="#fn33"
+			class="footnote-ref"
+			id="fnref33"
+			role="doc-noteref"><sup>33</sup></a
 		> Robert Lynd, the most vocal proponent among the Rockefeller group of taking advantage of the national
 		emergency to consolidate greater governmental control of the radio infrastructure, agreed with Marshall:
 		Adorno was too unable to make allies within the system to be a useful critic from outside it.
@@ -707,11 +699,10 @@
 			role="doc-noteref"><sup>34</sup></a
 		>
 		The most important transformation of Freudian techniques at the radio project, however, involved
-		their application to principles of marketing and propaganda. Much of the Office of Radio
-		Research’s contract work for companies was designed to give advice to advertising copywriters on
-		their particular products: thus, for example, a study on the psychology of refrigerator
-		purchasers framed its central question: “Do people have more subtle desires to which we could
-		link the use of a refrigerator?”<a
+		their application to principles of marketing and propaganda. Much of the Office of Radio Research’s
+		contract work for companies was designed to give advice to advertising copywriters on their particular
+		products: thus, for example, a study on the psychology of refrigerator purchasers framed its central
+		question: “Do people have more subtle desires to which we could link the use of a refrigerator?”<a
 			href="#fn35"
 			class="footnote-ref"
 			id="fnref35"
@@ -783,15 +774,17 @@
 			id="fnref38"
 			role="doc-noteref"><sup>38</sup></a
 		>
-		Its excision reveals an important change over the course of the seminar. As late as May, nine
-		months into the project, the participants still did not agree on who the audience for
-		communications research ought to be. Gorer harkened back to the original rationale for
-		establishing the Princeton Radio Project by suggesting research should be targeted at educators;
-		Lazarsfeld made the widest claims for their work with the suggestion that it be aimed at
-		everyone who might use a medium. Lasswell, however, tried to situate the research more clearly
-		in the context of the international situation by suggesting policy makers formed the primary
-		audience for the medium.<a href="#fn39" class="footnote-ref" id="fnref39" role="doc-noteref"
-			><sup>39</sup></a
+		Its excision reveals an important change over the course of the seminar. As late as May, nine months
+		into the project, the participants still did not agree on who the audience for communications research
+		ought to be. Gorer harkened back to the original rationale for establishing the Princeton Radio Project
+		by suggesting research should be targeted at educators; Lazarsfeld made the widest claims for their
+		work with the suggestion that it be aimed at everyone who might use a medium. Lasswell, however,
+		tried to situate the research more clearly in the context of the international situation by suggesting
+		policy makers formed the primary audience for the medium.<a
+			href="#fn39"
+			class="footnote-ref"
+			id="fnref39"
+			role="doc-noteref"><sup>39</sup></a
 		> Within the black and white world of national policy during wartime, this necessarily meant that
 		study of why the government chose to communicate would be pushed out of the mainstream.
 	</p>
@@ -807,22 +800,21 @@
 			id="fnref40"
 			role="doc-noteref"><sup>40</sup></a
 		>
-		As a result, rather than holding the theoretical aim of understanding “the social significance
-		of radio,” as did Lazarsfeld’s project, the seminar opted instead for the instrumental goal of
-		“making communication more effective.” At the same time, the memo expands on Lazarsfeld and
-		Stanton’s close alliance with pollsters by insistently linking communication research and
-		opinion polling as two aspects of a single flow of communication, between the government and the
-		people. (Other actors—such as the networks and advertisers—have dropped out of the picture). The
-		government, they write, generates “a stream of proposal, explanation, and decision:” the people,
-		in turn, produce “an answering stream of counter-proposal, explanation, and consent.”
-		Communication research can aid the government by helping it to more clearly and effectively get
-		its proposals and explanations heard; and it can help the people by making their responses
-		accessible to government, through the use of opinion polling. Indeed, opinion polling, panel
-		studies will be among the most important contributions communications research can make:
-		research will primarily study how effectively the government has got its message across, not aid
-		it in crafting the message. Despite the confident assertion that “the same research could, to be
-		sure, be used to turn communication into powerful propaganda, if those responsible chose to do
-		so,” the memo’s authors maintain a firm confidence that the research insights from their various
+		As a result, rather than holding the theoretical aim of understanding “the social significance of
+		radio,” as did Lazarsfeld’s project, the seminar opted instead for the instrumental goal of “making
+		communication more effective.” At the same time, the memo expands on Lazarsfeld and Stanton’s close
+		alliance with pollsters by insistently linking communication research and opinion polling as two
+		aspects of a single flow of communication, between the government and the people. (Other actors—such
+		as the networks and advertisers—have dropped out of the picture). The government, they write, generates
+		“a stream of proposal, explanation, and decision:” the people, in turn, produce “an answering stream
+		of counter-proposal, explanation, and consent.” Communication research can aid the government by
+		helping it to more clearly and effectively get its proposals and explanations heard; and it can help
+		the people by making their responses accessible to government, through the use of opinion polling.
+		Indeed, opinion polling, panel studies will be among the most important contributions communications
+		research can make: research will primarily study how effectively the government has got its message
+		across, not aid it in crafting the message. Despite the confident assertion that “the same research
+		could, to be sure, be used to turn communication into powerful propaganda, if those responsible chose
+		to do so,” the memo’s authors maintain a firm confidence that the research insights from their various
 		disciplines and from marketing will bolster the war effort significantly.<a
 			href="#fn41"
 			class="footnote-ref"
@@ -907,23 +899,23 @@
 			id="fnref45"
 			role="doc-noteref"><sup>45</sup></a
 		>
-		The researchers could not help being taken for political actors themselves—although the final
-		publication maintains a studious neutrality, Sayre reported to Friedrich that one highly
-		partisan new-dealer she met greeted her by asking if she was from “that lousy Republican outfit
-		in Harvard that had sent out the questionnaire on Federal Agencies.”<a
+		The researchers could not help being taken for political actors themselves—although the final publication
+		maintains a studious neutrality, Sayre reported to Friedrich that one highly partisan new-dealer
+		she met greeted her by asking if she was from “that lousy Republican outfit in Harvard that had sent
+		out the questionnaire on Federal Agencies.”<a
 			href="#fn46"
 			class="footnote-ref"
 			id="fnref46"
 			role="doc-noteref"><sup>46</sup></a
 		>
-		But ultimately, their investment in political issues scared off other communications
-		researchers. Lazarsfeld declined to publish the project’s study of radiobroadcasting control,
-		claiming at the time that it was too “anecdotal” within the context of the ORR’s work. The line
-		between anecdote and a level of political independence that could damage the fledgling field,
-		however, was so close that excluding one might mean excluding the other. Lazarsfeld himself
-		later admitted that he had “a more complex motivation characteristic of someone responsible for
-		a new and struggling institution,” stemming from his desire to put the ORR in a mediating
-		function rather than take positions that might be unpleasant to either the FCC or the networks.<a
+		But ultimately, their investment in political issues scared off other communications researchers.
+		Lazarsfeld declined to publish the project’s study of radiobroadcasting control, claiming at the
+		time that it was too “anecdotal” within the context of the ORR’s work. The line between anecdote
+		and a level of political independence that could damage the fledgling field, however, was so close
+		that excluding one might mean excluding the other. Lazarsfeld himself later admitted that he had
+		“a more complex motivation characteristic of someone responsible for a new and struggling institution,”
+		stemming from his desire to put the ORR in a mediating function rather than take positions that might
+		be unpleasant to either the FCC or the networks.<a
 			href="#fn47"
 			class="footnote-ref"
 			id="fnref47"
@@ -1108,15 +1100,14 @@
 			role="doc-noteref"><sup>53</sup></a
 		>
 		He acknowledged the emergence of several new approaches, including a “broad historical approach”
-		led by David Riesman and a “journalistic approach” represented by the new communications
-		schools, but argued that these approaches had either been largely ignored, or were not backed by
-		the same field-shaping intellectual force of the previous generation of communications
-		theorists. Those involved in the expansion of the field into journalism and in the formation of
-		new Ph.D. programs scoffed at Berelson’s claims. Wilbur Schramm wryly suggested death “is a
-		somewhat livelier condition than I had anticipated.” New doctoral students, a continuing synergy
-		across professional and scientific disciplines, and the emergence of a dedicated class of
-		researchers without other disciplinary formations made communications in the late 1950s, he
-		thought, “an extraordinarily vital field.”<a
+		led by David Riesman and a “journalistic approach” represented by the new communications schools,
+		but argued that these approaches had either been largely ignored, or were not backed by the same
+		field-shaping intellectual force of the previous generation of communications theorists. Those involved
+		in the expansion of the field into journalism and in the formation of new Ph.D. programs scoffed
+		at Berelson’s claims. Wilbur Schramm wryly suggested death “is a somewhat livelier condition than
+		I had anticipated.” New doctoral students, a continuing synergy across professional and scientific
+		disciplines, and the emergence of a dedicated class of researchers without other disciplinary formations
+		made communications in the late 1950s, he thought, “an extraordinarily vital field.”<a
 			href="#fn54"
 			class="footnote-ref"
 			id="fnref54"
@@ -1148,18 +1139,13 @@
 		in the television generation was a major concern in works like David Riesman’s <em
 			>The Lonely Crowd.</em
 		>
-		Such concerns, however, lay outside the restricted range of problems in the new field; Riesman
-		himself had been involved in the field in its early days, coming to speak to Friedrich’s
-		communications seminars at Harvard and working on the committee on communications that Berelson
-		led at Chicago. But although he came more slowly than Berelson to the conclusion that
-		communications research was atrophying, he wrote a sort of concurrence to Berelson’s article
-		lamenting lamenting the lack of “small-scale empirical sorties” to answer “large-scale
-		questions” as many of the Columbia and Princeton studies had done.<a
-			href="#fn55"
-			class="footnote-ref"
-			id="fnref55"
-			role="doc-noteref"><sup>55</sup></a
-		>
+		Such concerns, however, lay outside the restricted range of problems in the new field; Riesman himself
+		had been involved in the field in its early days, coming to speak to Friedrich’s communications seminars
+		at Harvard and working on the committee on communications that Berelson led at Chicago. But although
+		he came more slowly than Berelson to the conclusion that communications research was atrophying,
+		he wrote a sort of concurrence to Berelson’s article lamenting lamenting the lack of “small-scale
+		empirical sorties” to answer “large-scale questions” as many of the Columbia and Princeton studies
+		had done.<a href="#fn55" class="footnote-ref" id="fnref55" role="doc-noteref"><sup>55</sup></a>
 	</p>
 	<p>
 		Instead, the study of short-term, measurable effects came to lie at the heart of training in
@@ -1172,30 +1158,29 @@
 		atrophying field.<a href="#fn56" class="footnote-ref" id="fnref56" role="doc-noteref"
 			><sup>56</sup></a
 		>
-		Perhaps the major figure in this new institutional consolidation was Wilbur Schramm, whose 1954
-		reader <em>The Process and Effects of Mass Communications</em> became one of the definitive
-		texts of this newly restricted field.<a
+		Perhaps the major figure in this new institutional consolidation was Wilbur Schramm, whose 1954 reader
+		<em>The Process and Effects of Mass Communications</em>
+		became one of the definitive texts of this newly restricted field.<a
 			href="#fn57"
 			class="footnote-ref"
 			id="fnref57"
 			role="doc-noteref"><sup>57</sup></a
 		>
-		Reviewers hailed it for bringing the unity of a scientific endeavor to a fractured field: one
-		praised it for overcoming the field’s “many false starts, a good deal of esoteric material and
-		an apparent inordinate emphasis on methodology.”<a
+		Reviewers hailed it for bringing the unity of a scientific endeavor to a fractured field: one praised
+		it for overcoming the field’s “many false starts, a good deal of esoteric material and an apparent
+		inordinate emphasis on methodology.”<a
 			href="#fn58"
 			class="footnote-ref"
 			id="fnref58"
 			role="doc-noteref"><sup>58</sup></a
 		>
-		But the unity it brought had its price. The book began as a reader for the United States
-		Information Agency (the independent federal agency that oversaw many aspects of public
-		diplomacy, including the Voice of America broadcasts), and its main groupings reflect the
-		interests of a broadcaster: it moves through getting the attention of an audience, “getting the
-		meaning understood,” “modifying attitudes and opinions,” and culminates in a discussion of
-		“special problems of achieving an effect with international communications. By comparison, an
-		earlier reader edited by Berelson had included several essays on media control, popular culture,
-		and their standing in a democratic society.<a
+		But the unity it brought had its price. The book began as a reader for the United States Information
+		Agency (the independent federal agency that oversaw many aspects of public diplomacy, including the
+		Voice of America broadcasts), and its main groupings reflect the interests of a broadcaster: it moves
+		through getting the attention of an audience, “getting the meaning understood,” “modifying attitudes
+		and opinions,” and culminates in a discussion of “special problems of achieving an effect with international
+		communications. By comparison, an earlier reader edited by Berelson had included several essays on
+		media control, popular culture, and their standing in a democratic society.<a
 			href="#fn59"
 			class="footnote-ref"
 			id="fnref59"

@@ -31,7 +31,7 @@ The following chart shows every major in the UT system by its deviation. A score
 
 2\. Certain features appear Texas-specific. Becoming a petroleum engineer in Texas in the early 2000s is a good idea; it also may be a ship that has sailed. Geology majors' high incomes are probably related to the oil industry.
 
-3\. Business majors look better on this chart than on some other earnings indicators I've seen: often marketing (say) often looks like a poor career choice.
+3\. Business majors look better on this chart than on some other earnings indicators I've seen: often marketing (say) looks like a poor career choice.
 
 4\. Economics has a high set of incomes: but other than that, there isn't much of a difference between humanities and social sciences. The highest-income humanists seem to come from history and English--these are also the fields that have seen the biggest drops. East Asian studies is also doing quite well.
 

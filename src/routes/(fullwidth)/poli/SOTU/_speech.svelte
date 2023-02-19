@@ -4,8 +4,10 @@
 	export let selected_word = '';
 	export let haplaxes = [];
 	import { beforeUpdate, afterUpdate } from 'svelte';
+	$: console.log({ id });
 	function select_paragraph(para_id) {
 		if (id !== para_id) {
+			console.log('SELECTING', para_id, id);
 			id = para_id;
 		}
 	}

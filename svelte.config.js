@@ -1,16 +1,25 @@
 import adapter from '@sveltejs/adapter-static';
-import preprocess from 'svelte-preprocess';
-//import md from 'vite-plugin-markdown'
+import { vitePreprocess } from '@sveltejs/kit/vite';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	// Consult https://github.com/sveltejs/svelte-preprocess
-	// for more information about preprocessors
-	preprocess: preprocess(),
-
+	preprocess: vitePreprocess(),
 	kit: {
 		adapter: adapter(),
-		trailingSlash: 'always' // ugh, but seems maybe necessary?
+		prerender: {
+			handleMissingId: 'warn',
+			entries: [
+				'/',
+				'/etc/lazarsfeld',
+				'/etc/friedrich',
+				'/maps-and-visualizations',
+				'/poli',
+				'/poli/SOTU',
+				'/lost',
+				'/atom.xml',
+				'/rss.xml'
+			]
+		}
 	}
 };
 

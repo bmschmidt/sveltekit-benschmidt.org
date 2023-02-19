@@ -33,7 +33,6 @@ The most common are the following: `gmail.com, mpg.de, infn.it, cern.ch, harvard
 
 Gmail is number one, and is mostly useless: but the rest should be good, traceable institutions. (Except for ernet.in, which is placing universities across India in Delhi; that will have to be fixed the next time around.) Using a function call to freegeoip.net (which is defined in the source code), it's easy to get solid geographical data for any ArXiv submitter.
 
-  
 That returns results like the following, for “carleton.edu”:
 
 ```

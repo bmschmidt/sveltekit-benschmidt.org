@@ -1,12 +1,11 @@
-// import { json_with_meta } from '$lib/markdown/pandoc';
-import { promises as fs } from 'fs';
-const fulltext = import.meta.glob('/src/content/**/*.md');
+import { blogs } from '$lib/../params/blogname';
+const fulltext = import.meta.glob('/src/content/**/*.md', { eager: true });
 
 function path_to_slug(filepath) {
 	const path = filepath.replace('/src/content/', '');
-  if (filepath === '/src/content/index.md') {
-    return '';
-  }
+	if (filepath === '/src/content/index.md') {
+		return '';
+	}
 	let slug;
 	if (path.endsWith('index.md')) {
 		const p = path.split('/');
@@ -33,32 +32,29 @@ function cleanup_blogpost(page) {
 	return page;
 }
 
-
-export async function full_catalog(post_limit = 1e6) {
+export function full_catalog(post_limit = 1e6) {
 	const pages = [];
-  const files = Object.keys(fulltext);
-  let post_num = 0;
+	const files = Object.keys(fulltext);
+	let post_num = 0;
 	for (const filepath of files) {
-		const data = (await fulltext[filepath]()).default;
+		const data = fulltext[filepath].default;
 		const slug = path_to_slug(filepath);
 		let type = 'page';
-		if (filepath.startsWith('/src/content/post/')) {
-			type = 'post';
+		for (const blog of blogs) {
+			if (filepath.startsWith(`/src/content/${blog}/`)) {
+				type = blog;
+			}
 		}
-		if (filepath.startsWith('/src/content/sappingattention/')) {
-			type = 'sappingattention';
-		}
-    const metadata = data.metadata || {};
+
+		const metadata = data.metadata || {};
 		if (metadata.date === undefined || metadata.date == 0) {
-			console.warn("No date for", slug);
+			console.warn('No date for', slug);
 		}
 		metadata.date = new Date(metadata.date || 0).toISOString();
 		metadata.date = new Date(metadata.date || 0).toISOString();
-		let url : string = '';
-		if (type === 'post') {
-			url = `https://benschmidt.org/post/${slug}`;
-		} else if (type === 'sappingattention') {
-			url = `https://benschmidt.org/sappingattention/${slug}`;
+		let url = '';
+		if (blogs.includes(type)) {
+			url = `https://benschmidt.org/${type}/${slug}`;
 		} else {
 			url = `https://benschmidt.org/${slug}`;
 		}
@@ -70,9 +66,12 @@ export async function full_catalog(post_limit = 1e6) {
 			document: data.document
 		});
 	}
-	pages.sort((a, b) => new Date(b.metadata.date) - new Date(a.metadata.date))
-	const post = pages.filter((d) => d.type == 'post').map(cleanup_blogpost);
-	const sappingattention = pages.filter((d) => d.type == 'sappingattention').map(cleanup_blogpost);
-	const nonpost_page = pages.filter((d) => d.type == 'page');
-	return { post, sappingattention, pages: nonpost_page };
+	pages.sort((a, b) => new Date(b.metadata.date) - new Date(a.metadata.date));
+	const returnable = {
+		pages: pages.filter((d) => d.type == 'page')
+	};
+	for (const blog of blogs) {
+		returnable[blog] = pages.filter((d) => d.type == blog).map(cleanup_blogpost);
+	}
+	return returnable;
 }

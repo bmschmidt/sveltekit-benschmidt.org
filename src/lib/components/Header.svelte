@@ -1,13 +1,21 @@
 <script>
 	import settings from '$lib/settings';
-
 	let toggled = false;
 </script>
+
+<svelte:head>
+	<title>Ben Schmidt</title>
+	<meta name="description" content="Ben Schmidt's personal website." />
+</svelte:head>
 
 <nav class="flex top-0 z-50 w-full bg-gray-100 fixed items-center text-xl shadow-xl">
 	<div class="flex-col flex md:flex-row">
 		<div class="flex">
-			<div on:click={() => (toggled = !toggled)} class="m-5 hamburger md:hidden fill-violet-800">
+			<div
+				on:click={() => (toggled = !toggled)}
+				on:keyup={() => (toggled = !toggled)}
+				class="m-5 hamburger md:hidden fill-violet-800"
+			>
 				<svg viewBox="0 0 100 80" width="40" height="40">
 					<rect width="100" height="15" />
 					<rect y="30" width="100" height="15" />
@@ -34,6 +42,3 @@
 		</div>
 	</div>
 </nav>
-
-<style>
-</style>

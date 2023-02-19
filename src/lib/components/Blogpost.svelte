@@ -2,7 +2,9 @@
 	export let document;
 	export let metadata;
 	export let blog;
-	import { Document } from 'pandoc-svelte-components';
+	import Header from './Elements/Header.svelte';
+	import Link from './Elements/Link.svelte';
+	import { Document, Sidenote } from 'pandoc-svelte-components';
 </script>
 
 <article class="prose text-lg w-full ml-2">
@@ -13,6 +15,8 @@
 			<a class="mr-5" href="/{blog}/tag/{tag}/">{tag}</a>
 		{/each}
 	</div>
-	<Document ast={document} settings={{}} />
+	<Document
+		ast={document}
+		settings={{ nolink: false, elements: { Note: Sidenote, Header, Link } }}
+	/>
 </article>
-

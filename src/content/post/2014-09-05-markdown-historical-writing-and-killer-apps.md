@@ -22,7 +22,7 @@ The benefits are many, but they&#8217;re mostly subtle:
 
 None of these, though, are a particularly strong sell for those who use a computer instrumentally: in reality, your Microsoft Words documents aren&#8217;t about to disappear, either. And there are disadvantages to giving up Word.
 
-- Things like footnotes with a citation manager are not very easy, even for the technically competent. [<sup>1</sup>](#fn1){#fnref1.footnoteRef} Even footnotes without a citation manager are fairly clumsy.
+- Things like footnotes with a citation manager are not very easy, even for the technically competent.[^footnote] Even footnotes without a citation manager are fairly clumsy.
 - The best tool for making your Markdown documents into attractive web pages , [Pandoc](http://johnmacfarlane.net/pandoc/), is not especially easy to install or configure if you don&#8217;t use the command line on a regular basis.
 - The core definition of Markdown is a little unclear: particularly in the last week, there have been some conflicts over the definition that will be confusing to newcomers. (Although the proposal that sparked them, &#8220;Common Markdown,&#8221; is likely to be a good thing in the long run)
 
@@ -139,5 +139,4 @@ So that&#8217;s the proposal. Once historians see how great Markdown is for note
 
 So, anyone want to try?
 
-<li id="fn1">
-  It took me a few hours of mucking about in Emacs Lisp to make inserting a link to something in my Zotero library <em>almost</em> as easy as it is under Microsoft Word; and if you want to configure the core behavior of Pandoc, it&#8217;s best to use Haskell. Even the &#8220;programming historian&#8221; may not have heard of either of these languages. Both (well, at least Haskell) have their strengths: but suffice it to say that neither has ever been anyone&#8217;s answer to the question &#8220;If I should only learn one computer language, which should it be?&#8221;<a href="#fnref1">â†©</a></fn></footnotes>
+[^footnote]: It took me a few hours of mucking about in Emacs Lisp to make inserting a link to something in my Zotero library <em>almost</em> as easy as it is under Microsoft Word; and if you want to configure the core behavior of Pandoc, it&#8217;s best to use Haskell. Even the &#8220;programming historian&#8221; may not have heard of either of these languages. Both (well, at least Haskell) have their strengths: but suffice it to say that neither has ever been anyone&#8217;s answer to the question &#8220;If I should only learn one computer language, which should it be?&#8221;

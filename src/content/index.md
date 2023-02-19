@@ -30,7 +30,7 @@ education:
 social:
   - icon: envelope
     icon_pack: fas
-    link: 'mailto:bs145@nyu.edu'
+    link: 'mailto:bmschmidt@gmail.com'
   - icon: twitter
     icon_pack: fab
     link: https://twitter.com/benmschmidt
@@ -51,19 +51,16 @@ social:
 #   link: files/cv.pdf
 
 # Enter email to display Gravatar (if Gravatar enabled in Config)
-email: 'bs145@nyu.edu'
+email: 'bmschmidt@gmail.com'
 ---
 
-I am a historian, programmer, and writer in New York City.
-
-I use humanistic data analysis and data visualization to help people
-think about the American past in new ways. My primary current research project is [Creating Data](http://creatingdata.us), a digital monograph
-about the organization of information in the American state in the
-late 19th century. I also write about higher education
+I am Vice President of Information Design at [Nomic](https://home.nomic.ai), where I am working on new interfaces for interpreting and visualizing embedding models. For several years before that, I was a professor in the history departments at Northeastern and then NYU, where I worked with and
+led digital humanities groups deploying new approaches to data analysis and data visualization to help people
+think about the past. I have also write about higher education
 ([teaching evaluations](http://benschmidt.org/profGender) and
 [humanities policy](https://www.theatlantic.com/ideas/archive/2018/08/the-humanities-face-a-crisisof-confidence/567565/)),
 [narrative anachronism](http://www.theatlantic.com/entertainment/archive/2013/01/nobody-said-racial-equality-in-1865-the-anachronistic-english-of-lincoln/266990/)
-and [plot structure], and
+and plot structure, and
 [political history.](http://www.theatlantic.com/features/archive/2015/01/the-language-of-the-state-of-the-union/384575/)
 
 I live in Manhattan.

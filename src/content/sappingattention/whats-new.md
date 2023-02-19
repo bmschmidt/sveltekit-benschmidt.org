@@ -40,7 +40,7 @@ If someone walks into this world with a stack of Hagstrom atlases, what happens?
 
 #### I think you're very much on the right track wh...
 
-[Anonymous](#) - <time datetime="2011-06-16T15:46:32.392-04:00">Jun 4, 2011</time>
+[Anonymous]("noreply@blogger.com") - <time datetime="2011-06-16T15:46:32.392-04:00">Jun 4, 2011</time>
 
 I think you're very much on the right track when you suggest that this is an issue of social or institutional organization, rather than a strictly epistemological one.
 
@@ -50,13 +50,13 @@ Or, to pick up the way you're describing it here, it may be the case that Romant
 
 <hr />
 #### It's weird: this kind of personal protectivene...
-[Jamie]() - <time datetime="2011-06-17T09:38:04.362-04:00">Jun 5, 2011</time>
+[Jamie]( "noreply@blogger.com") - <time datetime="2011-06-17T09:38:04.362-04:00">Jun 5, 2011</time>
 
 It's weird: this kind of personal protectiveness over knowledge is exactly the kind of thing that will crash and burn a job talk ("I can just 'tell'"). It also wouldn't work in a book, at least not for a new scholar. Why is it okay in other contexts? Maybe resisting quantitative analysis is a knee-jerk defense against a public that's already skeptical about the existence and value of "expert knowledge" in the humanities. Fortunately, your take on this is much more productive.
 
 <hr />
 #### I think you're absolutely right - that quantit...
-[scritic](http://cogsciresearch.blogspot.com) - <time datetime="2011-06-17T09:46:03.324-04:00">Jun 5, 2011</time>
+[scritic](http://cogsciresearch.blogspot.com "1noreply@blogger.com") - <time datetime="2011-06-17T09:46:03.324-04:00">Jun 5, 2011</time>
 
 I think you're absolutely right - that quantitative "proofs" or demonstrations can serve a different purpose - perhaps of making the work reach a different kind of disciplinary audience. I'm going to use this argument the next time (with due credit!) when I get into a conversation with anyone about the utility of quantitative analysis. :)
 

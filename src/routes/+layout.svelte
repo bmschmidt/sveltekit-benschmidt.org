@@ -1,20 +1,17 @@
 <script lang="ts">
-	import '../app.css';
-
 	import Header from '$lib/components/Header.svelte';
+	import '../app.css';
 </script>
 
-<svelte:head>
-	<title>Ben Schmidt</title>
-	<meta name="description" content="Ben Schmidt's personal website." />
-	<html lang="en" />
-</svelte:head>
+<link rel="alternate" type="application/atom+xml" href="/feed.xml" title="Atom XML Feed" />
+
+<link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS XML Feed" />
 
 <main>
 	<div>
 		<Header />
 		<slot name="fullscreen" />
-		<div class="relative mt-36 md:mt-36 ml-5">
+		<div class="relative mt-36 ml-5">
 			<slot />
 		</div>
 	</div>

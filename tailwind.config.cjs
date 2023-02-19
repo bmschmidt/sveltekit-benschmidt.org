@@ -1,12 +1,12 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
 	content: [],
-	purge: ['./src/**/*.html', './src/**/*.svelte'],
-	darkMode: false, // or 'media' or 'class'
 	theme: {
 		extend: {}
 	},
-	variants: {
-		extend: {}
-	},
-	plugins: [require('@tailwindcss/typography')]
+	plugins: [
+		require('@tailwindcss/typography')
+		// ...
+	],
+	content: ['./src/**/*.{html,js,svelte,ts}']
 };

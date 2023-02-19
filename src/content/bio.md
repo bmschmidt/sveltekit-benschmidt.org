@@ -1,17 +1,15 @@
 ---
 title: Third-person bio
-date: 2018-10-15
+date: 2022-10-01
 ---
 
 ## 17 words
 
-Benjamin Schmidt is Clinical Associate Professor of History and Director of
-Digital Humanities at New York University.
+Benjamin Schmidt is historian and digital humanist in Manhattan.
 
 ## 65 words
 
-Benjamin Schmidt is a Clinical Associate Professor in the department
-of History and Director of Digital Humanities at New York University. His
+Benjamin Schmidt is historian and digital humanist in Manhattan. His
 current historical project, _Creating Data_, explores data collected by the
 19th century American state through archival research, data visualization,
 and interactive publication. He also writes on higher education, the crisis
@@ -20,8 +18,7 @@ Northeastern University.
 
 ## 150 words
 
-Benjamin Schmidt is a Clinical Associate Professor of History and Director of
-Digital Humanities at New York University.
+Benjamin Schmidt is historian and digital humanist in Manhattan.
 His research interests are in the digital humanities and the intellectual and
 cultural history of the United States in the 19th and 20th centuries.
 His digital humanities research focuses on large-scale text analysis,

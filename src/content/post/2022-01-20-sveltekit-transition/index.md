@@ -30,10 +30,10 @@ So here are the problems that Svelte-kit solves.
 2. **Image Components**. This is a big one for me. For instance, I want to have [a gallery](/gallery) where I can just show visuals that will show a tile of images. And since it's the 2020s, that needs to look one way on desktop and quite a different way on mobile.
 
    **Desktop view**
-   ![Three gallery images side-by-side for desktop with no text visible](./2022-01-23-14-34-39.png)
+   ![Three gallery images side-by-side for desktop with no text visible](2022-01-23-14-34-39.png)
 
    **Mobile view**
-   ![Two gallery images stacked on top of each other with text visible](./2022-01-23-14-35-58.png)
+   ![Two gallery images stacked on top of each other with text visible](2022-01-23-14-35-58.png)
 
 3. **Data Components**. I liked how Hugo Academic included a lot of basics for showing carousels of things like articles, but they were never _quite_ what I wanted. And for years I've been making
    my CV using Kieran Healy's template but compiled from yaml because yuck, latex is gross. That meant I was keeping up two different versions of pretty much the same data, which is a pain. With Svelte, I can just directly import the YAML to the CV page and format the data. For the time being, the online version is a little wonky because it's sort of a pain to iterate through. But it also means that I can easily abstract something like "upcoming talks" if I ever get it together enough to start handling talk invitations again. I can automatically have the website update the courses I've taught from the same file as the CV, with links to the course pages. Etc.

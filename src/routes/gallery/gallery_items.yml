@@ -3,10 +3,11 @@
     The tracks of vessels from the ICOADS database.
     I made it to illustrate how rich metadata alone can be as a source for historical research:
     it&#8217;s also just an interesting way to see the continents through large-scale patterns
-    of behavior. Several people asked for higher-resolution versions; I recreated a couple
+    of behavior. Several people asked for higher-resolution versions; I recreated a few dozen
     charts on the same concept [here](http://flickr.com/photos/10052187@N05)
   src: '//benschmidt.org/wp/wp-content/uploads/2014/02/MauryMetadata.png'
   link: 'https://creatingdata.us/ghostmaps'
+  alt: An image of the world outlined by ship's paths.
 - title: 'Hathi Trust Library'
   link: 'http://creatingdata.us/datasets/hathi-features/'
   description: |
@@ -15,6 +16,7 @@
     15-million book zoomable scatterplot, displaying a variety of metadata
     and allowing you to click through to the Hathi Trust.
   src: '/img/hathi_zoom.jpg'
+  alt: A scatterplot on a black background.
 - title: 'Gendered Language in Teaching Evaluations'
   description: |
     An interactive exploration of the different language used to describe
@@ -23,10 +25,12 @@
     and [The Chronicle of Higher Education](http://chronicle.com/blogs/ticker/how-reviews-on-rate-my-professors-describe-men-and-women-differently/93687)
     using the D3 interface to Bookworm.
   link: '//benschmidt.org/profGender/'
+  alt: A set of dots showing the usage of the word 'genius' in several academic disciplines.
   src: '//benschmidt.org/wp/wp-content/uploads/2014/02/GenderedLanguage.png'
 - title: 'All of US'
   src: '/img/all-of-us.png'
   link: 'https://all-of-us.benschmidt.org'
+  alt: A scatterplot of the United States.
   description: |
     One point per person in the US for the 2010 and 2020 censuses, fully zoomable
     and interactive using WebGL and [Deepscatter](https://github.com/CreatingData/deepscatter).
@@ -35,6 +39,7 @@
     the way in in some views it has little person glyphs!
 - title: 'The H Curve, WebGL implementation.'
   src: '/img/h-curve.png'
+  alt: A single connected line in rainbow colors that looks like many small letter H's.
   link: https://observablehq.com/@bmschmidt/webgl-h-curve
   description: |
     This is less a data visualization than a primitive for making them. If you've never heard of the Hilbert Curve,
@@ -61,8 +66,10 @@
   src: '//benschmidt.org/wp/wp-content/uploads/2014/02/metroScreenshot.png'
   description: 'This is a set of transit maps deformed to fit onto the Internet map-tile view of the cities ([Boston](http://benschmidt.org/mbta), [New York](http://benschmidt.org/mta), [Washington](http://benschmidt.org/dcmetro)) they depict; it explores the tension between two different ways of representing the same urban spaces. Made using QGIS, Leaflet, and some command-line GDAL tools with maps and data from the transit authorities and tiles from Open Street Map.'
   link: '//benschmidt.org/mta/'
+  alt: An image of the Washington DC Metro map tunneled into a distorted shape.
 - title: 'Conceptual Street Map'
   src: '/img/streets.png'
+  alt: A number of green street signs arrayed in a scatterplot shape.
   link: 'https://creatingdata.benschmidt.org/streets'
   description: |
     A map of street names in the US clustered together into a field based on what streets tend

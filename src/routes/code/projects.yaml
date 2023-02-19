@@ -1,0 +1,53 @@
+- title: Nonconsumptive
+  description: |
+    A standard and set of python libraries for distributing 
+    fast, random-access access to large textual collections using
+    the Apache Arrow format.
+  url: 'https://nonconsumptive.org'
+  github: 'https://github.com/bmschmidt/nonconsumptive'
+  language: python
+  role: author
+- title: Deepscatter
+  description: |
+    Fast, animated, interactive online maps that scales easily to
+    billions, not millions, of points using WebGL and Apache Arrow.
+  language: typescript
+  role: author
+- title: Stable Random Projection
+  description: |
+    General-purpose, lightweight dimensionality reduction for
+    book or article-length texts. A trick involving cryptographic hashes
+    makes it possible to use the same space for any language without a 
+    pre-trained model or dictionary.
+  language:
+    - python
+    - javascript
+  role: author
+- title: WordVectors
+  role: author
+  description: |
+    An R package for training and exploring word2vec models with a fluent 
+    vocabulary taking advantage of R's ability to add, subtract, and perform
+    other vector-space models.
+- title: Pandoc Svelte Components
+  role: author
+  description: |
+    An implementation of <a href=https://pandoc.org/>pandoc's</a>
+    rich document model as pandoc components to allow the creation
+    of rich interactive documents from markdown files.
+  github: 'https://github.com/bmschmidt/pandoc-svelte-components'
+- title: Bookworm
+  role: author
+  description: |
+    Tools for tokenizing and visually exploring large textual collections
+    backed by an extremely fast MySQL architecture and served over the web
+    through an expressive API.
+  supporters:
+    - National Endowment for the Humanities
+- title: Markdown Lectures
+  role: author
+  language: Haskell
+  description: |
+    Document transformation scripts for writing talks and course lectures that
+    simultaneous generate their own slidedecks and outlines with identifying terms,
+    to keep everything aligned.

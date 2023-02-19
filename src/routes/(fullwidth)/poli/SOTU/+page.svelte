@@ -50,13 +50,13 @@
 
 	async function load_db() {
 		const db = await initDB('/files/parquet/new.parquet', 'new.parquet');
-		console.log("DB LOADED");
+		console.log('DB LOADED');
 		conn_prom = db.connect();
-		console.log("DB CONNECTED");
+		console.log('DB CONNECTED');
 		await prep_db();
 		return conn_prom;
 	}
-	
+
 	$: configuration = prepped_prom.then(() => get_year(year));
 
 	if (browser) {
@@ -83,8 +83,9 @@
 	$: {
 		if (selected_id !== null && browser) {
 			prepped_prom.then(async () => {
-				//        nearest = null;
-				//
+				nearest = null;
+
+				console.log('then looped');
 				const conn = await conn_prom;
 				await conn.query(`
           CREATE OR REPLACE VIEW v1 AS SELECT id,
@@ -125,16 +126,12 @@
            cosine_sim, president, year, "nc:text", "@id"
           FROM v1 JOIN p1 ON "v1"."id" = p1."@id"          
         `);
-				/*const overlaps = await conn.query(`
-          SELECT * FROM top_matches AS SELECT * FROM top_matches
-
-        `)*/
 				const closest = await conn.query(
-					`SELECT * FROM top_matches NATURAL JOIN overlappings ORDER BY cosine_sim DESC`
+					`SELECT * FROM top_matches NATURAL JOIN overlappings ORDER BY cosine_sim DESC LIMIT 5;`
 				);
 				nearest = [];
 				for (let i of [0, 1, 2, 3]) {
-					nearest.push(closest.get(i));
+					nearest = [...nearest, closest.get(i)];
 				}
 			});
 		}
@@ -181,7 +178,7 @@
 		{/await}
 	</div>
 	<div class="w-1/4 fixed mt-20 top-10 right-0 text-sm">
-		{#if nearest}
+		{#if nearest !== null}
 			<div class="bg-white shadow-md rounded p-4">
 				Most similar paragraphs to {selected_id}
 				{#each nearest as row}

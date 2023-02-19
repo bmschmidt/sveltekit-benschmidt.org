@@ -6,8 +6,8 @@
 	const values = Object.entries(cv).filter((d) => d[1].map);
 </script>
 
-<div class="absolute top-0 right-0">
-	<div class="grid gap-4 content-center grid-cols-8">
+<div>
+	<div class="grid gap-8 content-center grid-cols-8">
 		{#each values as [name, values]}
 			<CVSection {name} {values} />
 		{/each}

@@ -9,13 +9,11 @@
 	<title>Visualizations Gallery</title>
 </svelte:head>
 
-
-
-<div class="absolute left-0 container px-5 mx-auto" max-width="300px">
-	<div class="text-xl ml-4">
-		<h1>Map and Data Visualization Gallery</h1>
+<div class="left-0 container px-5 mx-auto">
+	<div class="grid place-content-center text-xl">
+		<h2>Map and Data Visualization Gallery</h2>
 	</div>
-	<div class="flex flex-wrap m-2">
+	<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 m-2">
 		{#each items as item}
 			<GalleryItem {...item} />
 		{/each}

@@ -1,8 +1,11 @@
 <script>
 	export let data;
-	$: metadata = data.document.metadata;
-	$: document = data.document.document;
+	import { page } from '$app/stores';
+	$: blog = $page.params.blog;
 	import Blogpost from '$lib/components/Blogpost.svelte';
+	console.log({ d: data.document.document });
 </script>
 
-<Blogpost {metadata} {document} />
+<div class="flex justify-center">
+	<Blogpost document={data.document.document} metadata={data.document.metadata} {blog} />
+</div>
