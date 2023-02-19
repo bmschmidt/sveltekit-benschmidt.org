@@ -1,3 +1,4 @@
+export const prerender = true;
 import { full_catalog } from '$lib/markdown/markdown';
 
 export async function load({ params }) {
