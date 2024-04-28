@@ -7,10 +7,10 @@ tags: ['This site', 'Javascript', 'Sveltekit']
 ---
 
 I've been spending more time in the last year exploring modern web stacks, and have started evangelizing
-for [Svelte-Kit](https://kit.svelte.dev/), which is a new-ish entry into the often-mystifying world
+for [SvelteKit](https://kit.svelte.dev/), which is a new-ish entry into the often-mystifying world
 of web frameworks. As of today, I've migrated this, personal web site from Hugo, which I've been using
-the last couple years, to svelte-kit. Let me know if you encounter any broken links, unexpected behavior,
-accessibility issues, etc. I figured here I'd give a brief explanation of why svelte-kit, and how I did a
+the last couple years, to sveltekit. Let me know if you encounter any broken links, unexpected behavior,
+accessibility issues, etc. I figured here I'd give a brief explanation of why sveltekit, and how I did a
 Hugo-Svelte kit migration.
 
 # Why Svelte-Kit for a personal site?

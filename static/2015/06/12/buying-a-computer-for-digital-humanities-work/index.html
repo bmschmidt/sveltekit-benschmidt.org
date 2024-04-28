@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="generator" content="Source Themes Academic 2.4.0" />
+		<meta name="generator" content="Hugo 0.49.2" />
+		<meta name="author" content="Ben Schmidt" />
+
+		<meta
+			name="description"
+			content="I&#8217;ve gotten a couple e-mails this week from people asking advice about what sort of computers they should buy for digital humanities research. That makes me think there aren&#8217;t enough resources online for this, so I&#8217;m posting my general advice here. (For some solid other perspectives, see here). For keyword optimization I&#8217;m calling this post &#8220;digital humanities.&#8221; But, obviously, I really mean the subset that is humanities computing, what I tend to call humanities data analysis. [Edit: To be clear, ] Moreover, the guidelines here are specifically tailored for text analysis; if you are working with images, you&#8217;ll have somewhat different needs (in particular, you may need a better graphics card). If you do GIS, god help you. I don&#8217;t do any serious social network analysis, but I think the guidelines below should work relatively with Gephi.
+
+"
+		/>
+
+		<link
+			rel="alternate"
+			hreflang="en-us"
+			href="/2015/06/12/buying-a-computer-for-digital-humanities-work/"
+		/>
+
+		<meta name="theme-color" content="#2962ff" />
+
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
+			integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE="
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css"
+			integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw="
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+			integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css"
+			integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs="
+			crossorigin="anonymous"
+		/>
+
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css"
+			crossorigin="anonymous"
+		/>
+
+		<link
+			rel="stylesheet"
+			href="//fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:400,400italic,700|Roboto+Mono"
+		/>
+
+		<link rel="stylesheet" href="/styles.css" />
+
+		<link rel="alternate" href="/feed/index.xml" type="application/rss+xml" title="Ben Schmidt" />
+		<link rel="feed" href="/feed/index.xml" type="application/rss+xml" title="Ben Schmidt" />
+
+		<link rel="manifest" href="/site.webmanifest" />
+		<link rel="icon" type="image/png" href="/img/icon.png" />
+		<link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png" />
+
+		<link rel="canonical" href="/2015/06/12/buying-a-computer-for-digital-humanities-work/" />
+
+		<meta property="twitter:card" content="summary_large_image" />
+
+		<meta property="twitter:site" content="@benmschmidt" />
+		<meta property="twitter:creator" content="@benmschmidt" />
+
+		<meta property="og:site_name" content="Ben Schmidt" />
+		<meta property="og:url" content="/2015/06/12/buying-a-computer-for-digital-humanities-work/" />
+		<meta
+			property="og:title"
+			content="Buying a computer for digital humanities work | Ben Schmidt"
+		/>
+		<meta
+			property="og:description"
+			content="I&#8217;ve gotten a couple e-mails this week from people asking advice about what sort of computers they should buy for digital humanities research. That makes me think there aren&#8217;t enough resources online for this, so I&#8217;m posting my general advice here. (For some solid other perspectives, see here). For keyword optimization I&#8217;m calling this post &#8220;digital humanities.&#8221; But, obviously, I really mean the subset that is humanities computing, what I tend to call humanities data analysis. [Edit: To be clear, ] Moreover, the guidelines here are specifically tailored for text analysis; if you are working with images, you&#8217;ll have somewhat different needs (in particular, you may need a better graphics card). If you do GIS, god help you. I don&#8217;t do any serious social network analysis, but I think the guidelines below should work relatively with Gephi.
+
+"
+		/>
+
+		<meta property="og:image" content="/img/icon-192.png" />
+		<meta property="og:locale" content="en-us" />
+
+		<meta property="article:published_time" content="2015-06-12T17:49:01&#43;00:00" />
+
+		<meta property="article:modified_time" content="2015-06-12T17:49:01&#43;00:00" />
+
+		<title>Buying a computer for digital humanities work | Ben Schmidt</title>
+	</head>
+	<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71">
+		<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+			<div class="container">
+				<a class="navbar-brand" href="/">Ben Schmidt</a>
+
+				<button
+					type="button"
+					class="navbar-toggler"
+					data-toggle="collapse"
+					data-target="#navbar"
+					aria-controls="navbar"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					<span><i class="fas fa-bars"></i></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbar">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+							<a class="nav-link" href="/#about">
+								<span>Home</span>
+							</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="/#publications">
+								<span>Publications</span>
+							</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="/#posts">
+								<span>Posts</span>
+							</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="/research-portfolio/">
+								<span>Research</span>
+							</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="/maps-visualizations-gallery/">
+								<span>Visualization Gallery</span>
+							</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="/files/SchmidtCV.pdf">
+								<span>CV</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<article class="article" itemscope itemtype="http://schema.org/Article">
+			<div class="article-container pt-3">
+				<h1 itemprop="name">Buying a computer for digital humanities work</h1>
+
+				<div class="article-metadata">
+					<span itemscope itemprop="author" itemtype="http://schema.org/Person">
+						<meta itemprop="name" content="Ben Schmidt" />
+					</span>
+
+					<span class="article-date">
+						<meta content="2015-06-12 17:49:01 &#43;0000 &#43;0000" itemprop="datePublished" />
+						<time datetime="2015-06-12 17:49:01 &#43;0000 &#43;0000" itemprop="dateModified">
+							Jun 12, 2015
+						</time>
+					</span>
+					<span itemscope itemprop="publisher" itemtype="http://schema.org/Person">
+						<meta itemprop="name" content="Ben Schmidt" />
+					</span>
+
+					<span class="middot-divider"></span>
+					<span class="article-categories">
+						<i class="fas fa-folder"></i>
+
+						<a href="/categories/uncategorized/">Uncategorized</a>
+					</span>
+
+					<div class="share-box" aria-hidden="true">
+						<ul class="share">
+							<li>
+								<a
+									class="twitter"
+									href="https://twitter.com/intent/tweet?text=Buying%20a%20computer%20for%20digital%20humanities%20work&amp;url=%2f2015%2f06%2f12%2fbuying-a-computer-for-digital-humanities-work%2f"
+									target="_blank"
+									rel="noopener"
+								>
+									<i class="fab fa-twitter"></i>
+								</a>
+							</li>
+							<li>
+								<a
+									class="facebook"
+									href="https://www.facebook.com/sharer.php?u=%2f2015%2f06%2f12%2fbuying-a-computer-for-digital-humanities-work%2f"
+									target="_blank"
+									rel="noopener"
+								>
+									<i class="fab fa-facebook-f"></i>
+								</a>
+							</li>
+							<li>
+								<a
+									class="linkedin"
+									href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2f2015%2f06%2f12%2fbuying-a-computer-for-digital-humanities-work%2f&amp;title=Buying%20a%20computer%20for%20digital%20humanities%20work"
+									target="_blank"
+									rel="noopener"
+								>
+									<i class="fab fa-linkedin-in"></i>
+								</a>
+							</li>
+							<li>
+								<a
+									class="weibo"
+									href="http://service.weibo.com/share/share.php?url=%2f2015%2f06%2f12%2fbuying-a-computer-for-digital-humanities-work%2f&amp;title=Buying%20a%20computer%20for%20digital%20humanities%20work"
+									target="_blank"
+									rel="noopener"
+								>
+									<i class="fab fa-weibo"></i>
+								</a>
+							</li>
+							<li>
+								<a
+									class="email"
+									href="mailto:?subject=Buying%20a%20computer%20for%20digital%20humanities%20work&amp;body=%2f2015%2f06%2f12%2fbuying-a-computer-for-digital-humanities-work%2f"
+								>
+									<i class="fas fa-envelope"></i>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="article-container">
+				<div class="article-style" itemprop="articleBody">
+					<p>
+						I&#8217;ve gotten a couple e-mails this week from people asking advice about what sort
+						of computers they should buy for digital humanities research. That makes me think there
+						aren&#8217;t enough resources online for this, so I&#8217;m posting my general advice
+						here. (For some solid other perspectives, see here). For keyword optimization I&#8217;m
+						calling this post &#8220;digital humanities.&#8221; But, obviously, I really mean the
+						subset that is humanities computing, what I tend to call humanities data analysis.
+						[Edit: To be clear, ] Moreover, the guidelines here are specifically tailored for text
+						analysis; if you are working with images, you&#8217;ll have somewhat different needs (in
+						particular, you may need a better graphics card). If you do GIS, god help you. I
+						don&#8217;t do any serious social network analysis, but I think the guidelines below
+						should work relatively with Gephi.
+					</p>
+
+					<p></p>
+
+					<p>
+						<em>Pricing</em>: For each component, I&#8217;m putting up a cheap and an expensive
+						option; I&#8217;m also briefly describing what I myself have been using for the last two
+						years, because those specific examples can be helpful. The cheap option down the line
+						should be reasonable on a grad student budget; the expensive set luxurious for a faculty
+						or staff member with a substantial research budget. I also describe my own setup, which
+						tended towards the luxurious end of the spectrum in the summer of 2013.
+					</p>
+
+					<p>
+						The difference between what you can do with cheap and expensive is not great.
+						Don&#8217;t make the mistake of fetishizing the hardware too much; as with most tools,
+						it&#8217;s the performer, not the instrument, that truly matters. University libraries
+						are filled with iMac computers that have incredible computing resources that are never
+						used for anything but e-mail; you could, if you have a certain bent, adopt a no-computer
+						coding and repo management style that stored code on Github and runs it only on public
+						computers.
+						<a href="https://gist.github.com/bmschmidt/923dce0330d72486ee8d" target="_blank"
+							>Here, for example, is a snippet of code you can run on any library computer that will
+							stream the entire Google Ngrams 3-grams corpus to a library server and store only the
+							entries matching a regular expression</a
+						>. (Please don&#8217;t run that code trivially, it wastes a lot of resources). You might
+						need to store R or some python modules on a thumb drive to realistically make this work,
+						but you might be able to become a folk hero by doing it.
+					</p>
+
+					<p><strong>1. Laptop vs Desktop.</strong></p>
+
+					<p>
+						<em>Cheap</em>: The cheapest route to go is a single laptop supplemented, should you
+						find you need it, with specially purchased virtual server time on one of the cloud
+						services. (Probably it&#8217;s best to use Amazon for this, since that&#8217;s the most
+						widely used option&#8211;see &#8220;Hard drive space&#8221; for a discussion of Amazon
+						with large datasets.)
+					</p>
+
+					<p>
+						<em>Expensive</em>: You&#8217;re going to need a laptop in any case (anyone planning to
+						use a tablet for presentations is idiosyncratic enough that they aren&#8217;t reading
+						this guide). An additional desktop will let you buy more computing power more cheaply
+						than a new laptop. If you have an office (home or university), I think it makes less
+						sense to max out on an expensive all-in-one laptop, and more to purchase a desktop for
+						computing-intensive tasks and choose your laptop as a piece of consumer
+						electronics&#8211;base it on style, or the keyboard you like best, or weight. Desktops
+						can run continuously, which is useful for long computations, web scraping, and the like.
+						(People are often afraid to let programs run for hours, because they think that they are
+						&#8220;frozen&#8221;; but frequently, a text-analysis task or complicated download may
+						take hours to run. My personal record is a program that ran for about 3 months in the
+						background.) They also can act as a web server, which can be useful for all sorts of
+						tasks, from running an Omeka installation to hosting a backup of your slide deck online.
+					</p>
+
+					<p>
+						If you&#8217;re looking at spending over $1400 or so, I would seriously consider getting
+						two computers; if less, focus on the laptop. Keep in mind that running a desktop
+						continuously uses large amounts of electricity; one of the reasons running your own is
+						so much cheaper than using Amazon is that all this carbon-producing effort is billed to
+						your office or home.
+					</p>
+
+					<p>
+						<em>My setup</em>: I have a MacBook Air for day-to-day use, chosen primarily because it
+						has the most battery life and I frequently forget to charge my computer, and a Linux
+						desktop in a large tower case, described further below. They both ended up costing
+						approximately the same ($1500 or so, plus more for some hard drives), but the desktop is
+						much more powerful for computation.
+					</p>
+
+					<p><strong>2. Operating system.</strong></p>
+
+					<p>
+						<em>Cheap</em>: Ubuntu 14.04. (Or 16.04, once it comes out: the even-numbered Ubuntu
+						releases are so-called &#8220;long term service,&#8221; and often the best to stick to
+						if you don&#8217;t want to lose a lot of time on updates). Ubuntu is the most widely
+						used and easiest &#8220;flavor&#8221; of Linux to install, is free, and will generally
+						be the easiest solution for installing software on and *usually* works with printers,
+						cameras, and the like (always the biggest problem with Linux). Ubuntu is a little bit
+						commercialized and sometimes too glossy; on really low-end hardware, a version of Debian
+						using a simpler graphics stack may be a better choice.
+					</p>
+
+					<p>
+						<em>Expensive</em>: Mac OS X. Apple Hardware is pretty and, thanks to their market
+						dominance, often cheaper for things like laptops.
+						<a href="http://brew.sh/" target="_blank">Homebrew</a> is an indispensable package
+						manager for installing open-source software; under the hood, where most programming
+						happens, Mac OS X is the same as most other Unix. Once you get a version of OS X
+						working, it may be worth skipping Apple&#8217;s frequent updates unless you absolutely
+						need the new functionality they offer. (Edit&#8211;or don&#8217;t mind risking losing an
+						afternoon to fixing things. If you don&#8217;t tweak settings a lot, it may be worth it,
+						but always wait two weeks. Make sure you do all recommended security updates, though.)
+						For a laptop, any of the MacBook varieties is fine. The major reason OS X costs so much
+						is that if you want to get a full-powered server going, you&#8217;ll need to buy the
+						extraordinarily expensive Mac Pro (min $3000) which, at time of writing, is still
+						waiting for an update; a comparably equipped Linux setup may cost half as much.
+					</p>
+
+					<p>
+						You <del>absolutely</del> probably (see below) should not plan on running Microsoft
+						Windows as your primary OS for humanities computing. With one exception: ESRI&#8217;s
+						GIS software is only available for Windows. If you primarily do GIS, you&#8217;ll either
+						need to sit in the lab, buy a Windows (or dual-boot) machine, or use QGIS, which is
+						getting better. Since ArcGIS licenses are expensive, I usually recommend that grad
+						students use QGIS so they don&#8217;t lose their ability to finish their dissertation
+						with their library card. I personally use QGIS for some tasks, and the spatial libraries
+						for R for more intensive spatial work, with D3 to render maps beautifully.
+					</p>
+
+					<p>
+						<em
+							>Edit on Windows: Some people on Twitter think this is too harsh, so I&#8217;m
+							changing it to &#8220;probably.&#8221; Windows will generally be fine if you&#8217;re
+							doing number crunching only; python and RStudio will run fine. But use of Unix (the
+							family of operating systems to which Linux and OS X belong) is far more common in DH
+							than Windows, which means that you&#8217;ll have an easier time running other code,
+							and you&#8217;ll have a harder time running DH software that is oriented to the web,
+							such as Omeka, which requires a so-called [LAMP stack](<a
+								href="https://en.wikipedia.org/wiki/LAMP"
+								target="_blank"
+								>https://en.wikipedia.org/wiki/LAMP</a
+							></em
+						>%28software_bundle%29).
+					</p>
+
+					<p>_</p>
+
+					<p>
+						<em>My setup</em>: An old version of OS X on the laptop to keep my homebrew settings
+						intact, and Ubuntu 14.04 on the desktop tower.
+					</p>
+
+					<p><strong>3. Memory (RAM)</strong></p>
+
+					<p>
+						No one seems to call it RAM anymore besides me. This is the single most important
+						upgrade you can get for humanities computing, and most default systems come with less
+						than you want.
+					</p>
+
+					<p>
+						<em>Cheap</em>: You can survive on 4GB, but it&#8217;s worth splurging for 8 in a
+						laptop. If you&#8217;re only going to be working with python and R (the most common
+						languages for humanities computing) you can get some stuff done on 4 or even 2GB; if
+						you&#8217;re going to be regularly running anything that uses Java (which includes the
+						immensely popular Mallet tool for topic modeling, and the Stanford Natural Language
+						Toolkit), you&#8217;ll be glad to have more.
+					</p>
+
+					<p>
+						<em>Expensive</em>: As much as possible under the rest of your hardware setups. There
+						are usually hard limits on what your processor can accommodate, and you should go all
+						the way up to them.
+					</p>
+
+					<p>
+						My setup: I maxed out the laptop at 8GB, and have the maximum 32GB in the Linux server.
+						When I bought my desktop, this was the most possible on the medium-range motherboards
+						for Intel i7 processors; one of the things the extra money for a Mac Pro gets is the
+						ability to load in 64GB of RAM.
+					</p>
+
+					<p><strong>4. Hard Drive space</strong></p>
+
+					<p>
+						Needs for hard drive space vary enormously from person to person. There are only a few
+						truly large data sets out there (Google NGrams, Hathi Trust, customized JStor data for
+						research abstracts); you can fit tens of thousands of anything onto an ordinary hard
+						drive. Don&#8217;t overestimate the size of your data; if you only want to look at, say,
+						Victorian poetry, you can probably store the entire Hathi collection on your phone, let
+						alone your computer. (Images and audio take more space). Do the math on the files you
+						have and how many you&#8217;ll need to download before wasting money on storage: space
+						is easily expanded, so you don&#8217;t need to spend money up front before you have the
+						data. But you should have a plan for dealing with additional data.
+					</p>
+
+					<p>
+						If you plan to use a lot of data (more than 1TB), you will find that cloud computing is
+						not a particularly realistic option. Processor time on the cloud is cheap: but data
+						storage needs to be persistent, and you can easily end up spending several hundred
+						dollars per terabyte, per year, to store copies online. This is rarely economical.
+					</p>
+
+					<p>
+						The other thing to keep in mind is that there are &#8220;solid state&#8221; and
+						traditional hard drives. Solid state are better, but hold substantially less.
+					</p>
+
+					<p>
+						<em>Cheap</em>: Whatever drive comes in the machine; a 128 GB SSD might be enough if you
+						don&#8217;t plan to store your personal music and photographs on the machine. At the
+						absolute bottom level, a small disk drive is acceptable; but some size SSD is the
+						biggest bang-for-the-buck upgrade you can get. To store more data, use external drives;
+						4TB external drives are now fairly cheap. If you&#8217;re going to be working with the
+						big datasets, you probably should get two. If your analysis produces large data files or
+						they are available online, though, you don&#8217;t *necessarily* need to back them up;
+						instead, you can store code on the ssd or as a git repository backed up, ignore the
+						large files for backup but leave perfect code to recreate them. (<a
+							href="http://bost.ocks.org/mike/make/"
+							target="_blank"
+							>A Makefile is a nice way to accomplish this, as Mike Bostock describes.</a
+						>). Back up your code and writing in as many forms as possible; mine are scattered
+						around on Dropbox, Github, and on hard drives at my home and office.
+					</p>
+
+					<p>
+						<em>Expensive</em>: As big an SSD as you can afford for the operating system and data
+						processing, and traditional drives for additional storage. On Apple hardware
+						you&#8217;ll need an external enclosure for those drives, which again gets expensive; if
+						building a Linux tower, it may be worth getting a case that holds as many expansion
+						drives as possible. You&#8217;ll want to use RAID to join multiple drives into a single
+						array for some redundancy since disks will inevitably fail; RAID 10 is the standard, and
+						RAID 5 and RAID 6 are both reasonable compromises if you&#8217;re squeezed for space. Do
+						the math on what the cheapest cost per gigabyte hard drives are, and use those; keep in
+						mind that with a RAID array your disks generally have to be the same size, so start with
+						a 3 or 4 TB drive if you think there&#8217;s any chance you&#8217;ll need to scale up.
+						Internal SATA connections are fast, and in my experience disk I/O can be a significant
+						bottleneck. If you plan to do external storage, it&#8217;s worth making sure you can
+						have a thunderbolt or at least USB 3 connection.
+					</p>
+
+					<p>
+						My setup: a small (100GB) SSD for the operating system. I have a *lot* of data stored
+						locally, so I bought a case that holds two small drives and six full size ones. I
+						started with 3TB drives in a RAID 5 configuration for 6TB of space; as I ran out of
+						space, I switched to 6 3TB drives in a RAID 6 for 9TB of storage with more redundancy.
+					</p>
+
+					<p><strong>4. Processors</strong></p>
+
+					<p>
+						Processor speed is less important for humanities computing; while too little memory
+						makes it impossible to do certain things, too slow processors just means that they take
+						longer. That&#8217;s fine; just get in the habit of accepting that certain things will
+						run during your commute, or overnight, or whatever.
+					</p>
+
+					<p>
+						Keep in mind that both R and python don&#8217;t take advantage of multi-core processors
+						very well. It&#8217;s possible to take advantage of multiple cores, but in cases there
+						is high overhead. (For Bookworm, I use GNU parallel instead of python&#8217;s multicore
+						library because the overhead of pickling and unpickling text files between python
+						instances is much higher than just passing plain text through the system; in general,
+						it&#8217;s worth learning how to use GNU parallel, the -P flag to xargs in the shell, or
+						the -j argument to make; the system is likely to be better at allocating resources than
+						your python code.)
+					</p>
+
+					<p>Java programs are frequently better able to take advantage of multiple cores.</p>
+
+					<p><em>Cheap</em>: Whatever: probably two cores.</p>
+
+					<p>
+						<em>Expensive</em>: The Intel i7 series is fine; a quad-core system effectively gives
+						eight processors, and flies through most tasks. The Mac Pros use Xeons, and are going to
+						switch to something better in the generation. Oddly, they have slower clock speeds the
+						more processors you get; this means, paradoxically, that if you write unoptimized python
+						or R code, it will probably run faster on a cheap Mac Pro than an expensive one, so you
+						should feel just fine about buying the &#8220;cheap&#8221; $3000 one.
+					</p>
+
+					<p><strong>5. Graphics</strong></p>
+
+					<p>
+						Unless you&#8217;re working explicitly with images, this is the place you need the least
+						compared to what an off-the-shelf computer will get you. Real-time video rendering
+						matters a lot for computer games and watching movies, which all commodity computers are
+						built to do at least a little of; but digital humanities rarely make use of their
+						capabilities.
+					</p>
+
+					<p>
+						In some limit cases or in three or five years, this may be flipped. Code that is
+						optimized for GPU can be extremely fast indeed; but it&#8217;s often difficult to find
+						and even harder to write, much more so than multiprocessor code. It also varies by
+						architecture, so you&#8217;ll need to do some research about whether there&#8217;s a
+						good SVD algorithm for the GPU written for your particular NVidia card, or whatever.
+					</p>
+
+					<p>
+						If you&#8217;re working with photoshop, obviously, the situation is different. 3D
+						modeling, which I don&#8217;t know much about, should benefit enormously. But just
+						because you do data visualization doesn&#8217;t mean you need any graphics card at all;
+						if you plan to do it in the browser or R, the benefits are slight.
+					</p>
+
+					<p>
+						My setup: No graphics card on the Linux tower. Whatever comes by default in the MacBook.
+					</p>
+
+					<p><strong>6. Monitor</strong></p>
+
+					<p>Whatever size monitor you get, you will come to feel is the minimum.</p>
+
+					<p><strong>7. Keyboard</strong></p>
+
+					<p>I have a mechanical 1990s IBM model M. It&#8217;s pretty awesome.</p>
+
+					<p><strong>8. Software</strong></p>
+
+					<p>
+						With the exception of ArcGIS, most widely-used software for humanities computing is
+						free. CUNY&#8217;s DH-in-a-box platform contains a lot of what you need. As I said,
+						Python and R are the two most widely-used languages; along with Javascript, Java, and
+						the various C languages, they&#8217;re all free. SPSS, Stata, and the like, are
+						<del>absolutely</del> not worth it; I see no reason to use Matlab, although it&#8217;s
+						common in some other fields. The only coding platform I&#8217;d consider spending my own
+						money on for humanities computing is Mathematica; you can do some amazing things, but
+						won&#8217;t be able to share code.
+					</p>
+
+					<p>
+						Learning to interface between your analysis language and a database can be extremely
+						useful for avoiding problems with memory. Python&#8217;s &#8220;shelve&#8221; module is
+						incredibly useful as a persistent key-value store; the dplyr package in R lets you use a
+						SQL database without the unpleasant experience of actually writing SQL code. I use MySQL
+						with MYISAM tables because I believe them to be faster and more portable; most advice
+						you&#8217;ll get nowadays is to use Postgres as a complicated database server, or SQLite
+						for lightweight files. If you do use a database to store data and think that it&#8217;s
+						slow, it&#8217;s worth reading up on how indexing works; there&#8217;s a very good
+						chance you can improve query times by a thousand by adding the right index. Use
+						WordPress for a blog until you know that you need something different; every other
+						platform you might use allows you to convert to it from WordPress. Don&#8217;t use
+						blogger and then regret like me.
+					</p>
+
+					<p>
+						Plenty of people use virtual machines even on their local hardware to keep certain
+						things (a webserver, say) clean and easy to back up. I don&#8217;t, because I
+						don&#8217;t want to lose any performance. But a system like Vagrant can be extremely
+						useful for switching code between a local machine and the cloud, particularly under the
+						budget approach.
+					</p>
+
+					<p>
+						Some random other advice: Write in markdown with pandoc. Use github, obviously. Everyone
+						loves sublime as a text editor; if you tend to work on remote servers, though, it can be
+						convenient to just always use vim or emacs, since they&#8217;ll always be around.
+						Document each project in its makefile, as described in the Bostock article above. Use
+						the unix command `find` instead of `ls` if you have more than a thousand files
+						downloaded; I&#8217;m constantly writing lines of code like `find directoryName -type f
+						| xargs -P 6 someShellCommand.sh`, and it&#8217;s fast.
+					</p>
+
+					<p>&nbsp;</p>
+				</div>
+			</div>
+		</article>
+
+		<div class="container">
+			<footer class="site-footer">
+				<p class="powered-by">
+					&copy; 2018 &middot; Powered by the
+					<a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener"
+						>Academic theme</a
+					>
+					for <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+					<span class="float-right" aria-hidden="true">
+						<a href="#" id="back_to_top">
+							<span class="button_icon">
+								<i class="fas fa-chevron-up fa-2x"></i>
+							</span>
+						</a>
+					</span>
+				</p>
+			</footer>
+		</div>
+
+		<div id="modal" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Cite</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<pre><code class="tex hljs"></code></pre>
+					</div>
+					<div class="modal-footer">
+						<a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+							<i class="fas fa-copy"></i> Copy
+						</a>
+						<a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+							<i class="fas fa-download"></i> Download
+						</a>
+						<div id="modal-error"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+			integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg=="
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js"
+			integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA=="
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"
+			integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ="
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js"
+			integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ=="
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"
+			integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M="
+			crossorigin="anonymous"
+		></script>
+
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"
+			integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw="
+			crossorigin="anonymous"
+		></script>
+
+		<script src="/js/hugo-academic.js"></script>
+
+		<script>
+			hljs.initHighlightingOnLoad();
+		</script>
+
+		<script>
+			const search_index_filename = '/index.json';
+			const i18n = {
+				placeholder: 'Search...',
+				results: 'Search Results',
+				no_results: 'No results found'
+			};
+			const content_type = {
+				post: 'Posts',
+				project: 'Projects',
+				publication: 'Publications',
+				talk: 'Talks'
+			};
+		</script>
+
+		<script id="search-hit-fuse-template" type="text/x-template">
+			<div class="search-hit" id="summary-{{key}}">
+			<div class="search-hit-content">
+			  <div class="search-hit-name">
+			    <a href="{{relpermalink}}">{{title}}</a>
+			    <div class="article-metadata search-hit-type">{{type}}</div>
+			    <p class="search-hit-description">{{snippet}}</p>
+			  </div>
+			</div>
+			</div>
+		</script>
+
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js"
+			integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI="
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js"
+			integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U="
+			crossorigin="anonymous"
+		></script>
+		<script src="/js/search.js"></script>
+	</body>
+</html>

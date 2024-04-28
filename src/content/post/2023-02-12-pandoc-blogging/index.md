@@ -1,7 +1,7 @@
 ---
 title: 'Blogging with Pandoc'
 date: 2023-02-12
-draft: false
+draft: true
 tags: ['Blog', 'Programming', 'Web']
 abstract: |
   In which I describe building a blog on top of pandoc.

@@ -55,14 +55,13 @@ email: 'bmschmidt@gmail.com'
 ---
 
 I am Vice President of Information Design at [Nomic](https://home.nomic.ai), where I am working on new interfaces for interpreting and visualizing embedding models. For several years before that, I was a professor in the history departments at Northeastern and then NYU, where I worked with and
-led digital humanities groups deploying new approaches to data analysis and data visualization to help people
-think about the past. I have also write about higher education
+led digital humanities groups deploying new approaches to thinking about the past through data analysis and data visualization. I have also write about higher education
 ([teaching evaluations](http://benschmidt.org/profGender) and
 [humanities policy](https://www.theatlantic.com/ideas/archive/2018/08/the-humanities-face-a-crisisof-confidence/567565/)),
 [narrative anachronism](http://www.theatlantic.com/entertainment/archive/2013/01/nobody-said-racial-equality-in-1865-the-anachronistic-english-of-lincoln/266990/)
 and plot structure, and
 [political history.](http://www.theatlantic.com/features/archive/2015/01/the-language-of-the-state-of-the-union/384575/)
 
-I live in Manhattan.
+I live in Montclair, NJ and work in Manhattan.
 
 For a third-person bio or photo, click [here](/bio/).

@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 2.4.0">
+  <meta name="generator" content="Hugo 0.49.2" />
+  <meta name="author" content="Ben Schmidt">
+
+  
+  
+  
+  
+    
+  
+  <meta name="description" content="Like many technically inclined historians (for instance, Caleb McDaniel, Jason Heppler, and Lincoln Mullen) I find that I&#8217;ve increasingly been using the plain-text format Markdown for almost all of my writing.
+The core idea of Markdown is that rather than use Microsoft Word, Scrivener, or any of the other pretty-looking tools out there, you type in &#8220;plain text&#8221; using formatting conventions that should be familiar to anyone who&#8217;s ever written or read an e-mail.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/2014/09/05/markdown-historical-writing-and-killer-apps/">
+
+  
+
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" crossorigin="anonymous">
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:400,400italic,700|Roboto+Mono">
+  
+
+  <link rel="stylesheet" href="/styles.css">
+  
+
+  
+  
+  
+
+  
+  <link rel="alternate" href="/feed/index.xml" type="application/rss+xml" title="Ben Schmidt">
+  <link rel="feed" href="/feed/index.xml" type="application/rss+xml" title="Ben Schmidt">
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="/2014/09/05/markdown-historical-writing-and-killer-apps/">
+
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@benmschmidt">
+  <meta property="twitter:creator" content="@benmschmidt">
+  
+  <meta property="og:site_name" content="Ben Schmidt">
+  <meta property="og:url" content="/2014/09/05/markdown-historical-writing-and-killer-apps/">
+  <meta property="og:title" content="Markdown, Historical Writing, and Killer Apps | Ben Schmidt">
+  <meta property="og:description" content="Like many technically inclined historians (for instance, Caleb McDaniel, Jason Heppler, and Lincoln Mullen) I find that I&#8217;ve increasingly been using the plain-text format Markdown for almost all of my writing.
+The core idea of Markdown is that rather than use Microsoft Word, Scrivener, or any of the other pretty-looking tools out there, you type in &#8220;plain text&#8221; using formatting conventions that should be familiar to anyone who&#8217;s ever written or read an e-mail.">
+  
+  
+    
+  <meta property="og:image" content="/img/icon-192.png">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2014-09-05T20:34:25&#43;00:00">
+  
+  <meta property="article:modified_time" content="2014-09-05T20:34:25&#43;00:00">
+  
+
+  
+
+  
+
+  <title>Markdown, Historical Writing, and Killer Apps | Ben Schmidt</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
+
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">Ben Schmidt</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#publications">
+            
+            <span>Publications</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#posts">
+            
+            <span>Posts</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/research-portfolio/">
+            
+            <span>Research</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/maps-visualizations-gallery/">
+            
+            <span>Visualization Gallery</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/files/SchmidtCV.pdf">
+            
+            <span>CV</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+      
+
+        
+
+        
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1 itemprop="name">Markdown, Historical Writing, and Killer Apps</h1>
+
+  
+
+  
+    
+
+<div class="article-metadata">
+
+  
+  
+  <span itemscope itemprop="author" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Ben Schmidt">
+  </span>
+  
+
+  <span class="article-date">
+    
+    <meta content="2014-09-05 20:34:25 &#43;0000 &#43;0000" itemprop="datePublished">
+    <time datetime="2014-09-05 20:34:25 &#43;0000 &#43;0000" itemprop="dateModified">
+      Sep 5, 2014
+    </time>
+  </span>
+  <span itemscope itemprop="publisher" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Ben Schmidt">
+  </span>
+
+  
+
+  
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    
+    <a href="/categories/uncategorized/">Uncategorized</a>
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Markdown%2c%20Historical%20Writing%2c%20and%20Killer%20Apps&amp;url=%2f2014%2f09%2f05%2fmarkdown-historical-writing-and-killer-apps%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=%2f2014%2f09%2f05%2fmarkdown-historical-writing-and-killer-apps%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2f2014%2f09%2f05%2fmarkdown-historical-writing-and-killer-apps%2f&amp;title=Markdown%2c%20Historical%20Writing%2c%20and%20Killer%20Apps"
+         target="_blank" rel="noopener">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=%2f2014%2f09%2f05%2fmarkdown-historical-writing-and-killer-apps%2f&amp;title=Markdown%2c%20Historical%20Writing%2c%20and%20Killer%20Apps"
+         target="_blank" rel="noopener">
+        <i class="fab fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Markdown%2c%20Historical%20Writing%2c%20and%20Killer%20Apps&amp;body=%2f2014%2f09%2f05%2fmarkdown-historical-writing-and-killer-apps%2f">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<p>Like many technically inclined historians (for instance, <a href="http://wcm1.web.rice.edu/hacks.html" target="_blank">Caleb McDaniel</a>, <a href="http://jasonheppler.org/2012/11/20/using-markdown-like-an-academic/" target="_blank">Jason Heppler</a>, and <a href="http://chronicle.com/blogs/profhacker/markdown-the-syntax-you-probably-already-know/35295" target="_blank">Lincoln Mullen</a>) I find that I&#8217;ve increasingly been using the plain-text format Markdown for almost all of my writing.</p>
+
+<p>The core idea of Markdown is that rather than use Microsoft Word, Scrivener, or any of the other pretty-looking tools out there, you type in &#8220;plain text&#8221; using formatting conventions that should be familiar to anyone who&#8217;s ever written or read an e-mail. (Click on Mullen&#8217;s or Heppler&#8217;s name for a better introduction than this, or see the <a href="http://chronicle.com/blogs/profhacker/markdown/47813" target="_blank">Chronicle&#8217;s wrapup of approaches</a>).</p>
+
+<p>The benefits are many, but they&#8217;re mostly subtle:</p>
+
+<ul>
+<li>A simple format like Markdown creates documents you&#8217;ll have not trouble reading in twenty years. I&#8217;ve been teaching a survey course this semester and had a hell of a time reading my old notes from generals which I took using EndNote; with Markdown, any web browser, text editor, or Microsoft Word descendant will have no trouble opening it.</li>
+<li>It&#8217;s very easy to produce content that will look good in multiple media: I can make a course syllabus or personal CV with that formats nicely on a website and produces a clean looking PDF <em>at the same time</em>.</li>
+<li>It becomes much easier to do things to a bunch of notes at the same time: bundle them into PDFs, search through all of your notes simulataneously, and so forth.</li>
+</ul>
+
+<p>None of these, though, are a particularly strong sell for those who use a computer instrumentally: in reality, your Microsoft Words documents aren&#8217;t about to disappear, either. And there are disadvantages to giving up Word.</p>
+
+<ul>
+<li>Things like footnotes with a citation manager are not very easy, even for the technically competent. <a href="#fn1"><sup>1</sup></a>{#fnref1.footnoteRef} Even footnotes without a citation manager are fairly clumsy.</li>
+<li>The best tool for making your Markdown documents into attractive web pages , <a href="http://johnmacfarlane.net/pandoc/" target="_blank">Pandoc</a>, is not especially easy to install or configure if you don&#8217;t use the command line on a regular basis.</li>
+<li>The core definition of Markdown is a little unclear: particularly in the last week, there have been some conflicts over the definition that will be confusing to newcomers. (Although the proposal that sparked them, &#8220;Common Markdown,&#8221; is likely to be a good thing in the long run)</li>
+</ul>
+
+<p>The heart of Markdown&#8217;s appeal is its flexibility: to drive any adoption outside the hard core of people, you need a killer app built off of it that solves a problem. In the technology sector, that has been Markdown&#8217;s ability to easily handle links and snippets of computer code for those writing on two widely used sites, <a href="http://github.com" target="_blank">GitHub</a> and <a href="http://stackoverflow.com" target="_blank">Stack Overflow</a></p>
+
+<p>Among historians, neither of those are very important. And the footnote problem is big enough that I generally wouldn&#8217;t recommend anyone to use Markdown, right now, unless they enjoy banging their head against the wall.</p>
+
+<h1 id="lectures-and-notes-the-killer-apps.">Lectures and Notes: the killer apps.</h1>
+
+<p>There are two places, though, where even historians don&#8217;t tend to use footnotes: lectures, and notes. And in both of these, Markdown makes some amazing things possible.</p>
+
+<p>If there&#8217;s any reason for historians to use markdown, it&#8217;s in these two spheres. The reason I keep using Markdown is that it makes it possible for me to personally solve two problems that have driven me crazy:</p>
+
+<ol style="list-style-type: decimal;">
+  <li>
+    Quickly making slides decks to go alongside a lecture, and borrowing and reusing chunks of slides from one talk in another;
+  </li>
+  <li>
+    Making heads or tails of the thousands of pictures you take while in an archival trip.
+  </li>
+</ol>
+
+<h2 id="markdown-and-lectures-multimedia-and-transposability.">Markdown and lectures: multimedia and transposability.</h2>
+
+<p>First lectures. With Markdown, I&#8217;m able to write my own notes and create a slide deck <em>at the same time</em>. An example will help. Here&#8217;s a snippet from my lecture notes on the memory of the Civil War:</p>
+
+<pre><code># Abolitionist memory of the war.
+
+*Image: http://upload.wikimedia.org/wikipedia/commons/1/19/William-Tecumseh-Sherman.jpg* Caption: William Tecumseh Sherman
+
+There's another set of people who aren't content to see it go: those who remembered the war as the period of national renewal, rebirth, and freedom. We remember World War II today as the &quot;Good War,&quot; because we fought the Nazis and won. 
+
+But unlike WWII, Civil War actually changed the country for the better. It abolished slavery. It instituted amendments that guaranteed citizenship to every American. It promised equal protection under the law.
+
+Memory that's particularly strong among African Americans.
+
+They remember Sherman differently.
+Sherman not as maurauder but as unfifilled promise.
+Sheman, you might remember, when he finally made it to the sea issued his famous **Field Order 15**
+</code></pre>
+
+<p>With some ancillary code I wrote, that does two things at once: builds a slide showing the wikimedia copy of <a href="http://upload.wikimedia.org/wikipedia/commons/1/19/William-Tecumseh-Sherman.jpg" target="_blank">Sherman&#8217;s grizzled mug</a>, and creates a set of notes for me under the header &#8220;Abolitionist memory of the war&#8221; to go on the paper notes I&#8217;ll read from.</p>
+
+<p>Later on, I&#8217;ll write another script that will find pull every phrase in boldface (like &#8220;Field Order 15&#8221;) from all my notes and put them onto a list of possible IDs for the midterm I can hand out. Another script could strip just the section headers and print out outlines for the lectures to hand out before class.</p>
+
+<p>This is <strong>writing documents for multiple uses,</strong> and it can be incredibly useful. If, two minutes before class, I decide I want to switch the order I talk about the abolitionist memory of the war and the white supremacist memory of the war, I can just cut and paste the chunks of text, and all the slides associated with each will have their order switched.</p>
+
+<p>Something like this could provide a really useful way to integrate and share resources, and free up some of the tedium with prepping lectures. But:</p>
+
+<ul>
+<li>That syntax for including an image as a slide is my own, not standard Markdown. I&#8217;ve defined scripts for dropping in YouTube videos, images, captions, and some other predefined formats: but it would take a lot of work to define a set of them that make sense for anyone but me.</li>
+<li>There are a lot of standards out there for working with HTML slides. None is winning, in part because none is anywhere as good as Keynote or Powerpoint for the average user. My code works with deck.js, one of the only HTML formats <em>not</em> supported by Pandoc; but there&#8217;s no obvious other standard to switch to.</li>
+<li>Constructing slides that are more complicated than a single image with a title, or a numbered list, requires some serious HTML/CSS expertise. My scripts support that, but not in a pretty way.</li>
+</ul>
+
+<p>Modern HTML allows some beautiful things: I can easily imagine a GUI for one of the standards that would make it easy to create slides for re-use in one of the competing platforms. But I think the standards are still evolving too rapidly in this sphere to make the way forward obvious.</p>
+
+<p>Pull out the slide deck, and you still might have a useful tool here: something that generates a lecture notes for me, outlines for the students/course web page, and IDs for the test prep sessions. But I think there&#8217;s something even more valuable possible for archive notes.</p>
+
+<h2 id="markdown-and-the-archives-integrating-notes-and-photos">Markdown and the Archives: integrating notes and photos</h2>
+
+<p>Markdown is a great language for taking archival notes. Archives are all about hierarchy: and Markdown easily lets you tag mutliple levels of headers (Series, Box, Collection, file&#8230;). But so is Microsoft Word: and there are plenty of outlining programs out there that are even better.</p>
+
+<p>There are a few things that Markdown notes might do more easily than normal ones. Build a good enough web interface, and you could even click on a photo or quote in your notes and instantly get back a string that ascends the various headers to tell you where it is: <code>Series 3a, Box 13, Folder 4, Letter on 4/18</code>. But the place where there&#8217;s really an opportunity lies in Digital Photos.</p>
+
+<p>Digital cameras have completely changed historians&#8217; relations to archives in the last 15 years. (That is, in the subset of archives where cameras are allowed). We used to take notes: now, a massive part of our archival practice involves taking pictures, which have to be sorted through on our return.</p>
+
+<p>When I&#8217;m wading through boxes, I tend to type the name of the box, and then some information about each folder followed by descriptions of the documents: if it&#8217;s especially useful or especially visual, I take a picture (or a series of several pictures). I think this is pretty similar to what most people do. It means that I end up with two separate timelines to sort through when I get home. 1) A bunch of textual notes that contain my impressions of the works and the rationales for why I copied them and what they are. 2) A stream of pictures with little context but their order to patch together their origin, sometimes with a close-up of a box or folder label thrown in to help.</p>
+
+<p>The tough question is: how can you insert pictures into your notes? Unless you want to physically pick up your laptop and use the webcam for your pictures, it&#8217;s not obvious what the best way would be. And if you try to put more than a couple pictures into a Word document, it will crash right away.</p>
+
+<p>Unlike the systems most historians use for notes, Markdown is <strong>plain text</strong> and has an <strong>easy method for inserting multimedia</strong>. That means that you can use it to integrate your archival photos directly into your notes; and that unlike Word, it can handle hundreds of images or thumbnails with aplomb.</p>
+
+<p>The last challenge is knowing which parts of your notes go with which pictures. This is a surprisingly hard thing to solve: but there&#8217;s an existing answer in a second technology much beloved by the technology industry: <strong>version control</strong>.</p>
+
+<p>Version control can get complicated, but in its simplest form it&#8217;s much like a wikipedia edit history: not just the current state of a file, but <em>every previous revision</em> is stored in memory.</p>
+
+<p>So for archival notes, we just need to save the state of your archival notes every 10 or 15 seconds; match those markers against the timestamps of the photos from a digital camera; and insert the pictures into the text just in place.</p>
+
+<p>When you want to review your notes, you just open them up in HTML format: thumbnails of every picture will appear in place, and you can click on them to get the full version.</p>
+
+<p>For the technically savvy, I&#8217;ve put a <a href="https://github.com/bmschmidt/archiveSync" target="_blank">set of scripts online that do just this.</a> I use gitit to view the notes themselves so I can interlink between pages. A daemon handles the git commits: but that only works because I have always been a compulsive, several-times-a-minute saver of my documents.</p>
+
+<h1 id="what-would-a-user-friendly-platform-look-like">What would a user-friendly platform look like?</h1>
+
+<p>My repo might be useful for those who are already comfortable with tools like version control: but those are the people who are already using Markdown anyway.</p>
+
+<p>To make this useful for anyone else, we&#8217;d need a system with three easy, non-command line steps:</p>
+
+<h3 id="installation">1. Installation</h3>
+
+<p>Puts Pandoc, Git, and a good Markdown editor on your computer at once.</p>
+
+<h3 id="writing-in-the-archives">2. Writing (in the archives)</h3>
+
+<p>This should resemble existing note taking as closely as possible: the user will need to make sure their camera&#8217;s clock is well-calibrated, but other than that it should look only like using a new text editor.</p>
+
+<p>Whenever you type in the editor, it saves the files <strong>and</strong> runs git commit at close intervals. (Git experts may find the idea of automatic commits without a clear commit message cringe-inducing. Insofar as they have a point, edits should probably take place on a separate branch that is forked back into the main one periodically.)</p>
+
+<h3 id="compilation-loading-your-pictures">3. Compilation (loading your pictures)</h3>
+
+<p>Imports photos from an sdcard or photo library, finds the version control files and matches photo times against them, and builds an html file for each document of notes.</p>
+
+<h2 id="whats-the-platform">What&#8217;s the platform?</h2>
+
+<p>Some of the technical components are obvious. I can&#8217;t imagine using anything other than git for version control; and though I use gitit to view files, I think that standalone html files are the only sensible way for most people to view their files. The scripting language for step three, as well, isn&#8217;t very important: I&#8217;ve used python, but anything with a set of hooks into git.</p>
+
+<p>The big question is: what&#8217;s the text editor to be? I use emacs, and get the impression that most people writing in Markdown are using vim. Both of these are clearly bad choices for the ordinary historian. For all that Markdown can be written in any editor, the writing function also must support auto-save and auto-git-commit, so anything without a scripting interface is out. SublimeText has its selling points, but free&#8217;s probably the way to go.</p>
+
+<p>That means, unless I&#8217;m missing a central player in the ecosystem, that the natural choice is the new Atom editor from Github. But perhaps there&#8217;s a more lightweight alternative?</p>
+
+<p>Platform will also be an issue. The Mac is the obvious platform to capture a majority of historians: but a surprising number of people seem to take their notes with an iPad-keyboard array, which would call the whole stack into question.</p>
+
+<h1 id="infrastructure">Infrastructure</h1>
+
+<p>So that&#8217;s the proposal. Once historians see how great Markdown is for notes, maybe they&#8217;ll think about it for lectures; once they use it for lectures, maybe the footnote ecosystem will start to improve, and we&#8217;ll finally be able to distribute historical papers as text, making them more portable, more easily structured, and more lasting.</p>
+
+<p>So, anyone want to try?</p>
+
+<p><li id="fn1">
+  It took me a few hours of mucking about in Emacs Lisp to make inserting a link to something in my Zotero library <em>almost</em> as easy as it is under Microsoft Word; and if you want to configure the core behavior of Pandoc, it&#8217;s best to use Haskell. Even the &#8220;programming historian&#8221; may not have heard of either of these languages. Both (well, at least Haskell) have their strengths: but suffice it to say that neither has ever been anyone&#8217;s answer to the question &#8220;If I should only learn one computer language, which should it be?&#8221;<a href="#fnref1">â†©</a></fn></footnotes></p>
+
+    </div>
+
+    
+
+
+    
+    
+
+    
+
+    
+
+
+  </div>
+</article>
+
+<div class="container">
+  <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    &copy; 2018 &middot; 
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+</div>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+    
+
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "Search Results",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    <script src="/js/search.js"></script>
+    
+
+    
+    
+
+  </body>
+</html>
+

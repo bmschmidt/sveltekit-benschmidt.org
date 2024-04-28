@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="generator" content="Source Themes Academic 2.4.0" />
+		<meta name="generator" content="Hugo 0.49.2" />
+		<meta name="author" content="Ben Schmidt" />
+
+		<meta
+			name="description"
+			content="Here&#8217;s a very technical, but kind of fun, problem: what&#8217;s the optimal order for a list of geographical elements, like the states of the USA?
+If you&#8217;re just here from the future, and don&#8217;t care about the details, here&#8217;s my favorite answer right now:
+[&#34;HI&#34;,&#34;AK&#34;,&#34;WA&#34;,&#34;OR&#34;,&#34;CA&#34;,&#34;AZ&#34;,&#34;NM&#34;,&#34;CO&#34;,&#34;WY&#34;,&#34;UT&#34;,&#34;NV&#34;,&#34;ID&#34;,&#34;MT&#34;,&#34;ND&#34;,&#34;SD&#34;,&#34;NE&#34;,&#34;KS&#34;,&#34;IA&#34;,&#34;MN&#34;,&#34;MO&#34;,&#34;OH&#34;,&#34;MI&#34;,&#34;IN&#34;,&#34;IL&#34;,&#34;WI&#34;,&#34;OK&#34;,&#34;AR&#34;,&#34;TX&#34;,&#34;LA&#34;,&#34;MS&#34;,&#34;AL&#34;,&#34;TN&#34;,&#34;KY&#34;,&#34;GA&#34;,&#34;FL&#34;,&#34;SC&#34;,&#34;WV&#34;,&#34;NC&#34;,&#34;VA&#34;,&#34;MD&#34;,&#34;DE&#34;,&#34;PA&#34;,&#34;NJ&#34;,&#34;NY&#34;,&#34;CT&#34;,&#34;RI&#34;,&#34;MA&#34;,&#34;NH&#34;,&#34;VT&#34;,&#34;ME&#34;] But why would you want an ordering at all? Here&#8217;s an example. In the baby name bookworm, if you search for a name, you can see the interaction of states and years."
+		/>
+
+		<link
+			rel="alternate"
+			hreflang="en-us"
+			href="/2014/06/05/optimally-ordering-geographical-entities-in-linear-space/"
+		/>
+
+		<meta name="theme-color" content="#2962ff" />
+
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
+			integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE="
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css"
+			integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw="
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+			integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css"
+			integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs="
+			crossorigin="anonymous"
+		/>
+
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css"
+			crossorigin="anonymous"
+		/>
+
+		<link
+			rel="stylesheet"
+			href="//fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:400,400italic,700|Roboto+Mono"
+		/>
+
+		<link rel="stylesheet" href="/styles.css" />
+
+		<link rel="alternate" href="/feed/index.xml" type="application/rss+xml" title="Ben Schmidt" />
+		<link rel="feed" href="/feed/index.xml" type="application/rss+xml" title="Ben Schmidt" />
+
+		<link rel="manifest" href="/site.webmanifest" />
+		<link rel="icon" type="image/png" href="/img/icon.png" />
+		<link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png" />
+
+		<link
+			rel="canonical"
+			href="/2014/06/05/optimally-ordering-geographical-entities-in-linear-space/"
+		/>
+
+		<meta property="twitter:card" content="summary_large_image" />
+
+		<meta property="twitter:site" content="@benmschmidt" />
+		<meta property="twitter:creator" content="@benmschmidt" />
+
+		<meta property="og:site_name" content="Ben Schmidt" />
+		<meta
+			property="og:url"
+			content="/2014/06/05/optimally-ordering-geographical-entities-in-linear-space/"
+		/>
+		<meta property="og:title" content="Finding the best ordering for states | Ben Schmidt" />
+		<meta
+			property="og:description"
+			content="Here&#8217;s a very technical, but kind of fun, problem: what&#8217;s the optimal order for a list of geographical elements, like the states of the USA?
+If you&#8217;re just here from the future, and don&#8217;t care about the details, here&#8217;s my favorite answer right now:
+[&#34;HI&#34;,&#34;AK&#34;,&#34;WA&#34;,&#34;OR&#34;,&#34;CA&#34;,&#34;AZ&#34;,&#34;NM&#34;,&#34;CO&#34;,&#34;WY&#34;,&#34;UT&#34;,&#34;NV&#34;,&#34;ID&#34;,&#34;MT&#34;,&#34;ND&#34;,&#34;SD&#34;,&#34;NE&#34;,&#34;KS&#34;,&#34;IA&#34;,&#34;MN&#34;,&#34;MO&#34;,&#34;OH&#34;,&#34;MI&#34;,&#34;IN&#34;,&#34;IL&#34;,&#34;WI&#34;,&#34;OK&#34;,&#34;AR&#34;,&#34;TX&#34;,&#34;LA&#34;,&#34;MS&#34;,&#34;AL&#34;,&#34;TN&#34;,&#34;KY&#34;,&#34;GA&#34;,&#34;FL&#34;,&#34;SC&#34;,&#34;WV&#34;,&#34;NC&#34;,&#34;VA&#34;,&#34;MD&#34;,&#34;DE&#34;,&#34;PA&#34;,&#34;NJ&#34;,&#34;NY&#34;,&#34;CT&#34;,&#34;RI&#34;,&#34;MA&#34;,&#34;NH&#34;,&#34;VT&#34;,&#34;ME&#34;] But why would you want an ordering at all? Here&#8217;s an example. In the baby name bookworm, if you search for a name, you can see the interaction of states and years."
+		/>
+
+		<meta property="og:image" content="/img/icon-192.png" />
+		<meta property="og:locale" content="en-us" />
+
+		<meta property="article:published_time" content="2014-06-05T14:36:07&#43;00:00" />
+
+		<meta property="article:modified_time" content="2014-06-05T14:36:07&#43;00:00" />
+
+		<title>Finding the best ordering for states | Ben Schmidt</title>
+	</head>
+	<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71">
+		<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+			<div class="container">
+				<a class="navbar-brand" href="/">Ben Schmidt</a>
+
+				<button
+					type="button"
+					class="navbar-toggler"
+					data-toggle="collapse"
+					data-target="#navbar"
+					aria-controls="navbar"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					<span><i class="fas fa-bars"></i></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbar">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+							<a class="nav-link" href="/#about">
+								<span>Home</span>
+							</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="/#publications">
+								<span>Publications</span>
+							</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="/#posts">
+								<span>Posts</span>
+							</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="/research-portfolio/">
+								<span>Research</span>
+							</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="/maps-visualizations-gallery/">
+								<span>Visualization Gallery</span>
+							</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="/files/SchmidtCV.pdf">
+								<span>CV</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<article class="article" itemscope itemtype="http://schema.org/Article">
+			<div class="article-container pt-3">
+				<h1 itemprop="name">Finding the best ordering for states</h1>
+
+				<div class="article-metadata">
+					<span itemscope itemprop="author" itemtype="http://schema.org/Person">
+						<meta itemprop="name" content="Ben Schmidt" />
+					</span>
+
+					<span class="article-date">
+						<meta content="2014-06-05 14:36:07 &#43;0000 &#43;0000" itemprop="datePublished" />
+						<time datetime="2014-06-05 14:36:07 &#43;0000 &#43;0000" itemprop="dateModified">
+							Jun 5, 2014
+						</time>
+					</span>
+					<span itemscope itemprop="publisher" itemtype="http://schema.org/Person">
+						<meta itemprop="name" content="Ben Schmidt" />
+					</span>
+
+					<span class="middot-divider"></span>
+					<span class="article-categories">
+						<i class="fas fa-folder"></i>
+
+						<a href="/categories/uncategorized/">Uncategorized</a>
+					</span>
+
+					<div class="share-box" aria-hidden="true">
+						<ul class="share">
+							<li>
+								<a
+									class="twitter"
+									href="https://twitter.com/intent/tweet?text=Finding%20the%20best%20ordering%20for%20states&amp;url=%2f2014%2f06%2f05%2foptimally-ordering-geographical-entities-in-linear-space%2f"
+									target="_blank"
+									rel="noopener"
+								>
+									<i class="fab fa-twitter"></i>
+								</a>
+							</li>
+							<li>
+								<a
+									class="facebook"
+									href="https://www.facebook.com/sharer.php?u=%2f2014%2f06%2f05%2foptimally-ordering-geographical-entities-in-linear-space%2f"
+									target="_blank"
+									rel="noopener"
+								>
+									<i class="fab fa-facebook-f"></i>
+								</a>
+							</li>
+							<li>
+								<a
+									class="linkedin"
+									href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2f2014%2f06%2f05%2foptimally-ordering-geographical-entities-in-linear-space%2f&amp;title=Finding%20the%20best%20ordering%20for%20states"
+									target="_blank"
+									rel="noopener"
+								>
+									<i class="fab fa-linkedin-in"></i>
+								</a>
+							</li>
+							<li>
+								<a
+									class="weibo"
+									href="http://service.weibo.com/share/share.php?url=%2f2014%2f06%2f05%2foptimally-ordering-geographical-entities-in-linear-space%2f&amp;title=Finding%20the%20best%20ordering%20for%20states"
+									target="_blank"
+									rel="noopener"
+								>
+									<i class="fab fa-weibo"></i>
+								</a>
+							</li>
+							<li>
+								<a
+									class="email"
+									href="mailto:?subject=Finding%20the%20best%20ordering%20for%20states&amp;body=%2f2014%2f06%2f05%2foptimally-ordering-geographical-entities-in-linear-space%2f"
+								>
+									<i class="fas fa-envelope"></i>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="article-container">
+				<div class="article-style" itemprop="articleBody">
+					<p>
+						Here&#8217;s a very technical, but kind of fun, problem: what&#8217;s the optimal order
+						for a list of geographical elements, like the states of the USA?
+					</p>
+
+					<p>
+						If you&#8217;re just here from the future, and don&#8217;t care about the details,
+						here&#8217;s my favorite answer right now:
+					</p>
+
+					<pre tabindex="0">
+["HI","AK","WA","OR","CA","AZ","NM","CO","WY","UT","NV","ID","MT","ND","SD","NE","KS","IA","MN","MO","OH","MI","IN","IL","WI","OK","AR","TX","LA","MS","AL","TN","KY","GA","FL","SC","WV","NC","VA","MD","DE","PA","NJ","NY","CT","RI","MA","NH","VT","ME"]</pre
+					>
+
+					<p>
+						But why would you want an ordering at all? Here&#8217;s an example. In the baby name
+						bookworm, if you search for a name, you can see the interaction of states and years.
+						Let&#8217;s choose &#8220;Kevin,&#8221; because it played such a role in my
+						<a
+							href="http://www.theatlantic.com/entertainment/archive/2013/01/did-anyone-say-racial-equality-in-1865-the-language-of-i-lincoln-i/266990/"
+							target="_blank"
+							>anachronism-hunting piece on Lincoln</a
+						>.
+					</p>
+
+					<p>
+						<a
+							href="http://benschmidt.org/wp/wp-content/uploads/2014/06/Screen-Shot-2014-06-04-at-3.00.44-PM.png"
+							target="_blank"
+							><img
+								class="alignnone size-large wp-image-294"
+								alt="Screen Shot 2014-06-04 at 3.00.44 PM"
+								src="http://benschmidt.org/wp/wp-content/uploads/2014/06/Screen-Shot-2014-06-04-at-3.00.44-PM-1024x662.png"
+								width="625"
+								height="404"
+								srcset="
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/Screen-Shot-2014-06-04-at-3.00.44-PM-300x194.png   300w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/Screen-Shot-2014-06-04-at-3.00.44-PM-1024x662.png 1024w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/Screen-Shot-2014-06-04-at-3.00.44-PM-624x403.png   624w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/Screen-Shot-2014-06-04-at-3.00.44-PM.png          1265w
+								"
+								sizes="(max-width: 625px) 100vw, 625px"
+						/></a>
+					</p>
+
+					<p>
+						Clearly the name took off around the start of the baby boom. But is there a geographical
+						pattern? It&#8217;s very hard to say. It does look like the red names begin around 1955
+						in much of the country. But in a few, it&#8217;s not until the early 1970s. Which ones?
+						Alabama, Georgia, North Carolina, South Carolina. That is, after substantial reading
+						parsing over to the axis, it&#8217;s clear that most of those are southern states. But
+						this is the sort of insight that should be immediately obvious. And there may be other
+						connections we&#8217;re missing out on. The whole point of data visualization over
+						tables is that you can pick out patterns using faster forms of cognition: requiring you
+						to push over to the left to read off the names is a major loss.
+					</p>
+
+					<p>
+						Alphabetical order makes it easy to find any individual state (assuming you know its
+						name) but hard to see the way related states move with each other.  It means that to
+						trace out regional variations over time, we tend to animate maps: but using time as the
+						proxy for time makes cross-temporal comparisons much harder to tell. As Tufte says,
+						comparisons should be enforced across the eyespan: relying on animation to trace out
+						common names is a big problem. So there&#8217;s a dramatic interest in seeing different
+						names pop up in (for instance)
+						<a
+							href="http://jezebel.com/map-sixty-years-of-the-most-popular-names-for-girls-s-1443501909"
+							target="_blank"
+							>Reuben Fischer-Baum&#8217;s animation of baby names</a
+						>; but you have to watch the whole thing to think through questions like &#8220;what
+						regions tend to adopt names early?&#8221; or &#8220;what&#8217;s the name that stays on
+						top for the longest?&#8221;
+					</p>
+
+					<p>
+						<span style="line-height: 1.714285714; font-size: 1rem"
+							>Putting it all into X-Y makes these questions easier. But that means we need to map
+							states to X or to Y. Alphabetical order means that states are not arranged in a way
+							that places states near others like them.</span
+						>
+					</p>
+
+					<p>
+						So how could we make the states usefully arranged? We need some dimensionality
+						reduction.
+					</p>
+
+					<p><strong>Linear reductions</strong></p>
+
+					<p>
+						One obvious way would be east-to-west or north-to-south: that starts out quite well,
+						with all of New England:
+					</p>
+
+					<pre tabindex="0">
+ME MA RI NH VT CT NY NJ PA DE MD DC VA NC SC WV OH FL GA MI KY IN AL TN IL WI MS MO LA AR MN IA TX KS NE OK SD ND WY CO NM MT UT AZ ID NV CA OR WA AK HI</pre
+					>
+
+					<p>
+						But quickly falls apart with Ohio, Florida, Georgia, and Michigan in immediate
+						succession. If we plot the states, you can quickly see why. Rather than list orders,
+						I&#8217;m going to show them as paths through a map: here&#8217;s what that looks like
+						in this case.
+					</p>
+
+					<p>
+						<a
+							href="http://benschmidt.org/wp/wp-content/uploads/2014/06/eastToWest.png"
+							target="_blank"
+							><img
+								class="alignnone size-full wp-image-295"
+								alt="eastToWest"
+								src="http://benschmidt.org/wp/wp-content/uploads/2014/06/eastToWest.png"
+								width="555"
+								height="319"
+								srcset="
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/eastToWest-300x172.png 300w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/eastToWest.png         555w
+								"
+								sizes="(max-width: 555px) 100vw, 555px"
+						/></a>
+					</p>
+
+					<p>&nbsp;</p>
+
+					<p>
+						(By the way, you can see that the points are a little arbitrary: I&#8217;ve taken the
+						first geonames hit for the state, which is sometimes the capital, sometimes the state
+						centroid, and sometimes the most important city. Ideally I&#8217;d be using the
+						population-weighted centroid, but in some ways I kind of like the results that come out
+						of this.
+					</p>
+
+					<p>
+						There are some other possibilities for linear dimensionality reduction (principal
+						components comes to mind) but they&#8217;ll have the same fundamental problem. We want a
+						metric that takes proximity more fully into account. Even
+						<strong>non-metric multi-dimensional scaling</strong> fails: it handles a couple cases
+						better (Jackson and St. Louis are in a more sensible order, for instance), but it still
+						jumps erratically up and down, preventing any larger groups like &#8220;the south&#8221;
+						from coming into sight:
+					</p>
+
+					<p>
+						<a
+							href="http://benschmidt.org/wp/wp-content/uploads/2014/06/nonmetric-MDS.png"
+							target="_blank"
+							><img
+								class="alignnone size-full wp-image-296"
+								alt="nonmetric MDS"
+								src="http://benschmidt.org/wp/wp-content/uploads/2014/06/nonmetric-MDS.png"
+								width="582"
+								height="275"
+						/></a>
+					</p>
+
+					<p>&nbsp;</p>
+
+					<p><strong>Hierarchical clustering approaches</strong></p>
+
+					<p>
+						One possible approach, suggested to me by Miriam Huntley, is hierarchical clustering:
+						using distances, we can cluster the states by proximity. Here&#8217;s the initial result
+						of that:
+					</p>
+
+					<p>
+						<a
+							href="http://benschmidt.org/wp/wp-content/uploads/2014/06/Initial-Dendrogram.png"
+							target="_blank"
+							><img
+								class="alignnone size-full wp-image-292"
+								alt="Initial Dendrogram"
+								src="http://benschmidt.org/wp/wp-content/uploads/2014/06/Initial-Dendrogram.png"
+								width="639"
+								height="745"
+								srcset="
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/Initial-Dendrogram-257x300.png 257w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/Initial-Dendrogram-624x727.png 624w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/Initial-Dendrogram.png         639w
+								"
+								sizes="(max-width: 639px) 100vw, 639px"
+						/></a>
+					</p>
+
+					<p>
+						The individual groups are quite nice (New England is there, plus New York at the end),
+						and every state is adjacent to an immediate neighbor. And while the groups have
+						geographical coherence, they aren&#8217;t exactly the regions we know and love: the
+						&#8220;mid-atlantic&#8221; runs down to South Carolina, and the midwest includes the
+						gulf coast all the way to Tallahassee. The connections between the groups are scattered.
+						Florida is next to Pennsylvania, and South Carolina to Massachusetts. Seen as a path,
+						the weirdness of this is clear:
+					</p>
+
+					<p>
+						<a href="http://benschmidt.org/wp/wp-content/uploads/2014/06/hclust.png" target="_blank"
+							><img
+								class="alignnone size-full wp-image-297"
+								alt="hclust"
+								src="http://benschmidt.org/wp/wp-content/uploads/2014/06/hclust.png"
+								width="605"
+								height="347"
+								srcset="
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/hclust-300x172.png 300w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/hclust.png         605w
+								"
+								sizes="(max-width: 605px) 100vw, 605px"
+						/></a>
+					</p>
+
+					<p>
+						Leaf ordering in dendrograms is arbitrary, however, and we can do better than this.
+						Using a method developed by Bar-Joseph et al, and implemented in the &#8220;cba&#8221;
+						library for R, we can reorder the dendrogram so that groups stay the same, but the
+						leaves are ordered so that transitions from one group to the next are maintained.
+					</p>
+
+					<p>&nbsp;</p>
+
+					<p>
+						<a
+							href="http://benschmidt.org/wp/wp-content/uploads/2014/06/Reordered-dendrogram.png"
+							target="_blank"
+							><img
+								class="alignnone size-full wp-image-293"
+								alt="Reordered dendrogram"
+								src="http://benschmidt.org/wp/wp-content/uploads/2014/06/Reordered-dendrogram.png"
+								width="639"
+								height="745"
+								srcset="
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/Reordered-dendrogram-257x300.png 257w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/Reordered-dendrogram-624x727.png 624w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/Reordered-dendrogram.png         639w
+								"
+								sizes="(max-width: 639px) 100vw, 639px"
+						/></a>
+					</p>
+
+					<p>&nbsp;</p>
+
+					<p>Now, the path looks considerably better:</p>
+
+					<p>
+						<a
+							href="http://benschmidt.org/wp/wp-content/uploads/2014/06/Optimal-map.png"
+							target="_blank"
+							><img
+								class="alignnone size-full wp-image-298"
+								alt="Optimal-map"
+								src="http://benschmidt.org/wp/wp-content/uploads/2014/06/Optimal-map.png"
+								width="651"
+								height="384"
+								srcset="
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/Optimal-map-624x368.png 624w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/Optimal-map.png         651w
+								"
+								sizes="(max-width: 651px) 100vw, 651px"
+						/></a>
+					</p>
+
+					<p>&nbsp;</p>
+
+					<p>
+						The clusters remain adjacent, but now the transitions are so smooth that it&#8217;s not
+						obvious where one begins and the other ends. Instead, we get a serpentine path through
+						the states that both ensures every path is between two adjacent states, and keeps paths
+						generally inside the same region.
+					</p>
+
+					<p><strong>Network approaches</strong></p>
+
+					<p>
+						Can we do better? The strategy of plotting these as paths suggests that maybe this is an
+						instance of the traveling salesperson problem, in which we want to travel through all
+						the states minimizing the distance traveled. Why shouldn&#8217;t the &#8220;best&#8221;
+						solution simply be the one where the overall sum of distances is the least?
+					</p>
+
+					<p>
+						Inserting a dummy node as start- and end-point lets us view that: using the best method
+						found by the &#8220;TSP&#8221; package in R (which is not guaranteed to be the optimal
+						solution, since the traveling salesman is a notoriously difficult problem to solve), we
+						get quite a different path:
+					</p>
+
+					<p>
+						<a
+							href="http://benschmidt.org/wp/wp-content/uploads/2014/06/TravelingSalesman1.png"
+							target="_blank"
+							><img
+								class="alignnone size-full wp-image-300"
+								alt="TravelingSalesman"
+								src="http://benschmidt.org/wp/wp-content/uploads/2014/06/TravelingSalesman1.png"
+								width="827"
+								height="458"
+								srcset="
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/TravelingSalesman1-300x166.png 300w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/TravelingSalesman1-624x345.png 624w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/TravelingSalesman1.png         827w
+								"
+								sizes="(max-width: 827px) 100vw, 827px"
+						/></a>
+					</p>
+
+					<p>&nbsp;</p>
+
+					<p>
+						Rather than start in Maine, this route begins in Tennessee! After winding through the
+						Midwest to West Virginia, it leaps to Vermont and then takes a beautifully practical
+						course down the Eastern seaboard through Texas, through the great plains, and then takes
+						up nearly an east-to-west ordering through the Mountain and Western time zones. While
+						many of the regional choices here look better to me than the dendrogram solution
+						(particularly the coherence of the south, the distance-optimizing strategy means that
+						there are a few nearby states that have nothing in common: the leap from New Mexico to
+						Montana, for example, and the extremely strange choice to place Washington DC between
+						West Virginia and Vermont, ten nodes removed from either Maryland or Virginia, the
+						closest geographical points. (In fact, I think the route could be improved by heading
+						straight to Vermont from WV and putting DC in its rightful place: but it says something
+						that out of the 7 algorithms in the free version of the TSP package, none was able to
+						improve on this route).
+					</p>
+
+					<p>
+						<strong style="line-height: 1.714285714; font-size: 1rem">Fractal Curves</strong
+						><span style="line-height: 1.714285714; font-size: 1rem"> </span>
+					</p>
+
+					<p>
+						Another option is not to minimize travel distance but to maximize the likelihood that
+						two points will be next to each other. That suggests filling the geographic region with
+						some kind of fractal curve, and then positioning each state along the curve.
+					</p>
+
+					<p>
+						This is an appealing way to think of arranging the country linearly: not as a network,
+						but as iterable set of points. For just the United States, we could use some
+						already-existing curve path. The most widespread linear mapping of points is the Zip
+						code system: Samuel Arbesman has
+						<a
+							href="http://www.wired.com/2012/01/the-fractal-dimension-of-zip-codes/?utm_source=feedburner&amp;utm_medium=feed&amp;utm_campaign=Feed%253A+wired%252Findex+%2528Wired%253A+Index+3+%2528Top+Stories+2%2529%2529"
+							target="_blank"
+							>written about this on Wired</a
+						>, and includes a link to
+						<a href="http://eagereyes.org/zipscribble-maps/united-states" target="_blank"
+							>Robert Kosara&#8217;s ZipScribble maps</a
+						>. Here&#8217;s Kosara&#8217;s idea with a few minor changes (I use a rainbow spectrum,
+						rather than coloring each state separately, and an Albers projection. And it appears
+						that the zip database I have handy has something weird going on in southwest
+						Georgia.) <a
+							href="http://benschmidt.org/wp/wp-content/uploads/2014/06/ZipManifold.png"
+							target="_blank"
+							><img
+								class="alignnone size-large wp-image-306"
+								alt="ZipManifold"
+								src="http://benschmidt.org/wp/wp-content/uploads/2014/06/ZipManifold-1024x682.png"
+								width="625"
+								height="416"
+								srcset="
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/ZipManifold-300x200.png   300w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/ZipManifold-1024x682.png 1024w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/ZipManifold-624x416.png   624w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/ZipManifold.png          1500w
+								"
+								sizes="(max-width: 625px) 100vw, 625px"
+						/></a>
+					</p>
+
+					<p><strong>Space-filling curves</strong></p>
+
+					<p>
+						The ZIP system isn&#8217;t especially logical, but there should be something similar
+						that&#8217;s better. My first thought for this problem, which the whole post, was to use
+						a <strong>Hilbert Curve</strong>. It turns out that
+						<a
+							href="http://eagereyes.org/zipscribble-maps/travelling-presidential-candidate-map"
+							target="_blank"
+							>Kosara has mapped that approach onto the Zip dataset</a
+						>.
+					</p>
+
+					<p>
+						Using just the state points, it&#8217;s possible to draw a Hilbert curve that covers the
+						continental United States, and then visit each state at the moment it&#8217;s closest to
+						the curve. The actual path taken can then be simplified down to eliminate the
+						intervening states. Here&#8217;s what that looks like, with both the Hilbert curve and
+						the simplified route. I&#8217;ve shaded the Hilbert curve using a double rainbow so
+						it&#8217;s easier to trace from its origin near the Bahamas (first making shore near
+						South Carolina) to its exit off the coast of Los Angeles.
+					</p>
+
+					<p>
+						<a href="http://benschmidt.org/wp/wp-content/uploads/2014/06/Hil.png" target="_blank"
+							><img
+								alt="Hilbert Curve Route"
+								src="http://benschmidt.org/wp/wp-content/uploads/2014/06/Hil.png"
+								width="903"
+								height="382"
+						/></a>
+					</p>
+
+					<p>&nbsp;</p>
+
+					<p>
+						I&#8217;m disappointed by the performance here. While there is some regional coherence
+						(the stretch from Wisconsin to Kansas is well done, and the first jumps through the
+						South are acceptable), the square binning forces some rather strange choices: the odd
+						jag down to North Carolina, the detour to Colorado and Wyoming.
+					</p>
+
+					<p>
+						There are other issues as well. Hilbert curves work best in square spaces, and the
+						patches of ocean/Canada/Mexico that get filled are pretty far off limits. While I
+						don&#8217;t show Alaska and Hawaii, for the other algorithms they&#8217;ve simply been
+						tacked on at the end in a reasonable manner: here, though, a solution that includes
+						Alaska and Hawaii makes some significant changes to the full arrangement and vastly
+						increases the percentage of empty space, which tends to introduce odd decisions (like
+						interposing Alaska between Oregon and Nevada.)<a
+							href="http://benschmidt.org/wp/wp-content/uploads/2014/06/HilbertCurveWIthAK.png"
+							target="_blank"
+							><img
+								class="alignnone size-large wp-image-309"
+								alt="HilbertCurveWIthAK"
+								src="http://benschmidt.org/wp/wp-content/uploads/2014/06/HilbertCurveWIthAK-1024x556.png"
+								width="625"
+								height="339"
+								srcset="
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/HilbertCurveWIthAK-300x163.png   300w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/HilbertCurveWIthAK-1024x556.png 1024w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/HilbertCurveWIthAK-624x339.png   624w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/HilbertCurveWIthAK.png          1404w
+								"
+								sizes="(max-width: 625px) 100vw, 625px"
+						/></a>
+					</p>
+
+					<p>&nbsp;</p>
+
+					<p>
+						I suspect there are ways of optimizing the Hilbert curve, or some similar fractal path,
+						so that it better maps onto actual geographic spaces. That seems like an interesting
+						avenue, potentially: but the initial results here seem worse, not better, than traveling
+						salesman approximations.
+					</p>
+
+					<p><strong>Conclusions and Deus ex Machina</strong></p>
+
+					<p>So on this particular set, the best results seem to come from, in descending order,</p>
+
+					<p>1) Reordered hierarchical clustering</p>
+
+					<p>2) Traveling Salesperson solutions</p>
+
+					<p>3) Fractal Curves</p>
+
+					<p>
+						4) Quasi-linear dimensionality reduction (east-to-west, multi-dimensional scaling, etc).
+					</p>
+
+					<p>
+						<span style="line-height: 1.714285714; font-size: 1rem"
+							>For the general problem (European countries, say, or counties in a state) I&#8217;d
+							probably start with reordered hierarchical clustering or TSP solutions, at least until
+							I learn how better to fit a fractal curve to an arbitary space.</span
+						>
+					</p>
+
+					<p>
+						But for this particular problem, I&#8217;ve got an ace in the hole:
+						there _are _conventional orderings of states that provide an acid test. In particular,
+						we want something that matches to
+						<a href="https://www.census.gov/geo/maps-data/maps/docs/reg_div.txt" target="_blank"
+							>census regions</a
+						>.
+					</p>
+
+					<p>
+						The ordering inside census regions is arbitrary, just like our clustering diagrams. So
+						the best possible solution that includes some knowledge about the
+						intrinsically _real _regions of the United States (the midwest, the south, etc.) is to
+						combine the census regions with the optimal-dendrogram measures.
+					</p>
+
+					<p>
+						Putting phony clusters just from the census regions looks like this:
+						<a
+							href="http://benschmidt.org/wp/wp-content/uploads/2014/06/Phony-Cluster.png"
+							target="_blank"
+							><img
+								class="alignnone size-large wp-image-311"
+								alt="Phony Cluster"
+								src="http://benschmidt.org/wp/wp-content/uploads/2014/06/Phony-Cluster-1024x363.png"
+								width="625"
+								height="221"
+								srcset="
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/Phony-Cluster-300x106.png   300w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/Phony-Cluster-1024x363.png 1024w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/Phony-Cluster-624x221.png   624w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/Phony-Cluster.png          1153w
+								"
+								sizes="(max-width: 625px) 100vw, 625px"
+						/></a>
+					</p>
+
+					<p>
+						I can just plug those into a dummy distance matrix so that group membership trumps any
+						other sorts of distance: and then allow geographical distance to sort out the spinning
+						of those trees into a more sensible order.
+					</p>
+
+					<p>
+						So, adding the constraint that census divisions and regions be kept intact, the optimal
+						ordering looks like this: starting in Maine, traveling through the South west to Texas,
+						skipping to the upper Midwest and then taking the same route west through the plains and
+						mountains as the dendrogram:
+					</p>
+
+					<p>
+						<a
+							href="http://benschmidt.org/wp/wp-content/uploads/2014/06/Census-Clustering.png"
+							target="_blank"
+							><img
+								class="alignnone size-large wp-image-312"
+								alt="Census Clustering"
+								src="http://benschmidt.org/wp/wp-content/uploads/2014/06/Census-Clustering-1024x557.png"
+								width="625"
+								height="339"
+								srcset="
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/Census-Clustering-300x163.png   300w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/Census-Clustering-1024x557.png 1024w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/Census-Clustering-624x339.png   624w
+								"
+								sizes="(max-width: 625px) 100vw, 625px"
+						/></a>
+					</p>
+
+					<p>
+						Is this the perfect ordering? To my mind, it&#8217;s not: but the flaws come straight
+						from the census, not from the algorithm. West Virginia should not in the coastal south,
+						it should be in the same division as Kentucky; the leap from Oklahoma to Wisconsin is
+						unfortunate, and so is the one from Florida to Kentucky. Still, the census regions
+						constrain is quite nice to have. And unlike the unguided paths, it preserves all but one
+						of what I intuitively think of as the essential pairings: the Dakotas, the Carolinas,
+						Alabama-Mississippi, Vermont-New Hampshire, Kansas-Nebraska, Colorado-Wyoming.
+					</p>
+
+					<p>
+						So, let&#8217;s return to the original visualization to see what this new ordering helps
+						us see. Remember, this original version revealed only with some serious axis-reading
+						that the South starting using &#8220;Kevin&#8221; later.
+					</p>
+
+					<p>&nbsp;</p>
+
+					<p>&nbsp;</p>
+
+					<p>
+						<a
+							href="http://benschmidt.org/wp/wp-content/uploads/2014/06/Screen-Shot-2014-06-04-at-3.00.44-PM.png"
+							target="_blank"
+							><img
+								class="alignnone size-large wp-image-294"
+								alt="Screen Shot 2014-06-04 at 3.00.44 PM"
+								src="http://benschmidt.org/wp/wp-content/uploads/2014/06/Screen-Shot-2014-06-04-at-3.00.44-PM-1024x662.png"
+								width="625"
+								height="404"
+								srcset="
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/Screen-Shot-2014-06-04-at-3.00.44-PM-300x194.png   300w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/Screen-Shot-2014-06-04-at-3.00.44-PM-1024x662.png 1024w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/Screen-Shot-2014-06-04-at-3.00.44-PM-624x403.png   624w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/Screen-Shot-2014-06-04-at-3.00.44-PM.png          1265w
+								"
+								sizes="(max-width: 625px) 100vw, 625px"
+						/></a>
+					</p>
+
+					<p>
+						Here it is with the census-based ordering. (<a
+							href="http://benschmidt.org/statenames/#%7B%22database%22%3A%22SSA%22%2C%22search_limits%22%3A%7B%22word%22%3A%5B%22Kevin%22%5D%7D%2C%22aesthetic%22%3A%7B%22y%22%3A%22state%22%2C%22x%22%3A%22year_year%22%2C%22color%22%3A%22WordsPerMillion%22%7D%2C%22plotType%22%3A%22heatmap%22%2C%22method%22%3A%22return_json%22%7D"
+							target="_blank"
+							>For a version you can hover over, see the browser itself</a
+						>). The southern states, two-thirds of the way down the page, clearly do begin later:
+						but now it&#8217;s also immediately evident which of them _don&#8217;t _lag as much.
+						There are also several patterns that are immediate evident which remain completely
+						obscure in an alphabetical ordering: usage of &#8220;Kevin&#8221; is significantly
+						higher around 1990 in the northeast, particularly the mid-Atlantic, than it is in the
+						rest of country. And while the South waits the longest, a lag in the Arizona-New Mexico
+						pairing is also clear.
+					</p>
+
+					<p>
+						<a
+							href="http://benschmidt.org/wp/wp-content/uploads/2014/06/Screen-Shot-2014-06-05-at-3.52.16-PM.png"
+							target="_blank"
+							><img
+								class="alignnone size-large wp-image-314"
+								alt="Screen Shot 2014-06-05 at 3.52.16 PM"
+								src="http://benschmidt.org/wp/wp-content/uploads/2014/06/Screen-Shot-2014-06-05-at-3.52.16-PM-1024x582.png"
+								width="625"
+								height="355"
+								srcset="
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/Screen-Shot-2014-06-05-at-3.52.16-PM-300x170.png   300w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/Screen-Shot-2014-06-05-at-3.52.16-PM-1024x582.png 1024w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/Screen-Shot-2014-06-05-at-3.52.16-PM-624x355.png   624w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/Screen-Shot-2014-06-05-at-3.52.16-PM.png          1341w
+								"
+								sizes="(max-width: 625px) 100vw, 625px"
+						/></a>
+					</p>
+
+					<p>&nbsp;</p>
+
+					<p>
+						This style of display also makes subtler patterns visible. &#8220;Jennifer,&#8221; for
+						example, rises a year later in the South than elsewhere. That would be lost as visual
+						noise in an alphabetical ordering, but is completely clear here.
+					</p>
+
+					<p>
+						Is a geographical ordering the best? Not always. Take &#8220;<a
+							href="http://benschmidt.org/statenames/#%7B%22database%22%3A%22SSA%22%2C%22search_limits%22%3A%7B%22word%22%3A%5B%22Madison%22%5D%7D%2C%22aesthetic%22%3A%7B%22y%22%3A%22state%22%2C%22x%22%3A%22year_year%22%2C%22color%22%3A%22WordsPerMillion%22%7D%2C%22plotType%22%3A%22heatmap%22%2C%22method%22%3A%22return_json%22%2C%22counttype%22%3A%5B%22WordsPerMillion%22%5D%2C%22groups%22%3A%5B%22state%22%2C%22year_year%22%5D%2C%22scaleType%22%3A%22linear%22%7D"
+							target="_blank"
+							>Madison</a
+						>&#8220;: its rise shows striped bands that don&#8217;t seem to be regional. Illinois,
+						New Jersey, Washington DC, and New Mexico all avoid the wave. In fact, if you look
+						closer, this is clearly a racial thing: &#8220;Madison&#8221; was most popular in states
+						with overwhelmingly white populations. (Except Wisconsin, it seems). And aside from the
+						bend through the southwest, there aren&#8217;t a whole lot of largely-minority states in
+						any contiguous curve.
+					</p>
+
+					<p>
+						<a
+							href="http://benschmidt.org/wp/wp-content/uploads/2014/06/Screen-Shot-2014-06-05-at-4.04.51-PM.png"
+							target="_blank"
+							><img
+								class="alignnone size-full wp-image-315"
+								alt="Screen Shot 2014-06-05 at 4.04.51 PM"
+								src="http://benschmidt.org/wp/wp-content/uploads/2014/06/Screen-Shot-2014-06-05-at-4.04.51-PM.png"
+								width="974"
+								height="619"
+								srcset="
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/Screen-Shot-2014-06-05-at-4.04.51-PM-624x396.png 624w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/06/Screen-Shot-2014-06-05-at-4.04.51-PM.png         974w
+								"
+								sizes="(max-width: 974px) 100vw, 974px"
+						/></a>
+					</p>
+
+					<p>&nbsp;</p>
+
+					<p>
+						But on another level, that just points out more the usefulness of _some _sensible
+						ordering to start with.
+					</p>
+				</div>
+			</div>
+		</article>
+
+		<div class="container">
+			<footer class="site-footer">
+				<p class="powered-by">
+					&copy; 2018 &middot; Powered by the
+					<a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener"
+						>Academic theme</a
+					>
+					for <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+					<span class="float-right" aria-hidden="true">
+						<a href="#" id="back_to_top">
+							<span class="button_icon">
+								<i class="fas fa-chevron-up fa-2x"></i>
+							</span>
+						</a>
+					</span>
+				</p>
+			</footer>
+		</div>
+
+		<div id="modal" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Cite</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<pre><code class="tex hljs"></code></pre>
+					</div>
+					<div class="modal-footer">
+						<a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+							<i class="fas fa-copy"></i> Copy
+						</a>
+						<a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+							<i class="fas fa-download"></i> Download
+						</a>
+						<div id="modal-error"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+			integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg=="
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js"
+			integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA=="
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"
+			integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ="
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js"
+			integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ=="
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"
+			integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M="
+			crossorigin="anonymous"
+		></script>
+
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"
+			integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw="
+			crossorigin="anonymous"
+		></script>
+
+		<script src="/js/hugo-academic.js"></script>
+
+		<script>
+			hljs.initHighlightingOnLoad();
+		</script>
+
+		<script>
+			const search_index_filename = '/index.json';
+			const i18n = {
+				placeholder: 'Search...',
+				results: 'Search Results',
+				no_results: 'No results found'
+			};
+			const content_type = {
+				post: 'Posts',
+				project: 'Projects',
+				publication: 'Publications',
+				talk: 'Talks'
+			};
+		</script>
+
+		<script id="search-hit-fuse-template" type="text/x-template">
+			<div class="search-hit" id="summary-{{key}}">
+			<div class="search-hit-content">
+			  <div class="search-hit-name">
+			    <a href="{{relpermalink}}">{{title}}</a>
+			    <div class="article-metadata search-hit-type">{{type}}</div>
+			    <p class="search-hit-description">{{snippet}}</p>
+			  </div>
+			</div>
+			</div>
+		</script>
+
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js"
+			integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI="
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js"
+			integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U="
+			crossorigin="anonymous"
+		></script>
+		<script src="/js/search.js"></script>
+	</body>
+</html>

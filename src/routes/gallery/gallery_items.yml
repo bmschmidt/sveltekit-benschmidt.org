@@ -1,3 +1,12 @@
+- title: 'Landscape of Biomedicine'
+  description: |
+    A visualization and narrative description of 21 million biomedical abstracts combining 
+    scrolling, search, and interactive zoom.
+    In collaboration with Rita Gonzalez-Marquez, Dmitry Kobak, and others at Berens Lab
+    at the University of Tübingen.
+  src: '/post/2023-03-20-pubmed/20230420220011.png'
+  link: 'https://static.nomic.ai/pubmed.html'
+  alt: An image of a T-SNE plot showing an active text search. 
 - title: 'Ghost shipping paths'
   description: |
     The tracks of vessels from the ICOADS database.

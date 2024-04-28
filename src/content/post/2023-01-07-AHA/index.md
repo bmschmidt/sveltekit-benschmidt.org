@@ -34,7 +34,7 @@ Of all of these areas it's the low retention rates of the 2012-2016 cohorts that
 ---
 
 So--where are they? And which ones?
-That strikes me as the more interesting question. If you have firm ideas about this, let me know--I'm pulling a few data sources together.
+That strikes me as the more interesting question. If you have firm ideas about this, let me know--I'm pulling a few data sources together.[^caveat]
 
 One interesting preview is to look at the placement rates by words in dissertation titles: this gives a rough sense at period.
 
@@ -48,8 +48,6 @@ Methods:
 
 One thing I've done here is to directly match names into the dissertations database rather than use the PhD years provided by the departments. This means that we don't get information about non-historians and non-American PhDs in departments. It also means there's some potential for error or loss.
 
-Caveats:
-
-1. Often--and perhaps increasingly--historians don't work in history departments. The other morning on the radio I heard [Christopher Miller](https://facultyprofiles.tufts.edu/christopher-miller) identified as "a historian at Tufts University." He is. But his topic--the manufacture of computer chips--seemed so far from anything likely to be written in a history department that I checked his affiliation and indeed, he works at the Fletcher School of Law and Diplomacy, not in the Tufts history department.
+[^caveat]: An important caveat is that often--and perhaps increasingly--historians don't work in history departments. The other morning on the radio I heard [Christopher Miller](https://facultyprofiles.tufts.edu/christopher-miller) identified as "a historian at Tufts University." He is. But his topic--the manufacture of computer chips--seemed so far from anything likely to be written in a history department that I checked his affiliation and indeed, he works at the Fletcher School of Law and Diplomacy, not in the Tufts history department.
 
 I've routinely found the staff at the AHA to be helpful at supplying information like this, but in this case it's possible to proceed entirely from what's available on their website.

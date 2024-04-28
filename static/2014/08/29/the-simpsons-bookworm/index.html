@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 2.4.0">
+  <meta name="generator" content="Hugo 0.49.2" />
+  <meta name="author" content="Ben Schmidt">
+
+  
+  
+  
+  
+    
+  
+  <meta name="description" content="I thought it would be worth documenting the difficulty (or lack of) in building a Bookworm on a small corpus: I&#8217;ve been reading too much lately about the Simpsons thanks to the FX marathon, so figured I&#8217;d spend a couple hours making it possible to check for changing language in the longest running TV show of all time.
+For some thoughts on how to build a bookworm, read &#8220;prep&#8221;: otherwise, skip to analysis.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/2014/08/29/the-simpsons-bookworm/">
+
+  
+
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" crossorigin="anonymous">
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:400,400italic,700|Roboto+Mono">
+  
+
+  <link rel="stylesheet" href="/styles.css">
+  
+
+  
+  
+  
+
+  
+  <link rel="alternate" href="/feed/index.xml" type="application/rss+xml" title="Ben Schmidt">
+  <link rel="feed" href="/feed/index.xml" type="application/rss+xml" title="Ben Schmidt">
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="/2014/08/29/the-simpsons-bookworm/">
+
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@benmschmidt">
+  <meta property="twitter:creator" content="@benmschmidt">
+  
+  <meta property="og:site_name" content="Ben Schmidt">
+  <meta property="og:url" content="/2014/08/29/the-simpsons-bookworm/">
+  <meta property="og:title" content="The Simpsons Bookworm | Ben Schmidt">
+  <meta property="og:description" content="I thought it would be worth documenting the difficulty (or lack of) in building a Bookworm on a small corpus: I&#8217;ve been reading too much lately about the Simpsons thanks to the FX marathon, so figured I&#8217;d spend a couple hours making it possible to check for changing language in the longest running TV show of all time.
+For some thoughts on how to build a bookworm, read &#8220;prep&#8221;: otherwise, skip to analysis.">
+  
+  
+    
+  <meta property="og:image" content="/img/icon-192.png">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2014-08-29T19:38:24&#43;00:00">
+  
+  <meta property="article:modified_time" content="2014-08-29T19:38:24&#43;00:00">
+  
+
+  
+
+  
+
+  <title>The Simpsons Bookworm | Ben Schmidt</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
+
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">Ben Schmidt</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#publications">
+            
+            <span>Publications</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#posts">
+            
+            <span>Posts</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/research-portfolio/">
+            
+            <span>Research</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/maps-visualizations-gallery/">
+            
+            <span>Visualization Gallery</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/files/SchmidtCV.pdf">
+            
+            <span>CV</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+      
+
+        
+
+        
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1 itemprop="name">The Simpsons Bookworm</h1>
+
+  
+
+  
+    
+
+<div class="article-metadata">
+
+  
+  
+  <span itemscope itemprop="author" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Ben Schmidt">
+  </span>
+  
+
+  <span class="article-date">
+    
+    <meta content="2014-08-29 19:38:24 &#43;0000 &#43;0000" itemprop="datePublished">
+    <time datetime="2014-08-29 19:38:24 &#43;0000 &#43;0000" itemprop="dateModified">
+      Aug 29, 2014
+    </time>
+  </span>
+  <span itemscope itemprop="publisher" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Ben Schmidt">
+  </span>
+
+  
+
+  
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    
+    <a href="/categories/uncategorized/">Uncategorized</a>
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=The%20Simpsons%20Bookworm&amp;url=%2f2014%2f08%2f29%2fthe-simpsons-bookworm%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=%2f2014%2f08%2f29%2fthe-simpsons-bookworm%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2f2014%2f08%2f29%2fthe-simpsons-bookworm%2f&amp;title=The%20Simpsons%20Bookworm"
+         target="_blank" rel="noopener">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=%2f2014%2f08%2f29%2fthe-simpsons-bookworm%2f&amp;title=The%20Simpsons%20Bookworm"
+         target="_blank" rel="noopener">
+        <i class="fab fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=The%20Simpsons%20Bookworm&amp;body=%2f2014%2f08%2f29%2fthe-simpsons-bookworm%2f">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<p>I thought it would be worth documenting the difficulty (or lack of) in building a Bookworm on a small corpus: I&#8217;ve been reading too much lately about the Simpsons thanks to the FX marathon, so figured I&#8217;d spend a couple hours making it possible to check for changing language in the longest running TV show of all time.</p>
+
+<p>For some thoughts on how to build a bookworm, read &#8220;prep&#8221;: otherwise, skip to analysis. <a href="http://benschmidt.org/Simpsons/" target="_blank">Or just head over the browser</a>.</p>
+
+<h3 id="prep">Prep</h3>
+
+<p>Step one is getting the texts. This is easy enough here, something I know how to do from all my <a href="http://prochronism.com" target="_blank">Prochronisms</a> posts: I can just use the subtitles, which are available a batch at a time. The only challenge is deciding what to do with audio-effects subtitles. I&#8217;m deciding to download the files that include them where necessary, but probably disable them by default. I also end up with only 540-something episodes, about ten short of the complete run: rather than try to figure that out at the start, I&#8217;m going to let the Bookworm data visualizations themselves be the clue to what I&#8217;m missing.</p>
+
+<p>Next up is choosing what a &#8220;text&#8221; will be. The obvious choice would be for each episode to be a single text: but 550 episodes, while it&#8217;s a lot to watch, doesn&#8217;t give many angles for analysis. My second idea is that it might be interesting to look at a really granular level: ideally, we&#8217;d be able to compare the first, second, and third acts. That info isn&#8217;t in the subtitles, but we can split up by lines of speech: later on, we&#8217;ll be able to aggregate the queries to look in just the first hundred lines, or the first third, or whatever. The only downside is that it dramatically increases the number of texts: but that&#8217;s not really a huge problem.</p>
+
+<p>That also makes it easy to decide what I&#8217;ll display in the search results: the individual line from the script containing the word.</p>
+
+<p>Next step is to parse into bookworm format. Since these are in SRT format, it&#8217;s not as easy as it could be: I&#8217;m looking to create indexes that are episode-season-line. To get the season and episode names, I write out some regular expressions that match the various different filenames. This one of the uglier parts, and where I actually spend the most time. The final parsing code uses a whole bunch of regexes to handle the different formats people use: &#8220;S04E20&#8221;, &#8220;[1.3],&#8221; and so forth. One batch doesn&#8217;t have season numbers at all: I&#8217;ll have to fix that later.</p>
+
+<pre class="lang:python decode:true " title="Getting season and ep numbers from the files is the hardest part" >def parseFilename(string):
+    form1 = r"[sS](\d\d?)[eE](\d\d?)"
+    form2 = r"(\d\d?)x(\d\d?)"
+    form3 = r"\[(\d\d?)\.(\d\d?)"
+
+    for regexp in [form1,form2,form3]:
+        matches = re.findall(regexp,string)
+        if len(matches) &gt; 0:
+            return matches[0]
+
+    return ("",re.sub(".*Episode (\d\d).*",r"\1",string))</pre>
+
+<p>Next is actually parsing the text, and adding some new information to it about the position of each line. This is usually the hardest part, but SRT parsing is pretty easy as these things go. Plus, nailing down the format leads me to an insight&#8211;rather than use line number, I can take the embedded time information in the SRT files and index by the minute and second in the episode that a subtitle flashes on the screen. Each subtitle block will correspond to a file, and we&#8217;ll know the exact moment it appeared. Turns out there are about 200,000 of those in the series, which is a reasonable number of texts to include in a Bookworm. (Though if I were hypothetically to do this for a whole bunch of TV series (more than a couple hundred) at the same time, that might push the system&#8217;s limits.) Parsing out the SRT time information works well. We&#8217;re left with some straggling sound effects, which I&#8217;m just leaving in for the time being. Occasionally characters names appear at the front of texts: again, that&#8217;s something I&#8217;d correct if this were a weekend project rather than a weeknight one.</p>
+
+<p>That means the final scheme will give us, for each subtitle block:</p>
+
+<ol>
+<li><p>Season Number</p></li>
+
+<li><p>Episode number in the season</p></li>
+
+<li><p>Episode number in the series (will make some plots easier).</p></li>
+
+<li><p>Minute in the episode</p></li>
+
+<li><p>Second in the episode</p></li>
+
+<li><p>The actual text of the block.</p></li>
+</ol>
+
+<p>From that information, if we were true Simpsons scholars, we could easily add:</p>
+
+<ol>
+<li><p>Act (roughly: call minutes 0-7 act 1, minutes 8-14 act 2, and minutes 15 to the end act 3)</p></li>
+
+<li><p>Air date, episode director, and other information easily linkable from IMDB.</p></li>
+
+<li><p>Whether it&#8217;s a finale or what.</p></li>
+</ol>
+
+<p>Once the text is parsed, the file-creation is pretty easy, we&#8217;re ready to ingest. The <a href="http://bmschmidt.github.io/Presidio/input.txt.html" target="_blank">input.txt</a> file is just the text and an id number constructed from the moment the block appears on screen: the jsoncatalog.txt is just a dump of an object that&#8217;s useful for processing, anyway.</p>
+
+<p>I&#8217;ve already written a specialized makefile for my Federalist papers bookworm to clone the Bookworm repo and put files in the right place, so that&#8217;s easily adapted.</p>
+
+<p>And then we&#8217;ve got it! I didn&#8217;t designate any fields as &#8220;time,&#8221; so a first inspection will be easier using the D3 browser.</p>
+
+<p>The first test is to find out about those pesky missing episodes. So I&#8217;ll plot a heatmap of the number of words for each episode (x axis) and season (y axis):</p>
+
+<p><a href="http://benschmidt.org/wp/wp-content/uploads/2014/08/Screen-Shot-2014-08-29-at-11.35.28-AM.png" target="_blank"><img src="http://benschmidt.org/wp/wp-content/uploads/2014/08/Screen-Shot-2014-08-29-at-11.35.28-AM-1024x536.png" alt="Screen Shot 2014-08-29 at 11.35.28 AM" width="625" height="327" class="alignnone size-large wp-image-326" srcset="http://benschmidt.org/wp/wp-content/uploads/2014/08/Screen-Shot-2014-08-29-at-11.35.28-AM-300x157.png 300w, http://benschmidt.org/wp/wp-content/uploads/2014/08/Screen-Shot-2014-08-29-at-11.35.28-AM-1024x536.png 1024w, http://benschmidt.org/wp/wp-content/uploads/2014/08/Screen-Shot-2014-08-29-at-11.35.28-AM-624x327.png 624w, http://benschmidt.org/wp/wp-content/uploads/2014/08/Screen-Shot-2014-08-29-at-11.35.28-AM.png 1291w" sizes="(max-width: 625px) 100vw, 625px" /></a></p>
+
+<p>This shows that we&#8217;ve got about 25 episodes for season, but: we&#8217;ve got a season 0 and no season 1 (that one set of srts that didn&#8217;t give a season, no doubt); we&#8217;ve got no seasons 16 and 17; and, curiously, most season 6 episodes are twice as long as they should be. Probably season 16 was mislabeled season 6, and we&#8217;re actually missing season 17. We&#8217;re also missing the first 9 episodes of season 21, and the first two of season 22. Oh well. Something to catch on a next run.</p>
+
+<p><strong>Analysis</strong></p>
+
+<p>The beta lets us quickly check out some other things, like the number of words (color) by *minute* (y axis) and season (x): you can see commercial creep, as sometime around season 14 we lose most of minute 21.</p>
+
+<p><a href="http://benschmidt.org/wp/wp-content/uploads/2014/08/Screen-Shot-2014-08-29-at-11.40.32-AM.png" target="_blank"><img src="http://benschmidt.org/wp/wp-content/uploads/2014/08/Screen-Shot-2014-08-29-at-11.40.32-AM-1024x536.png" alt="Screen Shot 2014-08-29 at 11.40.32 AM" width="625" height="327" class="alignnone size-large wp-image-327" srcset="http://benschmidt.org/wp/wp-content/uploads/2014/08/Screen-Shot-2014-08-29-at-11.40.32-AM-300x157.png 300w, http://benschmidt.org/wp/wp-content/uploads/2014/08/Screen-Shot-2014-08-29-at-11.40.32-AM-1024x536.png 1024w, http://benschmidt.org/wp/wp-content/uploads/2014/08/Screen-Shot-2014-08-29-at-11.40.32-AM-624x326.png 624w, http://benschmidt.org/wp/wp-content/uploads/2014/08/Screen-Shot-2014-08-29-at-11.40.32-AM.png 1277w" sizes="(max-width: 625px) 100vw, 625px" /></a></p>
+
+<p>OK: let&#8217;s check the actual words. Here are uses of each of the central four characters: season on the x axis, unigram on the y axis.</p>
+
+<p><a href="http://benschmidt.org/wp/wp-content/uploads/2014/08/Screen-Shot-2014-08-29-at-12.19.33-PM.png" target="_blank"><img src="http://benschmidt.org/wp/wp-content/uploads/2014/08/Screen-Shot-2014-08-29-at-12.19.33-PM.png" alt="Screen Shot 2014-08-29 at 12.19.33 PM" width="855" height="416" class="alignnone size-full wp-image-328" srcset="http://benschmidt.org/wp/wp-content/uploads/2014/08/Screen-Shot-2014-08-29-at-12.19.33-PM-624x303.png 624w, http://benschmidt.org/wp/wp-content/uploads/2014/08/Screen-Shot-2014-08-29-at-12.19.33-PM.png 855w" sizes="(max-width: 855px) 100vw, 855px" /></a></p>
+
+<p>Nothing too suspicious here: the shift from Bart to Homer looks good, etc.</p>
+
+<p>Just trying some line charts: yep, Maude only gets mentioned much by name around the season she dies:</p>
+
+<p><a href="http://benschmidt.org/wp/wp-content/uploads/2014/08/Screen-Shot-2014-08-29-at-12.31.00-PM.png" target="_blank"><img src="http://benschmidt.org/wp/wp-content/uploads/2014/08/Screen-Shot-2014-08-29-at-12.31.00-PM.png" alt="Screen Shot 2014-08-29 at 12.31.00 PM" width="825" height="414" class="alignnone size-full wp-image-329" srcset="http://benschmidt.org/wp/wp-content/uploads/2014/08/Screen-Shot-2014-08-29-at-12.31.00-PM-300x150.png 300w, http://benschmidt.org/wp/wp-content/uploads/2014/08/Screen-Shot-2014-08-29-at-12.31.00-PM-624x313.png 624w, http://benschmidt.org/wp/wp-content/uploads/2014/08/Screen-Shot-2014-08-29-at-12.31.00-PM.png 825w" sizes="(max-width: 825px) 100vw, 825px" /></a></p>
+
+<p>But what&#8217;s really interesting, maybe, isn&#8217;t the season-to-season change but the internal episode structure. For instance, at what minute in the episodes do characters talk about &#8220;school?&#8221;</p>
+
+<p><a href="http://benschmidt.org/wp/wp-content/uploads/2014/08/Screen-Shot-2014-08-29-at-12.33.00-PM.png" target="_blank"><img src="http://benschmidt.org/wp/wp-content/uploads/2014/08/Screen-Shot-2014-08-29-at-12.33.00-PM.png" alt="Screen Shot 2014-08-29 at 12.33.00 PM" width="835" height="413" class="alignnone size-full wp-image-330" srcset="http://benschmidt.org/wp/wp-content/uploads/2014/08/Screen-Shot-2014-08-29-at-12.33.00-PM-300x148.png 300w, http://benschmidt.org/wp/wp-content/uploads/2014/08/Screen-Shot-2014-08-29-at-12.33.00-PM-624x308.png 624w, http://benschmidt.org/wp/wp-content/uploads/2014/08/Screen-Shot-2014-08-29-at-12.33.00-PM.png 835w" sizes="(max-width: 835px) 100vw, 835px" /></a></p>
+
+<p>That&#8217;s pretty interesting, actually: pretty much every minute, the plots seem to shift away from school.</p>
+
+<p>Likewise, &#8220;I&#8217;m Kent Brockman&#8221; seems to be overwhelmingly a gag from the opening scene:</p>
+
+<p><a href="http://benschmidt.org/wp/wp-content/uploads/2014/08/Screen-Shot-2014-08-29-at-12.35.03-PM.png" target="_blank"><img src="http://benschmidt.org/wp/wp-content/uploads/2014/08/Screen-Shot-2014-08-29-at-12.35.03-PM.png" alt="Screen Shot 2014-08-29 at 12.35.03 PM" width="831" height="419" class="alignnone size-full wp-image-331" srcset="http://benschmidt.org/wp/wp-content/uploads/2014/08/Screen-Shot-2014-08-29-at-12.35.03-PM-300x151.png 300w, http://benschmidt.org/wp/wp-content/uploads/2014/08/Screen-Shot-2014-08-29-at-12.35.03-PM-624x314.png 624w, http://benschmidt.org/wp/wp-content/uploads/2014/08/Screen-Shot-2014-08-29-at-12.35.03-PM.png 831w" sizes="(max-width: 831px) 100vw, 831px" /></a></p>
+
+<p>OK, that&#8217;s enough: <a href="http://benschmidt.org/Simpsons/" target="_blank">here&#8217;s the link to the Bookworm</a>, and here&#8217;s the source code.</p></p>
+
+    </div>
+
+    
+
+
+    
+    
+
+    
+
+    
+
+
+  </div>
+</article>
+
+<div class="container">
+  <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    &copy; 2018 &middot; 
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+</div>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+    
+
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "Search Results",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    <script src="/js/search.js"></script>
+    
+
+    
+    
+
+  </body>
+</html>
+

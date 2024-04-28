@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="generator" content="Source Themes Academic 2.4.0" />
+		<meta name="generator" content="Hugo 0.49.2" />
+		<meta name="author" content="Ben Schmidt" />
+
+		<meta
+			name="description"
+			content="I&#8217;ve been seeing how deeply we could integrate topic models into the underlying Bookworm architecture a bit lately.
+My own chief interest in this, because I tend to be a little wary of topic models in general, is in the possibility for Bookworm to act as a diagnostic tool internally for topic models. I don&#8217;t think simply plotting description absent any analysis of the underlying token composition of topics is all that responsible; Bookworm offers a platform for actually accessing those counts and testing them against metadata."
+		/>
+
+		<link
+			rel="alternate"
+			hreflang="en-us"
+			href="/2014/09/23/building-topic-models-into-bookworm-searches/"
+		/>
+
+		<meta name="theme-color" content="#2962ff" />
+
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
+			integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE="
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css"
+			integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw="
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+			integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css"
+			integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs="
+			crossorigin="anonymous"
+		/>
+
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css"
+			crossorigin="anonymous"
+		/>
+
+		<link
+			rel="stylesheet"
+			href="//fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:400,400italic,700|Roboto+Mono"
+		/>
+
+		<link rel="stylesheet" href="/styles.css" />
+
+		<link rel="alternate" href="/feed/index.xml" type="application/rss+xml" title="Ben Schmidt" />
+		<link rel="feed" href="/feed/index.xml" type="application/rss+xml" title="Ben Schmidt" />
+
+		<link rel="manifest" href="/site.webmanifest" />
+		<link rel="icon" type="image/png" href="/img/icon.png" />
+		<link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png" />
+
+		<link rel="canonical" href="/2014/09/23/building-topic-models-into-bookworm-searches/" />
+
+		<meta property="twitter:card" content="summary_large_image" />
+
+		<meta property="twitter:site" content="@benmschmidt" />
+		<meta property="twitter:creator" content="@benmschmidt" />
+
+		<meta property="og:site_name" content="Ben Schmidt" />
+		<meta property="og:url" content="/2014/09/23/building-topic-models-into-bookworm-searches/" />
+		<meta
+			property="og:title"
+			content="Building topic models into Bookworm searches | Ben Schmidt"
+		/>
+		<meta
+			property="og:description"
+			content="I&#8217;ve been seeing how deeply we could integrate topic models into the underlying Bookworm architecture a bit lately.
+My own chief interest in this, because I tend to be a little wary of topic models in general, is in the possibility for Bookworm to act as a diagnostic tool internally for topic models. I don&#8217;t think simply plotting description absent any analysis of the underlying token composition of topics is all that responsible; Bookworm offers a platform for actually accessing those counts and testing them against metadata."
+		/>
+
+		<meta property="og:image" content="/img/icon-192.png" />
+		<meta property="og:locale" content="en-us" />
+
+		<meta property="article:published_time" content="2014-09-23T22:29:38&#43;00:00" />
+
+		<meta property="article:modified_time" content="2014-09-23T22:29:38&#43;00:00" />
+
+		<title>Building topic models into Bookworm searches | Ben Schmidt</title>
+	</head>
+	<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71">
+		<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+			<div class="container">
+				<a class="navbar-brand" href="/">Ben Schmidt</a>
+
+				<button
+					type="button"
+					class="navbar-toggler"
+					data-toggle="collapse"
+					data-target="#navbar"
+					aria-controls="navbar"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					<span><i class="fas fa-bars"></i></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbar">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+							<a class="nav-link" href="/#about">
+								<span>Home</span>
+							</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="/#publications">
+								<span>Publications</span>
+							</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="/#posts">
+								<span>Posts</span>
+							</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="/research-portfolio/">
+								<span>Research</span>
+							</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="/maps-visualizations-gallery/">
+								<span>Visualization Gallery</span>
+							</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="/files/SchmidtCV.pdf">
+								<span>CV</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<article class="article" itemscope itemtype="http://schema.org/Article">
+			<div class="article-container pt-3">
+				<h1 itemprop="name">Building topic models into Bookworm searches</h1>
+
+				<div class="article-metadata">
+					<span itemscope itemprop="author" itemtype="http://schema.org/Person">
+						<meta itemprop="name" content="Ben Schmidt" />
+					</span>
+
+					<span class="article-date">
+						<meta content="2014-09-23 22:29:38 &#43;0000 &#43;0000" itemprop="datePublished" />
+						<time datetime="2014-09-23 22:29:38 &#43;0000 &#43;0000" itemprop="dateModified">
+							Sep 23, 2014
+						</time>
+					</span>
+					<span itemscope itemprop="publisher" itemtype="http://schema.org/Person">
+						<meta itemprop="name" content="Ben Schmidt" />
+					</span>
+
+					<span class="middot-divider"></span>
+					<span class="article-categories">
+						<i class="fas fa-folder"></i>
+
+						<a href="/categories/uncategorized/">Uncategorized</a>
+					</span>
+
+					<div class="share-box" aria-hidden="true">
+						<ul class="share">
+							<li>
+								<a
+									class="twitter"
+									href="https://twitter.com/intent/tweet?text=Building%20topic%20models%20into%20Bookworm%20searches&amp;url=%2f2014%2f09%2f23%2fbuilding-topic-models-into-bookworm-searches%2f"
+									target="_blank"
+									rel="noopener"
+								>
+									<i class="fab fa-twitter"></i>
+								</a>
+							</li>
+							<li>
+								<a
+									class="facebook"
+									href="https://www.facebook.com/sharer.php?u=%2f2014%2f09%2f23%2fbuilding-topic-models-into-bookworm-searches%2f"
+									target="_blank"
+									rel="noopener"
+								>
+									<i class="fab fa-facebook-f"></i>
+								</a>
+							</li>
+							<li>
+								<a
+									class="linkedin"
+									href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2f2014%2f09%2f23%2fbuilding-topic-models-into-bookworm-searches%2f&amp;title=Building%20topic%20models%20into%20Bookworm%20searches"
+									target="_blank"
+									rel="noopener"
+								>
+									<i class="fab fa-linkedin-in"></i>
+								</a>
+							</li>
+							<li>
+								<a
+									class="weibo"
+									href="http://service.weibo.com/share/share.php?url=%2f2014%2f09%2f23%2fbuilding-topic-models-into-bookworm-searches%2f&amp;title=Building%20topic%20models%20into%20Bookworm%20searches"
+									target="_blank"
+									rel="noopener"
+								>
+									<i class="fab fa-weibo"></i>
+								</a>
+							</li>
+							<li>
+								<a
+									class="email"
+									href="mailto:?subject=Building%20topic%20models%20into%20Bookworm%20searches&amp;body=%2f2014%2f09%2f23%2fbuilding-topic-models-into-bookworm-searches%2f"
+								>
+									<i class="fas fa-envelope"></i>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="article-container">
+				<div class="article-style" itemprop="articleBody">
+					<p>
+						I&#8217;ve been seeing how deeply we could integrate topic models into the
+						underlying Bookworm architecture a bit lately.
+					</p>
+
+					<p>
+						My own chief interest in this, because
+						<a
+							href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=4&amp;cad=rja&amp;uact=8&amp;ved=0CDYQFjAD&amp;url=http%3A%2F%2Fjournalofdigitalhumanities.org%2F2-1%2Fwords-alone-by-benjamin-m-schmidt%2F&amp;ei=e-khVJPVEoGlyATn2YDACw&amp;usg=AFQjCNEZ-HbfeSjBnBMmQSSYmwe0ZihLRg&amp;sig2=-QyPN0kuTZlexRtnPVZzdw"
+							target="_blank"
+							>I tend to be a little wary of topic models in general</a
+						>, is in the possibility for Bookworm to act as a diagnostic tool internally for topic
+						models. I don&#8217;t think simply plotting description absent any analysis of the
+						underlying token composition of topics is all that responsible; Bookworm offers a
+						platform for actually accessing those counts and testing them against metadata.
+					</p>
+
+					<p>
+						But topics also have a lot to offer token-based searching. Watching links into the
+						Bookworm browser, I recently stumbled on
+						<a href="https://twitter.com/BioInFocus/status/514494148574203907" target="_blank"
+							>this exchange</a
+						>:
+					</p>
+
+					<p>
+						<a href="http://benschmidt.org/wp/wp-content/uploads/2014/09/Tweets.png" target="_blank"
+							><img
+								class="alignnone size-full wp-image-356"
+								src="http://benschmidt.org/wp/wp-content/uploads/2014/09/Tweets.png"
+								alt="Tweets"
+								width="699"
+								height="686"
+								srcset="
+									http://benschmidt.org/wp/wp-content/uploads/2014/09/Tweets-300x294.png 300w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/09/Tweets-624x612.png 624w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/09/Tweets.png         699w
+								"
+								sizes="(max-width: 699px) 100vw, 699px"
+						/></a>
+					</p>
+
+					<p>&nbsp;</p>
+
+					<p>
+						How can I solve this biologist&#8217;s problem? (Or, at least, waste more of his time?)
+					</p>
+
+					<p>
+						The word-level topic assignments I have on hand are actually real useful for this.
+						(I&#8217;m assuming, I should say, that you know both the basics of topic modeling and
+						of the movie bookworm.) I can ask the beta bookworm browser for the top topics
+						associated with each of the words &#8220;fly&#8221; (top) and &#8220;ant&#8221;
+						(bottom):
+					</p>
+
+					<p>&nbsp;</p>
+
+					<div id="attachment_357" style="width: 808px" class="wp-caption alignnone">
+						<a href="http://benschmidt.org/wp/wp-content/uploads/2014/09/fly.png"
+							><img
+								class="wp-image-357 size-full"
+								src="http://benschmidt.org/wp/wp-content/uploads/2014/09/fly.png"
+								alt="fly"
+								width="798"
+								height="672"
+								srcset="
+									http://benschmidt.org/wp/wp-content/uploads/2014/09/fly-624x525.png 624w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/09/fly.png         798w
+								"
+								sizes="(max-width: 798px) 100vw, 798px"
+						/></a>
+
+						<p class="wp-caption-text">Fly usage by topic</p>
+					</div>
+
+					<p>&nbsp;</p>
+
+					<div id="attachment_358" style="width: 635px" class="wp-caption alignnone">
+						<a href="http://benschmidt.org/wp/wp-content/uploads/2014/09/ant.png"
+							><img
+								class="wp-image-358 size-large"
+								src="http://benschmidt.org/wp/wp-content/uploads/2014/09/ant-1024x730.png"
+								alt="ant"
+								width="625"
+								height="445"
+								srcset="
+									http://benschmidt.org/wp/wp-content/uploads/2014/09/ant-300x214.png   300w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/09/ant-1024x730.png 1024w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/09/ant-624x445.png   624w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/09/ant.png          1121w
+								"
+								sizes="(max-width: 625px) 100vw, 625px"
+						/></a>
+
+						<p class="wp-caption-text">Ant usage by topic</p>
+					</div>
+
+					<p>&nbsp;</p>
+
+					<p>
+						&#8220;Fly&#8221; is overwhelmingly associated with the topics &#8220;boat ship Captain
+						island plane sea water&#8221; (airplane flying) and &#8220;life day heart eyes world
+						time beautiful&#8221; (unclear, but might be superman flying). (It&#8217;s even more so
+						than on this chart, since I&#8217;ve lopped off the right side: there are about 2200
+						uses of &#8220;fly&#8221; in the first topic).
+					</p>
+
+					<p>
+						But &#8220;ant&#8221; is most used in two clearly animal related topics: &#8220;water
+						animals years fish time food ice&#8221; and &#8220;dog cat little boy dogs Hey
+						going.&#8221; And both of those topics show up for &#8220;fly&#8221; as well.
+					</p>
+
+					<p>
+						So in theory, at least, we can *restrict searches by topic:* rather than put into a
+						Bookworm *every* usage of the word &#8220;fly&#8221;, we can get only those that seem,
+						statistically, to be used in an animal-heavy context.
+					</p>
+
+					<p>
+						With an imperfect, 64-topic model on a relatively small corpus like the Movie Bookworm,
+						this is barely worth doing.
+					</p>
+
+					<div id="attachment_360" style="width: 916px" class="wp-caption alignnone">
+						<a href="http://benschmidt.org/wp/wp-content/uploads/2014/09/Ant-in-context.png"
+							><img
+								class="wp-image-360 size-full"
+								src="http://benschmidt.org/wp/wp-content/uploads/2014/09/Ant-in-context.png"
+								alt="Ant-in-context"
+								width="906"
+								height="428"
+								srcset="
+									http://benschmidt.org/wp/wp-content/uploads/2014/09/Ant-in-context-624x294.png 624w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/09/Ant-in-context.png         906w
+								"
+								sizes="(max-width: 906px) 100vw, 906px"
+						/></a>
+
+						<p class="wp-caption-text">Ant in animal topics per million words in all topics</p>
+					</div>
+
+					<div id="attachment_359" style="width: 939px" class="wp-caption alignnone">
+						<a href="http://benschmidt.org/wp/wp-content/uploads/2014/09/fly2.png"
+							><img
+								class="wp-image-359 size-full"
+								src="http://benschmidt.org/wp/wp-content/uploads/2014/09/fly2.png"
+								alt="fly2"
+								width="929"
+								height="450"
+								srcset="
+									http://benschmidt.org/wp/wp-content/uploads/2014/09/fly2-300x145.png 300w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/09/fly2-624x302.png 624w,
+									http://benschmidt.org/wp/wp-content/uploads/2014/09/fly2.png         929w
+								"
+								sizes="(max-width: 929px) 100vw, 929px"
+						/></a>
+
+						<p class="wp-caption-text">Fly in animal topics per million words in all topics</p>
+					</div>
+
+					<p>
+						And given that &#8220;flying&#8221; is something that plenty of animals do, the
+						&#8220;fly&#8221; topic here is probably not all Order Diptera.
+					</p>
+
+					<p>
+						But with collections the size of the Hathi trust, this could potentially be worth
+						exploring, particularly with substantially larger models. &#8220;Evolution&#8221; is one
+						of the basic searches in a few bookworms: but it&#8217;s hard to use, because
+						&#8220;evolution&#8221; means something completely different in the context of 1830s
+						mathematics as opposed to 1870s biology. A topic model that could conceivably make a
+						stab at segregating out just biological &#8220;evolution,&#8221; though, would be
+						immensely useful in tracing out Darwinian changes; one that could disentangle military
+						shooting from the interjection &#8220;shoot!&#8221; might be good at studying slang.
+					</p>
+
+					<p>
+						Above all, this might be good at finding words that migrate meanings in early uses: most
+						new phrases actually emerge out of some early construction, but this would let us try to
+						recover meaning through context.
+					</p>
+
+					<p>
+						Hell, it might even have an application in Prochronisms work; given a large, pre-built
+						topic model, any new scripts could be classified against it and their words assigned to
+						topics, and tested for their appropriateness as a topic-word combination.
+					</p>
+
+					<p>
+						Technical note: the basics of this are pretty easy with the current system: the only
+						issue with incorporating &#8220;topic&#8221; as a metadata field on the primary browser
+						right now is that the larger corpus it compares against would also be limited by topic.
+						This could be solved by using the asterisk syntax that no one uses:
+						{&#8220;*topic&#8221;:[3],&#8221;*word&#8221;:[&#8220;fly&#8221;]} will ensure both are
+						dropped, not just one, by just specifying the &#8220;compare_limits&#8221; field
+						manually.
+					</p>
+
+					<p>&nbsp;</p>
+				</div>
+			</div>
+		</article>
+
+		<div class="container">
+			<footer class="site-footer">
+				<p class="powered-by">
+					&copy; 2018 &middot; Powered by the
+					<a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener"
+						>Academic theme</a
+					>
+					for <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+					<span class="float-right" aria-hidden="true">
+						<a href="#" id="back_to_top">
+							<span class="button_icon">
+								<i class="fas fa-chevron-up fa-2x"></i>
+							</span>
+						</a>
+					</span>
+				</p>
+			</footer>
+		</div>
+
+		<div id="modal" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Cite</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<pre><code class="tex hljs"></code></pre>
+					</div>
+					<div class="modal-footer">
+						<a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+							<i class="fas fa-copy"></i> Copy
+						</a>
+						<a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+							<i class="fas fa-download"></i> Download
+						</a>
+						<div id="modal-error"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+			integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg=="
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js"
+			integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA=="
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"
+			integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ="
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js"
+			integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ=="
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"
+			integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M="
+			crossorigin="anonymous"
+		></script>
+
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"
+			integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw="
+			crossorigin="anonymous"
+		></script>
+
+		<script src="/js/hugo-academic.js"></script>
+
+		<script>
+			hljs.initHighlightingOnLoad();
+		</script>
+
+		<script>
+			const search_index_filename = '/index.json';
+			const i18n = {
+				placeholder: 'Search...',
+				results: 'Search Results',
+				no_results: 'No results found'
+			};
+			const content_type = {
+				post: 'Posts',
+				project: 'Projects',
+				publication: 'Publications',
+				talk: 'Talks'
+			};
+		</script>
+
+		<script id="search-hit-fuse-template" type="text/x-template">
+			<div class="search-hit" id="summary-{{key}}">
+			<div class="search-hit-content">
+			  <div class="search-hit-name">
+			    <a href="{{relpermalink}}">{{title}}</a>
+			    <div class="article-metadata search-hit-type">{{type}}</div>
+			    <p class="search-hit-description">{{snippet}}</p>
+			  </div>
+			</div>
+			</div>
+		</script>
+
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js"
+			integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI="
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js"
+			integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U="
+			crossorigin="anonymous"
+		></script>
+		<script src="/js/search.js"></script>
+	</body>
+</html>
