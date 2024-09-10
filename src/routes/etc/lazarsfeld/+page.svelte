@@ -1,6 +1,5 @@
 <script>
 	import Blogpost from '$lib/components/Blogpost.svelte';
-	import { intros } from 'svelte/internal';
 </script>
 
 <div class="prose">
@@ -1671,7 +1670,8 @@
 				<p>
 					Isabelle Wagner, "Current Radio Research in Universities," <em
 						>Journal of Applied Psycholog</em
-					>y XXIII, no. 1 (1939).<a href="#fnref43" class="footnote-back" role="doc-backlink">↩︎</a>
+					>y XXIII, no. 1 (1939).<a href="#fnref43" class="footnote-back" role="doc-backlink">↩︎</a
+					>
 				</p>
 			</li>
 			<li id="fn44" role="doc-endnote">

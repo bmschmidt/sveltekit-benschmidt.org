@@ -1,0 +1,108 @@
+---
+author: ben
+categories:
+- Bookworm
+date: "2014-12-12T04:15:07+00:00"
+guid: "http://benschmidt.org/?p=382"
+id: 382
+layout: post
+title: The Bookworm-Mallet extension
+url: /2014/12/12/the-bookworm-mallet-extension/
+---
+
+I promised Matt Jockers I'd put together a slightly longer explanation
+of the weird constraints I've imposed on myself for topic models in the
+Bookworm system, like t[hose I used to look at the breakdown of typical
+TV show episode
+structures.](http://sappingattention.blogspot.ca/2014/12/typical-tv-episodes-visualizing-topics.html) So
+here they are.
+
+The basic strategy of Bookworm at the moment is to have a core suite of
+tools for combining metadata with full text for any textual corpus. In
+the case of the movies, the texts are each three-minute chunks of movies
+or TV shows; a topic model will capture the size of each individual
+movie. A variety of extensions allow you to port in various other
+algorithms into the system; so for instance, you can use the geolocation
+plugin to put in a latitude and longitude for a corpus which has
+publication places listed in it.
+
+The [Bookworm-Mallet
+extension](https://github.com/bmschmidt/Bookworm-Mallet) handles
+incorporating topic models into Bookworm. The obvious way to topic model
+is to just feed the text straight into Mallet. This is particularly easy
+because the Bookworm ingest format is designed to be [exactly the same
+as the Mallet
+format](http://bookworm-project.github.io/Docs/input.txt.html). But I
+don't do that, partly because Bookworm has an insanely complicated (and
+likely to be altered) [set of tokenization
+rules](http://bookworm-project.github.io/Docs/Tokens.html) that would be
+a pain to re-implement in the package, and partly because we've
+\*already\* tokenized; why do it again?
+
+So instead of working with the raw text, I load a [stopwords
+list](https://github.com/bmschmidt/Bookworm-Mallet/blob/master/bookwormStopwords.txt) (starting
+with Jockers' list of names) directly into the database, and pull out
+not the tokens but the internal numeric IDs used by Bookworm for each
+word. This has an additional salutary effect, which is that we can
+define from the beginning exactly the desired vocabulary size. If we
+want a vocab size of the most common 2\^16-1 tokens in the corpus, it's
+trivially easy to do it. That means that the Mallet memory requirements,
+which many Bookworms bump up against, can be limited. (David Mimno has
+used tricks like this to speed up Mallet on extremely large builds; I
+don't actually know how he does it, but want to keep the options open
+for later.) And though I'm not already limited precisely, I do drop out
+words that appear fewer than two times from the model to save space and
+time.
+
+The actually model is run on a file not of words, but of integer IDs.
+Here are the first ten lines of the movie dataset as I enter it into
+Mallet.
+
+Each number is a code for a word; they appear not in the original order,
+but randomly shuffled. Wordid 883 is ‘land,' 24841 is "Stubborn,” 3714
+is "influence,” etc. This file is much shorter for being composed of
+integers without stopwords than it would be from the full text.
+
+Then all the tokens and topic assignments are loaded back into the
+database, not just as overall distributions but as individual
+assignments. That makes it possible to look directly at the individual
+tokens that make up a topic, which I think is potentially quite useful.
+This gives a much faster, non-memory based access to the data in the
+topic state file than any other I know of; and it comes with full
+integration with any other metadata you can cook up.
+
+Jockers' "Secret sauce” consists, in part, of restricting to only nouns,
+adjectives, or other semantically useful terms. There is a way of doing
+that in the Bookworm infrastructure, but it involves not treating the
+topic model as a one-off job, but fully integrating the POS-tagging into
+the original tokenization. We would be then be able to only feed
+adjectives into the topic modeling. But the spec for that isn't fully
+laid out: and POS-tagging takes so long that I'm in no big hurry to
+implement it. It has proven somewhat useful in the Google Ngrams corpus,
+but I'm a little concerned by the ways that it tends to project modern
+POS uses into the past. (Words only recently verbified get tokenized as
+words much longer ago in the 2012 Ngrams release).
+
+Perhaps more interesting are the ways that the full Bookworm API may
+expose some additional avenues for topic modeling. Labelled LDA is an
+obvious choice, since Bookworm instances are frequently defined by a
+plethora of metadata. Another option would be to change the tokens
+imported in; using either Bookworm's lemmatization (removed in 2013 but
+not forgotten) or even something weirder, like the set of all placenames
+extracted out in NLP, as the basis for a novel. Finally, it's possible
+to use metadata to more easily change the definition of a \*text\*; for
+something like the new Movie Bookworm, where each text takes three
+minutes, it would be easy to recalculate with each text instead coming
+in as an individual film.
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 

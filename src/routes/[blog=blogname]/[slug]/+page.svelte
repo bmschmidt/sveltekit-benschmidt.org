@@ -3,7 +3,6 @@
 	import { page } from '$app/stores';
 	$: blog = $page.params.blog;
 	import Blogpost from '$lib/components/Blogpost.svelte';
-	console.log({ d: data.document.document });
 </script>
 
 <div class="post flex justify-center">

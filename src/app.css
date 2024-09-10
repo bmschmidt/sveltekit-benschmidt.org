@@ -3,16 +3,60 @@
 @tailwind utilities;
 
 @layer base {
-	h1,
-	h2,
-	h3,
-	h4 {
-		@apply font-bold;
-	}
+  body {
+    @apply bg-gray-50 text-gray-800 leading-relaxed;
+    font-family: 'Merriweather', serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-bold text-gray-900;
+    font-family: 'Lora', serif;
+  }
+  
+  a {
+    @apply text-gray-700 hover:underline hover:text-gray-900 transition-colors duration-200;
+  }
+  
+  p {
+    @apply mb-4;
+  }
+
+  header {
+    @apply mb-12;
+  }
+
+  nav a {
+    @apply mr-4;
+  }
+
+  .header {
+    @apply text-4xl font-extrabold mb-6 text-gray-900;
+  }
+
+  .subheader {
+    @apply text-2xl font-semibold mb-4 text-gray-700;
+  }
+
+  .content {
+    @apply text-lg text-gray-700;
+  }
 }
 
-@layer base {
-	a {
-		@apply text-violet-900;
-	}
+@layer components {
+  .btn-primary {
+    @apply bg-gray-900 text-white py-2 px-4 rounded hover:bg-gray-700 transition-colors duration-200;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-700 text-white py-2 px-4 rounded hover:bg-gray-900 transition-colors duration-200;
+  }
+}
+
+@layer utilities {
+  .card {
+    @apply bg-white p-6 rounded-lg;
+  }
 }

@@ -1,7 +1,7 @@
 <script>
 	export let data;
 	export let settings;
-	import Elements from 'pandoc-svelte-components/Elements.svelte';
+	// import Elements from 'pandoc-svelte-components/Elements.svelte';
 	const [[_id, _classes, _attrs], elems, [url, text]] = data;
 
 	const id = _id || '';

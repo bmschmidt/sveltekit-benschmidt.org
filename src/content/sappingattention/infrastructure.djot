@@ -1,0 +1,87 @@
+---
+date: "2010-11-13T19:57:00.001-05:00"
+draft: false
+tags:
+- Building a Corpus
+title: Infrastructure
+url: /2010/11/infrastructure.html
+---
+
+It's time for another bookkeeping post. Read below if you want to know
+about changes I'm making and contemplating to software and data
+structures, which I ought to put in public somewhere. Henry posted
+questions in the comments earlier about whether we use Princeton's
+supercomputer time, and why I didn't just create a text scatter chart
+for evolution like the one I made for scientific method. This answers
+those questions. It also explains why I continue to drag my feet on
+letting us segment counts by some sort of genre, which would be very
+useful.
+
+Currently, I'm using perl for data preprocessing and wordcounts, and R
+for exploratory analysis. I'm adding MySQL soon (see below). Mostly,
+that's because those are the only two scripting languages I know, but
+they're fairly well suited for this sort of work. And they're free. Perl
+is great at quickly and efficiently reading through large batches of
+text files, so I use it to first clean up the punctuation on those files
+and (attempt to) divide it into sentences, and then to create flat text
+files with various sorts of wordcounts. It's also not bad for other
+sorts of preprocessing--I use it, eg, to identify usable volumes in the
+search results I get from the internet archive (they let you download
+thousands of entries at a time), and then to batch download the text
+files from their site.
+
+R is a program I actually like using, that implements all sorts of
+statistical functions very transparently, and has lots of nice options
+for graphical output. It takes a lot more time to get a chart looking
+right than it does in Excel, but once you do, it makes it easy to create
+a script that will produce the same chart, with user-defined variations,
+for anything else. There's no other way these wordcount charts would be
+worthwhile if I couldn't just feed a list of words into R and have it
+spit out a nicely formatted comparison of all of them.
+
+The problem that R and perl share is that they both like to store all
+the data they're working on in RAM. This is a problem, because I'm
+working with quite large stores of data. I have a file that lists just
+each of my 200,000 words, and then how many times they each appear in a
+year--that's 250 MB now. If I wanted to segment it any more (by genre,
+say, or originating library) the file would be too large to load into R.
+(Not, perhaps, on the supercomputer--but there's a way that I can keep
+this on my laptop).
+
+Anyone who knows about computers is probably wondering why I haven't
+just started using a database already. Partly, it's because I'm worried
+it's going to be slower for the exploration than R is. Mostly, it's
+because I'm scared of storing data any file format that doesn't have
+text files I can check in on. But it's clear this has to happen before I
+can make any progress on dealing with genre issues, which I'm worried
+about. It will have a lot of ancillary benefits too. The current way
+that I calculate books that appear in a word is hopelessly baroque,
+involving reading through a number of files twice, and requiring some
+really ugly code. It also doesn't leave any easy way on disk to find out
+coincidences of two words in a book, which is something that would, to
+put it mildly, be nice to have--that's the thing Henry asked for above
+for evolution, and it's bad that currently I have to run a perl script
+that takes an hour to run to get an answer. The current system also
+doesn't let me do things like see if books that use the phrase "natural
+selection" use the word "species", say, _more often_ than books that
+don't---it only lets me sees if they use the word species once, and then
+stops counting. There are a lot of other, little reasons like this that
+using a database will make more interesting analysis possible.
+
+The reason is that having more memory to work with means, hopefully,
+that I can switch from storing wordcounts by _year_ (16 million entries)
+to storing them by _book_ (probably a couple hundred million entries).
+Each book entry can have lots of data tied to it, and I can extract that
+in different ways. The next step, which would be great for syntactic
+analysis in particular, would be having a database entry for every _line
+in a book_ (yet more entries)_,_ and maybe to store the books themselves
+by sentence in there. That would allow neat things such as actually
+displaying the sentences that, say, use Lamarck and Darwin together in
+the course of exploring data.But that would take a lot of space, and I'm
+already using up about 35 GB of hard drive space for this. I want to
+make sure it works first.
+
+So that's been my Saturday project. Hopefully I'll get it done by the
+end of the day--I've got the perl script putting data into a table
+running in MySQL, but I still have to get the catalog in so I can make
+selections by year, genre, etc.

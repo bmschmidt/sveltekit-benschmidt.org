@@ -5,14 +5,18 @@
     the Apache Arrow format.
   url: 'https://nonconsumptive.org'
   github: 'https://github.com/bmschmidt/nonconsumptive'
-  language: python
+  language: 
+    - python
   role: author
 - title: Deepscatter
   description: |
     Fast, animated, interactive online maps that scales easily to
     billions, not millions, of points using WebGL and Apache Arrow.
-  language: typescript
+  language: 
+    - typescript
   role: author
+  github: 'https://github.com/nomic-ai/deepscatter'
+  url: 'https://github.com/nomic-ai/deepscatter'
 - title: Stable Random Projection
   description: |
     General-purpose, lightweight dimensionality reduction for
@@ -29,13 +33,18 @@
     An R package for training and exploring word2vec models with a fluent 
     vocabulary taking advantage of R's ability to add, subtract, and perform
     other vector-space models.
-- title: Pandoc Svelte Components
+  language: 
+    - R
+- title: Quires
   role: author
   description: |
-    An implementation of <a href=https://pandoc.org/>pandoc's</a>
-    rich document model as pandoc components to allow the creation
+    An implementation of <a href=https://djot.net/>djot's</a>
+    rich document model as svelte components to allow the creation
     of rich interactive documents from markdown files.
+    The software rendering blog posts here!
   github: 'https://github.com/bmschmidt/pandoc-svelte-components'
+  language:
+  - typescript
 - title: Bookworm
   role: author
   description: |
@@ -44,9 +53,15 @@
     through an expressive API.
   supporters:
     - National Endowment for the Humanities
+  language:
+    - python
+    - javascript
+  url: https://bookworm.htrc.illinois.edu/develop/
+  github: https://github.com/Bookworm-project/BookwormDB
 - title: Markdown Lectures
   role: author
-  language: Haskell
+  language:
+    - Haskell
   description: |
     Document transformation scripts for writing talks and course lectures that
     simultaneous generate their own slidedecks and outlines with identifying terms,

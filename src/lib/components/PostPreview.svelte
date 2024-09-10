@@ -1,29 +1,19 @@
 <script lang="ts">
-	export let document;
-	import Elements from 'pandoc-svelte-components/Elements.svelte';
+	import { Document } from "quires";
 
-	function trim(doc) {
-		const blocks = [];
-		const docblocks = [...doc.blocks];
-		while (docblocks.length > 0 && JSON.stringify(blocks).length < 350) {
-			const entry = docblocks.shift();
-			blocks.push(entry);
-		}
-		const last = blocks[blocks.length - 1];
-		if (JSON.stringify(blocks).length > 750 && last.t === 'Div') {
-			const last = blocks.pop();
-
-			blocks.push({ t: 'Div', c: [last.c[0], trim({ blocks: last.c[1] })] });
-		}
-
-		return blocks;
+	const { document } = $props();
+	// import Elements from 'pandoc-svelte-components/Elements.svelte';
+	function trim(doc: Quire<Document>): Quire<Document> {
+		const content = {...doc.content, children: doc.content.children.slice(0, 1)};
+		const newer = { ...doc, content };
+		return newer;
 	}
 
-	$: blocks = trim(document.document);
+	let blocks = $derived(trim(document.document));
 </script>
 
 <div>
 	{#if blocks}
-		<Elements elems={blocks} settings={{}} />
+		<Document quire={document.document} />
 	{/if}
 </div>

@@ -8,12 +8,15 @@
 	<meta name="description" content="Ben Schmidt's personal website." />
 </svelte:head>
 
-<nav class="flex top-0 z-50 w-full bg-gray-100 fixed items-center text-xl shadow-xl">
+<nav class="flex top-0 z-50 w-full bg-gray-100 fixed items-center text-xl shadow">
 	<div class="flex-col flex md:flex-row">
 		<div class="flex">
 			<div
-				on:click={() => (toggled = !toggled)}
-				on:keyup={() => (toggled = !toggled)}
+				onclick={() => (toggled = !toggled)}
+				onkeyup={() => (toggled = !toggled)}
+				aria-label="Toggle navigation"
+				role="button"
+				tabindex="0"
 				class="m-5 hamburger md:hidden fill-violet-800"
 			>
 				<svg viewBox="0 0 100 80" width="40" height="40">
@@ -28,14 +31,14 @@
 		</div>
 		<div class="hidden md:flex subpages">
 			{#each settings.header.links as link}
-				<div class="link flex-wrap m-5 ">
+				<div class="link flex-wrap m-5">
 					<a href={link.url} class="transition hover:text-violet-400">{link.text}</a>
 				</div>
 			{/each}
 		</div>
 		<div class:hidden={!toggled} class="bg-violet-100/75 flex flex-wrap md:hidden subpages">
 			{#each settings.header.links as link}
-				<div class="link flex-wrap m-5 ">
+				<div class="link flex-wrap m-5">
 					<a href={link.url} class="transition hover:text-violet-400">{link.text}</a>
 				</div>
 			{/each}

@@ -8,8 +8,8 @@
 
 <div>
 	<div class="grid gap-8 content-center grid-cols-8">
-		{#each values as [name, values]}
-			<CVSection {name} {values} />
+		{#each values as [name, v]}
+			<CVSection {name} values={v} />
 		{/each}
 	</div>
 </div>

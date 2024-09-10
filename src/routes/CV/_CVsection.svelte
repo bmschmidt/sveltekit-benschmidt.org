@@ -10,7 +10,7 @@
 	</div>
 </div>
 
-<div class="col-span-6 flex-col border">
+<div class="col-span-6 flex-col">
 	<ul>
 		{#each values as item}
 			<li>

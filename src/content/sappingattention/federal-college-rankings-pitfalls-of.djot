@@ -1,0 +1,138 @@
+---
+date: "2014-12-30T15:43:00.002-05:00"
+draft: false
+title: "Federal College Rankings: The pitfalls of a magical regression
+  model"
+url: /2014/12/federal-college-rankings-pitfalls-of.html
+---
+
+Far and away the most interesting idea of the new government college
+ratings emerges toward the end of the report. It doesn't quite square
+the circle of [competing constituencies for the
+rankings](http://sappingattention.blogspot.com/2014/12/federal-college-rankings-who-are-they.html)
+I worries about in my last post, but it gets close. Lots of weight is
+placed on a single magic model that will predict outcomes regardless of
+all the confounding factors they raise (differing pay by gender, sex,
+possibly even degree composition). As an inveterate modeler and data
+hound, I can see the appeal here. The federal government has far better
+data than US News and World Report, in the guise of the student loan
+repayment forms; this data will enable all sorts of useful studies on
+the effects of everything from home-schooling to early-marriage. I don't
+know that anyone is using it yet for the sort of studies it makes
+possible (do you?), but it sounds like they're opening the vault just
+for these college ranking purposes.
+
+The challenges raised to the rankings in the report are formidable.
+Whether you think they can work depends on how much faith you have in
+the model. I think it's likely to be dicey for two reasons: it's hard to
+define "success" based on the data we have, and there are potentially
+disastrous downsides to the mix of variables that will be used as
+inputs.
+
+I should say, by the way that a lot of details about the model is
+unclear; it looks for the moment like the standard economist's trick of
+throwing every variable they have into a linear regression and hoping
+for the best. But there are interesting possibilities here. Is it going
+to be a true multilevel model allowing variable coefficients to vary by
+school? That would let us know if, hypothetically, [Ole
+Miss](http://www.bet.com/news/national/2014/02/24/at-ole-miss-black-students-remain-troubled-by-recent-racist-incidents.html)
+tends to depress the post-graduation performance of African American
+students while being a great place for whites, or if [Harvard Business
+School adds more value for men than for
+women.](http://www.nytimes.com/2013/09/08/education/harvard-case-study-gender-equity.html?pagewanted=all)That
+would open up the prospect of truly _personal_ college rankings. It
+might also enable all sorts of Title IX suits. But given the data and
+the ease of doing this kind of thing, I suspect someone will at least
+run it in their testing phase: it might be worth getting some subpoenas
+ready.
+
+How will the rankings define success? It seems to be through a
+combination of several factors including graduation rate, cost, loan
+debt, and income years after graduation. None of these are especially
+new, and all have their problems. (Spelled out in the preliminary
+report). College presidents like Drew Faust are right to worry that [the
+particular variables being chosen constitute a bit of a federal nudge to
+train students vocationally and for the short
+term,](http://www.washingtonpost.com/local/education/harvard-president-faust-on-federal-college-ratings-campus-sexual-assault-and-more/2014/12/15/dc5ebc2c-7a26-11e4-84d4-7c896b90abdc_story.html)
+which is directly contrary to the mission of much higher education. We
+don't yet know exactly how these statistics might be gamed, but it seems
+likely that colleges may put comparatively too much emphasis to helping
+students find a job by a certain date. I believe that one key component
+in my university, Northeastern's, [quick ascent in the
+rankings](http://www.bostonmagazine.com/news/article/2014/08/26/how-northeastern-gamed-the-college-rankings/) was
+convincing the magazine not to use 4-year graduation rate as a major
+component, since the typical Northeastern student takes five years to
+graduate with two 6-month job placements. A federal ranking will likely
+inadvertently punish schools that deviate from the norm even when there
+are good reasons.
+
+But where things really get dicey are in the factors that are used to
+\*offset\* student success. I previously worried that [rankings which
+used earnings measures would punish schools or disciplines with many
+women.](http://sappingattention.blogspot.com/2014/05/mind-gap-incomes-college-majors-gender.html)
+A massive regression model will eliminate that concern, but will produce
+really strange and uncertain results.
+
+As the coefficients vary, individual schools will shoot up and down in
+the rankings based on their demographic profiles. This is likely to be a
+quite unstable ranking from year to year, which is an unreservedly bad
+thing--it will encourage deans to make radical shifts and pinpoints
+turns on the basis of the slightest evidence. This holds promise only
+for the sort of people who use the word "disrupt" too much.
+
+Most dispiriting about the tone of the report for me is the implicit
+optimism that they have the data to solve all of the problems of varying
+group performance. Even if they solve race and gender, a whole slew of
+other factors will persist. I joked on Twitter that the "moneyball" dean
+should summarily reject short people and twins from admission, since
+their lifetime earnings tend to be lower; although that's obviously
+foolish, plenty of universities and groups will suffer under a
+regression-based ranking.
+
+For instance, schools with a large Asian-American population will be
+expected by the model to perform extremely well. But it's well known
+that [certain Asian demographic groups don't share in the
+benefits.](http://rer.sagepub.com/content/77/4/415.short) These
+subgroups tend to be geographically concentrated, so it's a fair bet
+that the University of Minnesota, say, will appear to be doing a much
+worse job than it actually is because the model expects its
+Hmong-American students to perform as well as UCSD's Chinese-American
+ones.
+
+There are also obvious questions about what to include in the model. It
+won't include, for instance, a for-profit/not-for-profit flag, because
+if students attending for-profit schools do worse, that should reflect
+poorly on them. But should there be a public/private flag? This is less
+clear. Perhaps thorniest of all is the issue of accounting for degree
+composition. People training to be nurses make more than people training
+to be clergy. But the report vacillates, for understandable reasons, on
+whether degree mix should be included in the model. Most politicians,
+President Obama included, tend to _like_ the idea that a model like this
+might give an extra nudge to schools to eliminate their art history
+major. ([His stereotype, not
+mine](http://www.usatoday.com/story/theoval/2014/02/19/obama-apologizes-to-texas-art-history-professor/5609089/)).
+
+But that's the real problem. Including all these factors is a
+double-edged sword: although it means that the rankings will be more
+fair to socially disadvantaged groups and schools serving those
+populations, it also brings a new form of gaming into play. Although
+people love to complain about the distortionary effects of the US News
+ranking, the effects are relatively innocuous compared to what they
+could be. Sure, it's absurd that [Princeton probably deliberately
+accepts underqualified applicants to improve its
+yield](http://qje.oxfordjournals.org/content/128/1/425.full) or that
+default enrollment caps at Northeastern are 19 and 49 students to fall
+just short of the minimum class sizes: but those effects aren't
+especially pernicious. US News doesn't include all that many variables
+in its list, so really evil discriminatory practices in gaming the
+rankings aren't as common as they could be.
+
+_If_ this federal ranking is adopted, it could unleash all sorts of new
+problems precisely because the data being used is so much richer.
+Depending on the exact calibration of the model, it may quickly become
+apparent that it makes sense to discriminate against or reward all sorts
+of classes (wealthy African Americans). And depending on what isn't
+included, it may be obviously beneficial to start shuttering or
+discouraging enrollments in the liberal arts. It will take the actual
+introduction of the ranking for all the ingenuity of the managerial
+class to be deployed to reveal the ways that they can be gamed.

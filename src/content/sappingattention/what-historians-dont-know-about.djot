@@ -1,0 +1,262 @@
+---
+date: "2011-03-02T12:21:00.000-05:00"
+draft: false
+tags:
+- Featured
+- Building a Corpus
+- Digital Humanities
+title: What historians don't know about database design...
+url: /2011/03/what-historians-dont-know-about.html
+---
+
+I've been thinking for a while about the transparency of digital
+infrastructure, and what historians need to know that currently is only
+available to the digitally curious. They're occasionally stirred by a
+project like ngrams to think about the infrastructure, but when that
+happens they only see the flaws. But those problems---bad OCR,
+inconsistent metadata, lack of access to original materials---are
+present to some degree in all our texts.
+
+One of the most illuminating things I've learned in [trying to build up
+a fairly large corpus of
+texts](http://sappingattention.blogspot.com/2011/02/technical-notes.html)
+is how database design constrains the ways historians can use digital
+sources. This is something I'm pretty sure most historians using jstor
+or google books haven't thought about at all. I've only thought about it
+a little bit, and I'm sure I still have major holes in my understanding,
+but I want to set something down.
+
+Historians tend to think of our online repositories as black boxes that
+take boolean statements from users, apply it to data, and return
+results. We ask for all the books about the Soviet Union written before
+1917, Google [spits it
+back](http://www.google.com/search?q=%22Soviet+Union%22&hl=en&sa=X&ei=eP8ETa60CsP_lgftrbzdCQ&ved=0CBMQpwU&source=lnt&tbs=bks:1,cdr:1,cd_min:,cd_max:12/31/1916).
+That's what computers aspire to. Historians respond by muttering about
+how we could have 13,000 misdated books for just that one phrase. The
+basic state of the discourse in history seems to be stuck there. But
+those problems are getting fixed, however imperfectly. We should be
+muttering instead about something else.
+
+Historians who assume computers are boolean machines gloss over an
+important distinction: there's not a one-to-one connection between the
+boolean logic on a processing board and the boolean logic we feed in.
+There's a hard drive that has to be physically moved around, there's a
+limited amount computing space that has to be carefully managed, and so
+on. All those sites have to expend incredibly energy structuring the
+data in a way that lets you return it with any semblance of speed.
+HathiTrust has a technical but interesting blog about [making their
+massive archive of OCR'ed texts
+searchable](http://www.hathitrust.org/blogs/large-scale-search). Open
+Library has [some interesting posts,
+too](http://blog.openlibrary.org/2011/02/02/search_inside_solr/). Google
+is more reticent about their practices, but you can see it in action on
+their pages. That Google results page for the Soviet Union before 1917
+tells me there are
+
+About 13,500 results (0.53 seconds)
+
+for my search. \[I wrote that a couple months ago, and now I get 1,000
+more books in a tenth of a second less. Progress\!\] If I try it again,
+that number goes down to 0.14 seconds or so, because Google now has a
+cached entry closer to my computer. The key thing to understand is that
+Google doesn't actually look through all the text files it has every
+time I perform a search. Instead, it passes the request around to see if
+it already has an answer; and if not, it uses an 'index' of all the
+books to find the ones that have the terms. It doesn't reach the actual
+files until the very end of the process, when you click on them to read.
+For the ngrams viewer, for example, the whole thing is driven entirely
+by the flat files you can download from their site, and by associated
+indexes in whatever database program they're using.
+
+The whole business of search relies on creating indexes, caches, and
+fragments of databases to get the search numbers lower and lower.
+Working out indexing and storage schemes took up far more energy early
+in this project than I anticipated, because the speed difference between
+good indexing and bad indexing is so great that it makes the kind of
+research that cuts against the indexes very difficult. So what's an
+index? It's like a concordance, basically--it makes it easy to access
+just what the index-maker designed, but not much else. A concordance to
+Ovid is great for understanding his work--but it's considerably less
+useful if you're interested in the entire usage of the golden age latin
+poetry, and even less so if you're interested in tracing, say, the
+mentions of some animal from the Antonines to the Hapsburgs. And if you
+notice, say, that there are a lot more fish in the _Tristia_ than the
+_Ars Amatoria,_ there's no way at all to find out what else
+distinguishes the two books from each other save from reading them
+through.
+
+A more concrete example: Let's say I wanted to know how many times the
+word 'evolution' appeared each year from 1830 to 1922. I could have the
+computer read through each of the books in my catalog and note the years
+it appears, but that would take quite a while--twenty minutes to an
+hour, say. It's much faster for me to keep database tables in MySQL that
+tell me all the books that have my word; it's yet faster if I just keep
+the counts for each word by year in a separate table. So, for different
+purposes, I store both those things in the database. And to make that
+run quickly, I have to create separate indexes that let the computer
+find results quickly. That lets me get a basic wordcounts graph, n-gram
+style, for any word in well under a second.
+
+But when I want to start finding out about words that happen in the same
+_sentence_ as evolution, rather than the same book, I have to go back to
+the flat text files again. This means it's hard to ask questions like
+"[What are the words that frequently appear in the same sentence as
+capitalism in
+1920](http://sappingattention.blogspot.com/2010/12/age-of-capital.html)?"
+And it's even harder to ask questions _about those words,_ like "[How
+can we cluster books that use words related to evolution on the basis of
+words related to 'society' and words related to
+'biology'?”](http://sappingattention.blogspot.com/2011/01/cluster-charts.html)
+or"What words appear most disproportionately in the same books as
+business words?” If I free up some hard drive space, I might try to
+index at the sentence level as well as the book level, so I can ask some
+of these questions better. But that comes at the cost of increasing
+slowness--certain sorts of select queries on my database take minutes,
+even hours, to run.
+
+So what? Am I just complaining about how slow my funny little research
+project is? Not entirely. In many ways, these problems are
+generalizable. That is to say: indexing deeply affects the questions we
+can ask of our digital libraries. The websites for Jstor, ProQuest, and
+so on force you into a certain syntax. You can find passages articles
+that use a two word phrase, and you can find that have both of the
+words, but if you want to find books that have _sentences_ that have
+both the words, you can't. (Pro-Quest lets you find "within 3",
+presumably because they build that up. But "within 5", or "on the same
+page as" would take a whole extra index. That variability is the
+point--different databases give us different research capabilities.)
+
+Those limitations aren't just about web design, although that's part of
+it--they're about the databases underlying the website. Even you let me
+into Jstor headquarters and gave me all the passwords, any queries on
+their database different from the ones the website allows would take far
+longer to run. The solution to this would be to build new indexes to
+help those queries run faster, but that's a substantial investment. My
+relatively constrained indexes take over a day of processing to build.
+If I correctly understood something Erez Lieberman-Aiden said to me the
+other day, it's taking the Harvard culturomics team about a month to
+build indexes for experimental features in ngrams. That's a substantial
+investment of computing power, and in any given direction you quickly
+outstrip the capabilities of the index. Any sufficiently interested user
+can think of a new task.
+
+As new algorithms and techniques supplement more basic keyword queries,
+this problem only gets worse. J-Stor has, for instance, implemented a
+new [experimental topic browser](http://www.blogger.com/) using topic
+modeling. They build up new indexes for it, I'm sure. But either because
+topic models are more complicated than simple keyword searches or
+because they haven't fully tuned the databases its running on, results 
+take longer than traditional J-Stor results when you rebalance the
+terms. And this is with the topics they've generated and indexed: if you
+wanted to generate your own, or use some combination of word-weightings
+you gleaned from elsewhere, you'd be out of luck.
+
+This is important now because we're in an interesting period of
+transitioning search. Computers are fast enough now that we can get two
+things we didn't have before: keyword search on text archives orders of
+magnitude larger than we've had before without it necessarily being done
+through Google (Hathi, internet archive book search being the most
+obvious), and search that isn't just done by keyword but by more
+elaborate models that take many more data points. (Topic modeling being
+the most promising of these.) Ngrams is a fascinating example of a new
+way of arranging and searching data. And natural-language-processing
+opens up new horizons as well. There are a few really interesting
+attempts, like
+[wordseer](http://www.cs.berkeley.edu/%7Eaditi/projects/wordseer.html),
+to have a fully collaborative attempt to build new search tools more in
+line with the way that humanists actually work. Historians want larger
+corpuses of texts more regularly than any other field, I think, so the
+limitations and possibilities of search will be as important for them as
+anyone.
+
+Still, all this infrastructural action is mostly behind the scenes for
+historians. That's a bad thing. The real scholarly infrastructure is
+still going up at J-stor and Google books and everywhere else with a
+primary audience of social scientists, or the book-buying public, or
+some vaguely defined audience that don't have the infrastructural needs
+that historians might. Any small town in the 19th century knew that the
+most important task they had was to get the railroad tracks running
+through their town. Historians need to figure out just what they can get
+out of texts that they aren't, and how they can ensure the emerging
+indexes and database infrastructure leads us to where we want to go.
+
+{#where-do-we-want-to-go-that-s-the-question-and-i-ll-leave-it-to-later-to-answer-it-more-but-it-s-something-that-historians-not-just-digital-ones-need-to-think-about-more-the-historical-profession-is-not-to-put-it-mildly-very-good-at-dealing-with-collective-action-issues-like-infrastructure-shaping-there-s-little-reason-to-think-they-could-ever-get-the-railroad-to-run-through-town-it-s-possible-that-i-m-simply-wrong-about-this-being-an-issue-for-historians-and-it-s-really-a-question-of-librarianship-but-i-ve-read-perhaps-too-much-history-of-the-social-uses-of-technology-to-believe-that-entirely-the-end-users-really-can-shape-the-way-that-the-technology-evolves-but-we-ll-need-to-understand-it-better-first-and-in-doing-so-understand-how-it-s-a-shared-challenge}
+## Where do we want to go? That's the question, and I'll leave it to
+later to answer it more. But it's something that historians, not just
+digital ones, need to think about more. The historical profession is
+not, to put it mildly, very good at dealing with collective-action
+issues like infrastructure-shaping. There's little reason to think they
+could ever get the railroad to run through town. It's possible that I'm
+simply wrong about this being an issue for historians, and it's really a
+question of librarianship. But I've read perhaps too much history of the
+social uses of technology to believe that entirely; the end-users really
+can shape the way that the technology evolves. But we'll need to
+understand it better first, and in doing so understand how it's a shared
+challenge.
+
+{#comments}
+### Comments:
+
+{#a-man-after-my-own-heart}
+#### A man after my own heart.
+
+[Anne](#) - Mar 4, 2011
+
+A man after my own heart.
+
+{#ben-this-is-fascinating-i-think-as-posed-here-it}
+#### Ben, this is fascinating. I think as posed here it...
+
+[Lo Faber]() - Mar 1, 2011
+
+Ben, this is fascinating. I think as posed here it seems more like an
+issue of bibliography (as opposed to history) than it ought to, because
+your examples and scholarly interests center on printed texts (as do the
+major massive digitization projects up to now). And no question the
+intellectual-history-as-quantitative-history model that seems implicit
+in the discussion has tremendous potential (despite perhaps scaring the
+crap out of an earlier generation of historians). But don't you think
+that the future of digitization for historians will also have a lot to
+do with more social science-ish kinds of archival materials, geared
+towards answering more demographic, economic, social history kinds
+questions? Maybe the phrase "Digital Humanities" mean you're less
+interested in digitization projects of a more quantitative nature; but
+those have analogous sorts of database design and querying issues. (No
+time to discuss in detail right now, but remind me to tell you about my
+obsession with the incredible New Orleans Notarial Archives.) In any
+case I couldn't agree more about the profession and the train tracks.
+Thanks for getting me thinking about this topic. Sorry to miss your MAW
+paper as I'm down in New Orleans. I will read it though. Lo
+
+{#lo-i-actually-think-digitization-of-non-quantita}
+#### Lo, I actually think digitization of non-quantita...
+
+[Ben](https://www.blogger.com/profile/04856020368342677253) - Mar 2,
+2011
+
+Lo,
+
+I actually think digitization of non-quantitative archives (full runs of
+state archives on a scale like the wikileaks cables, random personal
+papers) could make a huge different if done right--some sort of API that
+would let one search across lots of different archives to see how
+something like the Haymarket riots were described would be really
+interesting.
+
+The census stuff, you're completely right, should be renewing interest
+in social history. The problem is that resources like the
+[ICPSR](http://www.icpsr.umich.edu/icpsrweb/ICPSR/) have been putting up
+all sorts of great data---including all the Fogel stuff from the New
+Orleans slave market, if I remember right---online, but we've done a
+lousy job assimilating it. The full run of individual census records
+could be completely stunning, though, if someone besides ancestry.com
+had it, for all sorts of reasons. But I think that what I want to say is
+that even \_without\_ the sort of changes it would take for that kind of
+work to be accepted, we need to worry about how digitization is stored.
+
+Also, newspapers are interesting as a kind of middle ground, I think,
+between the books and the archives. For American historians, at
+least--even the people who don't care mostly about books from the 19th
+Century, like me, spend a lot of time digging through local newspapers.
+And those digitization projects have been piecemeal, and in many ways
+are less accessible than books or scholarly journals.

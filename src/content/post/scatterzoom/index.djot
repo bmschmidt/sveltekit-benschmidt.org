@@ -1,0 +1,21 @@
+---
+date: "2018-10-30T13:37:26"
+draft: false
+tags:
+- Dimensionality Reduction
+- SRP
+- Data Visualization
+title: Interactive Scatterplots
+---
+
+As part of the _Creating Data_ project, I've been doing a lot of work
+lately with interactive scatterplots. The most interesting of them is
+[this one about the full Hathi collection](https://t.co/erWeUkR9Fk). But
+I've posted a few more I want to link to from here:
+
+- [An exploration of co-occurring street names in the United
+  States](http://creatingdata.us/etc/streets/)
+- A [description of the process of making them and tiling data
+  hierarchically](http://creatingdata.us/techne/deep_scatterplots/)
+- [A general description of visual bibliographies with an analysis of
+  fiction datasets.](http://creatingdata.us/techne/bibliographies/)

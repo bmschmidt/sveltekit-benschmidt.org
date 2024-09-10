@@ -1,18 +1,18 @@
 import { blogs } from '$lib/../params/blogname';
-const fulltext = import.meta.glob('/src/content/**/*.md', { eager: true });
+const fulltext = import.meta.glob('/src/content/**/*.djot', { eager: true });
 
-function path_to_slug(filepath) {
+function path_to_slug(filepath: string) {
 	const path = filepath.replace('/src/content/', '');
-	if (filepath === '/src/content/index.md') {
+	if (filepath === '/src/content/index.djot') {
 		return '';
 	}
 	let slug;
-	if (path.endsWith('index.md')) {
+	if (path.endsWith('index.djot')) {
 		const p = path.split('/');
 		p.pop();
 		slug = p.pop();
 	} else {
-		slug = path.split('/').pop().replace('.md', '');
+		slug = path.split('/').pop().replace('.djot', '');
 	}
 	return slug;
 }
@@ -35,9 +35,9 @@ function cleanup_blogpost(page) {
 export function full_catalog(post_limit = 1e6) {
 	const pages = [];
 	const files = Object.keys(fulltext);
-	let post_num = 0;
 	for (const filepath of files) {
 		const data = fulltext[filepath].default;
+		// console.log({data})
 		const slug = path_to_slug(filepath);
 		let type = 'page';
 		for (const blog of blogs) {
@@ -45,7 +45,6 @@ export function full_catalog(post_limit = 1e6) {
 				type = blog;
 			}
 		}
-
 		const metadata = data.metadata || {};
 		if (metadata.date === undefined || metadata.date == 0) {
 			console.warn('No date for', slug);
@@ -63,7 +62,7 @@ export function full_catalog(post_limit = 1e6) {
 			slug,
 			type,
 			metadata,
-			document: data.document
+			document: data
 		});
 	}
 	pages.sort((a, b) => new Date(b.metadata.date) - new Date(a.metadata.date));

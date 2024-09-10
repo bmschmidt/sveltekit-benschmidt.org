@@ -33,5 +33,5 @@ The Internet is supposed to consist of links to some good outside content.
 We've mostly given up on that, which is too bad. So here's some stuff on the web
 you may have missed since the 1990s.
 
-- You can buy surplus government material from [General service administration auctions](https://gsaauctions.gov/gsaauctions/gsaauctions/)
+- You can buy surplus government material from [General service administration auctions](https://gsaauctions.gov/auctions/home)
 - The best information about careers in the humanities is [Where Historians Work](https://www.historians.org/wherehistorianswork), by the American Historical Association.

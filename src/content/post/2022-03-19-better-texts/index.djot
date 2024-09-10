@@ -1,0 +1,472 @@
+---
+date: 2022-04-19
+draft: false
+featured: false
+tags:
+- Digital Archives
+- Nonconsumptive
+- Bookworm
+- Digital Humanities
+title: "Sharing texts better, part 1: Austrian Newspapers"
+---
+
+It's not very hard to get individual texts in digital form. But working
+with grad students in the humanities looking for large sets of texts to
+do analysis across, I find that larger corpora are so hodgepodge as to
+be almost completely unusable. For humanists and ordinary people to work
+with large textual collections, they need to be distributed in ways that
+are actually *accessible, not just open access.*
+
+That means:
+
+- Downloading
+- Reasonable file sizes (rarely more than a gigabyte).
+- Reasonable numbers of files (don't make people download more than a
+  dozen for some analysis tasks.
+
+This isn't happening right now. The hurdles to working with digital
+texts are overwhelming to almost anyone. I don't usually write up a
+simple process story about what it's like to get collections of texts,
+but I want to do do so a few times here.
+
+What follows here is--I should be clear--a sort of infomercial. Over the
+last year or so I've started formalizing a much better way to distribute
+texts than any cultural heritage currently uses.
+
+I'll share texts using it. I want to start looking at some collections I
+encounter to make clear just how high are the barriers to working with
+text the way we're distributing it now.
+
+Part one: *newspapers.* Newspapers should be, in theory, a pretty easy
+type of text to distribute. In an ideal world, a newspaper is divided up
+into _articles_. But most of the open-access newspaper collections I've
+seen instead chope papers up into _pages_. That's the case for the first
+archive I'm going to look at in this series: newspapers from the
+Austrian National Library hosted on Europeana.
+
+I can't completely remember the details of why I'm looking at this
+collection, but in short: a graduate student in my [Working with
+data](https://benschmidt.org/WWD22) class was interested in doing text
+analysis for their class project on newspapers from there. We decided
+that the _Neue Freie Presse_ would be an especially useful paper, and
+identified digitized versions both [on
+Europeana](http://www.europeana.eu/en/item/9200300/BibliographicResource_3000051857621)
+and at [ANNO, hosted by the Österreichische
+Nationalbibliothek](https://anno.onb.ac.at/cgi-content/anno?aid=nfp).
+(If you visit the Wikipedia page for the NFP, it takes you to a [dead
+Columbia
+link](https://mt.ccnmtl.columbia.edu/schenker/profile/title/neue_freie_presse.html))
+ANNO has a nice online interface including well-formatted links like
+"https\://anno.onb.ac.at/cgi-content/annoshow?text=nfp\|18970610\|20"
+for full-text: this seems like a possible route for getting data,
+although the decades of data will take an extremely long time to
+download in R. Looking for other copies, I first check the [Atlas of
+Digitized Newspapers](https://www.digitisednewspapers.net/) from the
+Oceanic Exchanges project, because I know that they have decent
+information about accessibility. (Despite the name, they are not an
+atlas in any normal sense, but instead of bibliography, registry, or
+catalog.) It suggests that access will be to XML files through
+Europeana, and does not list any access through ANNO above what I've
+been able to find.
+
+But it also links to a [bulk
+download](https://pro.europeana.eu/page/iiif#download) site at
+Europeana. Looking at the Europeana sites during a Zoom call we discover
+that there are a number of full-text downloads identified by opaque
+numbers: `9200300` is the first one.
+
+Here's where we hit the first snag. What are these numbers? Looking at
+the site for one of the NFP pages in the Europeana browser, we see that
+it, too, starts with `9200300`. Perhaps this is just what we want? But
+the file is unthinkably large--116 GB, zipped, for the page-level full
+text. This is too large for the grad student to download, but I click on
+it to see what will happen. It spins, and spins, long past the end of
+office hours. The student has to wait.
+
+A week passes. While looking for a completely different file on my
+computer, I encounter a 63GB zip file in my downloads. I dimly remember
+downloading this earlier, and think about opening it. To just unzip a
+63GB file would be crazy--this is another place that most researchers
+will be stimied. I know that one can access a zipfile randomly, though,
+and fire it up in Python to read.
+
+This is a second place that most researchers would be lost--63 GB is
+just *too big*. There should never be a single file that large unless
+it's completely necessary; in this case, that's clearly not so. The idea
+that you can extract single files is simply not obvious, so many people
+will try to extract. I don't know exactly how big that 63GB file will
+be, but probably large enough to clobber most hard drives.
+
+I've named the zipfile 'NFP.zip' now, because I'm hoping it has the Neue
+Freie Press. Now I can read the list of filenames.
+
+{.python}
+```
+import zipfile
+import html
+f = zipfile.ZipFile("NFP.zip")
+fnames = f.filelist
+```
+
+It turns out to have 1.6 million little files bundled in there, with
+names like `9200300/BibliographicResource_3000116292697/3.xml`. Hmm.
+Well, the end is clearly the page number, and perhaps the bibliographic
+resource is the individual issue?
+
+I read in a single document--the one-millionth--to see.
+
+{.xml}
+```
+<TextLine HEIGHT="61" WIDTH="703" VPOS="25" HPOS="166"><String WC="0.5249999762" CONTENT="rung" HEIGHT="29" WIDTH="68" VPOS="37" HPOS="166"/><SP WIDTH="19" VPOS="32" HPOS="234"/><String WC="0.5199999809" CONTENT="des" HEIGHT="29" WIDTH="46" VPOS="33" HPOS="253"/><SP WIDTH="10" VPOS="35" HPOS="299"/><String WC="0.4877777696" CONTENT="höchstens" HEIGHT="43" WIDTH="140" VPOS="30" HPOS="309"/><SP WIDTH="17" VPOS="38" HPOS="449"/><String WC="0.625" CONTENT="ui" HEIGHT="22" WIDTH="28" VPOS="45" HPOS="466"/><SP WIDTH="17" VPOS="45" HPOS="494"/><String WC="0.275000006" CONTENT="emem" HEIGHT="27" WIDTH="84" VPOS="45" HPOS="511"/><SP WIDTH="10" VPOS="42" HPOS="595"/><String WC="0.4562500119" CONTENT="fncvüchm" HEIGHT="40" WIDTH="149" VPOS="42" HPOS="605"/><SP WIDTH="9" VPOS="48" HPOS="754"/><String WC="0.3616666794" CONTENT="Zustan" HEIGHT="36" WIDTH="96" VPOS="48" HPOS="763"/><HYP CONTENT="­"/></TextLine>
+```
+
+So--it's XML of the scans including exactly the position in pixels of
+each work. I consider parsing the textlines out and deconstruction the
+JSON, but XML parsing is a pain and always tediously, tediously slow.
+And I don't care about any of this stuff--I'm doing text mining, so I
+just want the words. A quick check back at the Europeana site confirms
+that I have the _smallest_ file on offer.
+
+So let's do the quick and dirty approach. The letters I want follow the
+word "CONTENT" in the XML; so I'll just write a quick-and-dirty approach
+that splits on that string, and grabs everything up to the second
+quotation mark. This is how people use XML, I tell myself; no one is
+enough of a sucker to use python's XML parsing libraries, so let's just
+munge it out. `split` is so much faster....
+
+{.python}
+```
+import pyarrow as pa
+from pyarrow import parquet
+while True:
+    pages = []
+    ids = []
+    for j in range(5000):
+        print(i, end = "\r")
+        r = f.open(fnames[i])
+        words = []
+        for word in r.read().decode("utf-8").split('CONTENT="')[1:]:
+            words.append(word.split('"', 1)[0])
+        page = html.unescape(" ".join(words))
+        pages.append(page)
+        ids.append(fnames[i].filename.replace(".xml", ""))
+        i += 1
+    out = pa.table({"ids": ids, "pages": pages})
+    parquet.write_table(out, f"{i}.parquet", compression = "zstd", compression_level = 5)
+    print(f"{i}/{len(fnames)}")
+```
+
+This is code that pulls out of XML into something better: a parquet
+file, written by pyarrow, for each group of 5,000 pages. I check one to
+be sure--looks like German. There will surely be mistakes--perhaps
+involving quotation marks in words. But with low-quality OCR, it's
+enough to start.
+
+> Arzt der k. k. prio. THÄßbahn, anö den frischen Blätter» des Enca»
+> lyptiis Globnlus. eines ans Anstratten stammende» BaiimcS, i» dem
+> ««oratorwin des Apothekers \^»»\>i Sdl»»»»»» Wien. JÄche», -
+> Haupistraze Nr. 16, einzig und allein zukereiteie rmd stets «orrStbig
+
+{#rewriting-with-compression}
+## Rewriting with compression.
+
+I wrote them into a folder with level 5 compression in zstd. The new
+directory, with parquet files and ids, is a tenth the size: 6.4GB vs
+63GB for the zipfile I downloaded. Why on earth have I downloaded
+massive XML files when I just want text? Who really wants this
+positional text, anyway? I've used it a few times over the years--but
+most people want *text*, not XML. Zipfiles at least are nice, because I
+can grab the specific files I want. But they're also _slow_ in their own
+right. I start parsing at 22\:21, and leave my computer open--looking at
+the timestamps, I don't finish the last file until more than two hours
+later, at 00\:31.
+
+This is bonkers. Mediocre zip compression and uselessly XML-encoded data
+mean that it takes two hours just to look at the data in the most
+cursory way. It's important to distribute things in a complete format,
+but it's also important not to waste resources making things too hard to
+parse. With the parquet formatted versions of the data, it takes *not
+two hours but 55 seconds* to parse through every file in this set.
+That's a _major_ improvement--100 times faster to read, and one-tenth
+the size. Both of those are big enough differences that they actually
+affect whether this data is usable or not.
+
+```
+matches = []
+from pyarrow import compute as pc
+for p in Path("parquet_files").glob("*.parquet"):
+    a = parquet.read_table(p)
+    which = pc.match_substring(a['pages'], "Gustav Mahler")
+    matches.append(a.filter(which))
+```
+
+So--now we've got a huge set of text in a fairly navigable form. But we
+don't know _what_ the records are. The identifiers are all things like
+`9200300/BibliographicResource_3000123565676/4`; aside from the page
+number, it's not clear what any of those mean. My working theory to this
+point was that `9200300` meant the Neue Freie Presse and
+`BibliographicResource_3000123565676` means the individual issue; but I
+need to know for sure.
+
+{#sorting-is-information}
+## Sorting is information
+
+At this point, I start putting the identifiers into the web site and
+figuring out the layout of the metadata here. It turns out that this is
+not just one newspaper, but lots--probably everything contributed from
+the OSB to Europeana. And, stunningly, the order seems to be completely
+random? I call the web based Europeana API and get a dcTitle field in
+this order:
+
+```
+["Der Humorist - 1847-01-29"]
+["Blätter für Musik, Theater und Kunst - 1871-09-19"]
+["Wiener Zeitung - 1841-10-18"]
+["Der Humorist - 1841-03-10"]
+["Neue Freie Presse - 1871-10-22"]
+["Innsbrucker Nachrichten - 1859-11-25"]
+["Die Presse - 1867-06-25"]
+["Das Vaterland - 1862-09-26"]
+["Wiener Zeitung - 1705-02-28"]
+["Wiener Zeitung - 1868-12-04"]
+```
+
+There a couple things weird here. One is the random order. I suppose
+that this could be my fault, because I just used the filenames from the
+zipfile in the order they appeared, rather than sorting. But that itself
+is a problem--the zipfile should have more of an inherent order. It is
+an underappreciated fact that *good sorting is good compression*; the
+more natural an order information appears in, the better it will
+compress. And of course, the fewer files people will have to download.
+The other is that "title" is wrapped in an array: apparently in the EDM
+things can have multiple titles. OK, that's something I can work with.
+
+So now I have a clear plan.
+
+1. Get metadata for every record.
+2. Match it to the papers.
+3. Write out each newspaper in chronological order.
+
+To get the metadata, I have to find it--there is _no_ metadata in the
+data dumps. First I do it using the API.
+`https://api.europeana.eu/record/v2/{id}.json?wskey={api_key}'` But it
+quickly becomes clear this won't scale: Running overnight I've only
+download 35,000 of 1.3 million records. So I go back to the Europeana
+page and download another enormous zipfile--a 4 gigabyte one with
+records for the entire set. How this manages to be so large isn't
+initially clear to me--perhaps, I think, they've bundled the full text
+into it?
+
+The answer turns out to be that there is massive amounts of text for
+each record because, chiefly, every records repeats an extremely long
+definition of 'newspaper' in many different languages. That this
+balloons the size so much is a failure of an over-literal use of linked
+data. Perhaps there would be a way to reference it as an element in a
+single HTML file, but really, _no one cares._ This part of the data
+model will *never be used outside a Europeana site*--there is some
+base-covering in distributing it, but it's a massive inconvenience for
+researchers to have the following block of text (and something vaguely
+equivalent in Latvian, Arabic, Russian, etc.) \*\*repeated 1.6 million
+times in a file that's supposed to be a metadata dump about newspaper
+issues:
+
+> Many newspapers, besides employing journalists on their own payrolls,
+> also subscribe to news agencies (wire services) (such as the
+> Associated Press, Reuters, or Agence France-Presse), which employ
+> journalists to find, assemble, and report the news, then sell the
+> content to the various newspapers. This is a way to avoid duplicating
+> the expense of reporting.
+
+Now, I understand the need for clear URIs for concepts and the benefits
+of linked open data. But the nature of linked open data is that any
+individual record can be ballooned indefinitely. Why is there a
+definition of 'newspaper' at such tedious length and not, say a full
+expansion of the [geographic definition of
+'Graz'](https://portal.dnb.de/opac.htm?method=simpleSearch&cqlMode=true&query=nid%3D4021912-4)
+where it appears? I am sure there is a reason--but I'm equally sure it's
+not really a good one.
+
+Toggle to see the metadata for a single newspaper
+
+So now I've got to parse these monster XML blobs 1.3 million times. And
+this time I can't resort to regex. Ugh. Again, this is something that
+most researchers will abandon quickly. I'm increasingly XML referred to
+in the past tense online, as a data format/data movement that failed.
+Evangelists will surely disagree, and certainly a great deal has been
+lost. But for my purposes, I need something tabular that can be joined,
+and XML and tables play extremely poorly together.
+
+But I'll try. The first step will be to get into JSON-LD format, which
+is a linked data format that actually works inside of programming
+languages for non-evangelist humans. It turns out to be something of a
+pain--maybe ten minutes of vaguely recalling terms before I precisely
+figure out how to use [Harold Solbrig's rdflib-jsonld extension to the
+rdflib library](https://github.com/RDFLib/rdflib-jsonld) to squeeze the
+data into JSON. Solbrig, thank goodness, has provided a code example.
+With everything but the format to put in, the transformation is obvious.
+
+{.python}
+```
+from rdflib import Graph, plugin
+from rdflib.serializer import Serializer
+g = Graph().parse(data=demo, format="xml") #<-took a while to figure this line out!
+print(g.serialize(format='json-ld', indent=1))
+```
+
+OK. So all I really need here is the nmewspaper title and the date, so
+let's see how to parse it out. Once again, the json-ld is massively
+large. After wasting 40 minutes trying to figure out if I can implement
+a general solution to parse out all the various `@type` entries using a
+json context into a flatter document, and coming up flat against the
+difficulties of inferring the many contexts, I decide to just do a
+quick-and-dirty route that will lose most of the json-ld data here.
+First, filter to only proxies:
+
+{.python}
+```
+proxies = [f for f in json.loads(d) if 'http://www.openarchives.org/ore/terms/Proxy' in f['@type']]
+```
+
+And then reduce to a dict where we grab the first occurrence of a value
+or id field if it seems to be a Dublin Core item.
+
+Again, this is requiring a completely different set of skills than the
+data wrangling above. If I knew a lot about LOD, I could do much better
+here. But the python libraries I'm finding don't make this especially
+easy, so I'm giving up on the LOD dream of being able to put it back
+together in a multilingual frame.
+
+{.python}
+```
+def parse_row(d):
+    proxies = [f for f in json.loads(d) if 'http://www.openarchives.org/ore/terms/Proxy' in f['@type']]
+    out = {}
+    for k, v in proxies[1].items():
+        if "purl.org/dc" in k:
+            try:
+                out['dc:' + k.split("/")[-1]] = v[0]['@value']
+            except KeyError:
+                out['dc:' + k.split("/")[-1]] = v[0]['@id']
+    return out
+```
+
+{.python}
+```
+{'dc:identifier': 'oai:fue.onb.at:EuropeanaNewspapers_Delivery_3:ONB_00286/1875/ONB_00286_18750610.zip',
+ 'dc:language': 'deu',
+ 'dc:relation': 'http://de.wikipedia.org/wiki/Neuigkeits-Welt-Blatt',
+ 'dc:source': 'http://anno.onb.ac.at/cgi-content/anno?apm=0&aid=nwb&datum=18750610',
+ 'dc:subject': 'http://d-nb.info/gnd/4067510-5',
+ 'dc:title': 'Neuigkeits-Welt-Blatt - 1875-06-10',
+ 'dc:type': 'http://schema.org/PublicationIssue',
+ 'dc:extent': 'Pages: 4',
+ 'dc:isPartOf': 'http://data.europeana.eu/item/9200300/BibliographicResource_3000095610170',
+ 'dc:issued': '1875-06-10',
+ 'dc:spatial': 'http://d-nb.info/gnd/4066009-6'
+ }
+```
+
+This whole process can parse about 40 lines a second. That sounds kind
+of fast, maybe. But with 1.3 million metadata items it would take *nine
+hours* to run, single threaded in Python on my laptop. That is obscene.
+We can reduce this by batching by issue an getting it down to about an
+hour--there are "only" 154,000 records in here. But a good metadata
+format should be able to load a million rows of structured data in under
+a second, not in nine hours. This data could probably have been released
+in CSV on the Web, or JSON-LD, or some other format where this process
+would take a minute or two.
+
+Anyhow--nine hours is too long for me because it's the morning. I'll
+split this up into multiple processes that work on batches of 25,000 at
+a time, and set it running in a loop.
+
+* * * *
+
+And I'm back\! So now I've got data and I've got texts. Joining these
+together is pretty easy--I just pull apart the IIIF ID and merge them
+in. Now I need to figure out how to distribute these to the student.
+These are big--too big, probably to simply slap them into an e-mail.
+
+But luckily, I set up a static hosting service on Google a few months
+ago, so I can just upload them into there. I've created files for _all_
+of these newspapers now. So we've got one for the student, but also for
+_you_.
+
+| file                                                                            | start date | end date | issues | pages      | compressed size | link                                                                                                                                                           |
+|-------------------------------------------------------------------------------|----------|--------|------|----------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Figaro                                                                          | 1857-01-04 | 5374     | 574    | 1875-12-25 | 9.4 MB          | [download](https://static.benschmidt.org/europeana_papers/Figaro.parquet)                                                                                      |
+| Tages-Post                                                                      | 1865-01-18 | 10089    | 2082   | 1875-12-31 | 51.0 MB         | [download](https://static.benschmidt.org/europeana_papers/Tages-Post.parquet)                                                                                  |
+| Salzburger Volksblatt: die unabhängige Tageszeitung für Stadt und Land Salzburg | 1871-01-03 | 3170     | 636    | 1875-12-24 | 10.2 MB         | [download](https://static.benschmidt.org/europeana_papers/Salzburger+Volksblatt%3A+die+unabh%C3%A4ngige+Tageszeitung+f%C3%BCr+Stadt+und+Land+Salzburg.parquet) |
+| Nasa Sloga                                                                      | 1870-06-01 | 322      | 79     | 1875-11-16 | 0.9 MB          | [download](https://static.benschmidt.org/europeana_papers/Nasa+Sloga.parquet)                                                                                  |
+| Wienerische Kirchenzeitung                                                      | 1784-01-24 | 1788     | 214    | 1789-12-24 | 2.4 MB          | [download](https://static.benschmidt.org/europeana_papers/Wienerische+Kirchenzeitung.parquet)                                                                  |
+| Feldkircher Zeitung                                                             | 1861-08-03 | 3987     | 960    | 1875-12-29 | 11.8 MB         | [download](https://static.benschmidt.org/europeana_papers/Feldkircher+Zeitung.parquet)                                                                         |
+| Österreichische Buchhändler-Correspondenz                                       | 1860-02-01 | 4154     | 421    | 1875-12-25 | 7.8 MB          | [download](https://static.benschmidt.org/europeana_papers/%C3%96sterreichische+Buchh%C3%A4ndler-Correspondenz.parquet)                                         |
+| Volksblatt für Stadt und Land                                                   | 1871-11-09 | 4405     | 319    | 1875-12-31 | 20.9 MB         | [download](https://static.benschmidt.org/europeana_papers/Volksblatt+f%C3%BCr+Stadt+und+Land.parquet)                                                          |
+| Teplitz-Schönauer Anzeiger                                                      | 1861-05-01 | 6744     | 536    | 1875-12-18 | 13.9 MB         | [download](https://static.benschmidt.org/europeana_papers/Teplitz-Sch%C3%B6nauer+Anzeiger.parquet)                                                             |
+| Linzer Volksblatt                                                               | 1870-01-03 | 5256     | 1190   | 1875-12-29 | 22.1 MB         | [download](https://static.benschmidt.org/europeana_papers/Linzer+Volksblatt.parquet)                                                                           |
+| Extract-Schreiben oder Europaeische Zeitung                                     | 1700-12-01 | 16       | 2      | 1700-12-04 | 0.0 MB          | [download](https://static.benschmidt.org/europeana_papers/Extract-Schreiben+oder+Europaeische+Zeitung.parquet)                                                 |
+| Grazer Volksblatt                                                               | 1868-01-02 | 13692    | 1495   | 1875-12-30 | 49.1 MB         | [download](https://static.benschmidt.org/europeana_papers/Grazer+Volksblatt.parquet)                                                                           |
+| Nordböhmisches Volksblatt                                                       | 1873-10-04 | 42       | 7      | 1873-12-13 | 0.2 MB          | [download](https://static.benschmidt.org/europeana_papers/Nordb%C3%B6hmisches+Volksblatt.parquet)                                                              |
+| Agramer Zeitung                                                                 | 1841-01-06 | 6943     | 1286   | 1858-06-30 | 21.7 MB         | [download](https://static.benschmidt.org/europeana_papers/Agramer+Zeitung.parquet)                                                                             |
+| Neuigkeits-Welt-Blatt                                                           | 1874-01-06 | 7104     | 425    | 1875-12-31 | 29.2 MB         | [download](https://static.benschmidt.org/europeana_papers/Neuigkeits-Welt-Blatt.parquet)                                                                       |
+| Die Neuzeit                                                                     | 1861-09-13 | 4012     | 339    | 1872-12-20 | 9.3 MB          | [download](https://static.benschmidt.org/europeana_papers/Die+Neuzeit.parquet)                                                                                 |
+| Eideseis dia ta anatolika mere                                                  | 1811-07-05 | 216      | 27     | 1811-11-19 | 0.2 MB          | [download](https://static.benschmidt.org/europeana_papers/Eideseis+dia+ta+anatolika+mere.parquet)                                                              |
+| Die Debatte                                                                     | 1864-11-13 | 5260     | 1073   | 1869-09-30 | 52.5 MB         | [download](https://static.benschmidt.org/europeana_papers/Die+Debatte.parquet)                                                                                 |
+| Die Bombe                                                                       | 1871-01-08 | 1512     | 163    | 1875-12-31 | 4.1 MB          | [download](https://static.benschmidt.org/europeana_papers/Die+Bombe.parquet)                                                                                   |
+| Znaimer Wochenblatt                                                             | 1858-01-17 | 4986     | 569    | 1875-12-24 | 14.2 MB         | [download](https://static.benschmidt.org/europeana_papers/Znaimer+Wochenblatt.parquet)                                                                         |
+| Zeitschrift für Notariat und freiwillige Gerichtsbarkeit in Österreich          | 1868-01-08 | 1368     | 260    | 1875-12-29 | 3.0 MB          | [download](https://static.benschmidt.org/europeana_papers/Zeitschrift+f%C3%BCr+Notariat+und+freiwillige+Gerichtsbarkeit+in+%C3%96sterreich.parquet)            |
+| Frauenblätter                                                                   | 1872-01-01 | 285      | 17     | 1872-12-15 | 0.5 MB          | [download](https://static.benschmidt.org/europeana_papers/Frauenbl%C3%A4tter.parquet)                                                                          |
+| Populäre österreichische Gesundheits-Zeitung                                    | 1830-05-26 | 4337     | 685    | 1840-12-31 | 5.2 MB          | [download](https://static.benschmidt.org/europeana_papers/Popul%C3%A4re+%C3%B6sterreichische+Gesundheits-Zeitung.parquet)                                      |
+| Union                                                                           | 1872-01-07 | 342      | 83     | 1874-11-15 | 2.6 MB          | [download](https://static.benschmidt.org/europeana_papers/Union.parquet)                                                                                       |
+| Prager Abendblatt                                                               | 1867-01-02 | 9432     | 1697   | 1875-12-22 | 28.4 MB         | [download](https://static.benschmidt.org/europeana_papers/Prager+Abendblatt.parquet)                                                                           |
+| Kikeriki                                                                        | 1861-11-14 | 3442     | 592    | 1875-12-30 | 7.9 MB          | [download](https://static.benschmidt.org/europeana_papers/Kikeriki.parquet)                                                                                    |
+| Vorarlberger Landes-Zeitung                                                     | 1863-08-11 | 5402     | 1219   | 1875-12-28 | 15.9 MB         | [download](https://static.benschmidt.org/europeana_papers/Vorarlberger+Landes-Zeitung.parquet)                                                                 |
+| Hermes ho logios                                                                | 1811-02-01 | 2791     | 114    | 1819-12-15 | 3.4 MB          | [download](https://static.benschmidt.org/europeana_papers/Hermes+ho+logios.parquet)                                                                            |
+| Philologikos telegraphos                                                        | 1817-01-01 | 400      | 84     | 1820-12-15 | 0.9 MB          | [download](https://static.benschmidt.org/europeana_papers/Philologikos+telegraphos.parquet)                                                                    |
+| Oesterreichisches Journal                                                       | 1870-08-06 | 2854     | 305    | 1875-12-15 | 12.4 MB         | [download](https://static.benschmidt.org/europeana_papers/Oesterreichisches+Journal.parquet)                                                                   |
+| Weltausstellung: Wiener Weltausstellungs-Zeitung                                | 1871-08-18 | 1446     | 233    | 1875-11-19 | 5.0 MB          | [download](https://static.benschmidt.org/europeana_papers/Weltausstellung%3A+Wiener+Weltausstellungs-Zeitung.parquet)                                          |
+| Der Floh                                                                        | 1869-01-01 | 1893     | 193    | 1875-12-19 | 6.3 MB          | [download](https://static.benschmidt.org/europeana_papers/Der+Floh.parquet)                                                                                    |
+| Wiener Abendzeitung                                                             | 1848-03-28 | 438      | 106    | 1848-10-24 | 0.6 MB          | [download](https://static.benschmidt.org/europeana_papers/Wiener+Abendzeitung.parquet)                                                                         |
+| Feldkircher Anzeiger                                                            | 1866-01-02 | 1498     | 239    | 1875-12-21 | 1.0 MB          | [download](https://static.benschmidt.org/europeana_papers/Feldkircher+Anzeiger.parquet)                                                                        |
+| Allgemeine Österreichische Gerichtszeitung                                      | 1851-01-03 | 9182     | 2233   | 1875-12-31 | 22.1 MB         | [download](https://static.benschmidt.org/europeana_papers/Allgemeine+%C3%96sterreichische+Gerichtszeitung.parquet)                                             |
+| Leitmeritzer Zeitung                                                            | 1871-07-08 | 2530     | 285    | 1875-12-31 | 7.3 MB          | [download](https://static.benschmidt.org/europeana_papers/Leitmeritzer+Zeitung.parquet)                                                                        |
+| Feldkircher Wochenblatt                                                         | 1810-02-13 | 3762     | 743    | 1857-12-22 | 2.9 MB          | [download](https://static.benschmidt.org/europeana_papers/Feldkircher+Wochenblatt.parquet)                                                                     |
+| Politische Frauen-Zeitung                                                       | 1869-10-17 | 568      | 69     | 1871-12-31 | 1.8 MB          | [download](https://static.benschmidt.org/europeana_papers/Politische+Frauen-Zeitung.parquet)                                                                   |
+| Militär-Zeitung                                                                 | 1849-07-03 | 12170    | 1628   | 1875-12-08 | 35.3 MB         | [download](https://static.benschmidt.org/europeana_papers/Milit%C3%A4r-Zeitung.parquet)                                                                        |
+| Ellēnikos tēlegraphos: ētoi eidēseis dia ta anatolika mere                      | 1812-01-03 | 5343     | 1182   | 1836-12-27 | 10.9 MB         | [download](https://static.benschmidt.org/europeana_papers/Ell%C4%93nikos+t%C4%93legraphos%3A+%C4%93toi+eid%C4%93seis+dia+ta+anatolika+mere.parquet)            |
+| Blätter für Musik, Theater und Kunst                                            | 1855-02-02 | 4840     | 1196   | 1873-12-27 | 16.8 MB         | [download](https://static.benschmidt.org/europeana_papers/Bl%C3%A4tter+f%C3%BCr+Musik%2C+Theater+und+Kunst.parquet)                                            |
+| Cur-Liste Bad Ischl                                                             | 1842-06-02 | 3998     | 646    | 1875-09-11 | 2.7 MB          | [download](https://static.benschmidt.org/europeana_papers/Cur-Liste+Bad+Ischl.parquet)                                                                         |
+| Innsbrucker Nachrichten                                                         | 1854-01-26 | 42010    | 4330   | 1875-12-31 | 36.4 MB         | [download](https://static.benschmidt.org/europeana_papers/Innsbrucker+Nachrichten.parquet)                                                                     |
+| Der Humorist                                                                    | 1837-01-02 | 18850    | 4430   | 1862-05-03 | 55.3 MB         | [download](https://static.benschmidt.org/europeana_papers/Der+Humorist.parquet)                                                                                |
+| Bregenzer Wochenblatt                                                           | 1793-03-15 | 8739     | 1725   | 1863-07-28 | 9.4 MB          | [download](https://static.benschmidt.org/europeana_papers/Bregenzer+Wochenblatt.parquet)                                                                       |
+| Ephemeris                                                                       | 1791-01-03 | 2774     | 311    | 1797-12-11 | 2.7 MB          | [download](https://static.benschmidt.org/europeana_papers/Ephemeris.parquet)                                                                                   |
+| Wiener Sonntags-Zeitung                                                         | 1867-01-01 | 4326     | 589    | 1875-12-26 | 20.5 MB         | [download](https://static.benschmidt.org/europeana_papers/Wiener+Sonntags-Zeitung.parquet)                                                                     |
+| Österreichische Zeitschrift für Verwaltung                                      | 1868-01-02 | 1130     | 280    | 1875-12-30 | 2.6 MB          | [download](https://static.benschmidt.org/europeana_papers/%C3%96sterreichische+Zeitschrift+f%C3%BCr+Verwaltung.parquet)                                        |
+| Vorarlberger Zeitung                                                            | 1849-04-06 | 272      | 67     | 1850-03-22 | 0.6 MB          | [download](https://static.benschmidt.org/europeana_papers/Vorarlberger+Zeitung.parquet)                                                                        |
+| Die Gartenlaube für Österreich                                                  | 1867-01-28 | 937      | 67     | 1869-04-19 | 2.5 MB          | [download](https://static.benschmidt.org/europeana_papers/Die+Gartenlaube+f%C3%BCr+%C3%96sterreich.parquet)                                                    |
+| Allgemeine land- und forstwirthschaftliche Zeitung                              | 1851-07-05 | 3742     | 301    | 1867-12-27 | 7.1 MB          | [download](https://static.benschmidt.org/europeana_papers/Allgemeine+land-+und+forstwirthschaftliche+Zeitung.parquet)                                          |
+| Wiener Vororte-Zeitung                                                          | 1875-02-15 | 52       | 13     | 1875-11-01 | 0.3 MB          | [download](https://static.benschmidt.org/europeana_papers/Wiener+Vororte-Zeitung.parquet)                                                                      |
+| Siebenbürgisch-deutsches Wochenblatt                                            | 1868-06-10 | 3182     | 193    | 1873-12-31 | 7.3 MB          | [download](https://static.benschmidt.org/europeana_papers/Siebenb%C3%BCrgisch-deutsches+Wochenblatt.parquet)                                                   |
+| Neue Wiener Musik-Zeitung                                                       | 1852-01-15 | 1289     | 312    | 1860-12-29 | 3.8 MB          | [download](https://static.benschmidt.org/europeana_papers/Neue+Wiener+Musik-Zeitung.parquet)                                                                   |
+| Österreichische Badezeitung                                                     | 1872-04-14 | 600      | 54     | 1875-08-22 | 1.6 MB          | [download](https://static.benschmidt.org/europeana_papers/%C3%96sterreichische+Badezeitung.parquet)                                                            |
+| Deutsche Zeitung                                                                | 1872-04-02 | 9284     | 604    | 1874-12-29 | 63.3 MB         | [download](https://static.benschmidt.org/europeana_papers/Deutsche+Zeitung.parquet)                                                                            |
+| Internationale Ausstellungs-Zeitung                                             | 1873-05-02 | 492      | 79     | 1873-09-30 | 3.1 MB          | [download](https://static.benschmidt.org/europeana_papers/Internationale+Ausstellungs-Zeitung.parquet)                                                         |
+| Janus                                                                           | 1818-10-10 | 236      | 52     | 1819-06-30 | 0.4 MB          | [download](https://static.benschmidt.org/europeana_papers/Janus.parquet)                                                                                       |
+| Wiener Moden-Zeitung                                                            | 1862-01-01 | 126      | 13     | 1863-07-15 | 0.3 MB          | [download](https://static.benschmidt.org/europeana_papers/Wiener+Moden-Zeitung.parquet)                                                                        |
+| Die Emancipation                                                                | 1875-04-22 | 64       | 8      | 1875-05-25 | 0.1 MB          | [download](https://static.benschmidt.org/europeana_papers/Die+Emancipation.parquet)                                                                            |
+| Die Vedette                                                                     | 1869-11-01 | 3253     | 187    | 1875-12-19 | 5.8 MB          | [download](https://static.benschmidt.org/europeana_papers/Die+Vedette.parquet)                                                                                 |
+| Salzburger Chronik                                                              | 1873-07-01 | 986      | 238    | 1875-12-30 | 3.1 MB          | [download](https://static.benschmidt.org/europeana_papers/Salzburger+Chronik.parquet)                                                                          |
+| Wiener Feuerwehr-Zeitung                                                        | 1871-01-01 | 336      | 78     | 1875-12-15 | 0.7 MB          | [download](https://static.benschmidt.org/europeana_papers/Wiener+Feuerwehr-Zeitung.parquet)                                                                    |
+| Gerichtshalle                                                                   | 1857-03-30 | 6132     | 1005   | 1875-12-23 | 14.6 MB         | [download](https://static.benschmidt.org/europeana_papers/Gerichtshalle.parquet)                                                                               |
+| Illustrirtes Wiener Extrablatt                                                  | 1872-03-24 | 6354     | 662    | 1875-12-31 | 29.7 MB         | [download](https://static.benschmidt.org/europeana_papers/Illustrirtes+Wiener+Extrablatt.parquet)                                                              |
+| Wiener Salonblatt                                                               | 1870-03-13 | 2170     | 138    | 1875-12-24 | 5.0 MB          | [download](https://static.benschmidt.org/europeana_papers/Wiener+Salonblatt.parquet)                                                                           |
+| Sonntagsblätter                                                                 | 1842-01-16 | 5277     | 227    | 1848-09-17 | 6.1 MB          | [download](https://static.benschmidt.org/europeana_papers/Sonntagsbl%C3%A4tter.parquet)                                                                        |
+| Wiener Theater-Zeitung                                                          | 1806-07-15 | 14345    | 3110   | 1838-12-29 | 33.5 MB         | [download](https://static.benschmidt.org/europeana_papers/Wiener+Theater-Zeitung.parquet)                                                                      |
+| Wiener Landwirtschaftliche Zeitung                                              | 1868-01-03 | 746      | 76     | 1869-12-18 | 2.3 MB          | [download](https://static.benschmidt.org/europeana_papers/Wiener+Landwirtschaftliche+Zeitung.parquet)                                                          |
+| Vorarlberger Volks-Blatt                                                        | 1866-06-15 | 4143     | 644    | 1875-12-31 | 10.0 MB         | [download](https://static.benschmidt.org/europeana_papers/Vorarlberger+Volks-Blatt.parquet)                                                                    |
+| Marburger Zeitung                                                               | 1862-04-13 | 447      | 104    | 1870-11-30 | 1.6 MB          | [download](https://static.benschmidt.org/europeana_papers/Marburger+Zeitung.parquet)                                                                           |
+| Vaterländische Blätter für den österreichischen Kaiserstaat                     | 1808-05-10 | 5861     | 816    | 1820-12-27 | 9.0 MB          | [download](https://static.benschmidt.org/europeana_papers/Vaterl%C3%A4ndische+Bl%C3%A4tter+f%C3%BCr+den+%C3%B6sterreichischen+Kaiserstaat.parquet)             |
+| Freie Pädagogische Blätter                                                      | 1867-01-19 | 5136     | 316    | 1875-12-25 | 7.0 MB          | [download](https://static.benschmidt.org/europeana_papers/Freie+P%C3%A4dagogische+Bl%C3%A4tter.parquet)                                                        |
+| Jörgel Briefe                                                                   | 1852-01-02 | 14086    | 757    | 1875-12-06 | 13.0 MB         | [download](https://static.benschmidt.org/europeana_papers/J%C3%B6rgel+Briefe.parquet)                                                                          |
+| Österreichische Feuerwehrzeitung                                                | 1865-08-15 | 430      | 95     | 1872-06-02 | 1.2 MB          | [download](https://static.benschmidt.org/europeana_papers/%C3%96sterreichische+Feuerwehrzeitung.parquet)                                                       |
+| Österreichische Buchdrucker-Zeitung                                             | 1873-02-11 | 675      | 96     | 1875-12-30 | 1.9 MB          | [download](https://static.benschmidt.org/europeana_papers/%C3%96sterreichische+Buchdrucker-Zeitung.parquet)                                                    |

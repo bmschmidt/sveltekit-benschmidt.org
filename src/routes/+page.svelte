@@ -1,6 +1,6 @@
 <script>
 	export let data;
-	import { Document } from 'pandoc-svelte-components';
+	import { Document } from 'quires';
 	import LogoGithub24 from 'carbon-icons-svelte/lib/LogoGithub.svelte';
 	import LogoTwitter24 from 'carbon-icons-svelte/lib/LogoTwitter.svelte';
 	import Email24 from 'carbon-icons-svelte/lib/Email.svelte';
@@ -70,7 +70,7 @@
 	</div>
 	<div class="w-2/3 mx-24 prose prose-stone prose-l">
 		<h1 class="font-size-32">Ben Schmidt</h1>
-		<Document ast={data.document} />
+		<Document quire={data.document} />
 	</div>
 </div>
 
@@ -81,6 +81,6 @@
 		<a data-sveltekit-reload href="rss.xml">rss</a>
 	</div>
 	<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-		<Postgroup posts={data['recent_posts']} blog="post" />
+		<!-- <Postgroup posts={data['recent_posts']} blog="post" /> -->
 	</div>
 </div>

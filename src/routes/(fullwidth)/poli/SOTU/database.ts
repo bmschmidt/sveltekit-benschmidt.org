@@ -34,7 +34,6 @@ class Database() {
     FROM wordcounts w NATURAL JOIN tokens NATURAL JOIN lengths l;
     `);
 		const r1 = await conn.query(`SELECT * FROM tf_table LIMIT 10`);
-		console.log(r1);
 		await conn.query(`
     CREATE TABLE tfidf_lengths AS SELECT id, sqrt(SUM(tfidf ^ 2)) as tfidf_mag 
     FROM tf_table GROUP BY id;`);

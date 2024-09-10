@@ -41,7 +41,6 @@
     FROM wordcounts w NATURAL JOIN tokens NATURAL JOIN lengths l;
     `);
 		const r1 = await conn.query(`SELECT * FROM tf_table LIMIT 10`);
-		console.log(r1);
 		await conn.query(`
     CREATE TABLE tfidf_lengths AS SELECT id, sqrt(SUM(tfidf ^ 2)) as tfidf_mag 
     FROM tf_table GROUP BY id;`);
@@ -50,9 +49,7 @@
 
 	async function load_db() {
 		const db = await initDB('/files/parquet/new.parquet', 'new.parquet');
-		console.log('DB LOADED');
 		conn_prom = db.connect();
-		console.log('DB CONNECTED');
 		await prep_db();
 		return conn_prom;
 	}
@@ -85,7 +82,6 @@
 			prepped_prom.then(async () => {
 				nearest = null;
 
-				console.log('then looped');
 				const conn = await conn_prom;
 				await conn.query(`
           CREATE OR REPLACE VIEW v1 AS SELECT id,

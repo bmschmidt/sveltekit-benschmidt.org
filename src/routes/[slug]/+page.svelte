@@ -1,6 +1,6 @@
 <script>
 	export let data;
-	import { Document } from 'pandoc-svelte-components';
+	import { Document } from 'quires';
 	if (!data.document) {
 		throw new Error('No document found');
 	}
@@ -10,7 +10,7 @@
 	<div class="basis-1/6 md:basis-1/4" />
 	<div class="w-full md:w-1/2">
 		<div class="prose prose-stone prose-l">
-			<Document ast={data.document.document} settings={{}} />
+			<Document quire={data.document.document} />
 		</div>
 	</div>
 	<div class="basis-1/6 md:basis-1/4" />

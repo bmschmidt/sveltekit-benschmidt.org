@@ -1,7 +1,7 @@
 export const prerender = true;
 
 import { full_catalog } from '$lib/markdown/markdown';
-import { json2html } from '$lib/markdown/obsolete_pandoc';
+// import { json2html } from '$lib/markdown/obsolete_pandoc';
 import { Feed } from 'feed';
 async function make_feed() {
 	const feed = new Feed({

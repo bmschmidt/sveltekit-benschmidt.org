@@ -1,0 +1,72 @@
++++ title = "Stable Random Projection: Lightweight, General-Purpose
+Dimensionality Reduction for Digitized Libraries" date = 2018-01-01
+authors = \["Benjamin Schmidt"\] publication\_types = \["2"\] abstract =
+"” publication = "_Journal of Cultural Analytics_" doi =
+"10.22148/16.025"
+
+{#is-this-a-selected-publication-true-false}
+# Is this a selected publication? (true/false)
+
+featured = true
+
+{#projects-optional}
+# Projects (optional).
+
+{#associate-this-publication-with-one-or-more-of-your-projects}
+# Associate this publication with one or more of your projects.
+
+{#simply-enter-your-project-s-folder-or-file-name-without-extension}
+# Simply enter your project's folder or file name without extension.
+
+{#e-g-projects-deep-learning-references}
+# E.g. `projects = ["deep-learning"]` references
+
+# `content/project/deep-learning/index.md`.
+
+{#otherwise-set-projects}
+# Otherwise, set `projects = []`.
+
+projects = \["SRP"\]
+
+{#tags-optional}
+# Tags (optional).
+
+{#set-tags-for-no-tags-or-use-the-form-tags-a-tag-another-tag-for-one-or-more-tags}
+# Set `tags = []` for no tags, or use the form
+`tags = ["A Tag", "Another Tag"]` for one or more tags.
+
+tags = \[\]
+
+{#links-optional}
+# Links (optional).
+
+url\_pdf = "https\://doi.org/10.31235/osf.io/36neu" #url\_preprint =
+"http\://eprints.soton.ac.uk/352095/1/Cushen-IMV2013.pdf" url\_code =
+"https\://github.com/bmschmidt/pySRP" url\_dataset =
+"https\://repository.library.northeastern.edu/collections/neu\:cj82ss18r"
+#url\_project = "#" #url\_slides = "#" #url\_video = "#" #url\_poster =
+"#" url\_source =
+"http\://culturalanalytics.org/2018/09/stable-random-projection-lightweight-general-purpose-dimensionality-reduction-for-digitized-libraries/"
+
+{#custom-links-optional}
+# Custom links (optional).
+
+{#uncomment-line-below-to-enable-for-multiple-links-use-the-form}
+# Uncomment line below to enable. For multiple links, use the form
+`[{...}, {...}, {...}]`.
+
+#url\_custom = \[\{name = "Custom Link", url = "http\://example.org"\}\]
+
+math = false
+
+{#featured-image}
+# Featured image
+
+{#to-use-add-an-image-named-featured-jpg-png-to-your-page-s-folder}
+# To use, add an image named `featured.jpg/png` to your page's folder.
+
+\[image\] # Caption (optional) caption = "”
+
+# Focal point (optional) # Options: Smart, Center, TopLeft, Top,
+TopRight, Left, Right, BottomLeft, Bottom, BottomRight focal\_point = "”
++++

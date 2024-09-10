@@ -1,0 +1,213 @@
+---
+date: "2011-01-28T14:25:00.000-05:00"
+draft: false
+tags:
+- Building a Corpus
+title: Picking texts, again
+url: /2011/01/picking-texts-again.html
+---
+
+I'm trying to get a new group of texts to analyze. We already have
+enough books to move along on certain types of computer-assisted textual
+analysis. The big problems are OCR and metadata. Those are a) probably
+correlated somewhat, and b) partially superable. I've been spending a
+while trying to figure out how to switch over to better metadata for my
+texts (which actually means an almost all-new set of texts, based on new
+metadata). I've avoided blogging the really boring stuff, but I'm going
+to stay with pretty boring stuff for a little while (at least this post
+and one more later, maybe more) to get this on the record.
+
+So. Say, for the reasons I gave in my [rant about
+copyright](http://sappingattention.blogspot.com/2011/01/digital-history-and-copyright-black.html),
+that you want to look at books from the period 1830 to 1922  (I chose
+those years as bounded on the one side by the full emergence of a
+domestic printing industry, and on the other by the copyright barrier).
+Say, as well, that you want books printed in the United States. And you
+want to do some text analysis. What are your options?
+
+You'll start with [Ngrams](http://ngrams.googlelabs.com/). Google Books
+has about 365,000 books in the American corpus, or about 36 billion
+words for the period we're talking about. We all know the problems at
+this point: the web interface is simplistic, the underlying corpus is
+opaque, the capitalization treatment means that nothing is as simple as
+it seems. The interface is fast enough and clean enough that you'll
+forgive it that at first. But sooner at later, you're going to bump up
+against the corners of that world and want some more. You might try
+downloading some ngrams data, but a) it's \_huge\_ for the multi-grams,
+and b) you want to know what you're doing.
+
+Then you'll want to move on to Mark Davies' [Corpus of Historical
+American English](http://corpus.byu.edu/coha/). COHA has 400 million
+words from 1810-2009, or about 190 million words for my period (assuming
+they're evenly distributed, which Davies says they are). That works out
+to about the equivalent of 2,000 books. If you want more detail, it's
+perfect. It's got semantic tagging and generally much better metadata
+than Google (although not without flaws: if people were half as
+interested in picking that apart as they are in ngrams they'd find all
+sorts of funny examples comparable to the _Producer's_ script taking the
+stage direction "[to
+Bialystock](http://sappingattention.blogspot.com/2010/11/collocation.html)"
+as a verb.)
+
+That is to say, ngrams and COHA are about two orders of magnitude apart
+from each other. ("All the books ever written, whatever that means, is
+probably about an order of magnitude or two larger than ngrams based on
+their numbers.) Conveniently, the corpus I've been using is exactly in
+the middle, logarithmically speaking: it's about 27,000 books, and
+2,718,572,631 words. (Better described as"about 3 billion words”--all of
+these counts depend on a bunch of caveats and assumptions.) To put it
+graphically:
+
+[![](http://2.bp.blogspot.com/_Pge31alC_E8/TUI6A41HSJI/AAAAAAAACck/FiQyNnaZ064/s320/corpus+size.png) ](http://2.bp.blogspot.com/_Pge31alC_E8/TUI6A41HSJI/AAAAAAAACck/FiQyNnaZ064/s1600/corpus+size.png)
+
+(FTR this is only size, not a Venn diagram: COHA includes a number of
+sources that ngrams doesn't, such as periodicals. Incidentally, MONK,
+which I haven't played around with at all because the texts don't seem
+to ones I'm interested in on initial inspection, seems to be roughly on
+the COHA order of magnitude and with the same quality of metadata.)
+
+I could get bigger than that if I wanted based on the
+[archive.org](http://archive.org/) texts. There are a lot there--it
+might possible to build a base set even larger than ngrams. If someone
+buys me a nicer computer, maybe I will. Or to keep this in the second
+person: you could. The major constraint with all of this is just time,
+since lots of queries scale linearly with size (and I routinely run
+processes that take several hours to run) and some, like pairwise
+comparison, scale exponentially. MySQL drags its feet when returning
+tens of thousands of results from a table with hundreds of millions of
+records--some of my most basic queries currently take about 2 seconds to
+run, and I don't want them to get
+
+\[Incidentally, just to keep my copyright kick going for a second: one
+unexpected side-effect of wanting to deal with all these public-domain
+books is that if, hypothetically, I had had a large number of non-public
+domain files on my hard drive, I would have had to throw them out to
+make room for the new, public domain files. Another argument that
+widening copyright laws will help the RIAA\!\]
+
+But back to my project. I think there's actually a lot to be said for
+slightly smaller corpuses (ie, on the COHA/MONK--me scale), if we know
+why we're choosing them.There's something to be said for samples
+if---and this is important---only if they're wisely chosen. The funniest
+part of the [culturomics FAQ](http://www.culturomics.org/Resources/faq)
+is, pretty obviously, this:
+
+> *10. Why didn't you account for how many copies of each book were
+> printed?*
+>
+> Because that is totally impossible.
+
+They're right. It's a total pipe dream, never going to happen. But there
+might be other ways to get closer. After all, it's a question because
+behind it is an important point: not all books are created equal. Some
+are more popular than others. Whether that's because they shaped the
+culture or because they represented it particularly well isn't really
+the point. (Although I do admit, I've been thinking about finding what
+books from 1880 or so best match the typical lexical profile of a book
+from 1900, just to see what turns up.)  What matters is that a perfect
+system---which we'll never have---wouldn't be based around equally
+waiting every edition of every book.
+
+I mentioned
+[before](http://sappingattention.blogspot.com/2010/12/back-to-future.html)
+the bar charts Bob Darnton [collects and
+criticizes](http://www.google.com/search?tbm=bks&tbo=1&q=theology+belles-lettres+%22two-piece+bathing+suit%22&btnG=Search+Books)
+in  _The Literary Underground of the Old Regime_. They are based on
+private library records for individuals to try get at what people owned,
+not just what's survived. I think that public/academic library copies
+can be an OK, if not a good, proxy for original publication runs in
+certain fields (like the psycholgy texts I'm interested in) as well. In
+the age of the Internet, we can get a decent idea of publication runs
+from existing copies found on the web. (I spent rather too much time
+reading [Jürgen Espenhorst's
+book](http://www.worldcat.org/title/petermanns-planet-a-guide-to-german-handatlases-and-their-siblings-throughout-the-world-1800-1950/oclc/53277245)
+about 19th-century German atlases last year, and I'm pretty sure that
+extant copies do seem to correlate a bit with original runs where he has
+both data.) If you could cut a deal with OCLC, there might be a case
+right now for weighting publications by number of surviviving library
+copies, or limiting your corpus to books that exist in above 4 research
+libraries, or something like that, just to filter out all the
+self-published nonsense in the nineteenth century.
+
+In any case: I'm not planning on doing that. But I do want to keep
+limiting my sets to about 30,000 books, mostly because I don't think my
+computer can handle much more. I want to create a few special ones--one
+with everything I can find in psychology, education, and advertising,
+for instance, since that's what I study. But there's still a good use
+for a general-purpose corpus like Ngrams or COHA.I could do that just
+randomly sampling out of all the english-language, US-published texts I
+have---but since books aren't created equal, I don't see a compelling
+reason to just taking them randomly. (One good option would be to
+segment for better OCR quality, though, which is part of what
+Culturomics did.)
+
+Instead, I'm deeply attached to the stopgap I started this whole project
+with\:l imiting my result sets by publisher. I should say right now: I
+love this idea. It was only by thinking to do it that I became convinced
+the Internet Archive stores were navigable at all. I think using
+literary publishers, or popular publishers, does a great job of weeding
+out books that editors thought would sell well, or thought were
+important, and that excludes certain classes of books (government
+reports, some later academic texts) that were published for reasons
+entirely different from the belief that anyone would read them. But
+what's the best way to do it going forward?
+
+My plan is to switch over to Open Library metadata. Open Library is
+supposed to be the wikipedia of libraries, sponsored as a sort of
+front-end to the Internet Archive. But no one's really interested in
+writing library entries the way they are in writing encyclopedia. Do you
+remember early Wikipedia, when most articles were either verbatim from
+the 1911 _Britannica_ or written by perl scripts culling census data?
+That's basically what Open Library is, with library catalog information.
+I'm going to assume they're better aggregators than I would be. And the
+data itself is much better than [I initially
+thought](http://sappingattention.blogspot.com/2010/12/metadata-for-ocr-books.html).
+
+Open Library data has some problems, though. So I'm going to
+occasionally occasionally supplemented by metadata from a)
+HathiTrust---which has, presumably, better catalog data from very good
+libraries---and b) the Internet Archive, which does have some metadata
+fields Open Library seems to lack, including, critically, volume number
+(open Library makes a total mess of multi-volume works) and the original
+library contributor for a scanned text.
+
+Given that, I'm trying to build two corpuses at the moment. I built up a
+master catalog of every book in the open library catalog that a) either
+has an OL library of congress-style call number or has one I can match
+from Hathi records, b) has a text file on the Internet Archive, and c)
+doesn't seem to be a duplicate of another book I'm already getting. A is
+important because I find I really care about genre. B is necessary
+because neither Google nor Hathi currently make it possible to download
+thousands of text files. C is a huge problem, and can't be solved except
+by actually comparing the texts of books computationally to see if they
+are duplicates. I
+[suspect](http://sappingattention.blogspot.com/2010/12/not-included-in-ngrams-tom-sawyer.html),
+actually, that ngrams didn't do enough of this---the example I've given
+before is that one librarian lists a book as "works of Mark Twain,
+vol. 1" while another lists it as "Innocents Abroad." Only extreme
+metadata scrubbing is going to catch that problem. (Although I think the
+Ngrams method might actually exclude the first version because it
+regards anything with volumes as a 'serial'.) Anyway, multiple books is
+the problem I worry about skewing data the most: it really messes with
+correlations, it creates frequency outliers, and generally makes data
+less trustworthy.
+
+I want to take that catalog to build, first, a general-purpose list
+using a select set of publishers like I did before. This will be be a
+larger list of publishers than before so a) I get a few houses west of
+the Susquehanna and b) I get enough books with the more limited set of
+Internet Archive books that have Open Library web pages. Once I settle
+on a list, I'll do a post breaking down a little bit of that.
+
+Then, like I said, I also want to take all the books in English ---
+American, British, Indian, whatever --- in the fields of psychology,
+physiology, education, and advertising and put them in a corpus. Cross
+linguistic comparisons are nearly impossible, but I might try French and
+German for these fields too just to see if there's any way to get it
+working. That should let me run a couple finer grained-analysis that I'm
+interested in---what characterized the emergence of psychology from
+philosophy and physiology in the late 19th century, where and when
+characteristic language from psychology permeated into education and
+vice-versa, and so on. That's more for actually writing something for a
+presentation in March at MAW, but maybe a little will sneak on to this
+blog.

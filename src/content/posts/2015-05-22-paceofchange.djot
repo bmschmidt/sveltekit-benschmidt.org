@@ -1,0 +1,127 @@
+---
+author: Ben Schmidt
+categories:
+- bookworm
+- pandoc
+- HathiTrust
+date: 2015-05-22
+layout: post
+title: Pace of Change replications
+---
+
+This is a quick post to share some ideas for interacting with the data
+underlying the [recent article by Ted Underwood and Jordan Sellers on
+the pace of change in literary standards for
+poetry](http://tedunderwood.com/2015/05/18/how-quickly-do-literary-standards-change/).
+
+The point of this is to begin to think through some of the questions on
+someone else's work on what useful exploratory apparatus might be for
+articles using unigram data.
+
+Their work reminds me of the foundational Mosteller-Wallace piece on
+classifying Federalist authorship. But while Mosteller and Wallace (in
+large part because of the capacities of the computers they were working
+with around 1960) carefully winnow their data down to just a few words,
+Underwood and Sellers use 3200 words. How do you explore a model like
+that?
+
+The heart of that article is a classifier built on a list of words
+against the reception the work got. So the easiest thing to do is, at
+least, give the relative uses for the words most strongly indicative of
+publication or not.
+
+From their replication code, I've build up a Bookworm (which takes
+[about 40 lines of new
+code](https://github.com/tedunderwood/paceofchange/compare/master...bmschmidt:master))
+and then made this chart to display the words with the highest weights
+(not influence) in their logistic model.
+
+I'd like to be able to display their model itself, but 3200 terms is a
+bit much to drop on the browser straight away.
+
+The bars here show whether the words are in reviewed volumes of poetry,
+or from their broader set.
+
+On any of these charts you can click to see works that use the listed
+words. You can't go straight through to the original books in Hathi,
+because that would have required (slightly) more work on my part. Since
+Sellers and Underwood are working from Hathi in the first place, this
+might be an interesting review to include in the HTRC-Bookworm web site
+once we get worksets fully supported.
+
+{#top-predictors-of-non-reviewal}
+## Top predictors of non-reviewal
+
+{#primary .bookworm height="150" width="600" filters="word\:textArray"}
+```
+{
+    "database": "paceofchange",
+    "plotType": "barchart",
+    "method": "return_json",
+    "search_limits": {"recept":["random","reviewed"],
+        "word": ["safety"]
+    },
+    "aesthetic": {
+        "x": "WordsPerMillion",
+        "y": "recept"
+    }
+}
+```
+
+{#buttons}
+:::
+:::
+
+They mention that one major possible confound is the nationality of the
+poets themselves. Here's one that lets you start to disentangle by
+individual words the effect that nationality might have on the
+classifier. (Clicking here will take you to top words for that thing.)
+
+{#top-predictors-of-being-reviewed}
+## Top predictors of being reviewed
+
+{#reviewed .bookworm height="150" width="600" filters="word\:textArray"}
+```
+{
+    "database": "paceofchange",
+    "plotType": "barchart",
+    "method": "return_json",
+    "search_limits": {"recept":["random","reviewed"],
+        "word": ["harsh"]
+    },
+    "aesthetic": {
+        "x": "WordsPerMillion",
+        "y": "recept"
+    }
+}
+```
+
+{#buttons2}
+:::
+:::
+
+They mention that one major possible confound is the nationality of the
+poets themselves. Here's one that lets you start to disentangle by
+individual words the effect that nationality might have on the
+classifier. (Clicking here will take you to top words for that thing.)
+
+{.bookworm width="600" height="200" filters="word\:textArray"}
+```
+{
+    "database": "paceofchange",
+    "plotType": "pointchart",
+    "method": "return_json",
+    "search_limits": {
+        "recept": ["reviewed", "random"],
+        "word": ["and"]
+    },
+    "aesthetic": {
+        "x": "WordsPerMillion",
+        "y": "nationality",
+        "color": "recept"
+    },
+    "counttype": ["WordsPerMillion"],
+    "groups": ["nationality", "recept"]
+}
+
+```

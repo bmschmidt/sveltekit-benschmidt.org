@@ -28,7 +28,6 @@ export const initDB = async (path: string, fname: string | undefined) => {
 	db = new duckdb.AsyncDuckDB(logger, worker);
 	await db.instantiate(duckdb_wasm);
 	await add_table(path, fname);
-	console.log({ conn: await db.connect() });
 	return db;
 };
 

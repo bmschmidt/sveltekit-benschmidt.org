@@ -1,0 +1,95 @@
+---
+date: 2023-04-07
+tags:
+- WebGPU
+- Javascript
+- Programming
+title: Happy WebGPU Day
+---
+
+Yesterday was a big day for the Web: [Chrome just shipped WebGPU without
+flags in the Beta for Version
+113.](https://developer.chrome.com/blog/webgpu-release/) Someone on
+Nomic's GPT4All discord asked me to ELI5 what this means, so I'm going
+to cross-post it here---it's more important than you'd think for both
+visualization and ML people. (thread)
+
+So: GPUs are processors on basically every computer/phone. Individually
+they're weaker than CPUs, but they run in packs of little ones that run
+in parallel. The G is for 'graphics,' but it's turned out they're good
+for anything involving lots of math--like 'AI', which at core boils down
+to lots (and lots and lots) of matrix multiplication operations. To do
+math, not graphics, on a GPU you need an API/language for them; the most
+important of these is CUDA, which is tightly coupled to NVidia and a
+real PITA to set up.
+
+On the web, we've only been able to access the GPU through something
+called WebGL. It's old, and while you can do some neat stuff with it,
+it's fundamentally built for graphics, not for the matrix-multiplication
+type stuff that is the bread and butter of deep learning models. Since
+WebGL launched in 2011, lots of companies have been designing better
+languages that only run on their particular systems--Vulkan for Android,
+Metal for iOS, etc. These are great where they work, but even harder to
+run everywhere than CUDA.
+
+WebGPU is an API and programming that sits on top of all these super
+low-level languages and allows people to write GPU code that runs on all
+of them--that is, on just about any phone/computer with a web browser.
+This is a big deal, because it has "compute shaders" that lets you write
+programs that take data and turn it into other data. Working with data
+in WebGL is really weird--you have to do things like draw to an
+invisible canvas and then read the colors as numbers. In WebGPU, you can
+just do math. Really fast.
+
+That means it's actually capable of doing--say--inference on a
+machine-learning model like GPT4All, multiplications on data frames,
+etc. There are already some crazy things out there, like [a version of
+Stable Diffusion that runs in your web
+browser.](https://github.com/mlc-ai/web-stable-diffusion)
+
+I wrote a post here two years ago about [why WebGPU makes javascript the
+most interesting programming language out there for data analysts/ML
+people.](/post/2020-01-15-webGPU/) Even more seems possible now. When we
+start implementing the Apache Arrow spec to store dataframes on GPU,
+currently blazing-fast packages like [DuckDB]() and Polars; in browser
+versions of GPT4All and other small language models; etc.
+
+This will be great for deepscatter too. Maps like
+https\://atlas.nomic.ai/map/twitter can render 5,000,000 tweets
+incredibly fast, but need a lot of CPU for compute. Often it's fast
+enough, but real-time rendering needs to run 30x a second: I have a long
+and growing list of things that are nearly impossible in WebGL but will
+be quite easy in WebGPU.
+
+Right now it's only released on Chrome, but it's not an only-Google
+thing forever. It's an honest-to-goodness W3C standard like HTML, CSS,
+or SVG. All the browsers have been working on it; Chrome is just
+shipping first because Google is rich compared to Safari and Firefox.
+One of my favorite parts about reading the minutes of the WebGPU
+committee over the last year is watching people from the other browsers
+[jealously grouse about how much money Google throws at
+Chrome](https://github.com/gpuweb/gpuweb/wiki/Minutes-2022-08-10).
+
+> JB: Corentin mentioned that all the browser vendors have been at the
+> table, for a long time. Haven't you had a long enough chance to give
+> that feedback already? Answer is - no. \:) Our impl isn't done. Not
+> about whether a certain period of time has elapsed - but rather do you
+> have an impl that satisfies the criteria. Chrome's one of the best
+> funded orgs in KR: Without going too much into funding, thinking about
+> spec criteria, we had a list of bugs triaged into v1 and post-v1.
+> Let's burn that down to zero, and if we consider larger change, we
+> should probably let them sit as they are. There's probably a way to
+> implement something reasonable later. We can probably do these changes
+> in a compat way in the future. Let's get issues down to zero. Impl
+> feedback is useful of course. We don't go to rec without multiple
+> impls. Looking at wording, I don't think "canditate rec" is gated on
+> mult implementations.
+
+But they'll come along--the Chrome-derived ones like Edge first, but
+Safari and Firefox eventually too because GPU compute is just _such_ an
+important thing. And when they do, it rescrambles the whole compute
+stack. Slowly but surely real GPU compute, tensor operations, all the
+stuff that makes AI tick moves from something that happens only in the
+cloud, to something that can get reshuffled, rearranged, and done
+privately on PCs again. Another chance to reclaim compute from the
+cloud.

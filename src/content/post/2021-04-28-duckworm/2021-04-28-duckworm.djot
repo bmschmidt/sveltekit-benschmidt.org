@@ -1,0 +1,156 @@
+---
+date: "2021-04-28T09:57:51-04:00"
+draft: false
+featured: false
+image:
+  preview_only: false
+lastmod: "2021-04-28T09:57:51-04:00"
+tags:
+- Apache Arrow
+- Bookworm
+- DuckDB
+title: Moving from MySQL to DuckDB
+---
+
+I mentioned
+[earlier](http://benschmidt.org/post/2021-03-07-bookworm-caching/bookworm-caching/)
+that I've been doing some work on the old Bookworm project as I see that
+there's nothing else that occupies quite the same spot in the world of
+public- facing, nonconsumptive text tools.
+
+That codebase is *old*--pieces of it [date back to this blog post from a
+decade
+ago](http://sappingattention.blogspot.com/2011/02/technical-notes.html).
+Parts of that old architecture (e.g., perl) got quickly jettisoned (for
+Python). But others persist. In re-examining the technical stack behind
+Bookworm, I've realized that it's finally possible to jettison one of
+the biggest pain points--MySQL--for something that better matches the
+workflows here.
+
+People often ask about Postgres, but I'm moving to something a little
+bit more unexpected--the 2-year-old program
+[DuckDB](https://duckdb.org/). This might seem like an odd choice\! The
+core data architecture challenge of Bookworm is managing some enormous
+tables for storing a sparse matrix-- the term-document matrix--for a
+large number of long documents. The HathiTrust bookworm has about 2
+*trillion* words in 17 million books--I haven't looked at the core
+tables recently, but I'd guess they have tens of billions of rows.
+
+DuckDB, on the other hand, is manifestly targeted at a much smaller
+size--it borrows intensely in footprint from SQLlite by using the
+SQLlite shell, existing only as an embedded process in running program
+(i.e., no daemon), and putting each file into a single moveable file. I
+never seriously considered SQLlite as a Bookworm backing, because it's
+too lightweight to handle enormous tables, because at the time of the
+original design I only knew how to write single-startup CGI scripts, and
+because MySQL gives intense options for tweaking performance on the
+margins. (Back in 2010-11 I got very used to using 3-byte unsigned
+integers, which can store values up to about 16 million, for ids, since
+they're actually a convenient size; it took me a while to realize that
+3-byte integers are an extraordinarily unusual thing.)
+
+{#column-stores}
+## Column stores
+
+But DuckDB has some major advantages. For one thing, it uses
+column-oriented stores, which means rather than store rows of
+interspersed data types, like MySQL, it groups primarily by the
+values--so you get all the counts as a series of integers, all the
+wordids as a series of integers, etc. For performance, Bookworm has
+always encoded words to integers under the hood; there are a variety of
+performance advantages to this form of storage. The costs mostly tend to
+be things that don't matter in analytics (like it being harder to update
+a single customer record in a table with their latest purchase.) That's
+why DuckDB exists-- as something that will work better for analytics
+from Python or R than SQLlite. And the basic design seems to be probably
+better conceived than SQLlite because it's starting from the ground up;
+it uses the Postgres parser and supports modern SQL reasonably well. For
+the large joins that accompany a typical Bookworm query (in which you
+declare which 1 million out of 10 million teacher evaluations you want
+to look at), this works well.
+
+*Here's a dumb analogy for column stores*. Imagine your data as being a
+bunch of different cookies. Addresses are Oreos, dates are chocolate
+chips, whatever. And you've got different types of values in there--some
+people live at doublestuff lane, some with those weird mint green oreos.
+The point of a column store is to keep all the oreos in line with each
+other because they're the same shape.
+
+::::
+![Yum](https://lh3.googleusercontent.com/proxy/B8xrFw2x02kTedqwNbWvb0JxSHIpRwpyasab7fjmph4HZvQTvjAnXbk2xVrbrKfhjFk_ZYJ0OmfjrS6nx_1latxfWidid9MQfnEtnTZdGhefBCgSGA)
+
+{.caption}
+:::
+Yum
+
+:::
+
+::::
+
+Each sleeve is clear, so you can get an idea what's inside it, but it's
+also nicely shaped, so you can quickly pass it along to the next person.
+Imagine you've got a state-champion 400m relay race running around track
+passing cookies to each other. Every team will to better if, instead of
+passing a motley arrangement of cookies to the next team, they can just
+hand off a single baton of oreos in a sleeve. That's what a column store
+does.
+
+{#indexing}
+# Indexing
+
+While the relational queries against catalog tables are important, the
+most difficult part of any bookworm query is accessing the individual
+word counts-- those 50 billion row tables of the term-document matrix.
+What MySQL did for us there was to allow the creation of fast b-tree
+indices that put related rows together on disk. This was often the most
+time-consuming task, because MySQL index creation could take a week on a
+really huge table; and it left the indices far larger than the actual
+tables themselves. (In fact, the design of the database was such that
+the original table is never used--queries only ever read from the
+index.) The default MySQL settings made it very difficult to create
+these indices as well.
+
+DuckDB uses mostly [block range
+indexes](https://en.wikipedia.org/wiki/Block_Range_Index), which tell
+you roughly what part of the file any given dataset might be in, and
+don't sort the underlying data. This is faster, but wouldn't allow for
+quick lookup in a big table--you'd end up scanning almost everything.
+
+But there's a trick here, which is to *sort the data first* before
+putting it into DuckDB. If the term-document matrix is sorted by
+`wordid`, all of the occurrences for each word will be right next to
+each other, just as with the MySQL index. It's probably not _quite_ as
+fast for retrieval, but the column-oriented structure that comes out can
+race ahead on the subsequent joins. Pre-sorting isn't trivial, since
+we're talking about far more data than fits in memory. But pyarrow
+exposes some strikingly fast `pivot` methods for partially sorting
+arrays, which makes it possible to shuffle things around without fully
+sorting. This matters, because conventional merge sorts involving
+entirely sorting each subarray before merging--that can be extremely
+time-consuming for little benefit in a column-oriented situation where a
+record is not contiguous to itself.
+
+In ignorance of the best way to handle this, I've coded up a new routine
+that does sorts in three passes:
+
+1. Splits each input batch in 16 pieces;
+2. Sorts those batches, and then continuously finds the least sorted 16
+   contiguous batches, combines them into a new table, and then breaks
+   them into 16 new non-overlapping batches.
+3. Once the order is barely stable enough to ensure that a single merge
+   pass will work, traverse in order for a merge sort.
+
+This algorithm seems pretty neat to me, but I have no idea if it's
+especially good or even if it's guaranteed to converge on a sorted
+array. In any case, it's much, much faster than the old MySQL index
+creation was and has a much smaller memory footprint.
+
+Once the table is sorted, it's just a matter of loading it into duckdb.
+The final write happens to a massive parquet file, which can be written
+out of memory; then duckdb can ingest it straight into its database
+format.
+
+DuckDB doesn't yet support compression or a stable on-disk format, but
+the pace of development is fast enough and impressive enough that I'm
+willing to take a bet on it. Especially because we never used
+compression in MySQL, either.

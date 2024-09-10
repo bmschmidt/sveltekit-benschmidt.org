@@ -1,0 +1,155 @@
+---
+date: "2011-01-20T15:22:00.001-05:00"
+draft: false
+tags:
+- Ngrams
+- Digital Humanities
+title: Openness and Culturomics
+url: /2011/01/openness-and-culturomics.html
+---
+
+The [Culturomics authors released a
+FAQ](http://www.culturomics.org/Resources/faq) last week that responds
+to many of the questions floating around about their project. I should,
+by trade, be most interested in their responses to the lack of humanist
+involvement. I'll get to that in a bit. But instead, I find myself
+thinking more about what the requirements of openness are going to be
+for textual research.
+
+That issue is deeply tied to some two-cultures questions about just what
+openness means. [Matthew
+Jockers](http://www.google.com/url?sa=t&source=web&cd=4&ved=0CC4QFjAD&url=http%3A%2F%2Fwww.stanford.edu%2F%7Emjockers%2Fcgi-bin%2Fdrupal%2Fnode%2F53&ei=v3E0TY7iKML38AaIkKWZCQ&usg=AFQjCNFQ67Tk-aYDaKiSIqB0IxT3vxQ0oQ&sig2=UBhBgb2M7R0qWZZ6h0X25w)
+and [Ted
+Underwood](http://www.google.com/url?sa=t&source=web&cd=1&ved=0CBsQFjAA&url=http%3A%2F%2Ftedunderwood.wordpress.com%2F2010%2F12%2F30%2Fhow-to-make-the-google-dataset-work-for-humanists%2F&ei=_XE0Td7CLsOC8gbv5pjaCA&usg=AFQjCNFiyFunLm_48rINAaBxy9DGALBnDw&sig2=SW_KjPslAavYhVs6Q7QvqA)
+have been calling for a full release of the list of books behind the
+ngrams dataset. Culturomics (that's as clear as I can be on authorship,
+unfortunately) says they "have not received permission" yet to release
+the list of 5.2m books behind the set. I assume that's because Google's
+metadata is [subject to proprietary restrictions from catalog
+aggregators](http://sappingattention.blogspot.com/2010/12/todays-times-article.html)
+and publishers---it will be interesting to see how they get out of that.
+Depending on what's in the metadata and its release format, that could
+range from barely readable to quite interesting.
+
+On the other hand, as Culturomics points out, they have been commendably
+open with the ngrams data. They do far more than historians would have
+(I suspect) to make their experiments easily replicable, and their pages
+seem to indicate a plan to release more and more better cleaned data as
+time goes on. They seem to view the repository of data they're setting
+up as a field-changing contribution that will drive research in the
+quantitative study of culture. Files of the magnitude they're putting
+out are only possible for a very few organizations. Google is certainly
+the best positioned of those. If so, they're right to be so proud of
+their openness, and they're also right to have put that ahead of the
+bibliography. Cleaning and tokenizing textual data is a dreary task with
+enormous returns to scale, and if everyone needs basically the same
+dataset, research can move ahead faster with it even before the exact
+details are known.
+
+But then again: _if everyone needs the same dataset._ That's a huge
+caveat, and it certainly isn't completely true. Some people want
+part-of-speech tagging on a representative corpus, and they'll want
+[COHA](http://www.google.com/url?sa=t&source=web&cd=1&ved=0CBMQFjAA&url=http%3A%2F%2Fcorpus.byu.edu%2Fcoha%2Fcompare-culturomics.asp&ei=hVk3TfX0Koyr8AbR0bHQAw&usg=AFQjCNFuB3oXm33jtu8ZMkVIXu-8dslYIw&sig2=tI5LEqnSrJ4EeJwQYmh9eA)
+or its descendants. Some people want very precisely edited texts of
+relatively canonical works, and they'll use MONK or WordHoard with the
+highly edited and tagged texts that come out of what Martin Mueller is
+[calling](https://nuconfluence.northwestern.edu/display/%7Emmueller/Repetitions+in+Early+Modern+Drama)
+digital lower criticism. Part of what happened when Culturomics came out
+to somewhat reserved enthusiasm is that the people interested in
+computer textual analysis---who already have systems in place and a
+clear idea of their needs---quickly realized that it didn't do what they
+needed, and that for many tasks (comparing versions of the folios? full
+part of speech tagging?), it might never make it.
+
+At the same time, there are a lot of humanists who are still unclear on
+what, if anything, they can get out of lexical statistics. Some found
+ngrams eye-opening; some just found it
+[fun](http://www.google.com/url?sa=t&source=web&cd=2&ved=0CBwQFjAB&url=http%3A%2F%2Fnataliacecire.blogspot.com%2F2010%2F12%2Fgoogle-books-ngrams-and-number-of-words.html&ei=hmk3TbKPO8Sp8AaQ3aCYBA&usg=AFQjCNHU2BUuBWCEGGC3AorHwrgcfC6sLw&sig2=aYCgSvwRKdWKtVT1_TsZAQ);
+and some, I think, were put off a bit. First, by the scientific
+packaging; and second, by the lack of traditional humanist niceties like
+a bibliography, or some historiography, or a clear phrasing of what
+existing problems ngrams will solve. Since all humanists, by union
+contract, own the exact same 2008 white MacBook I have, most couldn't do
+anything much with the gigabytes of text files offered for download. You
+certainly can't open it with Excel to find what you want---even to get a
+basic wordcount for a span of years basically requires some sort of
+[program](http://www.princeton.edu/%7Ebschmidt/ngrams.pl). Casual
+humanists would probably be happier with less openness and more
+clarity---[too much
+information](http://blogs.reuters.com/felix-salmon/2010/06/08/how-goldman-deals-with-the-government/)
+can seem like a way of stonewalling, particularly when the information
+you most want isn't necessarily there. In any case, what they didn't
+necessarily get is a sense of the immediate applicability to live
+questions in the humanities.
+
+That's because, in part, of the different types of openness. The
+openness of the sciences is based around replicability of experiments
+with relatively constrained goals; whereas currently, no one knows just
+what we're headed for in the humanities. (Particularly in history, which
+I promise a lot more about  later.) The openness of culturomics will let
+a thousand flowers bloom, but only in one type of research. Of course
+there will be other types: but the combined cultural capital of the
+route this project (Harvard-Google-_Science_-_New York Times_) makes it
+important to be clear that the release of centralized datasets, a la
+genomics, is not _the_ long-term solution to allowing digital history.
+
+I should be equally clear, though, that it is _a_ long-term
+solution---some sort of baseline data is incredibly useful for all sorts
+of textual analysis, and whatever Google provides will probably be the
+best we get. I've had a little trouble so far figuring out how to use
+the Culturomics data to clean up my own dataset (largely because I don't
+want to adopt their ways of using capitalization and apostrophes for
+memory-saving reasons) but with a larger dataset, those sorts of
+problems should melt away. As they role out some more sets of genres
+with better metadata, it will provide an amazing group of genre
+baselines for comparison of more localized texts.
+
+But given the limitations of ngrams (using the word generically) data, I
+tend to think that data's usefulness will rest not only in its openness
+a la genomics, but in its ability to complement other datasources. If
+Google ngrams is the best solution we can come up with for linking book
+metadata to textual data, we are going to be largely restricted to the
+studies of fame and repression in 'culture' that the culturomists have
+been releasing so far---studies that don't get to the core of most of
+the historiography which rely on a lot of different ways of thinking
+about how the web of language intersects at various levels.
+
+Openness in the digital humanities needs to be about _interoperability_
+as well as _replicability._ Ngrams is stellar on the second, and merely
+good on the first. Moving forward, I wonder how we can do better.
+
+I think that's all I really have to say for now aside from a couple
+reflections about copyright I'll post in a bit. But I should put up
+their response to the problem of lack of humanistic involvement in their
+project that I [worried
+about](http://sappingattention.blogspot.com/2010/12/missing-humanists.html),
+though I wasn't the
+[first](http://www.nytimes.com/2010/12/17/books/17words.html?pagewanted=2)
+(nor was Menand, I'm sure):
+
+> 2. Why were there no humanists involved in this project?
+>
+> That's incorrect. Erez studied Philosophy at Princeton as an undergrad
+> and did a master's degree in Jewish History working with Elisheva
+> Carlebach. Two of our other authors, Joseph Pickett (PhD, English
+> Language and Literature, UMichigan) and Dale Hoiberg (PhD Chinese
+> Literature, UChicago) are the Executive Editor of the American
+> Heritage Dictionary and the Editor-in-Chief of the Encylopaedia
+> Britannica. In addition, we were in contact with many humanists
+> throughout the life of the project.
+>
+> But more than just wrong, it's irrelevant. What matters is the quality
+> of the data and the analyses in the paper and what it means for how we
+> think about a great variety of phenomena - not the degrees we happen
+> to hold or not to hold. If what we seek is a serious conversation
+> about this work, we shouldn't exclude anyone who has something
+> significant and thoughtful to say. That would be a shame.
+
+When I was researching a section of the [Humanities
+Indicators](http://www.humanitiesindicators.org/) about the "Humanities
+Workforce," one of the priorities was to be inclusive about the range of
+occupations---editors, secondary teachers, journalists, not to mention
+archivists, librarians, museum curators---who were professional
+humanists without a research university chair. There's no bright line,
+and that's good. I certainly don't want to write anyone out
+peremptorily.

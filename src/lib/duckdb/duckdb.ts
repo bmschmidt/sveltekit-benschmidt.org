@@ -1,6 +1,5 @@
 import * as duckdb from '@duckdb/duckdb-wasm';
 import Worker from 'web-worker';
-import { LogLevel } from '@duckdb/duckdb-wasm';
 import { base } from '$app/paths';
 globalThis.Worker = Worker; // polyfill Worker for node.
 
@@ -15,13 +14,10 @@ const DUCKDB_BUNDLES: duckdb.DuckDBBundles = {
 	}
 };
 
-let db = null;
+let db : null | duckdb.AsyncDuckDB = null;
 export const initDB = async (path: string, fname: string) => {
-	if (db) {
-		return db;
-	}
 	if (fname === undefined) {
-		fname = path.split('/').pop();
+		fname = path.split('/').pop() as string;
 	}
 	const bundle = await duckdb.selectBundle(DUCKDB_BUNDLES);
 	const logger = new duckdb.ConsoleLogger(4);

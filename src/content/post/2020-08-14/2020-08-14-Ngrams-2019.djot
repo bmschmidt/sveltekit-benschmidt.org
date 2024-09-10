@@ -1,0 +1,36 @@
+---
+categories:
+- Google
+- Google Ngrams
+date: "2020-08-11T13:36:45-04:00"
+draft: true
+featured: false
+image:
+  preview_only: false
+lastmod: "2020-08-11T13:36:45-04:00"
+title: Google Ngrams 2019 updates
+---
+
+I learned from Scott Weingart on Twitter that the Google Ngrams website
+was updated in February. Let's take a look and see what differences
+these changes make.
+
+I'm going to simply use individual ngrams as proxies for phenomena, and
+I may be a little oblique in explaining why I think they work. If you
+have any questions why I use some phrase as an indicator, ask on
+Twitter.
+
+{#ocr-quality}
+# OCR quality.
+
+{#corpus-weirdness}
+# Corpus weirdness
+
+One simple question worth asking is what new words appear in the 2010s
+that didn't before.
+
+Two of the largest are 'bbe' and 'kjv', which each appear half a million
+times in 2018. I suspect that 'bbe' means "bible in basic english," and
+"KJV" means "King James Bible." There are 1000 books containing 'bbe',
+which seems to indicate that maybe 1000 copies of this somehow migrated
+into Google Books for a single year.

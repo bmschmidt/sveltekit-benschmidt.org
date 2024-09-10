@@ -1,7 +1,7 @@
 <script lang="ts">
 	export let data;
 	export let settings;
-	import Elements from 'pandoc-svelte-components/Elements.svelte';
+	// import Elements from 'pandoc-svelte-components/Elements.svelte';
 	const [level, meta, elems] = data;
 	const [id, attrs, class_list] = meta;
 	const classes = class_list.join(' ');
