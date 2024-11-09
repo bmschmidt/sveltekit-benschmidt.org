@@ -1,0 +1,40 @@
+---
+abstract: |
+
+date: 2024-09-10
+draft: false
+tags:
+- Embeddings
+- Humanities
+title: Embeddings and the Digital Humanities
+---
+
+I left my place in academic history to join an AI startup in October 2022. Back
+then, most hot air was still being spent puffing up 
+cryptocurrencies. A month later, OpenAI released chatGPT.
+It wasn't long before all the sturm, drang, angst, and schadenfreude
+that used to whirl around Bitcoin were turned on the sundry GPTs,
+image generators, and fantastic agents that surround AI.
+
+It's been a strange period to observe, and yet in most ways
+easier period to observe than to comment; the lines between the humane
+and the inhumane
+
+But I don't want to talk about generative AI.
+
+Using embedding models means, most broadly, producing machine-read versions of text
+instead of machine generated ones. [The point of a generative model
+is to consume as much text as possible and churn it into a kind
+of information slurry]{.pull-quote} to generate text that is 
+by its nature unattributable. Embedding models create representations of 
+specific documents, positioned relative to each other. Although [^reproduction]
+
+[^reproduction]: It is worth emphasizing that it's possible to use embedding models in ways that guarantee
+the integrity of the original text, so that it can not be reproduced; the fundamentals of 
+information theory alllow comparing the bits of information in an embedding with the size
+of the original text. A short essay of, say, 5000 words probably has about 7000 bytes of information; 
+Either the full version of the embedded text with Nomic embed (1536 bytes) or the binary version 
+(just 96 bytes!)
+
+The hard work here is creating consistent copies of texts for use. Most humanities datasets
+exist in a mishmash of formats and character encodings.
