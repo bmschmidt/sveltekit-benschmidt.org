@@ -1,0 +1,44 @@
+name: Deploy Website
+
+on:
+  push:
+    branches:
+      - main  # Adjust if your default branch is not `main`
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Check out the repository
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18' # Use a compatible Node.js version
+          cache: 'npm'
+
+      # Install dependencies
+      - name: Install Dependencies
+        run: npm ci
+
+      # Build the project
+      - name: Build Project
+        run: npm run build
+
+      # Set up SSH key
+      - name: Set up SSH for rsync
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$DEPLOY_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H benschmidt.org >> ~/.ssh/known_hosts
+
+      # Run the publish step
+      - name: Publish
+        run: npm run publish
