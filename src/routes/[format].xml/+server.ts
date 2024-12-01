@@ -1,7 +1,7 @@
 export const prerender = true;
 
 import { full_catalog } from '$lib/markdown/markdown';
-// import { json2html } from '$lib/markdown/obsolete_pandoc';
+import { renderDjot } from '@djot/djot';
 import { Feed } from 'feed';
 async function make_feed() {
 	const feed = new Feed({
@@ -10,7 +10,7 @@ async function make_feed() {
 		id: 'https://benschmidt.org/',
 		link: 'https://benschmidt.org/post',
 		language: 'en', // optional, used only in RSS 2.0, possible values: http://www.w3.org/TR/REC-html40/struct/dirlang.html#langcodes
-		copyright: 'All rights reserved 2023, Ben Schmidt',
+		copyright: 'All rights reserved 2024, Ben Schmidt',
 		//  generator: "awesome", // optional, default = 'Feed for Node.js'
 		feedLinks: {
 			//			json: 'https://benschmidt.org/feed.json',
@@ -26,20 +26,24 @@ async function make_feed() {
 	let post_index = post_index_raw.post;
 	post_index.sort((a, b) => b.metadata.date - a.metadata.date);
 	post_index = post_index.filter((d) => d.metadata.date).filter((d) => !d.metadata.draft);
-
 	for (const post of post_index) {
-		post.html = await json2html(post.document);
+		try {
+			post.html = renderDjot(post.document.content);
+		} catch (err) {
+			post.html = `Sorry, something failed to render. Please visit the website for full content.`
+
+		}
 	}
 
 	post_index.forEach((post_full) => {
 		const post = post_full.metadata;
 		post.url = post_full.url as string;
 		feed.addItem({
-			title: post.title,
-			id: post.url,
-			link: post.url,
+			title: post.title || '',
+			id: post.url || '',
+			link: post.url || '',
 			description: post_full.description || '',
-			content: post_full.html,
+			content: post_full.html || '',
 			author: [
 				{
 					name: 'Ben Schmidt',
@@ -47,7 +51,7 @@ async function make_feed() {
 					link: 'https://benschmidt.org'
 				}
 			],
-			date: new Date(post.date)
+			date: new Date(post.date) || 'Unknown Date'
 			//			image: post.image
 		});
 	});

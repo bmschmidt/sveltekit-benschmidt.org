@@ -40,7 +40,7 @@ information. So say, using Cohen's example, you're looking for
 equals](http://ngrams.googlelabs.com/graph?content=marriage+between+two+equals&year_start=1800&year_end=2000&corpus=0&smoothing=3),"
 "[marriage of two
 equals](http://ngrams.googlelabs.com/graph?content=marriage+of+two+equals&year_start=1800&year_end=2000&corpus=0&smoothing=3),"
-"[marriage between equals](http://marriage%20between%20equals/)") the
+"[marriage between equals]") the
 engine breaks down. Of those three, two of the individual formulations
 are too rare to show up in the data. Maybe they don't show up at
 all--but maybe they show up twenty times. No way to know. You really

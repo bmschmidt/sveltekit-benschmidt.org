@@ -1,11 +1,22 @@
 <script lang="ts">
-	export let document;
-	export let metadata;
-	export let blog;
-	import { Document } from "quires";
+	import Details from '$lib/quires/details.svelte';
+	import SvelteComponent from '$lib/quires/svelte-component.svelte';
+	import { select } from '@observablehq/plot';
+	const { document, metadata, blog } = $props();
+	import { Document } from 'quires';
 	const quire = {
 		...document,
 		quireComponents: [
+			{
+				tag: 'code_block',
+				selector: 'code_block.component',
+				component: SvelteComponent
+			},
+			{
+				tag: 'div',
+				selector: 'div.details',
+				component: Details
+			}
 		]
 	};
 </script>

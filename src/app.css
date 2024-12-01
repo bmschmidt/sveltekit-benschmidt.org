@@ -15,11 +15,16 @@
     @apply font-bold text-gray-900;
     font-family: 'Lora', serif;
   }
-  
+
   a {
-    @apply text-gray-700 hover:underline hover:text-gray-900 transition-colors duration-200;
+    @apply text-gray-700 no-underline relative transition-colors duration-200;
   }
   
+  a:hover {
+    @apply text-gray-900;
+    opacity: 0.85; /* Subtle emphasis without changing layout */
+  }
+
   p {
     @apply mb-4;
   }

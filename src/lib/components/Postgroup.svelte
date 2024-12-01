@@ -10,19 +10,15 @@
 
 {#each posts as post}
 	{#if post && post.document && (dev || !post.metadata.draft)}
-		<div
-			class="hover:border-black transition border-white article mb-10 prose prose-slate border p-2"
-		>
-			<div>
-				<a
-					class="hover:underline no-underline {post.metadata.draft
-						? 'text-red-700'
-						: 'text-violet-700'} transition"
-					href="/{blog}/{post.slug}/">{post.metadata.title}</a
-				>
-				<span class="text-slate-500">
-					{new Date(post.metadata.date).toString().slice(4, 15)}
-				</span>
+		<div class="p-6 rounded article prose prose-slate post">
+			{#if post.metadata.draft}
+				<div class="text-red-500">Draft -- dev mode only</div>
+			{/if}
+			<span class="text-slate-500">
+				{new Date(post.metadata.date).toString().slice(4, 15)}
+			</span>
+			<div class="flex flex-col">
+				<a href="/{blog}/{post.slug}/">{post.metadata.title}</a>
 			</div>
 			<div>
 				<PostPreview document={post} />
@@ -30,3 +26,14 @@
 		</div>
 	{/if}
 {/each}
+
+<style>
+	.post:not(:last-child)::after {
+		content: '';
+		display: block;
+		width: 100%;
+		height: 1px;
+		background-color: #333;
+		margin-top: 10px; /* Adjust the spacing to your preference */
+	}
+</style>

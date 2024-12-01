@@ -1,3 +1,4 @@
+export const prerender = false;
 
 class Database() {
   constructor() {

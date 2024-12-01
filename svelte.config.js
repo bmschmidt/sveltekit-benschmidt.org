@@ -6,6 +6,7 @@ const config = {
 		adapter: adapter(),
 		prerender: {
 			handleMissingId: 'warn',
+			handleHttpError: 'warn',
 			entries: [
 				'/',
 				'/etc/lazarsfeld',
@@ -15,7 +16,9 @@ const config = {
 				'/poli/SOTU',
 				'/lost',
 				'/atom.xml',
-				'/rss.xml'
+				'/rss.xml',
+				'/majors',
+				'/poli/presidential-votes'
 			]
 		}
 	}

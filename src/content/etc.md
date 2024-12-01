@@ -15,6 +15,14 @@ title: Etc.
   and lack of standards of Ruby with the intuitive programming style of Hakyll. [Those posts can be read here](/posts/)
 - [Prochronisms](https://prochronism.blogspot.com/) was a blog about anachronisms in television.
 
+
+## Misc visualizations
+
+- At some point I'll put up a longer list of items on this site at [Majors](/majors). Currently a stub link though.
+- I fiddle around with [State of the Union](/poli/SOTU) data.
+- I'm obsessed with better ordering lists of states and countries. [Here's a visulization of presidential results](/states).
+
+
 ## Teaching
 
 ### Graduate Course web pages

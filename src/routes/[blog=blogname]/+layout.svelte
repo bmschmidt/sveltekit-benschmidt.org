@@ -1,6 +1,8 @@
 <script>
 	import { page } from '$app/stores';
-	$: blog = $page.params.blog;
+
+	let { children } = $props();
+	let blog = $derived($page.params.blog);
 </script>
 
 {#if blog !== 'post'}
@@ -18,4 +20,4 @@
 	</div>
 {/if}
 
-<slot />
+{@render children()}

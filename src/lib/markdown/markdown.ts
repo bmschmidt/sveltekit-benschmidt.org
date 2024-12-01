@@ -47,6 +47,7 @@ export function full_catalog(post_limit = 1e6) {
 		}
 		const metadata = data.metadata || {};
 		if (metadata.date === undefined || metadata.date == 0) {
+			console.warn({metadata})
 			console.warn('No date for', slug);
 		}
 		metadata.date = new Date(metadata.date || 0).toISOString();

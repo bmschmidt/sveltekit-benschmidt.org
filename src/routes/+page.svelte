@@ -8,31 +8,38 @@
 	import LogoLinkedin from 'carbon-icons-svelte/lib/LogoLinkedin.svelte';
 	import QID24 from 'carbon-icons-svelte/lib/QID.svelte';
 	import Postgroup from '$lib/components/Postgroup.svelte';
+	import BskyIcon from '$lib/components/bsky-icon.svelte';
 
 	const roles = [
 		{
 			icon: Email24,
-			link: 'mailto:bmschmidt@gmail.com'
+			link: 'mailto:bmschmidt@gmail.com',
+			'aria-label': 'E-mail link'
 		},
 		{
 			icon: LogoTwitter24,
-			link: 'https://twitter.com/benmschmidt'
+			link: 'https://twitter.com/benmschmidt',
+			'aria-label': 'Twitter profile'
 		},
 		{
 			icon: Education24,
-			link: 'https://scholar.google.com/citations?user=QSmupT4AAAAJ&hl=en'
+			link: 'https://scholar.google.com/citations?user=QSmupT4AAAAJ&hl=en',
+			'aria-label': 'Google Scholar'
 		},
 		{
 			icon: LogoGithub24,
-			link: 'https://github.com/bmschmidt'
+			link: 'https://github.com/bmschmidt',
+			'aria-label': 'Github profile'
 		},
 		{
 			icon: QID24,
-			link: 'https://orcid.org/0000-0002-1142-5720'
+			link: 'https://orcid.org/0000-0002-1142-5720',
+			'aria-label': 'OrcID profile'
 		},
 		{
 			icon: LogoLinkedin,
-			link: 'https://www.linkedin.com/in/benmschmidt/'
+			link: 'https://www.linkedin.com/in/benmschmidt/',
+			'aria-label': 'LinkedIn profile'
 		}
 	];
 </script>
@@ -40,7 +47,7 @@
 <div id="photo-and-desc" class="flex-col flex sm:flex-row items-center">
 	<div
 		id="img-and-links"
-		class="flex flex-row items-center 
+		class="flex flex-row items-center
              sm:flex-col w-full sm:w-1/3"
 	>
 		<div class="w-full items-center">
@@ -54,9 +61,10 @@
 					</a>
 				{/each}
 				<a
-					href="https://vis.social/@benmschmidt"
+					href="https://sigmoid.social/@benmschmidt"
 					rel="me"
 					class="underline violet-800 m-1 hover:orange-800"
+					aria-label="bluesky link"
 				>
 					<svg viewBox="0 0 16 16" width="24" height="24"
 						><path
@@ -64,6 +72,12 @@
 							style="stroke:none;stroke-miterlimit:10;fill-rule:evenodd;"
 						/></svg
 					>
+				</a>
+				<a
+					href="https://bschmidt.bsky.social"
+					rel="me"
+					class="underline violet m-1 hover:orange-800"
+					><BskyIcon height="24" width="24" />
 				</a>
 			</div>
 		</div>
@@ -74,13 +88,13 @@
 	</div>
 </div>
 
-<div id="blog" class="md:visible m-20 ">
+<div id="blog" class="md:visible m-20">
 	<h2 class="mb-2"><a class="text-xl" href="/post">Recent Blog Posts</a></h2>
 	<div class="mb-6 ml-2">
 		<a data-sveltekit-reload href="feed.xml">atom</a>
 		<a data-sveltekit-reload href="rss.xml">rss</a>
 	</div>
 	<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-		<!-- <Postgroup posts={data['recent_posts']} blog="post" /> -->
+		<Postgroup posts={data['recent_posts']} blog="post" />
 	</div>
 </div>

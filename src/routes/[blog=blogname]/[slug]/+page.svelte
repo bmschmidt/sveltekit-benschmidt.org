@@ -1,8 +1,8 @@
 <script>
-	export let data;
 	import { page } from '$app/stores';
-	$: blog = $page.params.blog;
 	import Blogpost from '$lib/components/Blogpost.svelte';
+	let { data } = $props();
+	let blog = $derived($page.params.blog);
 </script>
 
 <div class="post flex justify-center">

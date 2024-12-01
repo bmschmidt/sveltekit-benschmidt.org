@@ -1,0 +1,87 @@
+---
+title: Election history and state ordering
+date: 2024-11-24T00:00:00.000Z
+draft: false
+tags: [Data Visualization]
+---
+
+I was talking on Bluesky[^1] about why I dislike the widespread use of alphabetical ordering for states on the 
+y-axis of charts. There are better ways! My favorite is detailed in [this notebook](https://observablehq.com/@bmschmidt/useful-linear-orders-for-countries-and-states#linear_us_state_order), where I talk through some methods for treating paths. 
+I have an interactive tool for building out paths like this one, which is a decent way to order all the countries in the world for data visualization.  
+
+![Map of the world with a red line moving through countries representing linear order.](image.png)
+
+I realized after posting that I should check some of the old 19th century census atlases I wrote about for [Creating Data](https://creatingdata.us); and indeed, Henry Gannett did use a nice linear ordering for representing states in the rare cases that he couldn't use bars arranged by frequencies. These are grouped by what we'd now call (but I don't *think* were in 1890) "census regions." But there are some ugly transitions, like the jump from Florida to Ohio. ([You can see the full image at the Library of Congress](https://www.loc.gov/resource/g3701gm.gct00010/?sp=36).)
+
+![1890 image of pie charts by state, in the order ME, NH, VT, MA, RI, CT, NY, NJ, etc.](https://tile.loc.gov/image-services/iiif/service:gmd:gmd370m:g3701m:g3701gm:gct00010:ca000036/887,385,3831,2111/766,/0/default.jpg)
+
+My preferred ordering, below, snakes from Hawaii to Maine in an 
+order that respects census regions; almost all the state jumps are
+continguous, and where they aren't (like the jump from Florida to South Carolina)
+they're close.
+
+{.details}
+{summary="Expand for a JSON list of states"}
+::::
+
+```
+["Pacific Ocean","Guam","GU","Hawaii","HI","Alaska",
+"AK","Lower 48","West","West Coast","Pacific Northwest",
+"WA","Washington","OR","Oregon","CA","California","Southwest",
+"AZ","Arizona","NM","New Mexico","NV","Nevada","CO",
+"Colorado","WY","Wyoming","UT","Utah","ID","Idaho","MT",
+"Montana","Midwest","Dakotas","ND","North Dakota","SD",
+"South Dakota","NE","Nebraska","KS","Kansas","IA","Iowa",
+"MN","Minnesota","WI","Wisconsin","MI","Michigan","OH",
+"Ohio","IN","Indiana","IL","Illinois","South","MO",
+"Missouri","OK","Oklahoma","TX","Texas","LA","Louisiana",
+"AR","Arkansas","KY","Kentucky","TN","Tennessee","MS",
+"Mississippi","AL","Alabama","GA","Georgia","FL","Florida",
+"SC","South Carolina","NC","North Carolina","WV",
+"West Virginia","VA","Virginia","Northeast","Mid-Atlantic",
+"DC","MD","Maryland","DE","Delaware","PA","Pennsylvania",
+"NJ","New Jersey","NY","New York","New England",
+"Southern New England","CT","Connecticut","RI",
+"Rhode Island","MA","Massachusetts","Northern New England",
+"NH","New Hampshire","VT","Vermont","ME","Maine",
+"Carribean","Puerto Rico","PR","US Virgin Islands"]
+```
+
+::::
+
+My favorite example of this layout shows changes in political polarization in the United states
+by election. The Democratic "solid south" from 1880 to 1964 is clearly present:[^2] and the newer
+Republican solid regions in the intermountain west and northern great plains, as well as
+smaller phenomena like Bill Clinton's two-time carve out of Louisiana, Arkansas, Tennessee, and Kentucky.
+
+In this chart states are colored by their lean *relative to the country*; this smooths out the general 
+year-to-year swings where Biden does better than Clinton does worse than Obama to show the overall geography.
+The story of the 2024 election in this view is that the two great Republican regions are chipping 
+away at the holdouts in the middle: Iowa and Ohio flipped from swingy to solid red in 2016, and Wisconsin/Michigan/Minnesota 
+have continued to shift slightly more towards the middle.
+
+```component
+name: VoteHistory
+args:
+  order: "geography"
+  variable: "Lean relative to country"
+```
+
+Here, by contrast, is the same visualization ordered alphabetically. There is nothing to see.
+
+```component
+name: VoteHistory
+args:
+  order: "alphabetical order"
+  variable: "Lean relative to country"
+```
+
+
+For an interactive version of this chart, see [here](/poli/presidential-votes/) to 
+be able to toggle between the two orders and see simply the winner.
+
+[^1]: Assuming that you're already aware that Bluesky is taking off. 
+[^2]: Although, to be honest, the South is only really solid through 
+      1944; from the time Strom Thurmond broke the Dixiecrats off in 1948,
+      there were continuous cracks in the south from every angle. This
+      is the the sort of the thing that you can see with this kind of view! 
